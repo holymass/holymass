@@ -1,5 +1,5 @@
 body {
-  font-family: 'Hei';
+  font-family: STHeiti, Hei;
 }
 h1, h2, h3 {
   color: red;
@@ -20,7 +20,7 @@ strong {
   font-size: 13px;
 }
 .remark-code {
-  font-family: 'Hei';
+  font-family: STHeiti, Hei;
   font-size: 48px;
   white-space: normal;
 }
