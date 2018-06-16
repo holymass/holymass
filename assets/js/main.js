@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 Iannar.com. All rights reserved.
+ */
+
 'use strict';
 
 (function() {
@@ -13,8 +17,9 @@
   if (metadata.s) {
     sourceUrl = 'mass/' + metadata.s.replace(/\./g, '/') + '.md';
   }
+  var ratio = metadata.r || '4:3';
   var slideshow = remark.create({
-    ratio: '4:3',
+    ratio: ratio,
     sourceUrl: sourceUrl,
     navigation: {
       click: true
