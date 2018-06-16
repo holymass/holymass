@@ -37,7 +37,7 @@ footer.right {
   padding: 1em;
 }
 .remark-slide-content img {
-  width: 100%;
+  max-width: 100%;
 }
 .remark-slide-number {
   font-size: 13px;
