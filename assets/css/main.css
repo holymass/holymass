@@ -5,8 +5,14 @@ h1, h2, h3 {
   color: red;
   font-weight: bold;
 }
+a {
+  text-decoration: none;
+}
 strong {
   color: red;
+}
+table {
+  width: 100%;
 }
 .feetnote {
   position: absolute;

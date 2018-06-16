@@ -9,7 +9,7 @@
       metadata[pair[0]] = pair[1];
     });
   }
-  var sourceUrl = 'mass/template.md';
+  var sourceUrl = 'mass/index.md';
   if (metadata.s) {
     sourceUrl = 'mass/' + metadata.s.replace(/\./g, '/') + '.md';
   }
