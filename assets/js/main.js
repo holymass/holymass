@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Iannar.com. All rights reserved.
+ * Copyright (c) 2018 iannar.com. All rights reserved.
  */
 
 'use strict';

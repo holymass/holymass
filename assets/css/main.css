@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Iannar.com. All rights reserved.
+ * Copyright (c) 2018 iannar.com. All rights reserved.
  */
 
 body {
@@ -18,25 +18,26 @@ strong {
 table {
   width: 100%;
 }
-footer.left {
+footer {
+  height: 16px;
   font-family: Times;
   font-size: 12px;
   color: #999;
   position: absolute;
   bottom: 12px;
+}
+footer.left {
   left: 20px;
 }
 footer.right {
-  font-family: Times;
-  font-size: 12px;
-  color: #999;
-  position: absolute;
-  bottom: 12px;
   right: 20px;
 }
 .remark-slide-content {
   font-size: 48px;
   padding: 1em;
+}
+.remark-slide-content img {
+  width: 100%;
 }
 .remark-slide-number {
   font-size: 13px;
