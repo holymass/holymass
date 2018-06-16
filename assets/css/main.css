@@ -1,0 +1,26 @@
+body {
+  font-family: 'Hei';
+}
+h1, h2, h3 {
+  color: red;
+  font-weight: bold;
+}
+strong {
+  color: red;
+}
+.feetnote {
+  position: absolute;
+  bottom: 0;
+}
+.remark-slide-content {
+  font-size: 48px;
+  padding: 1em;
+}
+.remark-slide-number {
+  font-size: 13px;
+}
+.remark-code {
+  font-family: 'Hei';
+  font-size: 48px;
+  white-space: normal;
+}
