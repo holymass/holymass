@@ -83,6 +83,6 @@
 
 class: center, middle
 
-# The End
+# （完）
 
 ![WeChat](/assets/images/wechat.jpeg)
