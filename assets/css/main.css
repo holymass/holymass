@@ -18,6 +18,9 @@ strong {
 table {
   width: 100%;
 }
+img {
+  max-width: 100%;
+}
 footer {
   height: 32px;
   font-family: Times;
@@ -35,9 +38,6 @@ footer.right {
 .remark-slide-content {
   font-size: 48px;
   padding: 1em;
-}
-.remark-slide-content img {
-  max-width: 100%;
 }
 .remark-slide-number {
   font-size: 13px;
