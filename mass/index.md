@@ -85,4 +85,4 @@ class: center, middle
 
 # （完）
 
-![WeChat](/assets/images/wechat.jpeg)
+![wechat](../assets/images/wechat.jpeg)
