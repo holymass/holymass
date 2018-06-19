@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-  <title>iannar</title>
-  <meta charset="utf-8">
-  <link type="text/css" rel="stylesheet" href="/assets/css/main.css">
-</head>
-
-<body>
-  <footer class="left">
-    <div>© 2018 iannar.com</div>
-    <div>苏ICP备14030758号</div>
-  </footer>
-  <footer class="right">
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-      <img alt="Creative Commons License" style="border-width:0" src="/assets/images/cc-by-nc-sa-4.0-88x31.png" />
-    </a>
-  </footer>
-  <script src="/assets/js/vendor/remark/remark.min.js" type="text/javascript"></script>
-  <script src="/assets/js/main.js" type="text/javascript"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120959122-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-120959122-1');
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>iannar</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="./dist/bundle.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120959122-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-120959122-1');
+    </script>
+  </body>
 </html>
