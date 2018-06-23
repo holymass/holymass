@@ -96,13 +96,16 @@
     .reveal h3,
     .reveal h4,
     .reveal h5,
-    .reveal h6,
+    .reveal h6 {
+      color: red;
+    }
+
     .reveal strong {
       color: red;
     }
 
     .reveal p {
-      font-size: 1.25em;
+      font-size: 1.4em;
     }
 
     .reveal section img {
@@ -128,7 +131,7 @@
         });
       }
       if (metadata.markdown) {
-        var markdown = metadata.markdown.replace(/-/g, '/') + '.md';
+        var markdown = metadata.markdown + '.md';
         var mass = document.getElementById('mass');
         mass.firstElementChild.setAttribute('data-markdown', markdown);
       }

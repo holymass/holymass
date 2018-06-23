@@ -31,9 +31,9 @@ class MassCard extends React.Component<MassCardProps, {}> {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size='small' href={'/mass/?markdown=甲年-' + name}>甲年</Button>
-          <Button size='small' href={'/mass/?markdown=乙年-' + name}>乙年</Button>
-          <Button size='small' href={'/mass/?markdown=丙年-' + name}>丙年</Button>
+          <Button size='small' href={'/mass/?markdown=甲年/' + name}>甲年</Button>
+          <Button size='small' href={'/mass/?markdown=乙年/' + name}>乙年</Button>
+          <Button size='small' href={'/mass/?markdown=丙年/' + name}>丙年</Button>
         </CardActions>
       </Card>
     );
