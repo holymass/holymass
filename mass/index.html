@@ -1,54 +1,60 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>iannar</title>
-    <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.6.0/css/reveal.css">
-    <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.6.0/css/theme/white.css" id="theme">
-  </head>
-  <body style="overflow: auto;">
-    <div class="reveal">
-      <div id="mass" class="slides">
-        <section data-markdown="index.md"></section>
-      </div>
+
+<head>
+  <meta charset="utf-8">
+  <title>iannar</title>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.6.0/css/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.6.0/css/theme/white.css" id="theme">
+</head>
+
+<body style="overflow: auto;">
+  <div class="reveal">
+    <div id="mass" class="slides">
+      <section data-markdown="index.md"></section>
     </div>
-    <script>
-      (function() {
-        var metadata = {};
-        if (location.search) {
-          var search = location.search.substr(1, location.search.length);
-          search.split('&').forEach(function(item) {
-            var pair = item.split('=');
-            metadata[pair[0]] = pair[1];
-          });
-        }
-        if (metadata.s) {
-          var source = metadata.s.replace(/\./g, '/') + '.md';
-          var mass = document.getElementById('mass');
-          mass.firstElementChild.setAttribute('data-markdown', source);
-        }
-      })();
-    </script>
-    <script crossorigin src="https://unpkg.com/reveal.js@3.6.0/lib/js/head.min.js"></script>
-    <script crossorigin src="https://unpkg.com/reveal.js@3.6.0/lib/js/classList.js"></script>
-    <script crossorigin src="https://unpkg.com/reveal.js@3.6.0/js/reveal.js"></script>
-    <script crossorigin src="https://unpkg.com/reveal.js@3.6.0/plugin/markdown/marked.js"></script>
-    <script crossorigin src="https://unpkg.com/reveal.js@3.6.0/plugin/markdown/markdown.js"></script>
-    <script>
-      Reveal.initialize({
-        controls: false,
-        progress: false,
-        history: true,
-        center: true,
-      });
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120959122-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-120959122-1');
-    </script>
-  </body>
+  </div>
+  <script>
+    (function() {
+      var metadata = {};
+      if (location.search) {
+        var search = location.search.substr(1, location.search.length);
+        search.split('&').forEach(function(item) {
+          var pair = item.split('=');
+          metadata[pair[0]] = pair[1];
+        });
+      }
+      if (metadata.s) {
+        var source = metadata.s.replace(/\./g, '/') + '.md';
+        var mass = document.getElementById('mass');
+        mass.firstElementChild.setAttribute('data-markdown', source);
+      }
+    })();
+  </script>
+  <script crossorigin src="https://unpkg.com/reveal.js@3.6.0/lib/js/head.min.js"></script>
+  <script crossorigin src="https://unpkg.com/reveal.js@3.6.0/lib/js/classList.js"></script>
+  <script crossorigin src="https://unpkg.com/reveal.js@3.6.0/js/reveal.js"></script>
+  <script crossorigin src="https://unpkg.com/reveal.js@3.6.0/plugin/markdown/marked.js"></script>
+  <script crossorigin src="https://unpkg.com/reveal.js@3.6.0/plugin/markdown/markdown.js"></script>
+  <script>
+    Reveal.initialize({
+      controls: false,
+      progress: false,
+      history: true,
+      center: true,
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120959122-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-120959122-1');
+  </script>
+</body>
+
 </html>
