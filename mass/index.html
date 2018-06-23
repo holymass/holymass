@@ -101,8 +101,12 @@
       color: red;
     }
 
-    .reveal {
-      font-family: STHeiti, Hei
+    .reveal p {
+      font-size: 1.25em;
+    }
+
+    .reveal section img {
+      border: 0;
     }
   </style>
 </head>
@@ -137,10 +141,11 @@
   <script crossorigin src="https://unpkg.com/reveal.js@3.6.0/plugin/markdown/markdown.js"></script>
   <script>
     Reveal.initialize({
-      controls: false,
-      progress: false,
+      transition: 'convex',
+      controls: true,
+      progress: true,
       history: true,
-      center: true,
+      center: true
     });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120959122-1"></script>
