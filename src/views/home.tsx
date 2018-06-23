@@ -1,18 +1,19 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Button from '@material-ui/core/Button';
+import Header from '../components/header';
 import Footer from '../components/footer';
+import MassContent from '../components/mass/content';
+import * as mass from '../../data/mass.json';
 
-export interface HomeProps {
-  username: string;
-}
-
-export default class Home extends React.Component<HomeProps, {}> {
+export default class Home extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          home
-        </div>
-        <Footer icp='苏ICP备14030758号' />
+        <MassContent massList={mass} />
+        <Footer />
       </div>
     );
   }

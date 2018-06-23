@@ -1,8 +1,9 @@
-import { Home, Login } from '../views';
+import Home from '../views/home';
+import Mass from '../views/mass';
 
 const routes = [
-  { path: '/login', name: 'Login', component: Login },
-  { path: '/', name: 'Home', component: Home }
+  { path: '/', name: 'Home', component: Home },
+  { path: '/mass', name: 'Mass', component: Mass },
 ];
 
 export default routes;

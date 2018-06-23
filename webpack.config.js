@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: './src/index.tsx',
   output: {
     path: path.join(__dirname, 'assets'),
@@ -21,11 +21,6 @@ module.exports = {
     rules: [{
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader'
-      },
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        loader: 'source-map-loader'
       }
     ]
   },
