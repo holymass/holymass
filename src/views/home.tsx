@@ -7,8 +7,7 @@ import Button from '@material-ui/core/Button';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import MassContent from '../components/mass/content';
-import config from '../config';
-import * as mass from '../../data/mass.json';
+import { config, mass } from '../data';
 
 export default class Home extends React.Component {
   render() {

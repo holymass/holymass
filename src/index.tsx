@@ -4,7 +4,7 @@ import * as ReactGA from 'react-ga';
 import * as _ from 'lodash';
 import { createHashHistory } from 'history';
 import { Router, Route, Switch } from 'react-router';
-import config from './config';
+import { config } from './data';
 import routes from './routes';
 
 ReactGA.initialize(_.get(config, 'google.ga'));
