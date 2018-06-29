@@ -62,6 +62,10 @@
     csstype "^2.0.0"
     indefinite-observable "^1.0.1"
 
+"@types/lodash@^4.14.110":
+  version "4.14.110"
+  resolved "http://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.110.tgz#fb07498f84152947f30ea09d89207ca07123461e"
+
 "@types/node@*":
   version "10.3.3"
   resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-10.3.3.tgz#8798d9e39af2fa604f715ee6a6b19796528e46c3"

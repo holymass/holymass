@@ -5,13 +5,16 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const mode = process.env.NODE_ENV || 'production';
+const __DEV__ = mode === 'development';
 
 module.exports = {
-  mode: 'development',
+  mode: mode,
   entry: './src/index.tsx',
+  watch: __DEV__,
   output: {
     path: path.join(__dirname, 'assets'),
-    filename: 'js/[name].[chunkhash].js',
+    filename: __DEV__ ? 'js/[name].js' : 'js/[name].[chunkhash].js',
     chunkFilename: 'js/[id].[chunkhash].js',
   },
   resolve: {
@@ -19,10 +22,9 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader'
-      }
-    ]
+      test: /\.tsx?$/,
+      loader: 'awesome-typescript-loader'
+    }]
   },
   plugins: [
     new CleanWebpackPlugin(['assets/css', 'assets/js']),

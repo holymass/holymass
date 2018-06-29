@@ -24,17 +24,18 @@ const styles = createStyles({
 });
 
 export interface FooterProps extends WithStyles<typeof styles> {
+  notes?: string;
 }
 
 class Footer extends React.Component<FooterProps, {}> {
   render() {
-    const { classes } = this.props;
+    const { classes, notes } = this.props;
     return (
       <footer className={classes.footer}>
         <div>
           <div className={classes.left}>
             <div>&copy; {new Date().getFullYear()} iannar.com</div>
-            <div>苏ICP备14030758号</div>
+            {notes ? (<div>{notes}</div>) : ''}
           </div>
           <div className={classes.right}>
             <a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>
