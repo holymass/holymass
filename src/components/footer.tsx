@@ -39,7 +39,7 @@ class Footer extends React.Component<FooterProps, {}> {
           </div>
           <div className={classes.right}>
             <a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>
-              <img alt='Creative Commons License' src='/assets/images/cc-by-nc-sa-4.0-88x31.png' />
+              <img alt='Creative Commons License' src='/assets/images/cc_by_nc_sa_4.0_88x31.png' />
             </a>
           </div>
         </div>
