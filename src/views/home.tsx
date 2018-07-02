@@ -1,5 +1,10 @@
 import * as React from 'react';
 import * as _ from 'lodash';
+import {
+  default as withStyles,
+  WithStyles,
+  StyleRulesCallback,
+} from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -8,11 +13,21 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import MassContent from '../components/mass/content';
 import { config, mass } from '../data';
+import withRoot from '../withRoot';
 
-export default class Home extends React.Component {
+const styles: StyleRulesCallback<'root'> = (theme: any) => ({
+  root: {
+    paddingTop: theme.spacing.unit * 8,
+  }
+});
+
+export interface HomeProps extends WithStyles<typeof styles> {
+}
+
+class Home extends React.Component<HomeProps, {}> {
   render() {
     return (
-      <div>
+      <div className={this.props.classes.root}>
         <Header brand='iannar' />
         <MassContent massList={mass} />
         <Footer notes={_.get(config, 'footer.notes')} />
@@ -20,3 +35,5 @@ export default class Home extends React.Component {
     );
   }
 }
+
+export default withRoot(withStyles(styles)(Home));
