@@ -31,7 +31,7 @@ class Header extends React.Component<HeaderProps, {}> {
       </Button>
     );
     return (
-      <AppBar>
+      <AppBar position='static'>
         <Toolbar>
           {leftLinks !== undefined ? brandComponent : undefined}
           <div className={classes.flex}>

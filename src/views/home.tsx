@@ -17,7 +17,6 @@ import withRoot from '../withRoot';
 
 const styles: StyleRulesCallback<'root'> = (theme: any) => ({
   root: {
-    paddingTop: theme.spacing.unit * 8,
   }
 });
 
