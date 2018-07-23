@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import {
   default as withStyles,
-  WithStyles,
   StyleRulesCallback,
+  WithStyles,
 } from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
 import List from '@material-ui/core/List';

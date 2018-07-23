@@ -9,17 +9,8 @@ const styles = createStyles({
   footer: {
     padding: '15px 0',
     zIndex: 2,
-    position: 'relative',
     fontSize: '12px',
-  },
-  left: {
-    float: 'left',
-    display: 'block',
-  },
-  right: {
-    float: 'right',
-    padding: '15px 0',
-    margin: '0',
+    textAlign: 'center',
   },
 });
 
@@ -33,15 +24,9 @@ class Footer extends React.Component<FooterProps, {}> {
     return (
       <footer className={classes.footer}>
         <div>
-          <div className={classes.left}>
-            <div>&copy; {new Date().getFullYear()} iannar.com</div>
-            {notes ? (<div>{notes}</div>) : ''}
-          </div>
-          <div className={classes.right}>
-            <a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>
-              <img alt='Creative Commons License' src='/assets/images/cc_by_nc_sa_4.0_88x31.png' />
-            </a>
-          </div>
+          &copy; {new Date().getFullYear()} iannar.com
+          <br />
+          {notes || ''}
         </div>
       </footer>
     );

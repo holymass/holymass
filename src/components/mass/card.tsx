@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = createStyles({
   card: {
-    minWidth: 275,
+    minWidth: 240,
   },
 });
 
@@ -31,9 +31,9 @@ class MassCard extends React.Component<MassCardProps, {}> {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size='small' href={'/mass/?markdown=甲年/' + name}>甲年</Button>
-          <Button size='small' href={'/mass/?markdown=乙年/' + name}>乙年</Button>
-          <Button size='small' href={'/mass/?markdown=丙年/' + name}>丙年</Button>
+          {['甲年', '乙年', '丙年'].map(year => {
+            return <Button size='small' color='primary' href={`/mass/?markdown=${year}/${name}`}>{year}</Button>;
+          })}
         </CardActions>
       </Card>
     );

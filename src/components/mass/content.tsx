@@ -2,13 +2,16 @@ import * as React from 'react';
 import createStyles from '@material-ui/core/styles/createStyles';
 import {
   default as withStyles,
+  StyleRulesCallback,
   WithStyles
 } from '@material-ui/core/styles/withStyles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import Grid from '@material-ui/core/Grid';
 import MassCard from './card';
 
-const styles = createStyles({
+const styles: StyleRulesCallback<'root'> = (theme: any) => ({
+  root: {
+    flexGrow: 1,
+  }
 });
 
 export interface MassContentProps extends WithStyles<typeof styles> {
@@ -19,13 +22,17 @@ class MassContent extends React.Component<MassContentProps, {}> {
   render() {
     const { classes } = this.props;
     return (
-      <List>
-        {this.props.massList.map((item: any) => (
-          <ListItem>
-            <MassCard name={item.name} />
-          </ListItem>
-        ))}
-      </List>
+      <Grid container className={classes.root} spacing={16}>
+        <Grid item xs={12}>
+          <Grid container justify='center' spacing={16}>
+            {this.props.massList.map((item: any) => (
+              <Grid item>
+                <MassCard name={item.name} />
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+      </Grid>
     );
   }
 }
