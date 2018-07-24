@@ -7,6 +7,8 @@ import {
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 
@@ -33,6 +35,9 @@ class Header extends React.Component<HeaderProps, {}> {
     return (
       <AppBar position='static'>
         <Toolbar>
+          <IconButton color='inherit' aria-label='Menu'>
+            <MenuIcon />
+          </IconButton>
           {leftLinks !== undefined ? brandComponent : undefined}
           <div className={classes.flex}>
             <Hidden smDown implementation='css'>
