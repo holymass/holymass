@@ -11,6 +11,7 @@ import MassCard from './card';
 const styles: StyleRulesCallback<'root'> = (theme: any) => ({
   root: {
     flexGrow: 1,
+    padding: 16,
   }
 });
 
@@ -22,17 +23,19 @@ class MassContent extends React.Component<MassContentProps, {}> {
   render() {
     const { classes } = this.props;
     return (
-      <Grid container className={classes.root} spacing={16}>
-        <Grid item xs={12}>
-          <Grid container justify='center' spacing={16}>
-            {this.props.massList.map((item: any) => (
-              <Grid item>
-                <MassCard name={item.name} />
-              </Grid>
-            ))}
+      <div className={classes.root}>
+        <Grid container spacing={16}>
+          <Grid item xs={12}>
+            <Grid container justify='center' spacing={16}>
+              {this.props.massList.map((item: any) => (
+                <Grid item>
+                  <MassCard name={item.name} />
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      </div>
     );
   }
 }
