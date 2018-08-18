@@ -16,6 +16,7 @@ import Divider from '@material-ui/core/Divider';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
+import Input from '@material-ui/core/Input';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -65,9 +66,9 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             </Hidden>
             <div className={classes.flex}>
               <Hidden smDown implementation='css'>
-      <Typography variant='title'>
-        {brand}
-      </Typography>
+                <Typography variant='title'>
+                  {brand}
+                </Typography>
               </Hidden>
             </div>
             <IconButton color='inherit' aria-label='Search'>
