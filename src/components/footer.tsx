@@ -4,13 +4,13 @@ import {
   default as withStyles,
   WithStyles
 } from '@material-ui/core/styles/withStyles';
+import Typography from '@material-ui/core/Typography';
 
 const styles = createStyles({
   footer: {
     padding: '15px 0 30px 0',
     zIndex: 2,
     fontSize: '12px',
-    textAlign: 'center',
   },
 });
 
@@ -23,11 +23,11 @@ class Footer extends React.Component<FooterProps, {}> {
     const { classes, notes } = this.props;
     return (
       <footer className={classes.footer}>
-        <div>
+        <Typography align='center'>
           &copy; {new Date().getFullYear()} iannar.com
           <br />
           {notes || ''}
-        </div>
+        </Typography>
       </footer>
     );
   }
