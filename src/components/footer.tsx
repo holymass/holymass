@@ -7,7 +7,7 @@ import {
 
 const styles = createStyles({
   footer: {
-    padding: '15px 0',
+    padding: '15px 0 30px 0',
     zIndex: 2,
     fontSize: '12px',
     textAlign: 'center',

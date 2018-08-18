@@ -11,9 +11,9 @@ import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import MassContent from '../components/mass/content';
+import MassGrid from '../components/mass/grid';
 import { config, mass } from '../data';
-import withRoot from '../withRoot';
+import withRoot from '../with_root';
 
 const styles: StyleRulesCallback<'root'> = (theme: any) => ({
   root: {
@@ -28,7 +28,7 @@ class Home extends React.Component<HomeProps, {}> {
     return (
       <div className={this.props.classes.root}>
         <Header brand='iannar' />
-        <MassContent massList={mass} />
+        <MassGrid massList={mass} />
         <Footer notes={_.get(config, 'footer.notes')} />
       </div>
     );

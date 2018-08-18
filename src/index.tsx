@@ -5,20 +5,19 @@ import * as _ from 'lodash';
 import { createHashHistory } from 'history';
 import { Router, Route, Switch } from 'react-router';
 import { config } from './data';
-import routes from './routes';
+import Home from './pages/home';
+import About from './pages/about';
 
 ReactGA.initialize(_.get(config, 'google.ga'));
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 const hist = createHashHistory();
 
-ReactDOM.render(
+ReactDOM.render((
   <Router history={hist}>
     <Switch>
-      {routes.map((prop, key) => {
-        return <Route path={prop.path} key={key} component={prop.component} />;
-      })}
+      <Route exact path='/' component={Home} />
+      <Route path='/about' component={About} />
     </Switch>
-  </Router>,
-  document.getElementById('root')
+  </Router>), document.getElementById('root')
 );

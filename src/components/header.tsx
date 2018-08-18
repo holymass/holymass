@@ -6,9 +6,10 @@ import {
 } from '@material-ui/core/styles/withStyles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 
@@ -20,17 +21,15 @@ const styles = createStyles({
 
 export interface HeaderProps extends WithStyles<typeof styles> {
   brand: string;
-  leftLinks?: any;
-  rightLinks?: any;
 }
 
 class Header extends React.Component<HeaderProps, {}> {
   render() {
-    const { classes, brand, leftLinks, rightLinks } = this.props;
+    const { classes, brand } = this.props;
     const brandComponent = (
-      <Button className='title'>
-        {brand}
-      </Button>
+      <Typography variant='title' align='center'>
+      {brand}
+      </Typography>
     );
     return (
       <AppBar position='static'>
@@ -38,19 +37,14 @@ class Header extends React.Component<HeaderProps, {}> {
           <IconButton color='inherit' aria-label='Menu'>
             <MenuIcon />
           </IconButton>
-          {leftLinks !== undefined ? brandComponent : undefined}
           <div className={classes.flex}>
             <Hidden smDown implementation='css'>
-              {leftLinks !== undefined ? (
-                <Hidden smDown implementation='css'>
-                  {leftLinks}
-                </Hidden>
-              ) : brandComponent}
+              {brandComponent}
             </Hidden>
           </div>
-          <Hidden smDown implementation='css'>
-            {rightLinks}
-          </Hidden>
+          <IconButton color='inherit' aria-label='Search'>
+            <SearchIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     );
