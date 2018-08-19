@@ -62,7 +62,11 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         <AppBar position='static'>
           <Toolbar>
             <Hidden smUp implementation='css'>
-              <IconButton color='inherit' aria-label='Menu' onClick={this.handleDrawerOpen}>
+              <IconButton
+                color='inherit'
+                aria-label='Menu'
+                onClick={this.handleDrawerOpen}
+              >
                 <MenuIcon />
               </IconButton>
             </Hidden>
@@ -76,28 +80,36 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             <SearchBar />
           </Toolbar>
         </AppBar>
-        <Drawer anchor='left' open={this.state.open} onClose={this.handleDrawerClose}>
-          <div className={classes.list}>
-            <List component='nav'>
-              <ListItem button>
-                <ListItemIcon>
-                  <HomeIcon />
-                </ListItemIcon>
-                <ListItemText primary={brand} />
-              </ListItem>
-            </List>
+        <Drawer
+          anchor='left'
+          open={this.state.open}
+          onClose={this.handleDrawerClose}
+        >
+          <List className={classes.list} component='nav'>
+            <ListItem
+              button
+              component='a'
+              href='#/'
+            >
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary={brand} />
+            </ListItem>
             <Divider />
-            <List component='nav'>
-              <ListItem button>
-                <ListItemIcon>
-                  <InfoIcon />
-                </ListItemIcon>
-                <ListItemText primary='关于' />
-              </ListItem>
-            </List>
-          </div>
+            <ListItem
+              button
+              component='a'
+              href='#/about'
+            >
+              <ListItemIcon>
+                <InfoIcon />
+              </ListItemIcon>
+              <ListItemText primary='关于' />
+            </ListItem>
+          </List>
         </Drawer>
-      </header>
+      </header >
     );
   }
 }

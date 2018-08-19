@@ -5,23 +5,23 @@ import {
   WithStyles
 } from '@material-ui/core/styles/withStyles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const styles = createStyles({
   card: {
     minWidth: 300,
   },
-  button: {
-    width: 250,
+  list: {
+    width: 300,
+  },
+  listItem: {
+    textAlign: 'center',
   }
 });
 
@@ -60,18 +60,20 @@ class MassCard extends React.Component<MassCardProps, MassCardState> {
           </CardContent>
         </Card>
         <Dialog open={this.state.open} onClose={this.handleDialogClose}>
-          <div>
-            <List>
-              {['甲年', '乙年', '丙年'].map(year => {
-                return (
-                  <ListItem key={year}>
-                    <Button className={classes.button} target='_blank' href={`/mass/?markdown=${year}/${name}`}>
-                      {year}
-                    </Button>
-                  </ListItem>);
-              })}
-            </List>
-          </div>
+          <List className={classes.list}>
+            {['甲年', '乙年', '丙年'].map(year => {
+              return (
+                <ListItem
+                  button
+                  className={classes.listItem}
+                  component='a'
+                  target='_blank'
+                  href={`/mass/?markdown=${year}/${name}`}
+                >
+                  <ListItemText primary={year} />
+                </ListItem>);
+            })}
+          </List>
         </Dialog>
       </div>
     );
