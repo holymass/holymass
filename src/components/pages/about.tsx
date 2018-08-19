@@ -1,13 +1,13 @@
 import * as React from 'react';
+import createStyles from '@material-ui/core/styles/createStyles';
 import {
   default as withStyles,
-  StyleRulesCallback,
-  WithStyles,
+  WithStyles
 } from '@material-ui/core/styles/withStyles';
 
-const styles: StyleRulesCallback<'root'> = (theme: any) => ({
+const styles = createStyles({
   root: {
-  }
+  },
 });
 
 export interface AboutProps extends WithStyles<typeof styles> {

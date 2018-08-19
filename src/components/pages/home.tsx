@@ -1,15 +1,15 @@
 import * as React from 'react';
+import createStyles from '@material-ui/core/styles/createStyles';
 import {
   default as withStyles,
-  StyleRulesCallback,
-  WithStyles,
+  WithStyles
 } from '@material-ui/core/styles/withStyles';
 import MassGrid from '../mass/grid';
 import { mass } from '../../data';
 
-const styles: StyleRulesCallback<'root'> = (theme: any) => ({
+const styles = createStyles({
   root: {
-  }
+  },
 });
 
 export interface HomeProps extends WithStyles<typeof styles> {

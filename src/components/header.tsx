@@ -68,7 +68,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             </Hidden>
             <div className={classes.flex}>
               <Hidden smDown implementation='css'>
-                <Typography variant='title'>
+                <Typography color='inherit' variant='title'>
                   {brand}
                 </Typography>
               </Hidden>

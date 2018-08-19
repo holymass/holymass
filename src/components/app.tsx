@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'lodash';
+import createStyles from '@material-ui/core/styles/createStyles';
 import {
   default as withStyles,
-  StyleRulesCallback,
-  WithStyles,
+  WithStyles
 } from '@material-ui/core/styles/withStyles';
 import { Route, Switch } from 'react-router';
 import { config } from '../data';
@@ -14,9 +14,9 @@ import Footer from './footer';
 import Home from './pages/home';
 import About from './pages/about';
 
-const styles: StyleRulesCallback<'root'> = (theme: any) => ({
+const styles = createStyles({
   root: {
-  }
+  },
 });
 
 export interface AppProps extends WithStyles<typeof styles> {

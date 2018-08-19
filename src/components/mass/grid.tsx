@@ -2,17 +2,16 @@ import * as React from 'react';
 import createStyles from '@material-ui/core/styles/createStyles';
 import {
   default as withStyles,
-  StyleRulesCallback,
   WithStyles
 } from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 import MassCard from './card';
 
-const styles: StyleRulesCallback<'root'> = (theme: any) => ({
+const styles = createStyles({
   root: {
     flexGrow: 1,
     padding: 16,
-  }
+  },
 });
 
 export interface MassContentProps extends WithStyles<typeof styles> {
