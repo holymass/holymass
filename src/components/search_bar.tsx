@@ -18,13 +18,11 @@ const styles = createStyles({
   },
   icon: {
     marginLeft: -24,
-    opacity: 0.54,
     transform: 'scale(1, 1)',
     transition: 'transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1)'
   },
   iconHidden: {
     transform: 'scale(0, 0)',
-    opacity: 0
   }
 });
 
@@ -58,7 +56,12 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     const { classes } = this.props;
     return (
       <Paper className={classes.root}>
-        <Input fullWidth onFocus={this.handleFocus} onBlur={this.handleBlur} onInput={this.handleInput} placeholder='Search...' />
+        <Input fullWidth
+          placeholder='Search...'
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          onInput={this.handleInput}
+        />
         <SearchIcon className={classNames(classes.icon, {
           [classes.iconHidden]: this.state.value !== ''
         })} />

@@ -7,7 +7,7 @@ import {
 import Typography from '@material-ui/core/Typography';
 
 const styles = createStyles({
-  footer: {
+  root: {
     padding: '15px 0 30px 0',
     zIndex: 2,
     fontSize: '12px',
@@ -22,7 +22,7 @@ class Footer extends React.Component<FooterProps, {}> {
   render() {
     const { classes, notes } = this.props;
     return (
-      <footer className={classes.footer}>
+      <footer className={classes.root}>
         <Typography align='center'>
           &copy; {new Date().getFullYear()} iannar.com
           <br />

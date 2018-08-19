@@ -22,6 +22,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import SearchBar from './search_bar';
 
 const styles = createStyles({
+  root: {
+
+  },
   flex: {
     flex: 1
   },
@@ -55,7 +58,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   render() {
     const { classes, brand } = this.props;
     return (
-      <div>
+      <header className={classes.root}>
         <AppBar position='static'>
           <Toolbar>
             <Hidden smUp implementation='css'>
@@ -94,7 +97,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             </List>
           </div>
         </Drawer>
-      </div>
+      </header>
     );
   }
 }
