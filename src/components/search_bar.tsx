@@ -14,6 +14,7 @@ import classNames from 'classnames';
 const styles = createStyles({
   root: {
     display: 'flex',
+    justifyContent: 'flex-end',
     height: 48,
     width: 300,
   },
@@ -83,18 +84,21 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     const { show, value } = this.state;
     return (
       <Paper className={classes.root}>
-        <Input
-          disableUnderline
-          fullWidth
-          className={classNames(classes.input, {
-            [classes.inputHidden]: !show
-          })}
-          placeholder='Search...'
-          value={value}
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          onKeyUp={this.handleKeyUp}
-        />
+        {show && (
+          <Input
+            autoFocus
+            disableUnderline
+            fullWidth
+            className={classNames(classes.input, {
+              [classes.inputHidden]: !show
+            })}
+            placeholder='Search...'
+            value={value}
+            onBlur={this.handleBlur}
+            onChange={this.handleChange}
+            onKeyUp={this.handleKeyUp}
+          />
+        )}
         <SearchIcon
           className={classNames(classes.icon, {
             [classes.iconHidden]: value !== ''
