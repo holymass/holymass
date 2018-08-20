@@ -58,26 +58,24 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   render() {
     const { classes, brand } = this.props;
     return (
-      <header className={classes.root}>
-        <AppBar position='static'>
-          <Toolbar>
-            <IconButton
-              color='inherit'
-              aria-label='Menu'
-              onClick={this.handleDrawerOpen}
-            >
-              <MenuIcon />
-            </IconButton>
-            <div className={classes.flex}>
-              <Hidden smDown implementation='css'>
-                <Typography color='inherit' variant='title'>
-                  {brand}
-                </Typography>
-              </Hidden>
-            </div>
-            <SearchBar />
-          </Toolbar>
-        </AppBar>
+      <AppBar position='static' className={classes.root}>
+        <Toolbar>
+          <IconButton
+            color='inherit'
+            aria-label='Menu'
+            onClick={this.handleDrawerOpen}
+          >
+            <MenuIcon />
+          </IconButton>
+          <div className={classes.flex}>
+            <Hidden smDown implementation='css'>
+              <Typography color='inherit' variant='title'>
+                {brand}
+              </Typography>
+            </Hidden>
+          </div>
+          <SearchBar />
+        </Toolbar>
         <Drawer
           anchor='left'
           open={this.state.open}
@@ -107,7 +105,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             </ListItem>
           </List>
         </Drawer>
-      </header >
+      </AppBar>
     );
   }
 }
