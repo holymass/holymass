@@ -15,6 +15,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 const styles = createStyles({
   card: {
+    cursor: 'pointer',
     minWidth: 300,
   },
   list: {
