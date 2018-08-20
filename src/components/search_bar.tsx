@@ -4,36 +4,25 @@ import {
   default as withStyles,
   WithStyles
 } from '@material-ui/core/styles/withStyles';
-import Paper from '@material-ui/core/Toolbar';
 import Input from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
-import classNames from 'classnames';
 
 const styles = createStyles({
   root: {
     display: 'flex',
     justifyContent: 'flex-end',
     height: 48,
-    width: 300,
+    width: 288,
   },
   input: {
     color: 'white',
-    transform: 'scale(1, 1)',
     transition: 'transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1)'
-  },
-  inputHidden: {
-    transform: 'scale(0, 0)',
   },
   icon: {
-    marginRight: -16,
-    transform: 'scale(1, 1)',
     transition: 'transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1)'
   },
-  iconHidden: {
-    transform: 'scale(0, 0)',
-  }
 });
 
 export interface SearchBarProps extends WithStyles<typeof styles> {
@@ -83,15 +72,13 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     const { classes } = this.props;
     const { show, value } = this.state;
     return (
-      <Paper className={classes.root}>
+      <div className={classes.root}>
         {show && (
           <Input
             autoFocus
             disableUnderline
             fullWidth
-            className={classNames(classes.input, {
-              [classes.inputHidden]: !show
-            })}
+            className={classes.input}
             placeholder='Search...'
             value={value}
             onBlur={this.handleBlur}
@@ -99,19 +86,21 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
             onKeyUp={this.handleKeyUp}
           />
         )}
-        <SearchIcon
-          className={classNames(classes.icon, {
-            [classes.iconHidden]: value !== ''
-          })}
-          onClick={this.handleClickSearch}
-        />
-        <ClearIcon
-          className={classNames(classes.icon, {
-            [classes.iconHidden]: value === ''
-          })}
-          onClick={this.handleClickClear}
-        />
-      </Paper>
+        <IconButton color='inherit'>
+          {show && value !== '' ? (
+            <ClearIcon
+              className={classes.icon}
+              onClick={this.handleClickClear}
+            />
+          ) : (
+              <SearchIcon
+                className={classes.icon}
+                onClick={this.handleClickSearch}
+              />
+            )
+          }
+        </IconButton>
+      </div>
     );
   }
 }
