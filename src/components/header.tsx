@@ -61,15 +61,13 @@ class Header extends React.Component<HeaderProps, HeaderState> {
       <header className={classes.root}>
         <AppBar position='static'>
           <Toolbar>
-            <Hidden smUp implementation='css'>
-              <IconButton
-                color='inherit'
-                aria-label='Menu'
-                onClick={this.handleDrawerOpen}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Hidden>
+            <IconButton
+              color='inherit'
+              aria-label='Menu'
+              onClick={this.handleDrawerOpen}
+            >
+              <MenuIcon />
+            </IconButton>
             <div className={classes.flex}>
               <Hidden smDown implementation='css'>
                 <Typography color='inherit' variant='title'>

@@ -15,7 +15,7 @@ const styles = createStyles({
   root: {
     display: 'flex',
     height: 48,
-    width: 200,
+    width: 300,
   },
   input: {
     color: 'white',
@@ -26,7 +26,7 @@ const styles = createStyles({
     transform: 'scale(0, 0)',
   },
   icon: {
-    marginRight: -24,
+    marginRight: -16,
     transform: 'scale(1, 1)',
     transition: 'transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1)'
   },
@@ -36,6 +36,8 @@ const styles = createStyles({
 });
 
 export interface SearchBarProps extends WithStyles<typeof styles> {
+  onSearch?: Function;
+  onClear?: Function;
 }
 
 export interface SearchBarState {
@@ -55,16 +57,25 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     }
   }
 
-  handleInput = (e: any) => {
+  handleChange = (e: any) => {
     this.setState({ value: e.target.value });
   }
 
-  handleSearch = () => {
+  handleKeyUp = (e: any) => {
+    if (this.props.onSearch && (e.charCode === 13 || e.key === 'Enter')) {
+      this.props.onSearch(this.state.value);
+    }
+  }
+
+  handleClickSearch = () => {
     this.setState({ show: true });
   }
 
-  handleClear = () => {
+  handleClickClear = (e: any) => {
     this.setState({ show: false, value: '' });
+    if (this.props.onClear) {
+      this.props.onClear(e);
+    }
   }
 
   render() {
@@ -72,27 +83,29 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     const { show, value } = this.state;
     return (
       <Paper className={classes.root}>
-        <Input fullWidth
+        <Input
           disableUnderline
+          fullWidth
           className={classNames(classes.input, {
             [classes.inputHidden]: !show
           })}
           placeholder='Search...'
           value={value}
           onBlur={this.handleBlur}
-          onInput={this.handleInput}
+          onChange={this.handleChange}
+          onKeyUp={this.handleKeyUp}
         />
         <SearchIcon
           className={classNames(classes.icon, {
             [classes.iconHidden]: value !== ''
           })}
-          onClick={this.handleSearch}
+          onClick={this.handleClickSearch}
         />
         <ClearIcon
           className={classNames(classes.icon, {
             [classes.iconHidden]: value === ''
           })}
-          onClick={this.handleClear}
+          onClick={this.handleClickClear}
         />
       </Paper>
     );
