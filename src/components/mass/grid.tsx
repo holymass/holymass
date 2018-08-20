@@ -6,6 +6,7 @@ import {
 } from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 import MassCard from './card';
+import emitter from '../../utils/emitter';
 
 const styles = createStyles({
   root: {
@@ -14,19 +15,44 @@ const styles = createStyles({
   },
 });
 
-export interface MassContentProps extends WithStyles<typeof styles> {
+export interface MassGridProps extends WithStyles<typeof styles> {
   massList: any;
 }
 
-class MassContent extends React.Component<MassContentProps, {}> {
+export interface MassGridState {
+  filter: string;
+}
+
+class MassGrid extends React.Component<MassGridProps, MassGridState> {
+  constructor(props: MassGridProps) {
+    super(props);
+    this.state = { filter: '' };
+  }
+
+  eventEmitter: any = undefined;
+
+  componentDidMount() {
+    this.eventEmitter = emitter.addListener('search', (filter) => {
+      this.setState({ filter });
+    });
+  }
+
+  componentWillUnmount() {
+    emitter.removeListener('search', this.eventEmitter);
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, massList } = this.props;
+    const { filter } = this.state;
+    let mass = filter ? massList.filter((item: any) => {
+      return item.name.search(filter) > -1;
+    }) : massList;
     return (
       <div className={classes.root}>
         <Grid container spacing={16}>
           <Grid item xs={12}>
             <Grid container justify='center' spacing={16}>
-              {this.props.massList.map((item: any) => (
+              {mass.map((item: any) => (
                 <Grid item>
                   <MassCard name={item.name} />
                 </Grid>
@@ -39,4 +65,4 @@ class MassContent extends React.Component<MassContentProps, {}> {
   }
 }
 
-export default withStyles(styles)(MassContent);
+export default withStyles(styles)(MassGrid);

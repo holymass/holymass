@@ -8,6 +8,7 @@ import Input from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
+import emitter from '../utils/emitter';
 
 const styles = createStyles({
   root: {
@@ -52,8 +53,12 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   }
 
   handleKeyUp = (e: any) => {
-    if (this.props.onSearch && (e.charCode === 13 || e.key === 'Enter')) {
-      this.props.onSearch(this.state.value);
+    if (e.charCode === 13 || e.key === 'Enter') {
+      if (this.props.onSearch) {
+        this.props.onSearch(this.state.value);
+      } else {
+        emitter.emit('search', this.state.value);
+      }
     }
   }
 
@@ -65,6 +70,8 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     this.setState({ show: false, value: '' });
     if (this.props.onClear) {
       this.props.onClear(e);
+    } else {
+      emitter.emit('search', '');
     }
   }
 
