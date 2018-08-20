@@ -38,14 +38,16 @@ class MassGrid extends React.Component<MassGridProps, MassGridState> {
   }
 
   componentWillUnmount() {
-    emitter.removeListener('search', this.eventEmitter);
+    if (this.eventEmitter) {
+      emitter.removeListener('search', this.eventEmitter._events['search']);
+    }
   }
 
   render() {
     const { classes, massList } = this.props;
     const { filter } = this.state;
     let mass = filter ? massList.filter((item: any) => {
-      return item.name.search(filter) > -1;
+      return item.value.search(filter) > -1;
     }) : massList;
     return (
       <div className={classes.root}>

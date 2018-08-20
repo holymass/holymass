@@ -53,12 +53,10 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   }
 
   handleKeyUp = (e: any) => {
-    if (e.charCode === 13 || e.key === 'Enter') {
-      if (this.props.onSearch) {
-        this.props.onSearch(this.state.value);
-      } else {
-        emitter.emit('search', this.state.value);
-      }
+    if (this.props.onSearch) {
+      this.props.onSearch(this.state.value);
+    } else {
+      emitter.emit('search', this.state.value);
     }
   }
 
