@@ -1,39 +1,29 @@
-import * as React from 'react';
-import createStyles from '@material-ui/core/styles/createStyles';
-import {
-  default as withStyles,
-  WithStyles
-} from '@material-ui/core/styles/withStyles';
+import React from 'react';
+import PropTypes from 'prop-types';
+import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import MassCard from './card';
 import emitter from '../../utils/emitter';
 
-const styles = createStyles({
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
     padding: 16,
   },
 });
 
-export interface MassGridProps extends WithStyles<typeof styles> {
-  massList: any;
-}
+class MassGrid extends React.Component {
+  state = {
+    filter: '',
+  };
 
-export interface MassGridState {
-  filter: string;
-}
-
-class MassGrid extends React.Component<MassGridProps, MassGridState> {
-  constructor(props: MassGridProps) {
-    super(props);
-    this.state = { filter: '' };
-  }
-
-  eventEmitter: any = undefined;
+  eventEmitter = undefined;
 
   componentDidMount() {
     this.eventEmitter = emitter.addListener('search', (filter) => {
-      this.setState({ filter });
+      this.setState({
+        filter,
+      });
     });
   }
 
@@ -44,9 +34,9 @@ class MassGrid extends React.Component<MassGridProps, MassGridState> {
   }
 
   render() {
-    const { classes, massList } = this.props;
-    const { filter } = this.state;
-    let mass = filter ? massList.filter((item: any) => {
+    const {classes, massList} = this.props;
+    const {filter} = this.state;
+    let mass = filter ? massList.filter((item) => {
       return item.value.search(filter) > -1 ||
         item.value.replace(/\s/g, '').search(filter) > -1;
     }) : massList;
@@ -55,7 +45,7 @@ class MassGrid extends React.Component<MassGridProps, MassGridState> {
         <Grid container spacing={16}>
           <Grid item xs={12}>
             <Grid container justify='center' spacing={16}>
-              {mass.map((item: any) => (
+              {mass.map((item) => (
                 <Grid item>
                   <MassCard name={item.name} />
                 </Grid>
@@ -67,5 +57,10 @@ class MassGrid extends React.Component<MassGridProps, MassGridState> {
     );
   }
 }
+
+MassGrid.propTypes = {
+  classes: PropTypes.object.isRequired,
+  massList: PropTypes.array,
+};
 
 export default withStyles(styles)(MassGrid);

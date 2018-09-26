@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import React from 'react';
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import teal from '@material-ui/core/colors/teal';
 import orange from '@material-ui/core/colors/orange';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,8 +11,8 @@ const theme = createMuiTheme({
   },
 });
 
-export default (Component: React.ComponentType) => {
-  return (props: object) => {
+export default (Component) => {
+  return (props) => {
     return (
       <MuiThemeProvider theme={theme}>
         <CssBaseline />

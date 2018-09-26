@@ -1,16 +1,13 @@
-import * as React from 'react';
-import createStyles from '@material-ui/core/styles/createStyles';
-import {
-  default as withStyles,
-  WithStyles
-} from '@material-ui/core/styles/withStyles';
+import React from 'react';
+import PropTypes from 'prop-types';
+import {withStyles} from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
 import emitter from '../utils/emitter';
 
-const styles = createStyles({
+const styles = (theme) => ({
   root: {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -19,40 +16,30 @@ const styles = createStyles({
   },
   input: {
     color: 'white',
-    transition: 'transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1)'
+    transition: 'transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   },
   icon: {
-    transition: 'transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1)'
+    transition: 'transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   },
 });
 
-export interface SearchBarProps extends WithStyles<typeof styles> {
-  onSearch?: Function;
-  onClear?: Function;
-}
-
-export interface SearchBarState {
-  show: boolean;
-  value: string;
-}
-
-class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
-  constructor(props: SearchBarProps) {
-    super(props);
-    this.state = { show: false, value: '' };
-  }
+class SearchBar extends React.Component {
+  state = {
+    show: false,
+    value: '',
+  };
 
   handleBlur = () => {
     if (!this.state.value) {
-      this.setState({ show: false });
+      this.setState({show: false});
     }
-  }
+  };
 
-  handleChange = (e: any) => {
-    this.setState({ value: e.target.value });
-  }
+  handleChange = (e) => {
+    this.setState({value: e.target.value});
+  };
 
-  handleKeyUp = (e: any) => {
+  handleKeyUp = (e) => {
     if (this.props.onSearch) {
       this.props.onSearch(this.state.value);
     } else {
@@ -61,11 +48,14 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   }
 
   handleClickSearch = () => {
-    this.setState({ show: true });
+    this.setState({show: true});
   }
 
-  handleClickClear = (e: any) => {
-    this.setState({ show: false, value: '' });
+  handleClickClear = (e) => {
+    this.setState({
+      show: false,
+      value: '',
+    });
     if (this.props.onClear) {
       this.props.onClear(e);
     } else {
@@ -74,8 +64,8 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   }
 
   render() {
-    const { classes } = this.props;
-    const { show, value } = this.state;
+    const {classes} = this.props;
+    const {show, value} = this.state;
     return (
       <div className={classes.root}>
         {show && (
@@ -109,5 +99,11 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     );
   }
 }
+
+SearchBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+  onSearch: PropTypes.func,
+  onClear: PropTypes.func,
+};
 
 export default withStyles(styles)(SearchBar);

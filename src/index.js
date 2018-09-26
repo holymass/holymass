@@ -1,10 +1,10 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactGA from 'react-ga';
-import * as _ from 'lodash';
-import { createHashHistory } from 'history';
-import { Router } from 'react-router';
-import { config } from './data';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactGA from 'react-ga';
+import _ from 'lodash';
+import {createHashHistory} from 'history';
+import {Router} from 'react-router';
+import {config} from './data';
 import App from './components/app';
 
 ReactGA.initialize(_.get(config, 'google.ga'));

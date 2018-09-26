@@ -2,15 +2,15 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanPlugin = require('clean-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const mode = process.env.NODE_ENV || 'production';
 const __DEV__ = mode === 'development';
 
 module.exports = {
   mode: mode,
-  entry: './src/index.tsx',
+  entry: './src/index.js',
   watch: __DEV__,
   output: {
     path: path.join(__dirname, 'assets'),
@@ -18,16 +18,19 @@ module.exports = {
     chunkFilename: 'js/[id].[chunkhash].js',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json']
+    extensions: ['.js', '.jsx', '.json'],
   },
   module: {
     rules: [{
-      test: /\.tsx?$/,
-      loader: 'awesome-typescript-loader'
+      test: /\.jsx?$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'babel-loader',
+      }
     }]
   },
   plugins: [
-    new CleanWebpackPlugin(['assets/css', 'assets/js']),
+    new CleanPlugin(['assets/css', 'assets/js']),
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
@@ -36,7 +39,7 @@ module.exports = {
       },
       parallel: true,
     }),
-    new HtmlWebpackPlugin({
+    new HtmlPlugin({
       filename: '../index.html',
       template: 'src/index.html',
       inject: true,
@@ -50,6 +53,6 @@ module.exports = {
   ],
   externals: {
     'react': 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
   },
 };

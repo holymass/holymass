@@ -1,12 +1,9 @@
-import * as React from 'react';
-import createStyles from '@material-ui/core/styles/createStyles';
-import {
-  default as withStyles,
-  WithStyles
-} from '@material-ui/core/styles/withStyles';
+import React from 'react';
+import PropTypes from 'prop-types';
+import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
-const styles = createStyles({
+const styles = (theme) => ({
   root: {
     padding: '15px 0 30px 0',
     zIndex: 2,
@@ -14,13 +11,9 @@ const styles = createStyles({
   },
 });
 
-export interface FooterProps extends WithStyles<typeof styles> {
-  notes?: string;
-}
-
-class Footer extends React.Component<FooterProps, {}> {
+class Footer extends React.Component {
   render() {
-    const { classes, notes } = this.props;
+    const {classes, notes} = this.props;
     return (
       <footer className={classes.root}>
         <Typography align='center'>
@@ -32,5 +25,10 @@ class Footer extends React.Component<FooterProps, {}> {
     );
   }
 }
+
+Footer.propTypes = {
+  classes: PropTypes.object.isRequired,
+  notes: PropTypes.string,
+};
 
 export default withStyles(styles)(Footer);

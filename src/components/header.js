@@ -1,9 +1,6 @@
-import * as React from 'react';
-import createStyles from '@material-ui/core/styles/createStyles';
-import {
-  default as withStyles,
-  WithStyles
-} from '@material-ui/core/styles/withStyles';
+import React from 'react';
+import PropTypes from 'prop-types';
+import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -21,42 +18,32 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import SearchBar from './search_bar';
 
-const styles = createStyles({
+const styles = (theme) => ({
   root: {
-
   },
   flex: {
-    flex: 1
+    flex: 1,
   },
   list: {
-    width: 300
+    width: 300,
   },
 });
 
-export interface HeaderProps extends WithStyles<typeof styles> {
-  brand: string;
-}
-
-export interface HeaderState {
-  open: boolean;
-}
-
-class Header extends React.Component<HeaderProps, HeaderState> {
-  constructor(props: HeaderProps) {
-    super(props);
-    this.state = { open: false };
+class Header extends React.Component {
+  state = {
+    open: false,
   }
 
   handleDrawerOpen = () => {
-    this.setState({ open: true });
+    this.setState({open: true});
   }
 
   handleDrawerClose = () => {
-    this.setState({ open: false });
+    this.setState({open: false});
   }
 
   render() {
-    const { classes, brand } = this.props;
+    const {classes, brand} = this.props;
     return (
       <AppBar position='static' className={classes.root}>
         <Toolbar>
@@ -109,5 +96,10 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     );
   }
 }
+
+Header.propTypes = {
+  classes: PropTypes.object.isRequired,
+  brand: PropTypes.string,
+};
 
 export default withStyles(styles)(Header);
