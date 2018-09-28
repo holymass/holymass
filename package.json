@@ -5,6 +5,10 @@
   "repository": "git@github.com:iannar/iannar.github.io.git",
   "author": "iannar.com",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "prod": "webpack --env.production --progress"
+  },
   "dependencies": {
     "@material-ui/core": "^3.1.1",
     "@material-ui/icons": "^3.0.1",
@@ -16,7 +20,9 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-ga": "^2.5.3",
-    "react-router-dom": "^4.3.1"
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
@@ -33,6 +39,7 @@
     "uglifyjs-webpack-plugin": "^1.2.6",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.9",
     "webpack-log": "^1.2.0"
   }
 }

@@ -72,7 +72,7 @@ class Header extends React.Component {
             <ListItem
               button
               component='a'
-              href='#/'
+              href='/'
             >
               <ListItemIcon>
                 <HomeIcon />
@@ -83,7 +83,7 @@ class Header extends React.Component {
             <ListItem
               button
               component='a'
-              href='#/about'
+              href='/about'
             >
               <ListItemIcon>
                 <InfoIcon />
