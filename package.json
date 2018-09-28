@@ -9,7 +9,9 @@
     "build": "webpack --env.production --progress",
     "dev": "webpack && webpack-dev-server --hot --inline"
   },
-  "pre-commit": ["build"],
+  "pre-commit": [
+    "build"
+  ],
   "dependencies": {
     "@material-ui/core": "^3.1.1",
     "@material-ui/icons": "^3.0.1",
