@@ -6,8 +6,8 @@
   "author": "iannar.com",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "prod": "webpack --env.production --progress"
+    "build": "webpack --env.production --progress",
+    "dev": "webpack && webpack-dev-server --hot --inline"
   },
   "dependencies": {
     "@material-ui/core": "^3.1.1",

@@ -10,12 +10,8 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'assets'),
-    filename: 'js/[name].[chunkhash].js',
-    chunkFilename: 'js/[id].[chunkhash].js',
-  },
-  devServer: {
-    open: true,
-    historyApiFallback: true,
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[id].js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
@@ -29,9 +25,26 @@ const config = {
       },
     }],
   },
+  plugins: [
+    new HtmlPlugin({
+      filename: '../index.html',
+      template: 'src/index.html',
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+      },
+      chunksSortMode: 'dependency',
+    }),
+  ],
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM',
+  },
+  devServer: {
+    open: true,
+    historyApiFallback: true,
   },
 };
 
@@ -40,28 +53,17 @@ module.exports = (env, argv) => {
   config.mode = PROD_MODE ? 'production' : 'development';
   config.devtool = PROD_MODE ? 'source-maps' : 'eval';
   if (PROD_MODE) {
-    config.plugins = [
-      new CleanPlugin(['assets/css', 'assets/js']),
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          compress: {
-            warnings: false,
-          },
+    config.output.filename = 'js/[name].[chunkhash].js';
+    config.output.chunkFilename = 'js/[id].[chunkhash].js';
+    config.plugins.unshift(new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false,
         },
-        parallel: true,
-      }),
-      new HtmlPlugin({
-        filename: '../index.html',
-        template: 'src/index.html',
-        inject: true,
-        minify: {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-        },
-        chunksSortMode: 'dependency',
-      }),
-    ];
+      },
+      parallel: true,
+    }));
+    config.plugins.unshift(new CleanPlugin(['assets/css', 'assets/js']));
   }
   return config;
 };
