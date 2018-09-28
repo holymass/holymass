@@ -10,6 +10,7 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'assets'),
+    publicPath: '/assets/',
     filename: 'js/[name].js',
     chunkFilename: 'js/[id].js',
   },
