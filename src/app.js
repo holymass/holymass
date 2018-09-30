@@ -8,26 +8,28 @@ import Header from './components/header';
 import Footer from './components/footer';
 import MassPage from './pages/mass';
 import AboutPage from './pages/about';
+import ErrorPage from './pages/error';
 
 const styles = (theme) => ({
   root: {},
 });
 
+const Error404 = () => <ErrorPage code='404' message='NOT FOUND'/>;
+
 class App extends React.Component {
   render() {
     return (
-      <div className={this.props.classes.root}>
-        <Header brand='iannar' />
-        <main>
-          <BrowserRouter>
-            <Switch>
-              <Route exact path='/' component={MassPage} />
-              <Route path='/about' component={AboutPage} />
-            </Switch>
-          </BrowserRouter>
-        </main>
-        <Footer notes={getFooterNotes()} />
-      </div>
+      <BrowserRouter>
+        <div className={this.props.classes.root}>
+          <Header brand='iannar' />
+          <Switch>
+            <Route exact path='/' component={MassPage} />
+            <Route path='/about' component={AboutPage} />
+            <Route component={Error404} />
+          </Switch>
+          <Footer notes={getFooterNotes()} />
+        </div>
+      </BrowserRouter>
     );
   }
 }

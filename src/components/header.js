@@ -69,22 +69,18 @@ class Header extends React.Component {
           onClose={this.handleDrawerClose}
         >
           <List className={classes.list} component='nav'>
-            <ListItem button >
-              <Link to='/'>
-                <ListItemIcon>
-                  <HomeIcon />
-                </ListItemIcon>
-                <ListItemText primary={brand} />
-              </Link>
+            <ListItem button component={Link} to='/'>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary={brand} />
             </ListItem>
             <Divider />
-            <ListItem button >
-              <Link to='/'>
-                <ListItemIcon>
-                  <InfoIcon />
-                </ListItemIcon>
-                <ListItemText primary='关于' />
-              </Link>
+            <ListItem button component={Link} to='/about'>
+              <ListItemIcon>
+                <InfoIcon />
+              </ListItemIcon>
+              <ListItemText primary='关于' />
             </ListItem>
           </List>
         </Drawer>
