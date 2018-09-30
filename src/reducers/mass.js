@@ -2,7 +2,7 @@ import mass from '../../data/mass';
 import {FILTER_MASS} from '../actions/types';
 
 const initialState = {
-  mass: mass,
+  visibleList: mass,
 };
 
 const filterMass = (filter) => mass.filter((item) => {
@@ -16,7 +16,7 @@ const filterMass = (filter) => mass.filter((item) => {
 export default (state = initialState, action) => {
   switch (action.type) {
     case FILTER_MASS:
-      return {...state, mass: filterMass(action.payload)};
+      return {...state, visibleList: filterMass(action.filter)};
     default:
       return state;
   }

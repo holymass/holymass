@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {createBrowserHistory} from 'history';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
 import {getFooterNotes} from './utils';
@@ -20,7 +19,7 @@ class App extends React.Component {
       <div className={this.props.classes.root}>
         <Header brand='iannar' />
         <main>
-          <BrowserRouter history={createBrowserHistory()}>
+          <BrowserRouter>
             <Switch>
               <Route exact path='/' component={MassPage} />
               <Route path='/about' component={AboutPage} />

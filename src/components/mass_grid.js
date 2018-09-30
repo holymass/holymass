@@ -37,4 +37,4 @@ MassGrid.propTypes = {
   mass: PropTypes.array,
 };
 
-export default withStyles(styles)(connect(mapStateToProps)(MassGrid));
+export default withStyles(styles)(MassGrid);
