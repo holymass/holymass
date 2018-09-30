@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
 import List from '@material-ui/core/List';
@@ -53,7 +52,7 @@ class MassCard extends React.Component {
         </Card>
         <Dialog open={this.state.open} onClose={this.handleDialogClose}>
           <List className={classes.list}>
-            {['甲年', '乙年', '丙年'].map((year) => {
+            {['甲年', '乙年', '丙年'].map((year, key) => {
               return (
                 <ListItem
                   button
@@ -61,6 +60,7 @@ class MassCard extends React.Component {
                   component='a'
                   target='_blank'
                   href={`/mass/?markdown=${year}/${name}`}
+                  key={key}
                 >
                   <ListItemText primary={year} />
                 </ListItem>);

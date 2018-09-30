@@ -5,10 +5,10 @@
 Thumbs.db
 
 # Dependencies
-/node_modules
+node_modules
 
 # Others
-/dist
+/.eslintcache
 /assets/js/main.js
 npm-debug.log*
 yarn-debug.log*

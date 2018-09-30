@@ -12,7 +12,7 @@ const theme = createMuiTheme({
 });
 
 export default (Component) => {
-  return (props) => {
+  return (props) => { // eslint-disable-line react/display-name
     return (
       <MuiThemeProvider theme={theme}>
         <CssBaseline />

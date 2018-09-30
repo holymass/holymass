@@ -2,22 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
 import {Provider} from 'react-redux';
-import _ from 'lodash';
-import {createBrowserHistory} from 'history';
-import {Router} from 'react-router';
-import {config} from './data';
-import App from './components/app';
+import {getGA} from './utils';
+import App from './app';
 import store from './store';
 
-ReactGA.initialize(_.get(config, 'google.ga'));
+ReactGA.initialize(getGA());
 ReactGA.pageview(window.location.pathname + window.location.search);
-
-const hist = createBrowserHistory();
 
 ReactDOM.render((
   <Provider store={store}>
-    <Router history={hist}>
-      <App />
-    </Router>
+    <App />
   </Provider>), document.getElementById('root')
 );

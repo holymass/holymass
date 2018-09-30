@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,14 +10,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import SearchBar from './search_bar';
+import SearchBarContainer from './search_bar_container';
 
 const styles = (theme) => ({
   root: {
@@ -61,7 +61,7 @@ class Header extends React.Component {
               </Typography>
             </Hidden>
           </div>
-          <SearchBar />
+          <SearchBarContainer />
         </Toolbar>
         <Drawer
           anchor='left'
@@ -69,26 +69,22 @@ class Header extends React.Component {
           onClose={this.handleDrawerClose}
         >
           <List className={classes.list} component='nav'>
-            <ListItem
-              button
-              component='a'
-              href='/'
-            >
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText primary={brand} />
+            <ListItem button >
+              <Link to='/'>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary={brand} />
+              </Link>
             </ListItem>
             <Divider />
-            <ListItem
-              button
-              component='a'
-              href='/about'
-            >
-              <ListItemIcon>
-                <InfoIcon />
-              </ListItemIcon>
-              <ListItemText primary='关于' />
+            <ListItem button >
+              <Link to='/'>
+                <ListItemIcon>
+                  <InfoIcon />
+                </ListItemIcon>
+                <ListItemText primary='关于' />
+              </Link>
             </ListItem>
           </List>
         </Drawer>

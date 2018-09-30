@@ -6,17 +6,18 @@
   "author": "iannar.com",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --env.production --progress",
-    "dev": "webpack && webpack-dev-server --hot --inline"
+    "build": "webpack --env.production",
+    "dev": "webpack && webpack-dev-server --hot --inline",
+    "lint": "eslint --cache src"
   },
   "pre-commit": [
+    "lint",
     "build"
   ],
   "dependencies": {
     "@material-ui/core": "^3.1.1",
     "@material-ui/icons": "^3.0.1",
     "classnames": "^2.2.6",
-    "events": "^3.0.0",
     "history": "^4.7.2",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.2",
@@ -35,8 +36,10 @@
     "babel-eslint": "^10.0.0",
     "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^0.1.19",
-    "eslint": "^5.6.0",
+    "eslint": "^5.6.1",
     "eslint-config-google": "^0.10.0",
+    "eslint-plugin-babel": "^5.2.1",
+    "eslint-plugin-react": "^7.11.1",
     "html-webpack-plugin": "^3.2.0",
     "pre-commit": "^1.2.2",
     "source-map-loader": "^0.2.3",

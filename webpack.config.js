@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const webpack = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -52,7 +51,6 @@ const config = {
 module.exports = (env, argv) => {
   const PROD_MODE = env && env.production;
   config.mode = PROD_MODE ? 'production' : 'development';
-  config.devtool = PROD_MODE ? 'source-maps' : 'eval';
   if (PROD_MODE) {
     config.output.filename = 'js/[name].[chunkhash].js';
     config.output.chunkFilename = 'js/[id].[chunkhash].js';
@@ -65,6 +63,8 @@ module.exports = (env, argv) => {
       parallel: true,
     }));
     config.plugins.unshift(new CleanPlugin(['assets/css', 'assets/js']));
+  } else {
+    config.devtool = 'eval';
   }
   return config;
 };

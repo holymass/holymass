@@ -5,7 +5,6 @@ import Input from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
-import emitter from '../utils/emitter';
 
 const styles = (theme) => ({
   root: {
@@ -26,24 +25,22 @@ const styles = (theme) => ({
 class SearchBar extends React.Component {
   state = {
     show: false,
-    value: '',
+    filter: '',
   };
 
   handleBlur = () => {
-    if (!this.state.value) {
+    if (!this.state.filter) {
       this.setState({show: false});
     }
   };
 
   handleChange = (e) => {
-    this.setState({value: e.target.value});
+    this.setState({filter: e.target.value});
   };
 
   handleKeyUp = (e) => {
     if (this.props.onSearch) {
-      this.props.onSearch(this.state.value);
-    } else {
-      emitter.emit('search', this.state.value);
+      this.props.onSearch(this.state.filter);
     }
   }
 
@@ -54,18 +51,16 @@ class SearchBar extends React.Component {
   handleClickClear = (e) => {
     this.setState({
       show: false,
-      value: '',
+      filter: '',
     });
     if (this.props.onClear) {
-      this.props.onClear(e);
-    } else {
-      emitter.emit('search', '');
+      this.props.onClear();
     }
   }
 
   render() {
     const {classes} = this.props;
-    const {show, value} = this.state;
+    const {show, filter} = this.state;
     return (
       <div className={classes.root}>
         {show && (
@@ -75,14 +70,14 @@ class SearchBar extends React.Component {
             fullWidth
             className={classes.input}
             placeholder='Search...'
-            value={value}
+            value={filter}
             onBlur={this.handleBlur}
             onChange={this.handleChange}
             onKeyUp={this.handleKeyUp}
           />
         )}
         <IconButton color='inherit'>
-          {show && value !== '' ? (
+          {show && filter ? (
             <ClearIcon
               className={classes.icon}
               onClick={this.handleClickClear}
