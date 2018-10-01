@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
-import {getFooterNotes} from './utils';
+import {getMetadata} from './utils';
 import withRoot from './with_root';
 import Header from './components/header';
+import Main from './components/main';
 import Footer from './components/footer';
 import MassPage from './pages/mass';
 import AboutPage from './pages/about';
@@ -18,16 +19,19 @@ const Error404 = () => <ErrorPage code='404' message='NOT FOUND'/>;
 
 class App extends React.Component {
   render() {
+    const {classes} = this.props;
     return (
       <BrowserRouter>
-        <div className={this.props.classes.root}>
-          <Header brand='iannar' />
-          <Switch>
-            <Route exact path='/' component={MassPage} />
-            <Route path='/about' component={AboutPage} />
-            <Route component={Error404} />
-          </Switch>
-          <Footer notes={getFooterNotes()} />
+        <div className={classes.root}>
+          <Header brand={getMetadata('brand')} />
+          <Main>
+            <Switch>
+              <Route exact path='/' component={MassPage} />
+              <Route path='/about' component={AboutPage} />
+              <Route component={Error404} />
+            </Switch>
+          </Main>
+          <Footer notes={getMetadata('footer.notes')} />
         </div>
       </BrowserRouter>
     );

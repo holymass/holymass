@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import {getMetadata} from '../utils';
 
 const styles = (theme) => ({
   root: {
@@ -17,7 +18,7 @@ class Footer extends React.Component {
     return (
       <footer className={classes.root}>
         <Typography align='center'>
-          &copy; {new Date().getFullYear()} iannar.com
+          &copy; {new Date().getFullYear()} {getMetadata('domain')}
           <br />
           {notes || ''}
         </Typography>

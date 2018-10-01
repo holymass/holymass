@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import MassGridContainer from '../components/mass_grid_container';
 
 const styles = (theme) => ({
   root: {
@@ -11,19 +10,20 @@ const styles = (theme) => ({
   },
 });
 
-class MassPage extends React.Component {
+class Main extends React.Component {
   render() {
-    const {classes} = this.props;
+    const {children, classes} = this.props;
     return (
-      <div className={classes.root}>
-        <MassGridContainer />
-      </div>
+      <main className={classes.root}>
+        {children}
+      </main>
     );
   }
 }
 
-MassPage.propTypes = {
+Main.propTypes = {
+  children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MassPage);
+export default withStyles(styles)(Main);

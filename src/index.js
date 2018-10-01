@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
 import {Provider} from 'react-redux';
-import {getGA} from './utils';
+import {getMetadata} from './utils';
 import App from './app';
 import store from './store';
 
-ReactGA.initialize(getGA());
+ReactGA.initialize(getMetadata('google.ga'));
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render((

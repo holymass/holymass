@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import BasePage from './base';
 
 const styles = (theme) => ({
   root: {},
 });
 
-class AboutPage extends BasePage {
+class AboutPage extends React.Component {
   render() {
     return (
       <div className={this.props.classes.root}>

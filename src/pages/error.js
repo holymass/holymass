@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
-import BasePage from './base';
+import Typography from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
-  root: {},
+  root: {
+  },
 });
 
-class ErrorPage extends BasePage {
+class ErrorPage extends React.Component {
   render() {
-    const {code, message} = this.props;
+    const {classes, code, message} = this.props;
     return (
-      <div className={this.props.classes.root}>
+      <div className={classes.root}>
         <Typography variant='display4' gutterBottom align='center'>
           {code}
         </Typography>
