@@ -11,8 +11,7 @@
     "lint": "eslint --cache src"
   },
   "pre-commit": [
-    "lint",
-    "build"
+    "lint"
   ],
   "dependencies": {
     "@material-ui/core": "^3.1.1",

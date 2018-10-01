@@ -1,6 +1,9 @@
 module.exports = {
   root: true,
-  extends: ['google', 'plugin:react/recommended'],
+  extends: [
+    'google',
+    'plugin:react/recommended',
+  ],
   env: {
     browser: true,
     es6: true,
@@ -18,7 +21,10 @@ module.exports = {
       version: '16.0',
     },
   },
-  plugins: ['babel', 'react'],
+  plugins: [
+    'babel',
+    'react',
+  ],
   rules: {
     'no-invalid-this': 0,
     'require-jsdoc': 1,
