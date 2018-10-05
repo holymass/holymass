@@ -9,7 +9,6 @@ import Footer from './components/footer';
 import MassModule from './modules/mass';
 import ChurchesModule from './modules/churches';
 import SettingsModule from './modules/settings';
-import FeedbackModule from './modules/feedback';
 import ErrorModule from './modules/error';
 
 const styles = (theme) => ({
@@ -38,7 +37,6 @@ export default class App extends React.Component {
               <Route exact path='/' component={MassModule} />
               <Route path='/churches' component={ChurchesModule} />
               <Route path='/settings' component={SettingsModule} />
-              <Route path='/feedback' component={FeedbackModule} />
               <Route component={Error404} />
             </Switch>
           </Main>

@@ -13,7 +13,6 @@ import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
 import SettingsIcon from '@material-ui/icons/Settings';
-import FeedbackIcon from '@material-ui/icons/Feedback';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -118,17 +117,6 @@ export default class Header extends React.Component {
                 <SettingsIcon />
               </ListItemIcon>
               <ListItemText primary={t('Settings')} />
-            </ListItem>
-            <ListItem
-              button
-              component={Link}
-              onClick={this.handleDrawerClose}
-              to='/feedback'
-            >
-              <ListItemIcon>
-                <FeedbackIcon />
-              </ListItemIcon>
-              <ListItemText primary={t('Send Feedback')} />
             </ListItem>
           </List>
         </Drawer>
