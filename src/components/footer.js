@@ -6,9 +6,14 @@ import {getMetadata} from '../utils';
 
 const styles = (theme) => ({
   root: {
-    padding: '15px 0 30px 0',
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
     zIndex: 2,
-    fontSize: '12px',
+    fontSize: '0.625rem',
+  },
+  icp: {
+    color: 'rgba(0, 0, 0, 0.87)',
+    textDecoration: 'none',
   },
 });
 
@@ -16,16 +21,22 @@ const styles = (theme) => ({
 export default class Footer extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    notes: PropTypes.string,
   };
   render() {
-    const {classes, notes} = this.props;
+    const {classes} = this.props;
+    const icp = getMetadata('footer.icp');
     return (
       <footer className={classes.root}>
         <Typography align='center'>
           &copy; {new Date().getFullYear()} {getMetadata('domain')}
           <br />
-          {notes || ''}
+          <a
+            className={classes.icp}
+            href='http://www.miibeian.gov.cn/'
+            target='_blank' // eslint-disable-line react/jsx-no-target-blank
+          >
+            {icp}
+          </a>
         </Typography>
       </footer>
     );

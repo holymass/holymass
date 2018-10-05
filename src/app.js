@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
-import {getMetadata} from './utils';
 import withRoot from './with_root';
 import Header from './components/header';
 import Main from './components/main';
@@ -14,7 +13,9 @@ import FeedbackModule from './modules/feedback';
 import ErrorModule from './modules/error';
 
 const styles = (theme) => ({
-  root: {},
+  root: {
+    height: '100%',
+  },
 });
 
 const Error404 = () => <ErrorModule code='404' message='NOT FOUND' />;
@@ -31,7 +32,7 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <div className={classes.root}>
-          <Header brand={getMetadata('brand')} />
+          <Header />
           <Main>
             <Switch>
               <Route exact path='/' component={MassModule} />
@@ -41,7 +42,7 @@ export default class App extends React.Component {
               <Route component={Error404} />
             </Switch>
           </Main>
-          <Footer notes={getMetadata('footer.notes')} />
+          <Footer />
         </div>
       </BrowserRouter>
     );

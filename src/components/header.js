@@ -19,6 +19,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import {navLinks} from '../nav_links.js';
+import {getMetadata} from '../utils';
 import SearchBar from './search_bar';
 
 const styles = (theme) => ({
@@ -36,7 +37,6 @@ const styles = (theme) => ({
 @withStyles(styles)
 export default class Header extends React.Component {
   static propTypes = {
-    brand: PropTypes.string.isRequired,
     classes: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired,
   };
@@ -54,7 +54,8 @@ export default class Header extends React.Component {
   }
 
   render() {
-    const {classes, brand, t} = this.props;
+    const {classes, t} = this.props;
+    const brand = getMetadata('brand');
     return (
       <AppBar position='static' className={classes.root}>
         <Toolbar>
