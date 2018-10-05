@@ -7,7 +7,14 @@ const styles = (theme) => ({
   root: {},
 });
 
-class ChurchesPage extends React.Component {
+@withNamespaces('churches')
+@withStyles(styles)
+export default class ChurchesModule extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+    t: PropTypes.func.isRequired,
+  };
+
   render() {
     const {classes, t} = this.props;
     return (
@@ -18,9 +25,3 @@ class ChurchesPage extends React.Component {
   }
 }
 
-ChurchesPage.propTypes = {
-  classes: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired,
-};
-
-export default withStyles(styles)(withNamespaces('churches')(ChurchesPage));

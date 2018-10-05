@@ -8,7 +8,14 @@ const styles = (theme) => ({
   },
 });
 
-class ErrorPage extends React.Component {
+@withStyles(styles)
+export default class ErrorModule extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+    code: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+  };
+
   render() {
     const {classes, code, message} = this.props;
     return (
@@ -23,11 +30,3 @@ class ErrorPage extends React.Component {
     );
   }
 }
-
-ErrorPage.propTypes = {
-  classes: PropTypes.object.isRequired,
-  code: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-};
-
-export default withStyles(styles)(ErrorPage);

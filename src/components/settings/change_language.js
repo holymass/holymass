@@ -14,13 +14,11 @@ const mapStateToProps = (state) => ({
   language: state.settings.language,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onChange: () => {
-      dispatch(changeLanguage());
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  onChange: (e) => {
+    dispatch(changeLanguage(e.target.value));
+  },
+});
 
 const styles = (theme) => ({
   root: {},

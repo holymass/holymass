@@ -9,13 +9,10 @@ const styles = (theme) => ({
   },
 });
 
-class SettingsPage extends React.Component {
-  state = {
-    value: 'female',
-  };
-
-  handleLanguageChange = (event) => {
-    this.setState({value: event.target.value});
+@withStyles(styles)
+export default class SettingsModule extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
   };
 
   render() {
@@ -27,9 +24,3 @@ class SettingsPage extends React.Component {
     );
   }
 }
-
-SettingsPage.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(SettingsPage);

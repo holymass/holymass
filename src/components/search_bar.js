@@ -8,16 +8,14 @@ import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onClear: () => {
-      dispatch(filterMass());
-    },
-    onSearch: (filter) => {
-      dispatch(filterMass(filter));
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  onClear: () => {
+    dispatch(filterMass());
+  },
+  onSearch: (filter) => {
+    dispatch(filterMass(filter));
+  },
+});
 
 const styles = (theme) => ({
   root: {

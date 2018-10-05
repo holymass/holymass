@@ -12,7 +12,7 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles)
-export default class MassPage extends React.Component {
+export default class MassModule extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
   };

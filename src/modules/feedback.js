@@ -6,7 +6,12 @@ const styles = (theme) => ({
   root: {},
 });
 
-class FeedbackPage extends React.Component {
+@withStyles(styles)
+export default class FeedbackModule extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+
   render() {
     return (
       <div className={this.props.classes.root}>
@@ -15,9 +20,3 @@ class FeedbackPage extends React.Component {
     );
   }
 }
-
-FeedbackPage.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(FeedbackPage);
