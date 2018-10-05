@@ -1,10 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {filterMass} from '../actions/mass';
 import {withStyles} from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClear: () => {
+      dispatch(filterMass());
+    },
+    onSearch: (filter) => {
+      dispatch(filterMass(filter));
+    },
+  };
+};
 
 const styles = (theme) => ({
   root: {
@@ -22,7 +35,15 @@ const styles = (theme) => ({
   },
 });
 
-class SearchBar extends React.Component {
+@connect(null, mapDispatchToProps)
+@withStyles(styles)
+export default class SearchBar extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+    onSearch: PropTypes.func,
+    onClear: PropTypes.func,
+  };
+
   state = {
     show: false,
     filter: '',
@@ -94,11 +115,3 @@ class SearchBar extends React.Component {
     );
   }
 }
-
-SearchBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-  onSearch: PropTypes.func,
-  onClear: PropTypes.func,
-};
-
-export default withStyles(styles)(SearchBar);

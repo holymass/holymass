@@ -5,6 +5,6 @@ export const navLinks = [
   {
     to: '/churches',
     icon: <RoomIcon />,
-    text: '教堂',
+    text: 'Churches',
   },
 ];

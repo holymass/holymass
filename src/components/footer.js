@@ -12,7 +12,12 @@ const styles = (theme) => ({
   },
 });
 
-class Footer extends React.Component {
+@withStyles(styles)
+export default class Footer extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+    notes: PropTypes.string,
+  };
   render() {
     const {classes, notes} = this.props;
     return (
@@ -26,10 +31,3 @@ class Footer extends React.Component {
     );
   }
 }
-
-Footer.propTypes = {
-  classes: PropTypes.object.isRequired,
-  notes: PropTypes.string,
-};
-
-export default withStyles(styles)(Footer);

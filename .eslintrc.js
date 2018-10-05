@@ -14,6 +14,7 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
+      legacyDecorators: true,
     },
   },
   settings: {
@@ -27,7 +28,7 @@ module.exports = {
   ],
   rules: {
     'no-invalid-this': 0,
-    'require-jsdoc': 1,
+    'require-jsdoc': 0,
     'babel/no-invalid-this': 1,
   },
 };

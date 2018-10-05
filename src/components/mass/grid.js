@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import MassCard from './mass_card';
+import MassCard from './card';
+
+const mapStateToProps = (state) => ({
+  mass: state.mass.visibleList,
+});
 
 const styles = (theme) => ({
   root: {
@@ -10,7 +15,14 @@ const styles = (theme) => ({
   },
 });
 
-class MassGrid extends React.Component {
+@connect(mapStateToProps)
+@withStyles(styles)
+export default class MassGrid extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+    mass: PropTypes.array.isRequired,
+  }
+
   render() {
     const {classes, mass} = this.props;
     return (
@@ -30,10 +42,3 @@ class MassGrid extends React.Component {
     );
   }
 }
-
-MassGrid.propTypes = {
-  classes: PropTypes.object.isRequired,
-  mass: PropTypes.array,
-};
-
-export default withStyles(styles)(MassGrid);

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {withNamespaces} from 'react-i18next';
 import {withStyles} from '@material-ui/core/styles';
 
 const styles = (theme) => ({
@@ -8,9 +9,10 @@ const styles = (theme) => ({
 
 class ChurchesPage extends React.Component {
   render() {
+    const {classes, t} = this.props;
     return (
-      <div className={this.props.classes.root}>
-          churches
+      <div className={classes.root}>
+        {t('Churches')}
       </div>
     );
   }
@@ -18,6 +20,7 @@ class ChurchesPage extends React.Component {
 
 ChurchesPage.propTypes = {
   classes: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(ChurchesPage);
+export default withStyles(styles)(withNamespaces('churches')(ChurchesPage));

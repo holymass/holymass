@@ -12,7 +12,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 const styles = (theme) => ({
   card: {
     cursor: 'pointer',
-    minWidth: theme.spacing.unit * 40,
+    minWidth: theme.spacing.unit * 36,
   },
   list: {
     width: theme.spacing.unit * 30,
@@ -22,7 +22,14 @@ const styles = (theme) => ({
   },
 });
 
-class MassCard extends React.Component {
+
+@withStyles(styles)
+export default class MassCard extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+    name: PropTypes.string,
+  };
+
   state = {
     open: false,
   };
@@ -58,9 +65,9 @@ class MassCard extends React.Component {
                   button
                   className={classes.listItem}
                   component='a'
-                  target='_blank'
                   href={`/mass/?markdown=${year}/${name}`}
                   key={key}
+                  target='_blank'
                 >
                   <ListItemText primary={year} />
                 </ListItem>);
@@ -71,10 +78,3 @@ class MassCard extends React.Component {
     );
   }
 }
-
-MassCard.propTypes = {
-  classes: PropTypes.object.isRequired,
-  name: PropTypes.string,
-};
-
-export default withStyles(styles)(MassCard);

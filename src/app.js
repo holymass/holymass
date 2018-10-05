@@ -7,19 +7,25 @@ import withRoot from './with_root';
 import Header from './components/header';
 import Main from './components/main';
 import Footer from './components/footer';
-import MassPage from './pages/mass';
-import ChurchesPage from './pages/churches';
-import SettingsPage from './pages/settings';
-import FeedbackPage from './pages/feedback';
-import ErrorPage from './pages/error';
+import MassModule from './modules/mass';
+import ChurchesModule from './modules/churches';
+import SettingsModule from './modules/settings';
+import FeedbackModule from './modules/feedback';
+import ErrorModule from './modules/error';
 
 const styles = (theme) => ({
   root: {},
 });
 
-const Error404 = () => <ErrorPage code='404' message='NOT FOUND' />;
+const Error404 = () => <ErrorModule code='404' message='NOT FOUND' />;
 
-class App extends React.Component {
+@withRoot
+@withStyles(styles)
+export default class App extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+
   render() {
     const {classes} = this.props;
     return (
@@ -28,10 +34,10 @@ class App extends React.Component {
           <Header brand={getMetadata('brand')} />
           <Main>
             <Switch>
-              <Route exact path='/' component={MassPage} />
-              <Route path='/churches' component={ChurchesPage} />
-              <Route path='/settings' component={SettingsPage} />
-              <Route path='/feedback' component={FeedbackPage} />
+              <Route exact path='/' component={MassModule} />
+              <Route path='/churches' component={ChurchesModule} />
+              <Route path='/settings' component={SettingsModule} />
+              <Route path='/feedback' component={FeedbackModule} />
               <Route component={Error404} />
             </Switch>
           </Main>
@@ -41,9 +47,3 @@ class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withRoot(withStyles(styles)(App));

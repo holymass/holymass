@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import {withNamespaces} from 'react-i18next';
 import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,8 +18,8 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import {navLinks} from '../nav.js';
-import SearchBarContainer from './search_bar_container';
+import {navLinks} from '../nav_links.js';
+import SearchBar from './search_bar';
 
 const styles = (theme) => ({
   root: {
@@ -31,7 +32,15 @@ const styles = (theme) => ({
   },
 });
 
-class Header extends React.Component {
+@withNamespaces('base')
+@withStyles(styles)
+export default class Header extends React.Component {
+  static propTypes = {
+    brand: PropTypes.string.isRequired,
+    classes: PropTypes.object.isRequired,
+    t: PropTypes.func.isRequired,
+  };
+
   state = {
     open: false,
   }
@@ -45,7 +54,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const {classes, brand} = this.props;
+    const {classes, brand, t} = this.props;
     return (
       <AppBar position='static' className={classes.root}>
         <Toolbar>
@@ -63,7 +72,7 @@ class Header extends React.Component {
               </Typography>
             </Hidden>
           </div>
-          <SearchBarContainer />
+          <SearchBar />
         </Toolbar>
         <Drawer
           anchor='left'
@@ -94,7 +103,7 @@ class Header extends React.Component {
                 <ListItemIcon>
                   {link.icon}
                 </ListItemIcon>
-                <ListItemText primary={link.text} />
+                <ListItemText primary={t(link.text)} />
               </ListItem>
             )}
             <Divider />
@@ -107,7 +116,7 @@ class Header extends React.Component {
               <ListItemIcon>
                 <SettingsIcon />
               </ListItemIcon>
-              <ListItemText primary='Settings' />
+              <ListItemText primary={t('Settings')} />
             </ListItem>
             <ListItem
               button
@@ -118,7 +127,7 @@ class Header extends React.Component {
               <ListItemIcon>
                 <FeedbackIcon />
               </ListItemIcon>
-              <ListItemText primary='Send Feedback' />
+              <ListItemText primary={t('Send Feedback')} />
             </ListItem>
           </List>
         </Drawer>
@@ -126,10 +135,3 @@ class Header extends React.Component {
     );
   }
 }
-
-Header.propTypes = {
-  classes: PropTypes.object.isRequired,
-  brand: PropTypes.string,
-};
-
-export default withStyles(styles)(Header);

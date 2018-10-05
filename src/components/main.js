@@ -10,7 +10,13 @@ const styles = (theme) => ({
   },
 });
 
-class Main extends React.Component {
+@withStyles(styles)
+export default class Main extends React.Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    classes: PropTypes.object.isRequired,
+  };
+
   render() {
     const {children, classes} = this.props;
     return (
@@ -20,10 +26,3 @@ class Main extends React.Component {
     );
   }
 }
-
-Main.propTypes = {
-  children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Main);

@@ -1,5 +1,5 @@
 import mass from '../../data/mass';
-import {FILTER_MASS} from '../actions/types';
+import {FILTER_MASS} from '../actions/mass';
 
 const initialState = {
   visibleList: mass,
