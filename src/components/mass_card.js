@@ -12,10 +12,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 const styles = (theme) => ({
   card: {
     cursor: 'pointer',
-    minWidth: 320,
+    minWidth: theme.spacing.unit * 40,
   },
   list: {
-    width: 320,
+    width: theme.spacing.unit * 30,
   },
   listItem: {
     textAlign: 'center',

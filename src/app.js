@@ -17,7 +17,7 @@ const styles = (theme) => ({
   root: {},
 });
 
-const Error404 = () => <ErrorPage code='404' message='NOT FOUND'/>;
+const Error404 = () => <ErrorPage code='404' message='NOT FOUND' />;
 
 class App extends React.Component {
   render() {

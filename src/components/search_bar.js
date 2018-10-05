@@ -10,8 +10,8 @@ const styles = (theme) => ({
   root: {
     display: 'flex',
     justifyContent: 'flex-end',
-    height: 48,
-    width: 288,
+    height: theme.spacing.unit * 6,
+    width: theme.spacing.unit * 36,
   },
   input: {
     color: 'white',
