@@ -8,7 +8,9 @@ import Header from './components/header';
 import Main from './components/main';
 import Footer from './components/footer';
 import MassPage from './pages/mass';
-import AboutPage from './pages/about';
+import ChurchesPage from './pages/churches';
+import SettingsPage from './pages/settings';
+import FeedbackPage from './pages/feedback';
 import ErrorPage from './pages/error';
 
 const styles = (theme) => ({
@@ -27,7 +29,9 @@ class App extends React.Component {
           <Main>
             <Switch>
               <Route exact path='/' component={MassPage} />
-              <Route path='/about' component={AboutPage} />
+              <Route path='/churches' component={ChurchesPage} />
+              <Route path='/settings' component={SettingsPage} />
+              <Route path='/feedback' component={FeedbackPage} />
               <Route component={Error404} />
             </Switch>
           </Main>

@@ -43,8 +43,8 @@ const config = {
     'react-dom': 'ReactDOM',
   },
   devServer: {
-    open: true,
     historyApiFallback: true,
+    open: true,
   },
 };
 

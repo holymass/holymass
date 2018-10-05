@@ -11,11 +11,13 @@ import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
-import InfoIcon from '@material-ui/icons/Info';
+import SettingsIcon from '@material-ui/icons/Settings';
+import FeedbackIcon from '@material-ui/icons/Feedback';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import {navLinks} from '../nav.js';
 import SearchBarContainer from './search_bar_container';
 
 const styles = (theme) => ({
@@ -25,7 +27,7 @@ const styles = (theme) => ({
     flex: 1,
   },
   list: {
-    width: 300,
+    width: theme.spacing.unit * 30,
   },
 });
 
@@ -69,18 +71,54 @@ class Header extends React.Component {
           onClose={this.handleDrawerClose}
         >
           <List className={classes.list} component='nav'>
-            <ListItem button component={Link} to='/'>
+            <ListItem
+              button
+              component={Link}
+              onClick={this.handleDrawerClose}
+              to='/'
+            >
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText primary={brand} />
             </ListItem>
             <Divider />
-            <ListItem button component={Link} to='/about'>
+            {navLinks.map((link, key) =>
+              <ListItem
+                button
+                component={Link}
+                key={key}
+                onClick={this.handleDrawerClose}
+                to={link.to}
+              >
+                <ListItemIcon>
+                  {link.icon}
+                </ListItemIcon>
+                <ListItemText primary={link.text} />
+              </ListItem>
+            )}
+            <Divider />
+            <ListItem
+              button
+              component={Link}
+              onClick={this.handleDrawerClose}
+              to='/settings'
+            >
               <ListItemIcon>
-                <InfoIcon />
+                <SettingsIcon />
               </ListItemIcon>
-              <ListItemText primary='关于' />
+              <ListItemText primary='Settings' />
+            </ListItem>
+            <ListItem
+              button
+              component={Link}
+              onClick={this.handleDrawerClose}
+              to='/feedback'
+            >
+              <ListItemIcon>
+                <FeedbackIcon />
+              </ListItemIcon>
+              <ListItemText primary='Send Feedback' />
             </ListItem>
           </List>
         </Drawer>

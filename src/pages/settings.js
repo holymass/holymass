@@ -6,18 +6,18 @@ const styles = (theme) => ({
   root: {},
 });
 
-class AboutPage extends React.Component {
+class SettingsPage extends React.Component {
   render() {
     return (
       <div className={this.props.classes.root}>
-          iannar.com
+          settings
       </div>
     );
   }
 }
 
-AboutPage.propTypes = {
+SettingsPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AboutPage);
+export default withStyles(styles)(SettingsPage);
