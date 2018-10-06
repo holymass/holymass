@@ -10,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
-import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
 import SettingsIcon from '@material-ui/icons/Settings';
 import List from '@material-ui/core/List';
@@ -91,7 +90,6 @@ export default class Header extends React.Component {
               </ListItemIcon>
               <ListItemText primary={brand} />
             </ListItem>
-            <Divider />
             {navLinks.map((link, key) =>
               <ListItem
                 button
@@ -106,7 +104,6 @@ export default class Header extends React.Component {
                 <ListItemText primary={t(link.text)} />
               </ListItem>
             )}
-            <Divider />
             <ListItem
               button
               component={Link}
