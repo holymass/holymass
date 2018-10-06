@@ -7,6 +7,7 @@ const CleanPlugin = require('clean-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = (env, argv) => {
   const prodMode = argv.mode === 'production';
@@ -49,7 +50,20 @@ module.exports = (env, argv) => {
           },
           parallel: true,
         }),
+        new OptimizeCssAssetsPlugin(),
       ],
+      runtimeChunk: {
+        name: 'runtime',
+      },
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+          },
+        },
+      },
     },
     plugins: [
       new ExtractCssChunksPlugin({
