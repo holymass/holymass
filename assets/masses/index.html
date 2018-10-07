@@ -117,7 +117,7 @@
 
 <body style="overflow: auto;">
   <div class="reveal">
-    <div id="mass" class="slides">
+    <div id="root" class="slides">
       <section data-markdown="index.md"></section>
     </div>
   </div>
@@ -131,10 +131,10 @@
           metadata[pair[0]] = pair[1];
         });
       }
-      if (metadata.markdown) {
-        var markdown = metadata.markdown + '.md';
-        var mass = document.getElementById('mass');
-        mass.firstElementChild.setAttribute('data-markdown', markdown);
+      if (metadata.m) {
+        var markdown = metadata.m + '.md';
+        var root = document.getElementById('root');
+        root.firstElementChild.setAttribute('data-markdown', markdown);
       }
     })();
   </script>

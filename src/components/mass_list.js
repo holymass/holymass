@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {connect} from 'react-redux';
 import {withStyles} from '@material-ui/core/styles';
-import MassCard from './card';
+import MassCard from './mass_card';
 
 const mapStateToProps = (state) => ({
   mass: state.mass.visibleList,
@@ -29,7 +29,7 @@ export default class MassList extends React.Component {
     return (
       <div className={classNames(classes.root, className)}>
         {mass.map((item, key) => (
-          <MassCard key={key} name={item.name} />
+          <MassCard key={key} item={item} year='yearB' />
         ))}
       </div>
     );

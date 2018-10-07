@@ -7,7 +7,7 @@ import Header from './components/header';
 import Main from './components/main';
 import Footer from './components/footer';
 import MassModule from './modules/mass';
-import ChurchesModule from './modules/churches';
+import ChurchModule from './modules/church';
 import SettingsModule from './modules/settings';
 import ErrorModule from './modules/error';
 
@@ -35,8 +35,8 @@ export default class App extends React.Component {
           <Main>
             <Switch>
               <Route exact path='/' component={MassModule} />
-              <Route path='/churches' component={ChurchesModule} />
-              <Route path='/missa' component={MassModule} />
+              <Route path='/churches' component={ChurchModule} />
+              <Route path='/masses' component={MassModule} />
               <Route path='/settings' component={SettingsModule} />
               <Route component={Error404} />
             </Switch>

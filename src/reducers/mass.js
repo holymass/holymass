@@ -1,11 +1,13 @@
+import camelcaseKeys from 'camelcase-keys';
 import mass from '../../data/mass';
 import {FILTER_MASS} from '../actions/mass';
 
+const massList = camelcaseKeys(mass, {deep: true});
 const initialState = {
-  visibleList: mass,
+  visibleList: massList,
 };
 
-const filterMass = (filter) => mass.filter((item) => {
+const filterMass = (filter) => massList.filter((item) => {
   if (filter) {
     return item.value.search(filter) > -1 ||
       item.value.replace(/\s/g, '').search(filter) > -1;

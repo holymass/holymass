@@ -245,7 +245,25 @@
   },
   {
     "name": "常年期第二十七主日",
-    "value": "常年期第二十七主日 chang nian qi di er shi qi zhu ri"
+    "value": "常年期第二十七主日 chang nian qi di er shi qi zhu ri",
+    "year_a": {
+      "first_reading": "",
+      "responsorial_psalm": "",
+      "second_reading": "",
+      "gospel": ""
+    },
+    "year_b": {
+      "first_reading": "创2:18-24",
+      "responsorial_psalm": "",
+      "second_reading": "希2:9-11",
+      "gospel": "谷10:2-16"
+    },
+    "year_c": {
+      "first_reading": "",
+      "responsorial_psalm": "",
+      "second_reading": "",
+      "gospel": ""
+    }
   },
   {
     "name": "常年期第二十八主日",

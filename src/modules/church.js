@@ -7,9 +7,9 @@ const styles = (theme) => ({
   root: {},
 });
 
-@withNamespaces('churches')
+@withNamespaces('church')
 @withStyles(styles)
-export default class ChurchesModule extends React.Component {
+export default class ChurchModule extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired,

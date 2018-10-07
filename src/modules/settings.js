@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import ChangeLanguage from '../components/settings/change_language';
+import ChangeLanguage from '../components/form/change_language';
 
 const styles = (theme) => ({
   root: {

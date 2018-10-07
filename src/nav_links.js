@@ -3,9 +3,9 @@ import StarIcon from '@material-ui/icons/Star';
 import RoomIcon from '@material-ui/icons/Room';
 
 export const navLinks = [{
-  to: '/missa',
+  to: '/masses',
   icon: <StarIcon />,
-  text: 'Missa',
+  text: 'Masses',
 }, {
   to: '/churches',
   icon: <RoomIcon />,

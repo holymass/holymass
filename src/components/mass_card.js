@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import {withNamespaces} from 'react-i18next';
 import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
 import List from '@material-ui/core/List';
@@ -27,12 +31,15 @@ const styles = (theme) => ({
 });
 
 
+@withNamespaces('mass')
 @withStyles(styles)
 export default class MassCard extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
+    item: PropTypes.object.isRequired,
+    t: PropTypes.object.isRequired,
+    year: PropTypes.string.isRequired,
   };
 
   state = {
@@ -52,29 +59,45 @@ export default class MassCard extends React.Component {
   };
 
   render() {
-    const {className, classes, name} = this.props;
+    const {className, classes, item, t, year} = this.props;
+    const it = item[year];
     return (
       <div className={classNames(classes.root, className)}>
         <Card className={classes.card} onClick={this.handleDialogOpen}>
+          <CardHeader
+            action={
+              <IconButton>
+                <MoreVertIcon />
+              </IconButton>
+            }
+            title={item.name}
+            subheader={item.date}
+          />
           <CardContent>
             <Typography>
-              {name}
+              {t('First Reading')}: {it && it.firstReading}
+              <br />
+              {t('Responsorial Psalm')}: {it && it.responsorialPsalm}
+              <br />
+              {t('Second Reading')}: {it && it.secondReading}
+              <br />
+              {t('Gospel')}: {it && it.gospel}
             </Typography>
           </CardContent>
         </Card>
         <Dialog open={this.state.open} onClose={this.handleDialogClose}>
           <List className={classes.list}>
-            {['甲年', '乙年', '丙年'].map((year, key) => {
+            {['甲年', '乙年', '丙年'].map((curYear, key) => {
               return (
                 <ListItem
                   button
                   className={classes.listItem}
                   component='a'
-                  href={`/mass/?markdown=${year}/${name}`}
+                  href={`/assets/masses/index.html?m=${curYear}/${item.name}`}
                   key={key}
                   target='_blank'
                 >
-                  <ListItemText primary={year} />
+                  <ListItemText primary={curYear} />
                 </ListItem>);
             })}
           </List>
