@@ -26,6 +26,10 @@ import SearchBar from './search_bar';
 const styles = (theme) => ({
   'root': {
   },
+  'brandLink': {
+    color: theme.palette.primary.contrastText,
+    textDecoration: 'none',
+  },
   'nav': {
     flex: 1,
     paddingLeft: theme.spacing.unit * 2,
@@ -88,9 +92,14 @@ export default class Header extends React.Component {
             <MenuIcon />
           </IconButton>
           <Hidden className={classes.nav} smDown implementation='css'>
-            <Typography color='inherit' variant='title'>
-              {brand}
-            </Typography>
+            <Link
+              className={classes.brandLink}
+              to='/'
+            >
+              <Typography color='inherit' variant='title'>
+                {brand}
+              </Typography>
+            </Link>
           </Hidden>
           <SearchBar />
         </Toolbar>
@@ -99,10 +108,16 @@ export default class Header extends React.Component {
           open={this.state.open}
           onClose={this.handleDrawerClose}
         >
-          <Paper className={classes.drawerHeader} square>
-            <Typography align='center' color='inherit' variant='title'>
-              {brand}
-            </Typography>
+          <Paper square className={classes.drawerHeader}>
+            <Link
+              className={classes.brandLink}
+              onClick={this.handleDrawerClose}
+              to='/'
+            >
+              <Typography color='inherit' variant='title'>
+                {brand}
+              </Typography>
+            </Link>
             <IconButton color='inherit' onClick={this.handleDrawerClose}>
               <ChevronLeftIcon />
             </IconButton>

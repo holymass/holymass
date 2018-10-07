@@ -13,7 +13,7 @@ const styles = (theme) => ({
     fontSize: '0.625rem',
   },
   icp: {
-    color: 'rgba(0, 0, 0, 0.87)',
+    color: theme.palette.text.primary,
     textDecoration: 'none',
   },
 });
