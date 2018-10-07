@@ -6,13 +6,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Typography from '@material-ui/core/Typography';
-import Dialog from '@material-ui/core/Dialog';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 
 const styles = (theme) => ({
   root: {
@@ -37,9 +31,9 @@ export default class MassCard extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
-    item: PropTypes.object.isRequired,
+    liturgicalYear: PropTypes.string.isRequired,
+    mass: PropTypes.object.isRequired,
     t: PropTypes.object.isRequired,
-    year: PropTypes.string.isRequired,
   };
 
   state = {
@@ -58,50 +52,40 @@ export default class MassCard extends React.Component {
     });
   };
 
+  handleClick = () => {
+    const yearMap = {
+      yearA: '甲年',
+      yearB: '乙年',
+      yearC: '丙年',
+    };
+    const year = yearMap[this.props.liturgicalYear];
+    const name = this.props.mass.name;
+    const url = `/assets/masses/index.html?m=${year}/${name}`;
+    open(url, '_blank');
+  };
+
   render() {
-    const {className, classes, item, t, year} = this.props;
-    const it = item[year];
+    const {className, classes, liturgicalYear, mass, t} = this.props;
+    const curMass = mass[liturgicalYear];
     return (
       <div className={classNames(classes.root, className)}>
-        <Card className={classes.card} onClick={this.handleDialogOpen}>
+        <Card className={classes.card} onClick={this.handleClick}>
           <CardHeader
-            action={
-              <IconButton>
-                <MoreVertIcon />
-              </IconButton>
-            }
-            title={item.name}
-            subheader={item.date}
+            title={mass.name}
+            subheader={mass.date}
           />
           <CardContent>
             <Typography>
-              {t('First Reading')}: {it && it.firstReading}
+              {t('First Reading')}: {curMass && curMass.firstReading}
               <br />
-              {t('Responsorial Psalm')}: {it && it.responsorialPsalm}
+              {t('Responsorial Psalm')}: {curMass && curMass.responsorialPsalm}
               <br />
-              {t('Second Reading')}: {it && it.secondReading}
+              {t('Second Reading')}: {curMass && curMass.secondReading}
               <br />
-              {t('Gospel')}: {it && it.gospel}
+              {t('Gospel')}: {curMass && curMass.gospel}
             </Typography>
           </CardContent>
         </Card>
-        <Dialog open={this.state.open} onClose={this.handleDialogClose}>
-          <List className={classes.list}>
-            {['甲年', '乙年', '丙年'].map((curYear, key) => {
-              return (
-                <ListItem
-                  button
-                  className={classes.listItem}
-                  component='a'
-                  href={`/assets/masses/index.html?m=${curYear}/${item.name}`}
-                  key={key}
-                  target='_blank'
-                >
-                  <ListItemText primary={curYear} />
-                </ListItem>);
-            })}
-          </List>
-        </Dialog>
       </div>
     );
   }

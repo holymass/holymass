@@ -6,7 +6,8 @@ import {withStyles} from '@material-ui/core/styles';
 import MassCard from './mass_card';
 
 const mapStateToProps = (state) => ({
-  mass: state.mass.visibleList,
+  massList: state.mass.visibleList,
+  liturgicalYear: state.settings.liturgicalYear,
 });
 
 const styles = (theme) => ({
@@ -21,15 +22,16 @@ export default class MassList extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
-    mass: PropTypes.array.isRequired,
+    massList: PropTypes.array.isRequired,
+    liturgicalYear: PropTypes.string.isRequired,
   }
 
   render() {
-    const {className, classes, mass} = this.props;
+    const {className, classes, massList, liturgicalYear} = this.props;
     return (
       <div className={classNames(classes.root, className)}>
-        {mass.map((item, key) => (
-          <MassCard key={key} item={item} year='yearB' />
+        {massList.map((mass, key) => (
+          <MassCard key={key} mass={mass} liturgicalYear={liturgicalYear} />
         ))}
       </div>
     );

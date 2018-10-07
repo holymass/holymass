@@ -6,18 +6,13 @@ import withRoot from './with_root';
 import Header from './components/header';
 import Main from './components/main';
 import Footer from './components/footer';
-import MassModule from './modules/mass';
-import ChurchModule from './modules/church';
-import SettingsModule from './modules/settings';
-import ErrorModule from './modules/error';
+import routes from './routes';
 
 const styles = (theme) => ({
   root: {
     height: '100%',
   },
 });
-
-const Error404 = () => <ErrorModule code='404' message='NOT FOUND' />;
 
 @withRoot
 @withStyles(styles)
@@ -34,11 +29,14 @@ export default class App extends React.Component {
           <Header />
           <Main>
             <Switch>
-              <Route exact path='/' component={MassModule} />
-              <Route path='/churches' component={ChurchModule} />
-              <Route path='/masses' component={MassModule} />
-              <Route path='/settings' component={SettingsModule} />
-              <Route component={Error404} />
+              {routes.map((route, key) => (
+                <Route
+                  key={key}
+                  exact={route.exact}
+                  path={route.path}
+                  component={route.component}
+                />
+              ))}
             </Switch>
           </Main>
           <Footer />

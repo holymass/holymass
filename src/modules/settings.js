@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import ChangeLanguage from '../components/form/change_language';
+import SetLanguage from '../components/forms/set_language';
+import SetLiturgicalYear from '../components/forms/set_liturgical_year';
 
 const styles = (theme) => ({
   root: {
     display: 'flex',
+    flexDirection: 'column',
   },
 });
 
@@ -19,7 +21,8 @@ export default class SettingsModule extends React.Component {
     const {classes} = this.props;
     return (
       <div className={classes.root}>
-        <ChangeLanguage />
+        <SetLanguage />
+        <SetLiturgicalYear />
       </div>
     );
   }
