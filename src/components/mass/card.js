@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -10,6 +11,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const styles = (theme) => ({
+  root: {
+    padding: theme.spacing.unit,
+  },
   card: {
     cursor: 'pointer',
     minWidth: theme.spacing.unit * 36,
@@ -26,8 +30,9 @@ const styles = (theme) => ({
 @withStyles(styles)
 export default class MassCard extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
   };
 
   state = {
@@ -47,9 +52,9 @@ export default class MassCard extends React.Component {
   };
 
   render() {
-    const {classes, name} = this.props;
+    const {className, classes, name} = this.props;
     return (
-      <div>
+      <div className={classNames(classes.root, className)}>
         <Card className={classes.card} onClick={this.handleDialogOpen}>
           <CardContent>
             <Typography>

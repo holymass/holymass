@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {getMetadata} from '../utils';
@@ -20,13 +21,14 @@ const styles = (theme) => ({
 @withStyles(styles)
 export default class Footer extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
   };
   render() {
-    const {classes} = this.props;
+    const {className, classes} = this.props;
     const icp = getMetadata('footer.icp');
     return (
-      <footer className={classes.root}>
+      <footer className={classNames(classes.root, className)}>
         <Typography align='center'>
           &copy; {new Date().getFullYear()} {getMetadata('domain')}
           <br />

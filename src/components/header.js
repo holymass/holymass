@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 import {withNamespaces} from 'react-i18next';
 import {withStyles} from '@material-ui/core/styles';
@@ -8,9 +9,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
-import HomeIcon from '@material-ui/icons/Home';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
 import SettingsIcon from '@material-ui/icons/Settings';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -21,13 +24,32 @@ import {getMetadata} from '../utils';
 import SearchBar from './search_bar';
 
 const styles = (theme) => ({
-  root: {
+  'root': {
   },
-  flex: {
+  'nav': {
     flex: 1,
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
   },
-  list: {
+  'drawerHeader': {
+    alignItems: 'center',
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    display: 'flex',
+    height: theme.spacing.unit * 7,
+    justifyContent: 'space-between',
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit * 3,
+    paddingRight: theme.spacing.unit * 3,
+  },
+  'drawerNav': {
     width: theme.spacing.unit * 30,
+  },
+  '@media (min-width: 600px)': {
+    drawerHeader: {
+      height: theme.spacing.unit * 8,
+    },
   },
 });
 
@@ -35,6 +57,7 @@ const styles = (theme) => ({
 @withStyles(styles)
 export default class Header extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired,
   };
@@ -52,10 +75,10 @@ export default class Header extends React.Component {
   }
 
   render() {
-    const {classes, t} = this.props;
+    const {className, classes, t} = this.props;
     const brand = getMetadata('brand');
     return (
-      <AppBar position='static' className={classes.root}>
+      <AppBar position='static' className={classNames(classes.root, className)}>
         <Toolbar>
           <IconButton
             color='inherit'
@@ -64,13 +87,11 @@ export default class Header extends React.Component {
           >
             <MenuIcon />
           </IconButton>
-          <div className={classes.flex}>
-            <Hidden smDown implementation='css'>
-              <Typography color='inherit' variant='title'>
-                {brand}
-              </Typography>
-            </Hidden>
-          </div>
+          <Hidden className={classes.nav} smDown implementation='css'>
+            <Typography color='inherit' variant='title'>
+              {brand}
+            </Typography>
+          </Hidden>
           <SearchBar />
         </Toolbar>
         <Drawer
@@ -78,44 +99,46 @@ export default class Header extends React.Component {
           open={this.state.open}
           onClose={this.handleDrawerClose}
         >
-          <List className={classes.list} component='nav'>
-            <ListItem
-              button
-              component={Link}
-              onClick={this.handleDrawerClose}
-              to='/'
-            >
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText primary={brand} />
-            </ListItem>
-            {navLinks.map((link, key) =>
+          <Paper className={classes.drawerHeader} square>
+            <Typography align='center' color='inherit' variant='title'>
+              {brand}
+            </Typography>
+            <IconButton color='inherit' onClick={this.handleDrawerClose}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </Paper>
+          <nav className={classes.drawerNav}>
+            <List>
+              {navLinks.map((link, key) =>
+                <ListItem
+                  button
+                  component={Link}
+                  key={key}
+                  onClick={this.handleDrawerClose}
+                  to={link.to}
+                >
+                  <ListItemIcon>
+                    {link.icon}
+                  </ListItemIcon>
+                  <ListItemText primary={t(link.text)} />
+                </ListItem>
+              )}
+            </List>
+            <Divider />
+            <List>
               <ListItem
                 button
                 component={Link}
-                key={key}
                 onClick={this.handleDrawerClose}
-                to={link.to}
+                to='/settings'
               >
                 <ListItemIcon>
-                  {link.icon}
+                  <SettingsIcon />
                 </ListItemIcon>
-                <ListItemText primary={t(link.text)} />
+                <ListItemText primary={t('Settings')} />
               </ListItem>
-            )}
-            <ListItem
-              button
-              component={Link}
-              onClick={this.handleDrawerClose}
-              to='/settings'
-            >
-              <ListItemIcon>
-                <SettingsIcon />
-              </ListItemIcon>
-              <ListItemText primary={t('Settings')} />
-            </ListItem>
-          </List>
+            </List>
+          </nav>
         </Drawer>
       </AppBar>
     );

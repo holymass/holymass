@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import MassGrid from '../components/mass/grid';
+import MassList from '../components/mass/list';
 
 const styles = (theme) => ({
   root: {
@@ -20,9 +20,7 @@ export default class MassModule extends React.Component {
   render() {
     const {classes} = this.props;
     return (
-      <div className={classes.root}>
-        <MassGrid />
-      </div>
+      <MassList className={classes.root} />
     );
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {connect} from 'react-redux';
 import {filterMass} from '../actions/mass';
 import {withStyles} from '@material-ui/core/styles';
@@ -37,6 +38,7 @@ const styles = (theme) => ({
 @withStyles(styles)
 export default class SearchBar extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     onSearch: PropTypes.func,
     onClear: PropTypes.func,
@@ -78,10 +80,10 @@ export default class SearchBar extends React.Component {
   }
 
   render() {
-    const {classes} = this.props;
+    const {className, classes} = this.props;
     const {show, filter} = this.state;
     return (
-      <div className={classes.root}>
+      <div className={classNames(classes.root, className)}>
         {show && (
           <Input
             autoFocus

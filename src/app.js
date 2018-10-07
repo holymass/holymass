@@ -36,6 +36,7 @@ export default class App extends React.Component {
             <Switch>
               <Route exact path='/' component={MassModule} />
               <Route path='/churches' component={ChurchesModule} />
+              <Route path='/missa' component={MassModule} />
               <Route path='/settings' component={SettingsModule} />
               <Route component={Error404} />
             </Switch>
