@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
 import withRoot from './with_root';
-import Header from './components/header';
-import Main from './components/main';
-import Footer from './components/footer';
+import Header from 'components/header';
+import Main from 'components/main';
+import Footer from 'components/footer';
 import routes from './routes';
 
 const styles = (theme) => ({

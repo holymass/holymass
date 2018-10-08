@@ -21,6 +21,9 @@ module.exports = (env, argv) => {
       chunkFilename: prodMode ? 'js/[id].[chunkhash].js' : 'js/[id].js',
     },
     resolve: {
+      alias: {
+        'components': path.resolve(__dirname, 'src/components'),
+      },
       extensions: ['.js', '.jsx', '.json'],
     },
     module: {

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import SetLanguage from '../components/forms/set_language';
-import SetLiturgicalYear from '../components/forms/set_liturgical_year';
+import SetLanguage from 'components/forms/set_language';
+import SetLiturgicalYear from 'components/forms/set_liturgical_year';
 
 const styles = (theme) => ({
   root: {

@@ -1,12 +1,20 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceMap": true,
+    "baseUrl": "./",
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "es6"
+    ],
     "module": "commonjs",
-    "target": "es6",
-    "jsx": "react"
+    "paths": {
+      "components/*": ["src/components/*"]
+    },
+    "sourceMap": true,
+    "target": "es6"
   },
   "include": [
-    "./src/**/*"
+    "src/**/*"
   ]
 }
