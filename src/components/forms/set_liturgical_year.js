@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import {connect} from 'react-redux';
 import {withNamespaces} from 'react-i18next';
 import {withStyles} from '@material-ui/core/styles';
@@ -32,7 +31,6 @@ const styles = (theme) => ({
 @withStyles(styles)
 export default class SetLiturgicalYear extends React.Component {
   static propTypes = {
-    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     liturgicalYear: PropTypes.string.isRequired,
@@ -40,36 +38,35 @@ export default class SetLiturgicalYear extends React.Component {
   };
 
   render() {
-    const {className, classes, onChange, liturgicalYear, t} = this.props;
+    const {classes, onChange, liturgicalYear, t} = this.props;
     return (
-      <FormControl
-        className={classNames(classes.root, className)}
-        component="fieldset"
-      >
-        <FormLabel component="legend">{t('Liturgical Year')}</FormLabel>
-        <RadioGroup
-          aria-label="Liturgical Year"
-          name="settings/setLiturgicalYear"
-          value={liturgicalYear}
-          onChange={onChange}
-        >
-          <FormControlLabel
-            value="yearA"
-            control={<Radio />}
-            label={t('Year A')}
-          />
-          <FormControlLabel
-            value="yearB"
-            control={<Radio />}
-            label={t('Year B')}
-          />
-          <FormControlLabel
-            value="yearC"
-            control={<Radio />}
-            label={t('Year C')}
-          />
-        </RadioGroup>
-      </FormControl>
+      <div className={classes.root}>
+        <FormControl component="fieldset">
+          <FormLabel component="legend">{t('Liturgical Year')}</FormLabel>
+          <RadioGroup
+            aria-label="Liturgical Year"
+            name="settings/setLiturgicalYear"
+            value={liturgicalYear}
+            onChange={onChange}
+          >
+            <FormControlLabel
+              value="yearA"
+              control={<Radio />}
+              label={t('Year A')}
+            />
+            <FormControlLabel
+              value="yearB"
+              control={<Radio />}
+              label={t('Year B')}
+            />
+            <FormControlLabel
+              value="yearC"
+              control={<Radio />}
+              label={t('Year C')}
+            />
+          </RadioGroup>
+        </FormControl>
+      </div>
     );
   }
 }

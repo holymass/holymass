@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 import {withNamespaces} from 'react-i18next';
 import {withStyles} from '@material-ui/core/styles';
@@ -9,53 +8,47 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
-import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import SettingsIcon from '@material-ui/icons/Settings';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import {navLinks} from '../nav_links.js';
+import {navLinks} from '../nav_links';
 import {getMetadata} from '../utils';
-import SearchBar from './search_bar';
+import Search from './search';
 
+const drawerWidth = 240;
 const styles = (theme) => ({
   'root': {
+    width: '100%',
+  },
+  'appBar': {
+    zIndex: theme.zIndex.drawer + 1,
   },
   'brandLink': {
     color: theme.palette.primary.contrastText,
     textDecoration: 'none',
   },
   'nav': {
+    alignItems: 'center',
+    display: 'flex',
     flex: 1,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
   },
   'drawerHeader': {
+    ...theme.mixins.toolbar,
     alignItems: 'center',
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
     display: 'flex',
-    height: theme.spacing.unit * 7,
-    justifyContent: 'space-between',
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
     paddingLeft: theme.spacing.unit * 3,
     paddingRight: theme.spacing.unit * 3,
   },
-  'drawerNav': {
-    width: theme.spacing.unit * 30,
-  },
-  '@media (min-width: 600px)': {
-    drawerHeader: {
-      height: theme.spacing.unit * 8,
-    },
+  'drawerPaper': {
+    width: drawerWidth,
   },
 });
+
 
 @withNamespaces('base')
 @withStyles(styles)
@@ -67,95 +60,111 @@ export default class Header extends React.Component {
   };
 
   state = {
-    open: false,
-  }
+    mobileOpen: false,
+  };
 
-  handleDrawerOpen = () => {
-    this.setState({open: true});
-  }
-
-  handleDrawerClose = () => {
-    this.setState({open: false});
-  }
+  handleDrawerToggle = () => {
+    this.setState((state) => ({
+      mobileOpen: !state.mobileOpen}
+    ));
+  };
 
   render() {
-    const {className, classes, t} = this.props;
-    const brand = getMetadata('brand');
-    return (
-      <AppBar position='static' className={classNames(classes.root, className)}>
-        <Toolbar>
-          <IconButton
-            color='inherit'
-            aria-label='Menu'
-            onClick={this.handleDrawerOpen}
+    const {classes, t} = this.props;
+    const Brand = ({color}) => (
+      <Link
+        className={classes.brandLink}
+        onClick={this.handleDrawerClose}
+        to='/'
+      >
+        <Typography color={color} variant='title'>
+          {getMetadata('brand')}
+        </Typography>
+      </Link>
+    );
+    const nav = (
+      <nav>
+        <div className={classes.drawerHeader}>
+          {this.state.mobileOpen ? (
+            <Brand />
+          ) : null}
+        </div>
+        <Divider />
+        <List>
+          {navLinks.map((link, key) =>
+            <ListItem
+              button
+              component={Link}
+              key={key}
+              onClick={this.handleDrawerToggle}
+              to={link.to}
+            >
+              <ListItemIcon>
+                {link.icon}
+              </ListItemIcon>
+              <ListItemText primary={t(link.text)} />
+            </ListItem>
+          )}
+        </List>
+        <Divider />
+        <List>
+          <ListItem
+            button
+            component={Link}
+            onClick={this.handleDrawerToggle}
+            to='/settings'
           >
-            <MenuIcon />
-          </IconButton>
-          <Hidden className={classes.nav} smDown implementation='css'>
-            <Link
-              className={classes.brandLink}
-              to='/'
-            >
-              <Typography color='inherit' variant='title'>
-                {brand}
-              </Typography>
-            </Link>
-          </Hidden>
-          <SearchBar />
-        </Toolbar>
-        <Drawer
-          anchor='left'
-          open={this.state.open}
-          onClose={this.handleDrawerClose}
-        >
-          <Paper square className={classes.drawerHeader}>
-            <Link
-              className={classes.brandLink}
-              onClick={this.handleDrawerClose}
-              to='/'
-            >
-              <Typography color='inherit' variant='title'>
-                {brand}
-              </Typography>
-            </Link>
-            <IconButton color='inherit' onClick={this.handleDrawerClose}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </Paper>
-          <nav className={classes.drawerNav}>
-            <List>
-              {navLinks.map((link, key) =>
-                <ListItem
-                  button
-                  component={Link}
-                  key={key}
-                  onClick={this.handleDrawerClose}
-                  to={link.to}
+            <ListItemIcon>
+              <SettingsIcon />
+            </ListItemIcon>
+            <ListItemText primary={t('Settings')} />
+          </ListItem>
+        </List>
+      </nav>
+    );
+    return (
+      <div className={classes.root}>
+        <AppBar className={classes.appBar}>
+          <Toolbar>
+            <div className={classes.nav}>
+              <Hidden mdUp>
+                <IconButton
+                  color='inherit'
+                  aria-label='Menu'
+                  onClick={this.handleDrawerToggle}
                 >
-                  <ListItemIcon>
-                    {link.icon}
-                  </ListItemIcon>
-                  <ListItemText primary={t(link.text)} />
-                </ListItem>
-              )}
-            </List>
-            <Divider />
-            <List>
-              <ListItem
-                button
-                component={Link}
-                onClick={this.handleDrawerClose}
-                to='/settings'
-              >
-                <ListItemIcon>
-                  <SettingsIcon />
-                </ListItemIcon>
-                <ListItemText primary={t('Settings')} />
-              </ListItem>
-            </List>
-          </nav>
-        </Drawer>
-      </AppBar>
+                  <MenuIcon />
+                </IconButton>
+              </Hidden>
+              <Hidden smDown implementation='css'>
+                <Brand color='inherit' />
+              </Hidden>
+            </div>
+            <Search />
+          </Toolbar>
+        </AppBar>
+        <Hidden mdUp>
+          <Drawer
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            onClose={this.handleDrawerToggle}
+            open={this.state.mobileOpen}
+          >
+            {nav}
+          </Drawer>
+        </Hidden>
+        <Hidden smDown implementation='css'>
+          <Drawer
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            variant='permanent'
+          >
+            {nav}
+          </Drawer>
+        </Hidden>
+      </div>
     );
   }
 }

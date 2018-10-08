@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import {withNamespaces} from 'react-i18next';
 import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -29,7 +28,6 @@ const styles = (theme) => ({
 @withStyles(styles)
 export default class MassCard extends React.Component {
   static propTypes = {
-    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     liturgicalYear: PropTypes.string.isRequired,
     mass: PropTypes.object.isRequired,
@@ -65,10 +63,10 @@ export default class MassCard extends React.Component {
   };
 
   render() {
-    const {className, classes, liturgicalYear, mass, t} = this.props;
+    const {classes, liturgicalYear, mass, t} = this.props;
     const curMass = mass[liturgicalYear];
     return (
-      <div className={classNames(classes.root, className)}>
+      <div className={classes.root}>
         <Card className={classes.card} onClick={this.handleClick}>
           <CardHeader
             title={mass.name}
