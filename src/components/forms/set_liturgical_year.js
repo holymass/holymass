@@ -41,26 +41,26 @@ export default class SetLiturgicalYear extends React.Component {
     const {classes, onChange, liturgicalYear, t} = this.props;
     return (
       <div className={classes.root}>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">{t('Liturgical Year')}</FormLabel>
+        <FormControl component='fieldset'>
+          <FormLabel component='legend'>{t('Liturgical Year')}</FormLabel>
           <RadioGroup
-            aria-label="Liturgical Year"
-            name="settings/setLiturgicalYear"
+            aria-label='Liturgical Year'
+            name='settings/setLiturgicalYear'
             value={liturgicalYear}
             onChange={onChange}
           >
             <FormControlLabel
-              value="yearA"
+              value='yearA'
               control={<Radio />}
               label={t('Year A')}
             />
             <FormControlLabel
-              value="yearB"
+              value='yearB'
               control={<Radio />}
               label={t('Year B')}
             />
             <FormControlLabel
-              value="yearC"
+              value='yearC'
               control={<Radio />}
               label={t('Year C')}
             />

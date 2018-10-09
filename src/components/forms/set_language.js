@@ -41,17 +41,17 @@ export default class SetLanguage extends React.Component {
     const {classes, onChange, language, t} = this.props;
     return (
       <div className={classes.root}>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">{t('Language')}</FormLabel>
+        <FormControl component='fieldset'>
+          <FormLabel component='legend'>{t('Language')}</FormLabel>
           <RadioGroup
-            aria-label="Language"
-            name="settings/setLanguage"
+            aria-label='Language'
+            name='settings/setLanguage'
             value={language}
             onChange={onChange}
           >
-            <FormControlLabel value="en" control={<Radio />} label="English" />
-            <FormControlLabel value="zh_CN" control={<Radio />} label="简体中文" />
-            <FormControlLabel value="zh_TW" control={<Radio />} label="繁體中文" />
+            <FormControlLabel value='en' control={<Radio />} label='English' />
+            <FormControlLabel value='zh_CN' control={<Radio />} label='简体中文' />
+            <FormControlLabel value='zh_TW' control={<Radio />} label='繁體中文' />
           </RadioGroup>
         </FormControl>
       </div>
