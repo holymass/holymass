@@ -18,12 +18,15 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import {navLinks} from '../nav_links';
 import {getMetadata} from '../utils';
+import Footer from './footer';
 import Search from './search';
 
 const drawerWidth = 240;
 const styles = (theme) => ({
   'root': {
     width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
   'appBar': {
     zIndex: theme.zIndex.drawer + 1,
@@ -36,6 +39,13 @@ const styles = (theme) => ({
     alignItems: 'center',
     display: 'flex',
     flex: 1,
+  },
+  'toolbar': theme.mixins.toolbar,
+  'drawer': {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: '100%',
   },
   'drawerHeader': {
     ...theme.mixins.toolbar,
@@ -54,7 +64,6 @@ const styles = (theme) => ({
 @withStyles(styles)
 export default class Header extends React.Component {
   static propTypes = {
-    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired,
   };
@@ -82,48 +91,52 @@ export default class Header extends React.Component {
         </Typography>
       </Link>
     );
-    const nav = (
-      <nav>
-        <div className={classes.drawerHeader}>
-          {this.state.mobileOpen ? (
+    const drawer = (
+      <div className={classes.drawer}>
+        <nav>
+          <div className={classes.drawerHeader}>
+            {this.state.mobileOpen ? (
             <Brand />
           ) : null}
-        </div>
-        <Divider />
-        <List>
-          {navLinks.map((link, key) =>
+          </div>
+          <Divider />
+          <List>
+            {navLinks.map((link, key) =>
+              <ListItem
+                button
+                component={Link}
+                key={key}
+                onClick={this.handleDrawerToggle}
+                to={link.to}
+              >
+                <ListItemIcon>
+                  {link.icon}
+                </ListItemIcon>
+                <ListItemText primary={t(link.text)} />
+              </ListItem>
+            )}
+          </List>
+          <Divider />
+          <List>
             <ListItem
               button
               component={Link}
-              key={key}
               onClick={this.handleDrawerToggle}
-              to={link.to}
+              to='/settings'
             >
               <ListItemIcon>
-                {link.icon}
+                <SettingsIcon />
               </ListItemIcon>
-              <ListItemText primary={t(link.text)} />
+              <ListItemText primary={t('Settings')} />
             </ListItem>
-          )}
-        </List>
-        <Divider />
-        <List>
-          <ListItem
-            button
-            component={Link}
-            onClick={this.handleDrawerToggle}
-            to='/settings'
-          >
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText primary={t('Settings')} />
-          </ListItem>
-        </List>
-      </nav>
+          </List>
+        </nav>
+        <Footer />
+      </div>
     );
     return (
       <div className={classes.root}>
+        <div className={classes.toolbar} />
         <AppBar className={classes.appBar}>
           <Toolbar>
             <div className={classes.nav}>
@@ -151,7 +164,7 @@ export default class Header extends React.Component {
             onClose={this.handleDrawerToggle}
             open={this.state.mobileOpen}
           >
-            {nav}
+            {drawer}
           </Drawer>
         </Hidden>
         <Hidden smDown implementation='css'>
@@ -161,7 +174,7 @@ export default class Header extends React.Component {
             }}
             variant='permanent'
           >
-            {nav}
+            {drawer}
           </Drawer>
         </Hidden>
       </div>

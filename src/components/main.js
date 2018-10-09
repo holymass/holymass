@@ -4,9 +4,15 @@ import {withStyles} from '@material-ui/core/styles';
 
 const styles = (theme) => ({
   root: {
-    minHeight: '100%',
+    height: 'calc(100vh - 56px)',
+    [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {
+      height: 'calc(100vh - 48px)',
+    },
+    [theme.breakpoints.up('sm')]: {
+      height: 'calc(100vh - 64px)',
+    },
+    overflowY: 'auto',
   },
-  toolbar: theme.mixins.toolbar,
 });
 
 @withStyles(styles)
@@ -20,7 +26,6 @@ export default class Main extends React.Component {
     const {children, classes} = this.props;
     return (
       <main className={classes.root}>
-        <div className={classes.toolbar} />
         {children}
       </main>
     );

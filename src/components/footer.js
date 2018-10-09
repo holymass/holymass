@@ -8,10 +8,9 @@ const styles = (theme) => ({
   root: {
     padding: theme.spacing.unit,
     zIndex: 2,
-    fontSize: '0.625rem',
   },
   icp: {
-    color: theme.palette.text.primary,
+    color: theme.palette.text.secondary,
     textDecoration: 'none',
   },
 });
@@ -26,7 +25,7 @@ export default class Footer extends React.Component {
     const icp = getMetadata('footer.icp');
     return (
       <footer className={classes.root}>
-        <Typography align='center'>
+        <Typography align='center' variant='caption'>
           &copy; {new Date().getFullYear()} {getMetadata('domain')}
           <br />
           <a

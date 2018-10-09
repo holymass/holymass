@@ -5,14 +5,11 @@ import {withStyles} from '@material-ui/core/styles';
 import withRoot from './with_root';
 import Header from 'components/header';
 import Main from 'components/main';
-import Footer from 'components/footer';
 import routes from './routes';
 
 const drawerWidth = 240;
 const styles = (theme) => ({
   root: {
-    height: '100%',
-    width: '100%',
     [theme.breakpoints.up('md')]: {
       marginLeft: drawerWidth,
       width: `calc(100% - ${drawerWidth}px)`,
@@ -32,7 +29,7 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <div className={classes.root}>
-          <Header drawerWidth={drawerWidth} />
+          <Header />
           <Main>
             <Switch>
               {routes.map((route, key) => (
@@ -45,7 +42,6 @@ export default class App extends React.Component {
               ))}
             </Switch>
           </Main>
-          <Footer />
         </div>
       </BrowserRouter>
     );
