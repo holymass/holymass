@@ -84,6 +84,7 @@ export default class MassCard extends React.Component {
 
   render() {
     const {classes, liturgicalYear, mass, t} = this.props;
+    const curYear = this.getLiturgicalYear();
     const curMass = mass[liturgicalYear];
     const avatar = (
       <Avatar className={classes.avatar} onClick={this.handleLaunchClick}>
@@ -109,7 +110,7 @@ export default class MassCard extends React.Component {
             action={action}
             avatar={avatar}
             onClick={this.handleExpandClick}
-            subheader={mass.date || mass.name}
+            subheader={`${curYear} &#8226 ${mass.date}`}
             title={mass.name}
           />
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
