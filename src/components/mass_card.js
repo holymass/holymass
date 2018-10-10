@@ -96,7 +96,6 @@ export default class MassCard extends React.Component {
         className={classNames(classes.expand, {
           [classes.expandOpen]: this.state.expanded,
         })}
-        onClick={this.handleExpandClick}
         aria-expanded={this.state.expanded}
         aria-label="Show more"
       >
@@ -110,7 +109,7 @@ export default class MassCard extends React.Component {
             action={action}
             avatar={avatar}
             onClick={this.handleExpandClick}
-            subheader={`${curYear} &#8226 ${mass.date}`}
+            subheader={`${curYear} \u2022 ${mass.name}`}
             title={mass.name}
           />
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
