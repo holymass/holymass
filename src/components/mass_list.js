@@ -11,7 +11,24 @@ const mapStateToProps = (state) => ({
 
 const styles = (theme) => ({
   root: {
+    width: '100%',
+    [`${theme.breakpoints.up('md')}`]: {
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      width: 'auto',
+    },
+  },
+  massList: {
     padding: theme.spacing.unit,
+    minWidth: theme.spacing.unit * 36,
+    [`${theme.breakpoints.up('md')}`]: {
+      maxWidth: `calc(40vw + ${theme.spacing.unit * 2}px)`,
+      width: 'calc(100vw - 255px)',
+    },
+    [`${theme.breakpoints.up('lg')}`]: {
+      maxWidth: `calc(50vw + ${theme.spacing.unit * 10}px)`,
+      width: 'calc(100vw - 255px)',
+    },
   },
 });
 
@@ -28,9 +45,11 @@ export default class MassList extends React.Component {
     const {classes, massList, liturgicalYear} = this.props;
     return (
       <div className={classes.root}>
-        {massList.map((mass, key) => (
-          <MassCard key={key} mass={mass} liturgicalYear={liturgicalYear} />
-        ))}
+        <div className={classes.massList}>
+          {massList.map((mass, key) => (
+            <MassCard key={key} mass={mass} liturgicalYear={liturgicalYear} />
+          ))}
+        </div>
       </div>
     );
   }

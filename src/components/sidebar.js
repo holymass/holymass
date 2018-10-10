@@ -1,23 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
+import Hidden from '@material-ui/core/Hidden';
 
 const styles = (theme) => ({
   root: {
-    height: 'calc(100vh - 56px)',
-    [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {
-      height: 'calc(100vh - 48px)',
-    },
-    [theme.breakpoints.up('sm')]: {
-      height: 'calc(100vh - 64px)',
-    },
-    overflowX: 'hidden',
-    overflowY: 'auto',
+    width: theme.spacing.unit * 40,
   },
 });
 
 @withStyles(styles)
-export default class Main extends React.Component {
+export default class Sidebar extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     classes: PropTypes.object.isRequired,
@@ -26,9 +19,9 @@ export default class Main extends React.Component {
   render() {
     const {children, classes} = this.props;
     return (
-      <main className={classes.root}>
+      <Hidden smDown className={classes.root} implementation='css'>
         {children}
-      </main>
+      </Hidden>
     );
   }
 }

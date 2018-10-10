@@ -25,8 +25,6 @@ const styles = (theme) => ({
   },
   card: {
     cursor: 'pointer',
-    minWidth: theme.spacing.unit * 36,
-    maxWidth: theme.spacing.unit * 120,
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -109,23 +107,19 @@ export default class MassCard extends React.Component {
             action={action}
             avatar={avatar}
             onClick={this.handleExpandClick}
-            subheader={`${curYear} \u2022 ${mass.name}`}
+            subheader={`${curYear} \u2022 ${curMass.date}`}
             title={mass.name}
           />
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography>
-                {t('First Reading')}:
-                {curMass && curMass.firstReading}
+                {`${t('First Reading')}:\n${curMass.firstReading}`}
                 <br />
-                {t('Responsorial Psalm')}:
-                {curMass && curMass.responsorialPsalm}
+                {t('Responsorial Psalm')}: {curMass.responsorialPsalm}
                 <br />
-                {t('Second Reading')}:
-                {curMass && curMass.secondReading}
+                {t('Second Reading')}: {curMass.secondReading}
                 <br />
-                {t('Gospel')}:
-                {curMass && curMass.gospel}
+                {t('Gospel')}: {curMass.gospel}
               </Typography>
             </CardContent>
           </Collapse>
