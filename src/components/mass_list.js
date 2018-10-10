@@ -19,7 +19,6 @@ const styles = (theme) => ({
     },
   },
   massList: {
-    padding: theme.spacing.unit,
     minWidth: theme.spacing.unit * 36,
     [`${theme.breakpoints.up('md')}`]: {
       maxWidth: `calc(40vw + ${theme.spacing.unit * 2}px)`,

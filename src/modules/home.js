@@ -10,6 +10,7 @@ const styles = (theme) => ({
   root: {
     display: 'flex',
     justifyContent: 'space-between',
+    padding: theme.spacing.unit,
   },
 });
 
