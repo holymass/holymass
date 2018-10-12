@@ -140,7 +140,7 @@ export default class Header extends React.Component {
         <AppBar className={classes.appBar}>
           <Toolbar>
             <div className={classes.nav}>
-              <Hidden mdUp>
+              <Hidden mdUp implementation='css'>
                 <IconButton
                   color='inherit'
                   aria-label='Menu'
