@@ -17,8 +17,6 @@ const styles = (theme) => ({
 export default class HomeModule extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    onSearch: PropTypes.func,
-    onClear: PropTypes.func,
   };
 
   render() {

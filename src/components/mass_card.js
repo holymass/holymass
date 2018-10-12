@@ -11,7 +11,6 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LaunchIcon from '@material-ui/icons/Launch';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
   root: {
@@ -43,6 +42,11 @@ const styles = (theme) => ({
   },
 });
 
+const yearMap = {
+  'yearA': '甲年',
+  'yearB': '乙年',
+  'yearC': '丙年',
+};
 
 @withNamespaces('mass')
 @withStyles(styles)
@@ -65,24 +69,15 @@ export default class MassCard extends React.Component {
 
   handleLaunchClick = (e) => {
     e.stopPropagation();
-    const year = this.getLiturgicalYear();
+    const {liturgicalYear} = this.props;
+    const year = yearMap[liturgicalYear];
     const name = this.props.mass.name;
     const url = `/assets/masses/index.html?m=${year}/${name}`;
     open(url, '_blank');
   };
 
-  getLiturgicalYear = () => {
-    const yearMap = {
-      yearA: '甲年',
-      yearB: '乙年',
-      yearC: '丙年',
-    };
-    return yearMap[this.props.liturgicalYear];
-  }
-
   render() {
     const {classes, liturgicalYear, mass, t} = this.props;
-    const curYear = this.getLiturgicalYear();
     const curMass = mass[liturgicalYear];
     const avatar = (
       <Avatar className={classes.avatar} onClick={this.handleLaunchClick}>
@@ -107,20 +102,20 @@ export default class MassCard extends React.Component {
             action={action}
             avatar={avatar}
             onClick={this.handleExpandClick}
-            subheader={`${curYear} \u2022 ${curMass.date}`}
+            subheader={`${t(liturgicalYear)} \u2022 ${curMass.date}`}
             title={mass.name}
           />
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <Typography>
-                {`${t('First Reading')}:\n${curMass.firstReading}`}
+              <pre>
+                {`${t('First Reading')}:\t${curMass.firstReading}`}
                 <br />
-                {t('Responsorial Psalm')}: {curMass.responsorialPsalm}
+                {`${t('Responsorial Psalm')}:\t${curMass.responsorialPsalm}`}
                 <br />
-                {t('Second Reading')}: {curMass.secondReading}
+                {`${t('Second Reading')}:\t${curMass.secondReading}`}
                 <br />
-                {t('Gospel')}: {curMass.gospel}
-              </Typography>
+                {`${t('Gospel')}:\t${curMass.gospel}`}
+              </pre>
             </CardContent>
           </Collapse>
         </Card>
