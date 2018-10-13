@@ -9,6 +9,9 @@ const theme = createMuiTheme({
     primary: teal,
     secondary: orange,
   },
+  typography: {
+    fontFamily: 'PingFang SC, Microsoft YaHei, STHeiti, Open Sans, sans-serif',
+  },
 });
 
 export default (Component) => {
