@@ -161,16 +161,16 @@
     "year_b": {
       "date": "2018-01-01",
       "first_reading": "户6:22-27",
-      "responsorial_psalm": "咏67:2-3,5,6,8",
+      "responsorial_psalm": "咏67:2-3,5-6,8",
       "second_reading": "迦4:4-7",
       "gospel": "路2:16-21"
     },
     "year_c": {
-      "date": "",
-      "first_reading": "",
-      "responsorial_psalm": "",
-      "second_reading": "",
-      "gospel": ""
+      "date": "2019-01-01",
+      "first_reading": "户6:22-27",
+      "responsorial_psalm": "咏67:2-3,5-6,8",
+      "second_reading": "迦4:4-7",
+      "gospel": "路2:16-21"
     }
   },
   {
@@ -191,11 +191,11 @@
       "gospel": "玛2:1-12"
     },
     "year_c": {
-      "date": "",
-      "first_reading": "",
-      "responsorial_psalm": "",
-      "second_reading": "",
-      "gospel": ""
+      "date": "2016-01-06",
+      "first_reading": "依60:1-6",
+      "responsorial_psalm": "咏72:1-2,7-8,10-11,12-13",
+      "second_reading": "弗3:2-3,5-6",
+      "gospel": "玛2:1-12"
     }
   },
   {
@@ -216,11 +216,11 @@
       "gospel": "谷1:7-11"
     },
     "year_c": {
-      "date": "",
-      "first_reading": "",
-      "responsorial_psalm": "",
-      "second_reading": "",
-      "gospel": ""
+      "date": "2016-01-10",
+      "first_reading": "依40:1-5,9-11",
+      "responsorial_psalm": "咏104:1-4,24-25,27-28,29-30",
+      "second_reading": "铎2:11-14,3:4-7",
+      "gospel": "路3:15-16,21-22"
     }
   },
   {
@@ -241,11 +241,11 @@
       "gospel": "若1:35-42"
     },
     "year_c": {
-      "date": "",
-      "first_reading": "",
-      "responsorial_psalm": "",
-      "second_reading": "",
-      "gospel": ""
+      "date": "2016-01-17",
+      "first_reading": "依62:1-5",
+      "responsorial_psalm": "咏96:1-2,2-3,7-8,9-10",
+      "second_reading": "格前12:4-11",
+      "gospel": "若2:1-12"
     }
   },
   {
@@ -266,11 +266,11 @@
       "gospel": "谷1:14-20"
     },
     "year_c": {
-      "date": "",
-      "first_reading": "",
-      "responsorial_psalm": "",
-      "second_reading": "",
-      "gospel": ""
+      "date": "2016-01-24",
+      "first_reading": "厄下8:2-4,5-6,8-10",
+      "responsorial_psalm": "咏19:8,9,10,15",
+      "second_reading": "格前12:12-30",
+      "gospel": "路1:1-4;4:14-21"
     }
   },
   {
@@ -291,11 +291,11 @@
       "gospel": "谷1:21b-28"
     },
     "year_c": {
-      "date": "",
-      "first_reading": "",
-      "responsorial_psalm": "",
-      "second_reading": "",
-      "gospel": ""
+      "date": "2016-01-31",
+      "first_reading": "耶1:4-5,17-19",
+      "responsorial_psalm": "咏71:1-2,3-4,5-6,15,17",
+      "second_reading": "格前12:31-13:13",
+      "gospel": "路4:21-30"
     }
   },
   {
@@ -316,11 +316,11 @@
       "gospel": "谷1:29-39"
     },
     "year_c": {
-      "date": "",
-      "first_reading": "",
-      "responsorial_psalm": "",
-      "second_reading": "",
-      "gospel": ""
+      "date": "2016-02-07",
+      "first_reading": "依6:1-2,3-8",
+      "responsorial_psalm": "咏138:1-2,2-3,4-5,7-8",
+      "second_reading": "格前15:1-11",
+      "gospel": "谷5:1-11"
     }
   },
   {
@@ -416,11 +416,11 @@
       "gospel": "玛6:1-6,16-18"
     },
     "year_c": {
-      "date": "",
-      "first_reading": "",
-      "responsorial_psalm": "",
-      "second_reading": "",
-      "gospel": ""
+      "date": "2016-02-10",
+      "first_reading": "岳2:12-18",
+      "responsorial_psalm": "咏51:3-6a;12-13;14,17",
+      "second_reading": "格后5:20-6:2",
+      "gospel": "玛6:1-6,16-18"
     }
   },
   {
@@ -441,11 +441,11 @@
       "gospel": "谷1:12-15"
     },
     "year_c": {
-      "date": "",
-      "first_reading": "",
-      "responsorial_psalm": "",
-      "second_reading": "",
-      "gospel": ""
+      "date": "2016-02-14",
+      "first_reading": "申26:4-10",
+      "responsorial_psalm": "咏91:1-2,10-11,12-13,14-15",
+      "second_reading": "罗10:8-13",
+      "gospel": "路4:1-13"
     }
   },
   {

@@ -22,7 +22,7 @@ const styles = (theme) => ({
       backgroundColor: theme.palette.primary.main,
     },
   },
-  card: {
+  cardHeader: {
     cursor: 'pointer',
   },
   expand: {
@@ -97,10 +97,11 @@ export default class MassCard extends React.Component {
     );
     return (
       <div className={classes.root}>
-        <Card className={classes.card}>
+        <Card>
           <CardHeader
             action={action}
             avatar={avatar}
+            className={classes.cardHeader}
             onClick={this.handleExpandClick}
             subheader={`${t(liturgicalYear)} \u2022 ${curMass.date}`}
             title={mass.name}
