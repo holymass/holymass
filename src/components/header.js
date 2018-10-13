@@ -5,7 +5,6 @@ import {withNamespaces} from 'react-i18next';
 import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
@@ -16,10 +15,10 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Brand from 'components/brand';
+import Footer from 'components/footer';
+import Search from 'components/search';
 import {navLinks} from '../nav_links';
-import {getMetadata} from '../utils';
-import Footer from './footer';
-import Search from './search';
 
 const drawerWidth = 240;
 const styles = (theme) => ({
@@ -30,10 +29,6 @@ const styles = (theme) => ({
   },
   'appBar': {
     zIndex: theme.zIndex.drawer + 1,
-  },
-  'brandLink': {
-    color: theme.palette.primary.contrastText,
-    textDecoration: 'none',
   },
   'nav': {
     alignItems: 'center',
@@ -80,24 +75,12 @@ export default class Header extends React.Component {
 
   render() {
     const {classes, t} = this.props;
-    const Brand = ({color}) => (
-      <Link
-        className={classes.brandLink}
-        onClick={this.handleDrawerClose}
-        to='/'
-      >
-        <Typography color={color} variant='title'>
-          {getMetadata('brand')}
-        </Typography>
-      </Link>
-    );
+    const {mobileOpen} = this.state;
     const drawer = (
       <div className={classes.drawer}>
         <nav>
           <div className={classes.drawerHeader}>
-            {this.state.mobileOpen ? (
-            <Brand />
-          ) : null}
+            {mobileOpen ? (<Brand />) : null}
           </div>
           <Divider />
           <List>
@@ -162,7 +145,7 @@ export default class Header extends React.Component {
               paper: classes.drawerPaper,
             }}
             onClose={this.handleDrawerToggle}
-            open={this.state.mobileOpen}
+            open={mobileOpen}
           >
             {drawer}
           </Drawer>

@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {getMetadata} from '../utils';
+import Action from 'components/action';
 
 const styles = (theme) => ({
   root: {
+    color: theme.palette.text.secondary,
     padding: theme.spacing.unit,
     zIndex: 2,
   },
   icp: {
     color: theme.palette.text.secondary,
-    textDecoration: 'none',
   },
 });
 
@@ -28,13 +29,13 @@ export default class Footer extends React.Component {
         <Typography align='center' variant='caption'>
           &copy; {new Date().getFullYear()} {getMetadata('domain')}
           <br />
-          <a
+          <Action
             className={classes.icp}
             href='http://www.miibeian.gov.cn/'
-            target='_blank' // eslint-disable-line react/jsx-no-target-blank
+            target='_blank'
           >
             {icp}
-          </a>
+          </Action>
         </Typography>
       </footer>
     );

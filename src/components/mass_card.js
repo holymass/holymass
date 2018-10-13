@@ -11,6 +11,8 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LaunchIcon from '@material-ui/icons/Launch';
 import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import Action from 'components/action';
 
 const styles = (theme) => ({
   root: {
@@ -69,12 +71,15 @@ export default class MassCard extends React.Component {
 
   handleLaunchClick = (e) => {
     e.stopPropagation();
+    open(this.getMassLink(), '_blank');
+  };
+
+  getMassLink = (id) => {
     const {liturgicalYear} = this.props;
     const year = yearMap[liturgicalYear];
     const name = this.props.mass.name;
-    const url = `/assets/masses/index.html?m=${year}/${name}`;
-    open(url, '_blank');
-  };
+    return `/assets/masses/index.html?m=${year}/${name}#/${id || ''}`;
+  }
 
   render() {
     const {classes, liturgicalYear, mass, t} = this.props;
@@ -108,15 +113,38 @@ export default class MassCard extends React.Component {
           />
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <pre>
-                {`${t('First Reading')}:\t${curMass.firstReading}`}
-                <br />
-                {`${t('Responsorial Psalm')}:\t${curMass.responsorialPsalm}`}
-                <br />
-                {`${t('Second Reading')}:\t${curMass.secondReading}`}
-                <br />
-                {`${t('Gospel')}:\t${curMass.gospel}`}
-              </pre>
+              <Action
+                href={this.getMassLink('first-reading')}
+                target='_blank'
+              >
+                <Typography color='inherit'>
+                  {`${t('First Reading')}:\t${curMass.firstReading}`}
+                </Typography>
+              </Action>
+              <Action
+                href={this.getMassLink('responsorial-psalm')}
+                target='_blank'
+              >
+                <Typography color='inherit'>
+                  {`${t('Responsorial Psalm')}:\t${curMass.responsorialPsalm}`}
+                </Typography>
+              </Action>
+              <Action
+                href={this.getMassLink('second-reading')}
+                target='_blank'
+              >
+                <Typography color='inherit'>
+                  {`${t('Second Reading')}:\t${curMass.secondReading}`}
+                </Typography>
+              </Action>
+              <Action
+                href={this.getMassLink('gospel')}
+                target='_blank'
+              >
+                <Typography color='inherit'>
+                  {`${t('Gospel')}:\t${curMass.gospel}`}
+                </Typography>
+              </Action>
             </CardContent>
           </Collapse>
         </Card>
