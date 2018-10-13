@@ -1,16 +1,16 @@
 import React from 'react';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import deepOrange from '@material-ui/core/colors/deepOrange';
+import teal from '@material-ui/core/colors/teal';
 import orange from '@material-ui/core/colors/orange';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 const theme = createMuiTheme({
   palette: {
-    primary: deepOrange,
+    primary: teal,
     secondary: orange,
   },
   typography: {
-    fontFamily: 'PingFang SC, Microsoft YaHei, STHeiti, Open Sans, sans-serif',
+    fontFamily: '"PingFang SC", "Microsoft YaHei", "Open Sans", sans-serif',
   },
 });
 

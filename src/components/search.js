@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {filterMass} from '../actions/mass';
+import {withNamespaces} from 'react-i18next';
 import {withStyles} from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
+import {filterMass} from '../actions/mass';
 
 const mapDispatchToProps = (dispatch) => ({
   onClear: () => {
@@ -34,12 +35,14 @@ const styles = (theme) => ({
 });
 
 @connect(null, mapDispatchToProps)
+@withNamespaces('base')
 @withStyles(styles)
 export default class SearchBar extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     onSearch: PropTypes.func,
     onClear: PropTypes.func,
+    t: PropTypes.func.isRequired,
   };
 
   state = {
@@ -78,7 +81,7 @@ export default class SearchBar extends React.Component {
   }
 
   render() {
-    const {classes} = this.props;
+    const {classes, t} = this.props;
     const {show, filter} = this.state;
     return (
       <div className={classes.root}>
@@ -88,7 +91,7 @@ export default class SearchBar extends React.Component {
             disableUnderline
             fullWidth
             className={classes.input}
-            placeholder='Search...'
+            placeholder={`${t('Search')}...`}
             value={filter}
             onBlur={this.handleBlur}
             onChange={this.handleChange}

@@ -7,7 +7,7 @@ import subprocess
 
 
 def pull_svg(source: str, output: str):
-  font = 'PingFang SC, Microsoft YaHei, STHeiti, Open Sans, sans-serif'
+  font = 'PingFang SC, Microsoft YaHei, Open Sans, sans-serif'
   config = {
       'page': 'A5',
       'margin_top': '16',
