@@ -1,10 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import MassList from 'components/mass_list';
-import SetLanguage from 'components/forms/set_language';
-import SetLiturgicalYear from 'components/forms/set_liturgical_year';
 import Sidebar from 'components/sidebar';
+import {loadable} from '../utils';
+
+const MassList = loadable({
+  loader: () => import('components/mass_list'),
+});
+const SetLanguage = loadable({
+  loader: () => import('components/forms/set_language'),
+});
+const SetLiturgicalYear = loadable({
+  loader: () => import('components/forms/set_liturgical_year'),
+});
 
 const styles = (theme) => ({
   root: {

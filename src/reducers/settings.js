@@ -5,8 +5,8 @@ import {
 } from '../actions/settings';
 
 const initialState = {
-  language: localStorage.i18nextLng || 'en',
-  liturgicalYear: localStorage.liturgicalYear ||'yearB',
+  language: 'en',
+  liturgicalYear: 'yearB',
 };
 
 export default (state = initialState, action) => {

@@ -11,6 +11,7 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: '"PingFang SC", "Microsoft YaHei", "Open Sans", sans-serif',
+    useNextVariants: true,
   },
 });
 

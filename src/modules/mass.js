@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import MassList from 'components/mass_list';
-import SetLiturgicalYear from 'components/forms/set_liturgical_year';
 import Sidebar from 'components/sidebar';
+import {loadable} from '../utils';
+
+const MassList = loadable({
+  loader: () => import('components/mass_list'),
+});
+const SetLiturgicalYear = loadable({
+  loader: () => import('components/forms/set_liturgical_year'),
+});
 
 const styles = (theme) => ({
   root: {
@@ -14,7 +20,7 @@ const styles = (theme) => ({
 });
 
 @withStyles(styles)
-export default class HomeModule extends React.Component {
+export default class MassModule extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
   };

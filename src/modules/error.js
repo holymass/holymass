@@ -18,13 +18,13 @@ export default class ErrorModule extends React.Component {
   };
 
   render() {
-    const {code, message} = this.props;
+    const {classes, code, message} = this.props;
     return (
       <div className={classes.root}>
-        <Typography variant='display4' gutterBottom align='center'>
+        <Typography variant='h1' gutterBottom align='center'>
           {code}
         </Typography>
-        <Typography variant='display2' gutterBottom align='center'>
+        <Typography variant='h2' gutterBottom align='center'>
           {message}
         </Typography>
       </div>

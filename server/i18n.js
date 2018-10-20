@@ -1,8 +1,11 @@
+import path from 'path';
 import i18n from 'i18next';
-import Backend from 'i18next-xhr-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend from 'i18next-node-fs-backend';
 
 const opts = {
+  backend: {
+    loadPath: path.resolve('../locales/{{lng}}/{{ns}}.json'),
+  },
   fallbackLng: 'en',
   ns: ['base'],
   defaultNS: 'base',
@@ -15,6 +18,5 @@ const opts = {
 };
 
 i18n.use(Backend);
-i18n.use(LanguageDetector);
 
 export default i18n.init(opts);

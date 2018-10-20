@@ -1,11 +1,7 @@
-import React from 'react';
+import ChurchModule from './modules/church';
 import HomeModule from './modules/home';
 import MassModule from './modules/mass';
-import ChurchModule from './modules/church';
 import SettingsModule from './modules/settings';
-import ErrorModule from './modules/error';
-
-const Error404 = () => <ErrorModule code='404' message='NOT FOUND' />;
 
 export default [{
   exact: true,
@@ -23,8 +19,4 @@ export default [{
   exact: false,
   path: '/settings',
   component: SettingsModule,
-}, {
-  exact: false,
-  path: '*',
-  component: Error404,
 }];

@@ -29,7 +29,7 @@ export default class Brand extends React.Component {
     );
     return (
       <Link className={className} to='/' {...others}>
-        <Typography color={color} variant='title'>
+        <Typography color={color} variant='h6'>
           {getMetadata('brand')}
         </Typography>
       </Link>

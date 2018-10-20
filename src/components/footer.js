@@ -26,7 +26,7 @@ export default class Footer extends React.Component {
     const icp = getMetadata('footer.icp');
     return (
       <footer className={classes.root}>
-        <Typography align='center' variant='caption'>
+        <Typography align='center'>
           &copy; {new Date().getFullYear()} {getMetadata('domain')}
           <br />
           <Action

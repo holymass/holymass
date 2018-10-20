@@ -8,6 +8,7 @@ const HtmlPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const {ReactLoadablePlugin} = require('react-loadable/webpack');
 
 module.exports = (env, argv) => {
   const prodMode = argv.mode === 'production';
@@ -59,16 +60,19 @@ module.exports = (env, argv) => {
         name: 'runtime',
       },
       splitChunks: {
-        chunks: 'all',
         cacheGroups: {
           vendors: {
-            test: /[\\/]node_modules[\\/]/,
+            chunks: 'all',
             name: 'vendors',
+            test: /[\\/]node_modules[\\/]/,
           },
         },
       },
     },
     plugins: [
+      new ReactLoadablePlugin({
+        filename: 'assets/react-loadable.json',
+      }),
       new ExtractCssChunksPlugin({
         filename: prodMode ? 'css/[name].[contenthash].css' : 'css/[name].css',
         chunkFilename: prodMode ? 'css/[id].[contenthash].css' : 'css/[id].css',
