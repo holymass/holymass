@@ -8,8 +8,8 @@ services:
         max-size: 100m
     ports:
       - 127.0.0.1:6379:6379
-  iannar/ssr:
-    image: iannar/ssr
+  ssr:
+    image: iannar-ssr
     build:
       context: .
     depends_on:
