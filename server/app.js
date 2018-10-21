@@ -8,10 +8,7 @@ import i18n from './i18n';
 import router from './router';
 
 const app = new Koa();
-const port = process.env.PORT || 3000;
-
-const logger = log4js.getLogger('iannar');
-logger.level = 'info';
+const port = 3000;
 
 const assets = new Koa();
 assets.use(koaStatic(path.join(__dirname, '../assets')));
@@ -27,6 +24,9 @@ app.use(koaI18next(i18n, {
   lookupQuerystring: 'lng',
   next: true,
 }));
+
+const logger = log4js.getLogger('iannar');
+logger.level = 'info';
 
 app.use(async (ctx, next) => {
   logger.info(`${ctx.req.method} ${ctx.req.url}`);

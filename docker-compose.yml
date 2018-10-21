@@ -1,0 +1,24 @@
+version: '3'
+services:
+  redis:
+    image: redis
+    restart: always
+    logging:
+      options:
+        max-size: 100m
+    ports:
+      - 127.0.0.1:6379:6379
+  iannar/ssr:
+    image: iannar/ssr
+    build:
+      context: .
+    depends_on:
+      - redis
+    links:
+      - redis
+    restart: always
+    logging:
+      options:
+        max-size: 100m
+    ports:
+      - 127.0.0.1:3000:3000
