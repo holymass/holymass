@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
 import {I18nextProvider} from 'react-i18next';
-import Loadable from 'react-loadable';
+import {loadComponents} from 'loadable-components';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 import {getMetadata} from './utils';
@@ -14,16 +14,14 @@ import './app.css';
 ReactGA.initialize(getMetadata('google.ga'));
 ReactGA.pageview(window.location.pathname + window.location.search);
 
-window.main = () => {
-  Loadable.preloadReady().then(() => {
-    ReactDOM.hydrate((
-      <Provider store={createStore()}>
-        <I18nextProvider i18n={i18n}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </I18nextProvider>
-      </Provider>), document.getElementById('root')
-    );
-  });
-};
+loadComponents().then(() => {
+  ReactDOM.hydrate((
+    <Provider store={createStore()}>
+      <I18nextProvider i18n={i18n}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </I18nextProvider>
+    </Provider>
+  ), document.getElementById('root'));
+});

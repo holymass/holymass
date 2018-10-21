@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import {loadable} from '../utils';
-
-const ChurchList = loadable({
-  loader: () => import('components/church_list'),
-});
+import ChurchList from 'components/church_list';
 
 const styles = (theme) => ({
   root: {

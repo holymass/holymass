@@ -4,7 +4,7 @@ import Backend from 'i18next-node-fs-backend';
 
 const opts = {
   backend: {
-    loadPath: path.resolve('../locales/{{lng}}/{{ns}}.json'),
+    loadPath: path.resolve(__dirname, '../locales/{{lng}}/{{ns}}.json'),
   },
   fallbackLng: 'en',
   ns: ['base'],

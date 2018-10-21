@@ -1,22 +1,37 @@
-import ChurchModule from './modules/church';
-import HomeModule from './modules/home';
-import MassModule from './modules/mass';
-import SettingsModule from './modules/settings';
+import loadable from 'loadable-components';
+import Loading from 'components/loading';
+
+const Home = loadable(() => import(
+    /* webpackChunkName: "./modules/home" */ './modules/home'), {
+  LoadingComponent: Loading,
+});
+const Mass = loadable(() => import(
+    /* webpackChunkName: "./modules/mass" */ './modules/mass'), {
+  LoadingComponent: Loading,
+});
+const Church = loadable(() => import(
+    /* webpackChunkName: "./modules/church" */ './modules/church'), {
+  LoadingComponent: Loading,
+});
+const Settings = loadable(() => import(
+    /* webpackChunkName: "./modules/settings" */ './modules/settings'), {
+  LoadingComponent: Loading,
+});
 
 export default [{
   exact: true,
   path: '/',
-  component: HomeModule,
+  component: Home,
 }, {
   exact: false,
   path: '/masses',
-  component: MassModule,
+  component: Mass,
 }, {
   exact: false,
   path: '/churches',
-  component: ChurchModule,
+  component: Church,
 }, {
   exact: false,
   path: '/settings',
-  component: SettingsModule,
+  component: Settings,
 }];

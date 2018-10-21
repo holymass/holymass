@@ -8,7 +8,6 @@ const HtmlPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const {ReactLoadablePlugin} = require('react-loadable/webpack');
 
 module.exports = (env, argv) => {
   const prodMode = argv.mode === 'production';
@@ -19,7 +18,7 @@ module.exports = (env, argv) => {
       path: path.join(__dirname, 'assets'),
       publicPath: '/assets/',
       filename: prodMode ? 'js/[name].[chunkhash].js' : 'js/[name].js',
-      chunkFilename: prodMode ? 'js/[id].[chunkhash].js' : 'js/[id].js',
+      chunkFilename: prodMode ? 'js/[name].[chunkhash].js' : 'js/[name].js',
     },
     resolve: {
       alias: {
@@ -70,15 +69,12 @@ module.exports = (env, argv) => {
       },
     },
     plugins: [
-      new ReactLoadablePlugin({
-        filename: 'assets/react-loadable.json',
-      }),
       new ExtractCssChunksPlugin({
         filename: prodMode ? 'css/[name].[contenthash].css' : 'css/[name].css',
-        chunkFilename: prodMode ? 'css/[id].[contenthash].css' : 'css/[id].css',
+        chunkFilename: prodMode ? 'css/[name].[contenthash].css' : 'css/[name].css',
       }),
       new HtmlPlugin({
-        filename: '../index.html',
+        filename: 'index.html',
         template: 'src/index.html',
         minify: {
           removeComments: true,
@@ -104,8 +100,13 @@ module.exports = (env, argv) => {
       'react-dom': 'ReactDOM',
     },
     devServer: {
-      historyApiFallback: true,
+      compress: true,
+      index: '',
       open: true,
+      proxy: {
+        'context': () => true,
+        '/': 'http://localhost:3000/',
+      },
     },
   };
   if (prodMode) {
