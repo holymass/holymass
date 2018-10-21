@@ -5,7 +5,7 @@ WORKDIR /app
 
 RUN npm install -g pm2
 RUN npm install
-RUN npm cache clean
+RUN npm cache clean --force
 
 EXPOSE 3000
 CMD ["pm2-docker", "start", "process.yml"]

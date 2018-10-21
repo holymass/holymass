@@ -1,11 +1,15 @@
+sudo: required
 language: node_js
 node_js:
   - '10'
+services:
+  - docker
 before_install:
   - npm install -g yarn
 cache: yarn
 install: yarn install
 script:
   - yarn build
+  - docker-compose build
 notifications:
   email: false
