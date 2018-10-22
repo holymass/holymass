@@ -1,5 +1,6 @@
 import path from 'path';
 import Koa from 'koa';
+import koaFavicon from 'koa-favicon';
 import koaI18next from 'koa-i18next';
 import koaMount from 'koa-mount';
 import koaStatic from 'koa-static';
@@ -9,6 +10,8 @@ import router from './router';
 
 const app = new Koa();
 const port = 3000;
+
+app.use(koaFavicon(path.join(__dirname, '../favicon.ico')));
 
 const assets = new Koa();
 assets.use(koaStatic(path.join(__dirname, '../assets')));

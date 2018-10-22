@@ -24,6 +24,7 @@
     "i18next-node-fs-backend": "^2.1.0",
     "i18next-xhr-backend": "^1.5.1",
     "koa": "^2.5.3",
+    "koa-favicon": "^2.0.1",
     "koa-i18next": "^1.1.1",
     "koa-mount": "^4.0.0",
     "koa-router": "^7.4.0",

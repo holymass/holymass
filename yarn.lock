@@ -4171,6 +4171,13 @@ koa-convert@^1.2.0:
     co "^4.6.0"
     koa-compose "^3.0.0"
 
+koa-favicon@^2.0.1:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/koa-favicon/download/koa-favicon-2.0.1.tgz#cfae363e5fd00bd5dd67c1150fbef31e0b5d6f4d"
+  integrity sha1-z642Pl/QC9XdZ8EVD77zHgtdb00=
+  dependencies:
+    mz "^2.7.0"
+
 koa-i18next@^1.1.1:
   version "1.1.1"
   resolved "http://registry.npm.taobao.org/koa-i18next/download/koa-i18next-1.1.1.tgz#02f0ea33550835e28116a09d63c504421dc2fe4e"

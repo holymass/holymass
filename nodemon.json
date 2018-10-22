@@ -1,4 +1,7 @@
 {
   "verbose": true,
-  "ignore": ["*.test.js"]
+  "ignore": [
+    "*.test.js",
+    ".git"
+  ]
 }
