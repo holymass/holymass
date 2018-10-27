@@ -21,22 +21,25 @@ require('@babel/register')({
 const log4js = require('log4js');
 log4js.configure({
   appenders: {
-    default: {
+    logfile: {
       backups: 5,
       compress: true,
       filename: process.env.LOG_FILE || 'server.log',
       type: 'file',
       maxLogSize: 50 * 1024 * 1024,
     },
+    stdout: {
+      type: 'stdout',
+    },
   },
   categories: {
     default: {
-      appenders: [
-        'default',
-      ],
+      appenders: process.env.NODE_ENV === 'production' ?
+          ['logfile'] : ['stdout'],
       level: process.env.LOG_LEVEL || 'info',
     },
   },
+  pm2: true,
 });
 
 module.exports = require('./app.js');

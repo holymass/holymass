@@ -9,7 +9,7 @@
     "build": "webpack --mode production",
     "dev": "webpack && webpack-dev-server --hot --inline",
     "lint": "eslint --cache server src",
-    "server": "nodemon server/index.js"
+    "start": "nodemon server/index.js"
   },
   "precommit": [
     "lint"
