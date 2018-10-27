@@ -71,7 +71,8 @@ module.exports = (env, argv) => {
     plugins: [
       new ExtractCssChunksPlugin({
         filename: prodMode ? 'css/[name].[contenthash].css' : 'css/[name].css',
-        chunkFilename: prodMode ? 'css/[name].[contenthash].css' : 'css/[name].css',
+        chunkFilename: prodMode ?
+            'css/[name].[contenthash].css' : 'css/[name].css',
       }),
       new HtmlPlugin({
         filename: 'index.html',
@@ -101,10 +102,8 @@ module.exports = (env, argv) => {
     },
     devServer: {
       compress: true,
-      index: '',
       open: true,
       proxy: {
-        'context': () => true,
         '/': 'http://localhost:3000/',
       },
     },

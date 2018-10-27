@@ -28,13 +28,12 @@ app.use(koaI18next(i18n, {
   next: true,
 }));
 
-const logger = log4js.getLogger('iannar');
-logger.level = 'info';
+const logger = log4js.getLogger('app');
 
 app.use(async (ctx, next) => {
   logger.info(`${ctx.req.method} ${ctx.req.url}`);
   await next();
-  logger.info(ctx.body);
+  logger.debug(ctx.body);
 });
 
 app.use(router.routes());

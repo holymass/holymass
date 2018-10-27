@@ -8,6 +8,7 @@ Thumbs.db
 node_modules
 
 # Others
+*.log
 .env
 .eslintcache
 /assets/js/main.js
