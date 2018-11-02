@@ -13,9 +13,12 @@ import './app.css';
 ReactGA.initialize(getMetadata('google.ga'));
 ReactGA.pageview(window.location.pathname + window.location.search);
 
+const store = createStore(window.__PRELOADED_STATE__);
+delete window.__PRELOADED_STATE__;
+
 loadComponents().then(() => {
   ReactDOM.hydrate((
-    <Provider store={createStore()}>
+    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

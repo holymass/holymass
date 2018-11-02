@@ -3,10 +3,6 @@ import mass from '../../data/mass';
 import {FILTER_MASS} from '../actions/mass';
 
 const massList = camelcaseKeys(mass, {deep: true});
-const initialState = {
-  visibleList: massList,
-};
-
 const filterMass = (filter) => massList.filter((item) => {
   if (filter) {
     return item.value.search(filter) > -1 ||
@@ -15,7 +11,7 @@ const filterMass = (filter) => massList.filter((item) => {
   return true;
 });
 
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case FILTER_MASS:
       return {...state, visibleList: filterMass(action.filter)};

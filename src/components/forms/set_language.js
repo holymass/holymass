@@ -50,8 +50,7 @@ export default class SetLanguage extends React.Component {
             onChange={onChange}
           >
             <FormControlLabel value='en' control={<Radio />} label='English' />
-            <FormControlLabel value='zh_CN' control={<Radio />} label='简体中文' />
-            <FormControlLabel value='zh_TW' control={<Radio />} label='繁體中文' />
+            <FormControlLabel value='zh' control={<Radio />} label='中文' />
           </RadioGroup>
         </FormControl>
       </div>

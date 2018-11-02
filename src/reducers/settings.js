@@ -4,18 +4,12 @@ import {
   SET_LITURGICAL_YEAR,
 } from '../actions/settings';
 
-const initialState = {
-  language: 'en',
-  liturgicalYear: 'yearB',
-};
-
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case SET_LANGUAGE:
       changeLanguage(action.language);
       return {...state, language: action.language};
     case SET_LITURGICAL_YEAR:
-      localStorage.setItem('liturgicalYear', action.year);
       return {...state, liturgicalYear: action.year};
     default:
       return state;

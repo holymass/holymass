@@ -8,8 +8,14 @@ const opts = {
     loadPath: path.resolve(__dirname, '../locales/{{lng}}/{{ns}}.json'),
   },
   fallbackLng: 'en',
+  load: 'languageOnly',
+  preload: ['en', 'zh'],
   ns: ['base'],
   defaultNS: 'base',
+  detection: {
+    lookupCookie: 'i18next',
+    caches: ['cookie'],
+  },
   interpolation: {
     escapeValue: false,
   },

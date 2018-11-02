@@ -5,8 +5,13 @@ import {reactI18nextModule} from 'react-i18next';
 
 const opts = {
   fallbackLng: 'en',
+  load: 'languageOnly',
   ns: ['base'],
   defaultNS: 'base',
+  detection: {
+    lookupCookie: 'i18next',
+    caches: ['cookie'],
+  },
   interpolation: {
     escapeValue: false,
   },
