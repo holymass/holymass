@@ -1,15 +1,15 @@
-import camelcaseKeys from 'camelcase-keys';
-import mass from '../../data/mass';
+import {getMassList} from '../utils';
 import {FILTER_MASS} from '../actions/mass';
 
-const massList = camelcaseKeys(mass, {deep: true});
-const filterMass = (filter) => massList.filter((item) => {
-  if (filter) {
-    return item.value.search(filter) > -1 ||
+const filterMass = (filter) => {
+  return getMassList().filter((item) => {
+    if (filter) {
+      return item.value.search(filter) > -1 ||
       item.value.replace(/\s/g, '').search(filter) > -1;
-  }
-  return true;
-});
+    }
+    return true;
+  });
+};
 
 export default (state = {}, action) => {
   switch (action.type) {

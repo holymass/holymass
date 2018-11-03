@@ -23,6 +23,7 @@ app.use(koaMount('/locales', locales));
 
 app.use(koaI18next(i18n, {
   lookupCookie: 'i18next',
+  order: ['cookie'],
   next: true,
 }));
 
