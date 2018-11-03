@@ -24,11 +24,11 @@ export default [{
   component: Home,
 }, {
   exact: false,
-  path: '/masses',
+  path: '/mass',
   component: Mass,
 }, {
   exact: false,
-  path: '/churches',
+  path: '/church',
   component: Church,
 }, {
   exact: false,

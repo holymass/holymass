@@ -20,7 +20,7 @@ const getPreloadedState = (ctx) => {
     language: ctx.language,
     liturgicalYear: 'yearB',
   };
-  if (['/', '/masses'].includes(ctx.req.url)) {
+  if (['/', '/mass'].includes(ctx.req.url)) {
     return {
       mass: {
         visibleList: getMassList(),

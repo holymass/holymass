@@ -78,7 +78,7 @@ export default class MassCard extends React.Component {
     const {liturgicalYear} = this.props;
     const year = yearMap[liturgicalYear];
     const name = this.props.mass.name;
-    return `/assets/masses/index.html?m=${year}/${name}#/${id || ''}`;
+    return `/assets/mass/index.html?m=${year}/${name}#/${id || ''}`;
   }
 
   render() {
