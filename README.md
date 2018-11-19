@@ -6,4 +6,4 @@
 
 © 2018 iannar.com
 
-[MIT License](LICENSE)
+[MIT](LICENSE)
