@@ -1,9 +1,9 @@
 [submodule "assets/images"]
 	path = assets/images
-	url = git@github.com:iannar/images.git
+	url = https://github.com/iannar/images.git
 [submodule "assets/mass"]
 	path = assets/mass
-	url = git@github.com:iannar/mass.git
+	url = https://github.com/iannar/mass.git
 [submodule "assets/psalms"]
 	path = assets/psalms
-	url = git@github.com:iannar/psalms.git
+	url = https://github.com/iannar/psalms.git
