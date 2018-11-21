@@ -1,6 +1,6 @@
 [{
-    "name": "降临期第一主日",
-    "value": "降临期第一主日 jiang lin qi di yi zhu ri",
+    "name": "将临期第一主日",
+    "value": "将临期第一主日 jiang lin qi di yi zhu ri",
     "year_a": {
       "date": "2016-11-27",
       "first_reading": "依2:1-5",
@@ -24,8 +24,8 @@
     }
   },
   {
-    "name": "降临期第二主日",
-    "value": "降临期第二主日 jiang lin qi di er zhu ri",
+    "name": "将临期第二主日",
+    "value": "将临期第二主日 jiang lin qi di er zhu ri",
     "year_a": {
       "date": "2016-12-04",
       "first_reading": "依11:1-10",
@@ -49,8 +49,8 @@
     }
   },
   {
-    "name": "降临期第三主日",
-    "value": "降临期第三主日 jiang lin qi di san zhu ri",
+    "name": "将临期第三主日",
+    "value": "将临期第三主日 jiang lin qi di san zhu ri",
     "year_a": {
       "date": "2016-12-11",
       "first_reading": "依35:1-6,10",
@@ -74,8 +74,8 @@
     }
   },
   {
-    "name": "降临期第四主日",
-    "value": "降临期第四主日 jiang lin qi di si zhu ri",
+    "name": "将临期第四主日",
+    "value": "将临期第四主日 jiang lin qi di si zhu ri",
     "year_a": {
       "date": "2016-12-18",
       "first_reading": "依7:10-14",
