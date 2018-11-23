@@ -1,4 +1,30 @@
-[{
+[
+  {
+    "name": "圣母无染原罪",
+    "value": "圣母无染原罪 sheng mu wu ran yuan zui",
+    "year_a": {
+      "date": "2016-12-08",
+      "first_reading": "创3:9-15,20",
+      "responsorial_psalm": "咏98:1-4",
+      "second_reading": "弗1:3-7,11-12",
+      "gospel": "路1:26-38"
+    },
+    "year_b": {
+      "date": "2017-12-08",
+      "first_reading": "创3:9-15,20",
+      "responsorial_psalm": "咏98:1-4",
+      "second_reading": "弗1:3-7,11-12",
+      "gospel": "路1:26-38"
+    },
+    "year_c": {
+      "date": "2018-12-08",
+      "first_reading": "创3:9-15,20",
+      "responsorial_psalm": "咏98:1-4",
+      "second_reading": "弗1:3-7,11-12",
+      "gospel": "路1:26-38"
+    }
+  },
+  {
     "name": "将临期第一主日",
     "value": "将临期第一主日 jiang lin qi di yi zhu ri",
     "year_a": {
