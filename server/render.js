@@ -18,7 +18,7 @@ const html = fs.readFileSync(indexHtmlPath, 'utf8');
 const getPreloadedState = (ctx) => {
   const settings = {
     language: ctx.language,
-    liturgicalYear: 'yearB',
+    liturgicalYear: process.env.LITURGICAL_YEAR,
   };
   if (['/', '/mass'].includes(ctx.req.url)) {
     return {
