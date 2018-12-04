@@ -5716,6 +5716,11 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-amap@^1.2.7:
+  version "1.2.7"
+  resolved "http://registry.npm.taobao.org/react-amap/download/react-amap-1.2.7.tgz#693b11bab80307fd2ce63b94c4867bfc775263d7"
+  integrity sha1-aTsRurgDB/0s5juUxIZ7/HdSY9c=
+
 react-dom@^16.4.1:
   version "16.6.0"
   resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.6.0.tgz#6375b8391e019a632a89a0988bce85f0cc87a92f"

@@ -9,7 +9,7 @@ import {getLoadableState} from 'loadable-components/server';
 import createStore from '../src/store';
 import App from '../src/app';
 import {getMassList} from '../src/utils';
-import redisClient from './redis';
+import {redisClient, buildRedisKey} from './redis';
 
 const logger = log4js.getLogger('render');
 const indexHtmlPath = path.join(__dirname, '../assets/index.html');
@@ -17,7 +17,8 @@ const html = fs.readFileSync(indexHtmlPath, 'utf8');
 
 const getPreloadedState = (ctx) => {
   const settings = {
-    language: ctx.language,
+    amapKey: process.env.AMAP_KEY,
+    language: ctx.language || process.env.DEFAULT_LANGUAGE,
     liturgicalYear: process.env.LITURGICAL_YEAR,
   };
   if (['/', '/mass'].includes(ctx.req.url)) {
@@ -40,10 +41,8 @@ const getScriptTag = (state) => {
 
 export default async (ctx, next) => {
   const url = ctx.req.url;
-  let redisKey = `${url}`;
-  if (ctx.language) {
-    redisKey = `${ctx.language}:${redisKey}`;
-  }
+  const language = ctx.language || process.env.DEFAULT_LANGUAGE;
+  let redisKey = buildRedisKey(language, url);
   let body = await redisClient.getAsync(redisKey);
   if (body) {
     logger.debug(`Hit redis cache: ${url}`);

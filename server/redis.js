@@ -4,11 +4,17 @@ import redis from 'redis';
 
 bluebird.promisifyAll(redis);
 
-const client = redis.createClient(process.env.REDIS_URL);
+const namespace = process.env.REDIS_NAMESPACE || '';
+export const redisClient = redis.createClient(process.env.REDIS_URL);
 const logger = log4js.getLogger('redis');
 
-client.on('error', (err) => {
+redisClient.on('error', (err) => {
   logger.error(err);
 });
 
-export default client;
+export const buildRedisKey = (...args) => {
+  if (namespace) {
+    return [namespace, ...args].join(':');
+  }
+  return args.join(':');
+};
