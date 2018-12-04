@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import ChurchList from 'components/church_list';
+import ChurchMap from 'components/church_map';
 
 const styles = (theme) => ({
   root: {
@@ -21,7 +21,7 @@ export default class ChurchModule extends React.Component {
     const {classes} = this.props;
     return (
       <div className={classes.root}>
-        <ChurchList />
+        <ChurchMap />
       </div>
     );
   }

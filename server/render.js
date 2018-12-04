@@ -17,7 +17,7 @@ const html = fs.readFileSync(indexHtmlPath, 'utf8');
 
 const getPreloadedState = (ctx) => {
   const settings = {
-    amapKey: process.env.AMAP_KEY,
+    amapkey: process.env.AMAP_KEY,
     language: ctx.language || process.env.DEFAULT_LANGUAGE,
     liturgicalYear: process.env.LITURGICAL_YEAR,
   };
