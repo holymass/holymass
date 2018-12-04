@@ -11,7 +11,7 @@ node_modules
 *.log
 .env
 .eslintcache
-/assets/js/main.js
+/assets
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
