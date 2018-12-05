@@ -11,14 +11,14 @@ const mapStateToProps = (state) => ({
 const styles = (theme) => ({
   root: {
     padding: theme.spacing.unit,
-    width: 375,
-    height: 600,
+    width: '100%',
+    height: 'calc(100vh - 80px)',
   },
 });
 
 @connect(mapStateToProps)
 @withStyles(styles)
-export default class ChurchList extends React.Component {
+export default class ChurchMap extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     amapkey: PropTypes.string.isRequired,
