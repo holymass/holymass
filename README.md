@@ -4,6 +4,6 @@
 
 ## License
 
-© 2018 iannar.com
+Copyright (c) 2018 iannar.com
 
 [MIT](LICENSE)
