@@ -62,6 +62,6 @@ export default async (ctx, next) => {
       .replace('<div id=root></div>', `<div id=root>${body}</div>`)
       .replace('<script id=state></script>', getScriptTag(preloadedState))
       .replace('<script id=loadable></script>', getScriptTag(loadableState));
-  redisClient.set(redisKey, body);
+  redisClient.set(redisKey, body, 'EX', 3600 * 12);
   ctx.body = body;
 };
