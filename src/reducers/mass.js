@@ -1,15 +1,5 @@
 import camelcaseKeys from 'camelcase-keys';
-import {FETCH_RECENT_MASSES, FILTER_MASSES} from '../actions/mass';
-
-const filterMass = (filter) => {
-  return getMassList().filter((item) => {
-    if (filter) {
-      return item.value.search(filter) > -1 ||
-      item.value.replace(/\s/g, '').search(filter) > -1;
-    }
-    return true;
-  });
-};
+import {FETCH_RECENT_MASSES} from '../actions/mass';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -18,8 +8,6 @@ export default (state = {}, action) => {
         ...state,
         data: camelcaseKeys(action.payload.data.data, {deep: true}),
       };
-    case FILTER_MASSES:
-      return {...state, data: filterMass(action.filter)};
     default:
       return state;
   }

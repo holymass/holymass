@@ -7,14 +7,11 @@ import Input from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
-import {filterMasses} from '../actions/mass';
 
 const mapDispatchToProps = (dispatch) => ({
   onClear: () => {
-    dispatch(filterMasses());
   },
   onSearch: (filter) => {
-    dispatch(filterMasses(filter));
   },
 });
 
