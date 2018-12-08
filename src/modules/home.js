@@ -4,7 +4,6 @@ import {withStyles} from '@material-ui/core/styles';
 import Sidebar from 'components/sidebar';
 import MassList from 'components/mass_list';
 import SetLanguage from 'components/forms/set_language';
-import SetLiturgicalYear from 'components/forms/set_liturgical_year';
 
 const styles = (theme) => ({
   root: {
@@ -27,7 +26,6 @@ export default class HomeModule extends React.Component {
         <MassList />
         <Sidebar>
           <SetLanguage />
-          <SetLiturgicalYear />
         </Sidebar>
       </div>
     );

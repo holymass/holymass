@@ -1,5 +1,8 @@
 {
   "brand": "iannar",
+  "drawer": {
+    "width": 240
+  },
   "domain": "iannar.com",
   "footer": {
     "icp": "苏ICP备14030758号"

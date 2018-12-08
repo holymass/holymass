@@ -1,7 +1,7 @@
 {
-  "yearA": "甲年",
-  "yearB": "乙年",
-  "yearC": "丙年",
+  "A": "甲年",
+  "B": "乙年",
+  "C": "丙年",
   "First Reading": "读经一",
   "Responsorial Psalm": "答唱咏",
   "Second Reading": "读经二",

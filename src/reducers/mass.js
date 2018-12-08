@@ -1,5 +1,5 @@
-import {getMassList} from '../utils';
-import {FILTER_MASS} from '../actions/mass';
+import camelcaseKeys from 'camelcase-keys';
+import {FETCH_RECENT_MASSES, FILTER_MASSES} from '../actions/mass';
 
 const filterMass = (filter) => {
   return getMassList().filter((item) => {
@@ -13,8 +13,13 @@ const filterMass = (filter) => {
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case FILTER_MASS:
-      return {...state, visibleList: filterMass(action.filter)};
+    case `${FETCH_RECENT_MASSES}_SUCCESS`:
+      return {
+        ...state,
+        data: camelcaseKeys(action.payload.data.data, {deep: true}),
+      };
+    case FILTER_MASSES:
+      return {...state, data: filterMass(action.filter)};
     default:
       return state;
   }

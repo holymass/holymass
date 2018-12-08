@@ -3,11 +3,11 @@ import StarIcon from '@material-ui/icons/Star';
 import RoomIcon from '@material-ui/icons/Room';
 
 export const navLinks = [{
-  to: '/mass',
+  to: '/masses',
   icon: <StarIcon />,
-  text: 'Mass',
+  text: 'Masses',
 }, {
-  to: '/church',
+  to: '/churches',
   icon: <RoomIcon />,
-  text: 'Church',
+  text: 'Churches',
 }];

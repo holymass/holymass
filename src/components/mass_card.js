@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {withNamespaces} from 'react-i18next';
+import moment from 'moment';
 import {withStyles} from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
@@ -45,9 +46,9 @@ const styles = (theme) => ({
 });
 
 const yearMap = {
-  'yearA': '甲年',
-  'yearB': '乙年',
-  'yearC': '丙年',
+  'A': '甲年',
+  'B': '乙年',
+  'C': '丙年',
 };
 
 @withNamespaces('mass')
@@ -55,8 +56,7 @@ const yearMap = {
 export default class MassCard extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    liturgicalYear: PropTypes.string.isRequired,
-    mass: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
     t: PropTypes.object.isRequired,
   };
 
@@ -71,19 +71,29 @@ export default class MassCard extends React.Component {
 
   handleLaunchClick = (e) => {
     e.stopPropagation();
-    open(this.getMassLink(), '_blank');
+    open(this.getLink(), '_blank');
   };
 
-  getMassLink = (id) => {
-    const {liturgicalYear} = this.props;
+  getLink = (id) => {
+    const {
+      name,
+      liturgicalYear,
+    } = this.props.data.solemnity;
     const year = yearMap[liturgicalYear];
-    const name = this.props.mass.name;
     return `/assets/mass/index.html?m=${year}/${name}#/${id || ''}`;
   }
 
   render() {
-    const {classes, liturgicalYear, mass, t} = this.props;
-    const curMass = mass[liturgicalYear];
+    const {classes, data, t} = this.props;
+    const {
+      name,
+      liturgicalYear,
+      firstReading,
+      responsorialPsalm,
+      secondReading,
+      gospel,
+    } = data.solemnity;
+    const date = moment(data.date).format('YYYY-MM-DD');
     const avatar = (
       <Avatar className={classes.avatar} onClick={this.handleLaunchClick}>
         <LaunchIcon />
@@ -108,41 +118,41 @@ export default class MassCard extends React.Component {
             avatar={avatar}
             className={classes.cardHeader}
             onClick={this.handleExpandClick}
-            subheader={`${t(liturgicalYear)} \u2022 ${curMass.date}`}
-            title={mass.name}
+            subheader={`${t(liturgicalYear)} \u2022 ${date}`}
+            title={name}
           />
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Action
-                href={this.getMassLink('first-reading')}
+                href={this.getLink('first-reading')}
                 target='_blank'
               >
                 <Typography color='inherit'>
-                  {`${t('First Reading')}:\t${curMass.firstReading}`}
+                  {`${t('First Reading')}:\t${firstReading}`}
                 </Typography>
               </Action>
               <Action
-                href={this.getMassLink('responsorial-psalm')}
+                href={this.getLink('responsorial-psalm')}
                 target='_blank'
               >
                 <Typography color='inherit'>
-                  {`${t('Responsorial Psalm')}:\t${curMass.responsorialPsalm}`}
+                  {`${t('Responsorial Psalm')}:\t${responsorialPsalm}`}
                 </Typography>
               </Action>
               <Action
-                href={this.getMassLink('second-reading')}
+                href={this.getLink('second-reading')}
                 target='_blank'
               >
                 <Typography color='inherit'>
-                  {`${t('Second Reading')}:\t${curMass.secondReading}`}
+                  {`${t('Second Reading')}:\t${secondReading}`}
                 </Typography>
               </Action>
               <Action
-                href={this.getMassLink('gospel')}
+                href={this.getLink('gospel')}
                 target='_blank'
               >
                 <Typography color='inherit'>
-                  {`${t('Gospel')}:\t${curMass.gospel}`}
+                  {`${t('Gospel')}:\t${gospel}`}
                 </Typography>
               </Action>
             </CardContent>

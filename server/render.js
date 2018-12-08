@@ -8,27 +8,21 @@ import {StaticRouter} from 'react-router-dom';
 import {getLoadableState} from 'loadable-components/server';
 import createStore from '../src/store';
 import App from '../src/app';
-import {getMassList} from '../src/utils';
 import {redisClient, buildRedisKey} from './redis';
 
 const logger = log4js.getLogger('render');
 const indexHtmlPath = path.join(__dirname, '../assets/index.html');
 const html = fs.readFileSync(indexHtmlPath, 'utf8');
 
+const getLanguage = (ctx) => {
+  return ctx.language || process.env.DEFAULT_LANGUAGE;
+};
+
 const getPreloadedState = (ctx) => {
   const settings = {
     amapkey: process.env.AMAP_KEY,
-    language: ctx.language || process.env.DEFAULT_LANGUAGE,
-    liturgicalYear: process.env.LITURGICAL_YEAR,
+    language: getLanguage(ctx),
   };
-  if (['/', '/mass'].includes(ctx.req.url)) {
-    return {
-      mass: {
-        visibleList: getMassList(),
-      },
-      settings,
-    };
-  }
   return {settings};
 };
 
@@ -41,7 +35,7 @@ const getScriptTag = (state) => {
 
 export default async (ctx, next) => {
   const url = ctx.req.url;
-  const language = ctx.language || process.env.DEFAULT_LANGUAGE;
+  const language = getLanguage(ctx);
   let redisKey = buildRedisKey(language, url);
   let body = await redisClient.getAsync(redisKey);
   if (body) {

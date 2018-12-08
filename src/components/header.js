@@ -19,8 +19,9 @@ import Brand from 'components/brand';
 import Footer from 'components/footer';
 import Search from 'components/search';
 import {navLinks} from '../nav_links';
+import {getMetadata} from '../utils';
 
-const drawerWidth = 240;
+const drawerWidth = getMetadata('drawer.width');
 const styles = (theme) => ({
   'root': {
     width: '100%',

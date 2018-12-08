@@ -5,11 +5,12 @@ import {withStyles} from '@material-ui/core/styles';
 import withRoot from './with_root';
 import Header from 'components/header';
 import Main from 'components/main';
+import {getMetadata} from './utils';
 import routes from './routes';
 import ErrorModule from './modules/error';
 
 const Error404 = () => (<ErrorModule code='404' message='NOT FOUND' />);
-const drawerWidth = 240;
+const drawerWidth = getMetadata('drawer.width');
 const styles = (theme) => ({
   root: {
     [theme.breakpoints.up('md')]: {

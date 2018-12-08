@@ -104,6 +104,13 @@ module.exports = (env, argv) => {
       compress: true,
       open: true,
       proxy: {
+        '/api': {
+          target: 'http://localhost:5000/',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/api': '',
+          },
+        },
         '/': {
           target: 'http://localhost:3000/',
           changeOrigin: true,

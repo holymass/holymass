@@ -3,10 +3,18 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {withStyles} from '@material-ui/core/styles';
 import MassCard from './mass_card';
+import {fetchRecentMasses} from '../actions/mass';
+
+const DEFAULT_SIZE = 20;
 
 const mapStateToProps = (state) => ({
-  massList: state.mass.visibleList,
-  liturgicalYear: state.settings.liturgicalYear,
+  data: state.mass.data,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchRecentMasses: () => {
+    dispatch(fetchRecentMasses(DEFAULT_SIZE));
+  },
 });
 
 const styles = (theme) => ({
@@ -31,22 +39,26 @@ const styles = (theme) => ({
   },
 });
 
-@connect(mapStateToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 @withStyles(styles)
 export default class MassList extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    massList: PropTypes.array.isRequired,
-    liturgicalYear: PropTypes.string.isRequired,
+    data: PropTypes.array,
+    fetchRecentMasses: PropTypes.func,
+  }
+
+  componentWillMount() {
+    this.props.fetchRecentMasses();
   }
 
   render() {
-    const {classes, massList, liturgicalYear} = this.props;
+    const {classes, data} = this.props;
     return (
       <div className={classes.root}>
         <div className={classes.massList}>
-          {massList.map((mass, key) => (
-            <MassCard key={key} mass={mass} liturgicalYear={liturgicalYear} />
+          {data && data.map((item, key) => (
+            <MassCard key={key} data={item} />
           ))}
         </div>
       </div>
