@@ -2,6 +2,7 @@
   "verbose": true,
   "ignore": [
     "*.test.js",
-    ".git"
+    ".git",
+    "./assets"
   ]
 }
