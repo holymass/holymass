@@ -5,15 +5,13 @@ import {withStyles} from '@material-ui/core/styles';
 import MassCard from './mass_card';
 import {fetchRecentMasses} from '../actions/mass';
 
-const DEFAULT_SIZE = 20;
-
 const mapStateToProps = (state) => ({
   data: state.mass.data,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchRecentMasses: () => {
-    dispatch(fetchRecentMasses(DEFAULT_SIZE));
+    dispatch(fetchRecentMasses());
   },
 });
 
@@ -44,7 +42,7 @@ const styles = (theme) => ({
 export default class MassList extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    data: PropTypes.array,
+    data: PropTypes.array.isRequired,
     fetchRecentMasses: PropTypes.func,
   }
 

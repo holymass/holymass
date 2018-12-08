@@ -21,6 +21,7 @@ const getLanguage = (ctx) => {
 const getPreloadedState = (ctx) => {
   const settings = {
     amapkey: process.env.AMAP_KEY,
+    mapCenter: process.env.MAP_CENTER.split(','),
     language: getLanguage(ctx),
   };
   return {settings};

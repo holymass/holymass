@@ -8,7 +8,7 @@ export const filterMasses = (filter) => ({
   filter,
 });
 
-export const fetchRecentMasses = (size) => {
+export const fetchRecentMasses = (size = 10) => {
   const today = moment().format('YYYY-MM-DD');
   return {
     type: FETCH_RECENT_MASSES,
