@@ -6,6 +6,7 @@ import Hidden from '@material-ui/core/Hidden';
 const styles = (theme) => ({
   root: {
     width: theme.spacing.unit * 40,
+    minWidth: theme.spacing.unit * 40,
   },
 });
 
