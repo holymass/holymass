@@ -1,7 +1,6 @@
 import {changeLanguage} from 'i18next';
 import {
   SET_LANGUAGE,
-  SET_LITURGICAL_YEAR,
 } from '../actions/settings';
 
 export default (state = {}, action) => {
@@ -9,8 +8,6 @@ export default (state = {}, action) => {
     case SET_LANGUAGE:
       changeLanguage(action.language);
       return {...state, language: action.language};
-    case SET_LITURGICAL_YEAR:
-      return {...state, liturgicalYear: action.year};
     default:
       return state;
   }
