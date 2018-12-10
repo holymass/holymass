@@ -23,7 +23,7 @@ export default class HomeModule extends React.Component {
     const {classes} = this.props;
     return (
       <div className={classes.root}>
-        <MassList showRecent/>
+        <MassList showNext />
         <Sidebar>
           <SetLanguage />
         </Sidebar>

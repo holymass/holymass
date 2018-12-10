@@ -6,7 +6,7 @@ import {withNamespaces} from 'react-i18next';
 import {withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import MassCard from './mass_card';
-import {fetchMasses, fetchRecentMasses} from '../actions/mass';
+import {fetchMasses, fetchNextMasses} from '../actions/mass';
 
 const mapStateToProps = (state) => ({
   data: state.mass.data,
@@ -17,8 +17,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchMasses: (page) => {
     dispatch(fetchMasses(page));
   },
-  fetchRecentMasses: () => {
-    dispatch(fetchRecentMasses());
+  fetchNextMasses: () => {
+    dispatch(fetchNextMasses());
   },
 });
 
@@ -59,10 +59,10 @@ export default class MassList extends React.Component {
     classes: PropTypes.object.isRequired,
     data: PropTypes.array.isRequired,
     fetchMasses: PropTypes.func,
-    fetchRecentMasses: PropTypes.func,
+    fetchNextMasses: PropTypes.func,
     page: PropTypes.number,
     t: PropTypes.object.isRequired,
-    showRecent: PropTypes.bool,
+    showNext: PropTypes.bool,
   }
 
   handlePreviousPageClick = () => {
@@ -76,16 +76,16 @@ export default class MassList extends React.Component {
   };
 
   componentWillMount() {
-    const {fetchMasses, fetchRecentMasses, page, showRecent} = this.props;
-    if (showRecent) {
-      fetchRecentMasses();
+    const {fetchMasses, fetchNextMasses, page, showNext} = this.props;
+    if (showNext) {
+      fetchNextMasses();
     } else {
       fetchMasses(page || 1);
     }
   }
 
   render() {
-    const {classes, data, t, showRecent} = this.props;
+    const {classes, data, t, showNext} = this.props;
     return (
       <div className={classes.root}>
         <div className={classes.massList}>
@@ -94,7 +94,7 @@ export default class MassList extends React.Component {
           ))}
         </div>
         <div className={classes.buttonContainer}>
-          {showRecent && (
+          {showNext && (
             <Button
               variant='outlined'
               color='primary'
@@ -103,7 +103,7 @@ export default class MassList extends React.Component {
               {t('View All')}
             </Button>
           )}
-          {!showRecent && (
+          {!showNext && (
             <Button
               variant='outlined'
               color='primary'
@@ -111,7 +111,7 @@ export default class MassList extends React.Component {
               {t('Previous Page')}
             </Button>
           )}
-          {!showRecent && (
+          {!showNext && (
             <Button
               variant='outlined'
               color='primary'

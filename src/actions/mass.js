@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 export const FETCH_MASSES = 'FETCH_MASSES';
-export const FETCH_RECENT_MASSES = 'FETCH_RECENT_MASSES';
+export const FETCH_NEXT_MASSES = 'FETCH_NEXT_MASSES';
 
 export const fetchMasses = (page) => {
   const nextYear = moment().add(1, 'years').format('YYYY-MM-DD');
@@ -20,17 +20,12 @@ export const fetchMasses = (page) => {
   };
 };
 
-export const fetchRecentMasses = () => {
-  const today = moment().format('YYYY-MM-DD');
+export const fetchNextMasses = (num = 10) => {
   return {
-    type: FETCH_RECENT_MASSES,
+    type: FETCH_NEXT_MASSES,
     payload: {
       request: {
-        url: '/masses',
-        params: {
-          q: `date__gte:${today}`,
-          sort: 'date',
-        },
+        url: `/masses/next/${num}`,
       },
     },
   };

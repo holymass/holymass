@@ -1,5 +1,5 @@
 import camelcaseKeys from 'camelcase-keys';
-import {FETCH_MASSES, FETCH_RECENT_MASSES} from '../actions/mass';
+import {FETCH_MASSES, FETCH_NEXT_MASSES} from '../actions/mass';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -9,7 +9,7 @@ export default (state = {}, action) => {
         data: camelcaseKeys(action.payload.data.data, {deep: true}),
         page: action.payload.config.params.page,
       };
-    case `${FETCH_RECENT_MASSES}_SUCCESS`:
+    case `${FETCH_NEXT_MASSES}_SUCCESS`:
       return {
         ...state,
         data: camelcaseKeys(action.payload.data.data, {deep: true}),
