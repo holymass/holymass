@@ -1,10 +1,7 @@
 'use strict';
 
 const path = require('path');
-const _ = require('lodash');
-const metadata = require('./metadata.json');
 const CleanPlugin = require('clean-webpack-plugin');
-const HtmlPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -77,27 +74,6 @@ module.exports = (env, argv) => {
         filename: prodMode ? 'css/[name].[contenthash].css' : 'css/[name].css',
         chunkFilename: prodMode ?
             'css/[name].[contenthash].css' : 'css/[name].css',
-      }),
-      new HtmlPlugin({
-        filename: 'index.html',
-        template: 'src/index.html',
-        minify: {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-        },
-        chunksSortMode: 'dependency',
-        title: _.get(metadata, 'brand'),
-        meta: {
-          'viewport': [
-            'width=device-width',
-            'initial-scale=1.0',
-            'minimum-scale=1.0',
-            'maximum-scale=1.0',
-            'user-scalable=no',
-          ].join(','),
-          'google-analytics': _.get(metadata, 'google.ga'),
-        },
       }),
     ],
     externals: {
