@@ -11,9 +11,6 @@ const styles = (theme) => ({
     padding: theme.spacing.unit,
     zIndex: 2,
   },
-  icp: {
-    color: theme.palette.text.secondary,
-  },
 });
 
 @withStyles(styles)
@@ -30,6 +27,7 @@ export default class Footer extends React.Component {
           &copy; {new Date().getFullYear()} {getMetadata('domain')}
           <br />
           <Link
+            color='textSecondary'
             href='http://www.miibeian.gov.cn/'
             target='_blank'
           >
