@@ -1,13 +1,13 @@
 import React from 'react';
-import StarIcon from '@material-ui/icons/Star';
-import RoomIcon from '@material-ui/icons/Room';
+import AirplayIcon from 'mdi-material-ui/Airplay';
+import ChristianityIcon from 'mdi-material-ui/Christianity';
 
-export const navLinks = [{
+export default [{
   to: '/masses',
-  icon: <StarIcon />,
+  icon: <AirplayIcon />,
   text: 'Masses',
 }, {
   to: '/churches',
-  icon: <RoomIcon />,
+  icon: <ChristianityIcon />,
   text: 'Churches',
 }];

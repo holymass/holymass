@@ -7,6 +7,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import GitHubIcon from 'mdi-material-ui/GithubCircle';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
@@ -17,8 +18,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Brand from 'components/brand';
 import Footer from 'components/footer';
-import Search from 'components/search';
-import {navLinks} from '../nav_links';
+import navLinks from '../nav_links';
 import {getMetadata} from '../utils';
 
 const drawerWidth = getMetadata('drawer.width');
@@ -137,7 +137,14 @@ export default class Header extends React.Component {
                 <Brand color='inherit' />
               </Hidden>
             </div>
-            <Search />
+            <IconButton
+              color='inherit'
+              href='https://github.com/iannar'
+              target='_blank'
+              aria-label='Github'
+            >
+              <GitHubIcon />
+            </IconButton>
           </Toolbar>
         </AppBar>
         <Hidden mdUp>
