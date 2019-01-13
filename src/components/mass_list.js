@@ -13,36 +13,15 @@ const mapStateToProps = (state) => ({
   page: state.mass.page,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchMasses: (page) => {
-    dispatch(fetchMasses(page));
-  },
-  fetchNextMasses: () => {
-    dispatch(fetchNextMasses());
-  },
-});
+const mapDispatchToProps = {
+  fetchMasses,
+  fetchNextMasses,
+};
 
 const styles = (theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    width: '100%',
-    [`${theme.breakpoints.up('md')}`]: {
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      width: 'auto',
-    },
-  },
-  massList: {
-    minWidth: theme.spacing.unit * 36,
-    [`${theme.breakpoints.up('md')}`]: {
-      maxWidth: `calc(40vw + ${theme.spacing.unit * 2}px)`,
-      width: 'calc(100vw - 255px)',
-    },
-    [`${theme.breakpoints.up('lg')}`]: {
-      maxWidth: `calc(50vw + ${theme.spacing.unit * 10}px)`,
-      width: 'calc(100vw - 255px)',
-    },
   },
   buttonContainer: {
     display: 'flex',
@@ -90,7 +69,7 @@ export default class MassList extends React.Component {
       <div className={classes.root}>
         <div className={classes.massList}>
           {data && data.map((item, key) => (
-            <MassCard key={key} data={item} />
+            <MassCard key={key} data={item} expanded={showNext && key === 0} />
           ))}
         </div>
         <div className={classes.buttonContainer}>

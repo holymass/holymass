@@ -56,8 +56,9 @@ const yearMap = {
 export default class MassCard extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    data: PropTypes.object.isRequired,
     t: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
+    expanded: PropTypes.boolean,
   };
 
   state = {
@@ -81,6 +82,12 @@ export default class MassCard extends React.Component {
     } = this.props.data.solemnity;
     const year = yearMap[liturgicalYear];
     return `/assets/mass/index.html?m=${year}/${name}#/${id || ''}`;
+  }
+
+  componentDidMount() {
+    if (this.props.expanded) {
+      this.handleExpandClick();
+    }
   }
 
   render() {
