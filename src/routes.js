@@ -1,20 +1,16 @@
-import loadable from 'loadable-components';
+import loadable from '@loadable/component';
 import Loading from 'components/loading';
 
-const HomeModule = loadable(() => import(
-    /* webpackChunkName: "./modules/home" */ './modules/home'), {
+const HomeModule = loadable(() => import('./modules/home'), {
   LoadingComponent: Loading,
 });
-const MassModule = loadable(() => import(
-    /* webpackChunkName: "./modules/mass" */ './modules/mass'), {
+const MassModule = loadable(() => import('./modules/mass'), {
   LoadingComponent: Loading,
 });
-const ChurchModule = loadable(() => import(
-    /* webpackChunkName: "./modules/church" */ './modules/church'), {
+const ChurchModule = loadable(() => import('./modules/church'), {
   LoadingComponent: Loading,
 });
-const SettingsModule = loadable(() => import(
-    /* webpackChunkName: "./modules/settings" */ './modules/settings'), {
+const SettingsModule = loadable(() => import('./modules/settings'), {
   LoadingComponent: Loading,
 });
 

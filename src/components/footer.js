@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {getMetadata} from '../utils';
-import Action from 'components/action';
+import Link from '@material-ui/core/Link';
 
 const styles = (theme) => ({
   root: {
@@ -29,13 +29,12 @@ export default class Footer extends React.Component {
         <Typography align='center'>
           &copy; {new Date().getFullYear()} {getMetadata('domain')}
           <br />
-          <Action
-            className={classes.icp}
+          <Link
             href='http://www.miibeian.gov.cn/'
             target='_blank'
           >
             {icp}
-          </Action>
+          </Link>
         </Typography>
       </footer>
     );

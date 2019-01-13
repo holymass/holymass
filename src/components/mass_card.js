@@ -11,9 +11,9 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 import ChevronDownIcon from 'mdi-material-ui/ChevronDown';
 import LaunchIcon from 'mdi-material-ui/Launch';
-import Action from 'components/action';
 
 const styles = (theme) => ({
   root: {
@@ -123,38 +123,38 @@ export default class MassCard extends React.Component {
           />
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <Action
+              <Link
                 href={this.getLink('first-reading')}
                 target='_blank'
               >
                 <Typography color='inherit'>
                   {`${t('First Reading')}:\t${firstReading}`}
                 </Typography>
-              </Action>
-              <Action
+              </Link>
+              <Link
                 href={this.getLink('responsorial-psalm')}
                 target='_blank'
               >
                 <Typography color='inherit'>
                   {`${t('Responsorial Psalm')}:\t${responsorialPsalm}`}
                 </Typography>
-              </Action>
-              <Action
+              </Link>
+              <Link
                 href={this.getLink('second-reading')}
                 target='_blank'
               >
                 <Typography color='inherit'>
                   {`${t('Second Reading')}:\t${secondReading}`}
                 </Typography>
-              </Action>
-              <Action
+              </Link>
+              <Link
                 href={this.getLink('gospel')}
                 target='_blank'
               >
                 <Typography color='inherit'>
                   {`${t('Gospel')}:\t${gospel}`}
                 </Typography>
-              </Action>
+              </Link>
             </CardContent>
           </Collapse>
         </Card>

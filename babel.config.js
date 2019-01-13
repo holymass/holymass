@@ -4,7 +4,7 @@ module.exports = {
     '@babel/preset-react',
   ],
   plugins: [
-    'loadable-components/babel',
+    '@loadable/babel-plugin',
     ['@babel/plugin-proposal-decorators', {legacy: true}],
     ['@babel/plugin-proposal-class-properties', {loose: true}],
     '@babel/plugin-proposal-object-rest-spread',

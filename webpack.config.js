@@ -8,6 +8,7 @@ const HtmlPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 module.exports = (env, argv) => {
   const prodMode = argv.mode === 'production';
@@ -69,6 +70,9 @@ module.exports = (env, argv) => {
       },
     },
     plugins: [
+      new LoadablePlugin({
+        writeToDisk: true,
+      }),
       new ExtractCssChunksPlugin({
         filename: prodMode ? 'css/[name].[contenthash].css' : 'css/[name].css',
         chunkFilename: prodMode ?

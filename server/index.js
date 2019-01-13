@@ -9,7 +9,7 @@ require('@babel/register')({
     ['@babel/plugin-proposal-class-properties', {loose: true}],
     '@babel/plugin-proposal-object-rest-spread',
     'dynamic-import-node',
-    'loadable-components/babel',
+    '@loadable/babel-plugin',
     ['module-resolver', {
       alias: {
         components: './src/components',
