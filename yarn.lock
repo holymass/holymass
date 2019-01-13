@@ -744,14 +744,6 @@
     recompose "0.28.0 - 0.30.0"
     warning "^4.0.1"
 
-"@material-ui/icons@^3.0.1":
-  version "3.0.1"
-  resolved "http://registry.npm.taobao.org/@material-ui/icons/download/@material-ui/icons-3.0.1.tgz#671fb3d04dcaf9351dbbd2bf82ae2ae72e3d93cd"
-  integrity sha1-Zx+z0E3K+TUdu9K/gq4q5y49k80=
-  dependencies:
-    "@babel/runtime" "7.0.0"
-    recompose "^0.29.0"
-
 "@types/jss@^9.5.6":
   version "9.5.7"
   resolved "http://registry.npm.taobao.org/@types/jss/download/@types/jss-9.5.7.tgz#fa57a6d0b38a3abef8a425e3eb6a53495cb9d5a0"
@@ -5905,18 +5897,6 @@ readdirp@^2.0.0:
   version "0.30.0"
   resolved "http://registry.npm.taobao.org/recompose/download/recompose-0.30.0.tgz#82773641b3927e8c7d24a0d87d65aeeba18aabd0"
   integrity sha1-gnc2QbOSfox9JKDYfWWu66GKq9A=
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-    change-emitter "^0.1.2"
-    fbjs "^0.8.1"
-    hoist-non-react-statics "^2.3.1"
-    react-lifecycles-compat "^3.0.2"
-    symbol-observable "^1.0.4"
-
-recompose@^0.29.0:
-  version "0.29.0"
-  resolved "http://registry.npm.taobao.org/recompose/download/recompose-0.29.0.tgz#f1a4e20d5f24d6ef1440f83924e821de0b1bccef"
-  integrity sha1-8aTiDV8k1u8UQPg5JOgh3gsbzO8=
   dependencies:
     "@babel/runtime" "^7.0.0"
     change-emitter "^0.1.2"
