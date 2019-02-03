@@ -53,7 +53,7 @@ export default async (ctx, next) => {
   state = JSON.stringify(store.getState());
   state = `window.__PRELOADED_STATE__ = ${state};`;
   body = ReactDOMServer.renderToString(reactApp);
-  body = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>iannar</title><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="google-analytics" content="UA-120959122-1">${extractor.getStyleTags()}</head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=root>${body}</div><script crossorigin src=https://unpkg.com/react@16/umd/react.production.min.js></script><script crossorigin src=https://unpkg.com/react-dom@16/umd/react-dom.production.min.js></script><script>${state}</script>${extractor.getScriptTags()}</body></html>`;
+  body = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>iannar</title><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="google-analytics" content="UA-120959122-1">${extractor.getStyleTags()}</head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=root>${body}</div><script src=https://unpkg.com/react@16/umd/react.production.min.js></script><script src=https://unpkg.com/react-dom@16/umd/react-dom.production.min.js></script><script>${state}</script>${extractor.getScriptTags()}</body></html>`;
   redisClient.set(redisKey, body, 'EX', 3600 * 12);
   ctx.body = body;
 };
