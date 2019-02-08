@@ -10,6 +10,7 @@ const theme = createMuiTheme({
     secondary: orange,
   },
   typography: {
+    fontSize: 12.25,
     fontFamily: '"PingFang SC", "Microsoft YaHei", "Open Sans", sans-serif',
     useNextVariants: true,
   },
