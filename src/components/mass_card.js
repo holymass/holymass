@@ -124,9 +124,11 @@ export default class MassCard extends React.Component {
             action={action}
             avatar={avatar}
             className={classes.cardHeader}
-            onClick={this.handleExpandClick}
-            subheader={`${t(liturgicalYear)} \u2022 ${date}`}
             title={name}
+            titleTypographyProps={{variant: 'subtitle1'}}
+            subheader={`${t(liturgicalYear)} \u2022 ${date}`}
+            subheaderTypographyProps={{variant: 'subtitle1'}}
+            onClick={this.handleExpandClick}
           />
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
