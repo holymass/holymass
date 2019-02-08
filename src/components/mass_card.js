@@ -134,7 +134,7 @@ export default class MassCard extends React.Component {
                 href={this.getLink('first-reading')}
                 target='_blank'
               >
-                <Typography color='inherit'>
+                <Typography variant='body1' color='inherit'>
                   {`${t('First Reading')}:\t${firstReading}`}
                 </Typography>
               </Link>
@@ -142,7 +142,7 @@ export default class MassCard extends React.Component {
                 href={this.getLink('responsorial-psalm')}
                 target='_blank'
               >
-                <Typography color='inherit'>
+                <Typography variant='body1' color='inherit'>
                   {`${t('Responsorial Psalm')}:\t${responsorialPsalm}`}
                 </Typography>
               </Link>
@@ -150,7 +150,7 @@ export default class MassCard extends React.Component {
                 href={this.getLink('second-reading')}
                 target='_blank'
               >
-                <Typography color='inherit'>
+                <Typography variant='body1' color='inherit'>
                   {`${t('Second Reading')}:\t${secondReading}`}
                 </Typography>
               </Link>
@@ -158,7 +158,7 @@ export default class MassCard extends React.Component {
                 href={this.getLink('gospel')}
                 target='_blank'
               >
-                <Typography color='inherit'>
+                <Typography variant='body1' color='inherit'>
                   {`${t('Gospel')}:\t${gospel}`}
                 </Typography>
               </Link>
