@@ -81,7 +81,7 @@ export default class MassCard extends React.Component {
       liturgicalYear,
     } = this.props.data.solemnity;
     const year = yearMap[liturgicalYear];
-    return `/assets/mass/index.html?m=${year}/${name}#/${id || ''}`;
+    return `/assets/masses/index.html?m=${year}/${name}#/${id || ''}`;
   }
 
   componentDidMount() {
