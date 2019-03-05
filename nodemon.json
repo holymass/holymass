@@ -1,8 +1,10 @@
 {
   "verbose": true,
+  "ext": "js json",
   "ignore": [
     "*.test.js",
     ".git",
-    "./assets"
+    "assets",
+    "node_modules"
   ]
 }
