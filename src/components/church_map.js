@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Map, Markers} from 'react-amap';
@@ -38,7 +38,11 @@ const ChurchMap = (props) => {
       latitude: item.latitude,
     },
   })) : [];
-  fetchAllChurches && fetchAllChurches();
+  useEffect(() => {
+    if (!data) {
+      fetchAllChurches();
+    }
+  });
   return (
     <div className={classes.root}>
       <Map amapkey={amapkey} center={center} plugins={plugins} zoom={18}>

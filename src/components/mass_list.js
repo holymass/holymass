@@ -41,10 +41,12 @@ const MassList = (props) => {
     fetchMasses(page + 1 || 1);
   };
   useEffect(() => {
-    if (showNext) {
-      fetchNextMasses();
-    } else {
-      fetchMasses(page || 1);
+    if (!data) {
+      if (showNext) {
+        fetchNextMasses();
+      } else {
+        fetchMasses(page || 1);
+      }
     }
   });
   return (
