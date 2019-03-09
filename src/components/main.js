@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: 'calc(100vh - 56px)',
     [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {
@@ -14,21 +14,18 @@ const styles = (theme) => ({
     overflowX: 'hidden',
     overflowY: 'auto',
   },
-});
+}));
 
-@withStyles(styles)
-export default class Main extends React.Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    classes: PropTypes.object.isRequired,
-  };
-
-  render() {
-    const {children, classes} = this.props;
-    return (
-      <main className={classes.root}>
-        {children}
-      </main>
-    );
-  }
+export default function Main(props) {
+  const {children} = props;
+  const classes = useStyles();
+  return (
+    <main className={classes.root}>
+      {children}
+    </main>
+  );
 }
+
+Main.propTypes = {
+  children: PropTypes.node.isRequired,
+};

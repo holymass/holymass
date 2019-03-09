@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {withStyles} from '@material-ui/core/styles';
 import {Map, Markers} from 'react-amap';
+import makeStyles from '@material-ui/styles/makeStyles';
 import {fetchAllChurches} from '../actions/church';
 
 const mapStateToProps = (state) => ({
@@ -17,47 +17,42 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     height: '100%',
   },
-});
+}));
 
-@connect(mapStateToProps, mapDispatchToProps)
-@withStyles(styles)
-export default class ChurchMap extends React.Component {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-    amapkey: PropTypes.string.isRequired,
-    data: PropTypes.array.isRequired,
-    fetchAllChurches: PropTypes.func,
-    mapCenter: PropTypes.array.isRequired,
-  }
+const ChurchMap = (props) => {
+  const {amapkey, data, mapCenter, fetchAllChurches} = props;
+  const classes = useStyles();
+  const center = {
+    longitude: mapCenter[0],
+    latitude: mapCenter[1],
+  };
+  const plugins = ['ToolBar'];
+  const markers = data && data.length ? data.map((item) => ({
+    position: {
+      longitude: item.longitude,
+      latitude: item.latitude,
+    },
+  })) : [];
+  fetchAllChurches && fetchAllChurches();
+  return (
+    <div className={classes.root}>
+      <Map amapkey={amapkey} center={center} plugins={plugins} zoom={18}>
+        <Markers markers={markers}></Markers>
+      </Map>
+    </div>
+  );
+};
 
-  componentWillMount() {
-    this.props.fetchAllChurches();
-  }
+ChurchMap.propTypes = {
+  amapkey: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
+  mapCenter: PropTypes.array.isRequired,
+  fetchAllChurches: PropTypes.func,
+};
 
-  render() {
-    const {classes, amapkey, data, mapCenter} = this.props;
-    const center = {
-      longitude: mapCenter[0],
-      latitude: mapCenter[1],
-    };
-    const plugins = ['ToolBar'];
-    const markers = data && data.length ? data.map((item) => ({
-      position: {
-        longitude: item.longitude,
-        latitude: item.latitude,
-      },
-    })) : [];
-    return (
-      <div className={classes.root}>
-        <Map amapkey={amapkey} center={center} plugins={plugins} zoom={18}>
-          <Markers markers={markers}></Markers>
-        </Map>
-      </div>
-    );
-  }
-}
+export default connect(mapStateToProps, mapDispatchToProps)(ChurchMap);
