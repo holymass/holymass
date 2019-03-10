@@ -54,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function Header() {
   const classes = useStyles();
   const {t} = useTranslation('base');
@@ -106,7 +105,7 @@ export default function Header() {
   return (
     <div className={classes.root}>
       <div className={classes.toolbar} />
-      <AppBar className={classes.appBar}>
+      <AppBar position='fixed' className={classes.appBar}>
         <Toolbar>
           <div className={classes.nav}>
             <Hidden mdUp implementation='css'>

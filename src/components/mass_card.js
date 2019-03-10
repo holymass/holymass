@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {useTranslation} from 'react-i18next';
@@ -93,9 +93,6 @@ export default function MassCard(props) {
       <ChevronDownIcon />
     </IconButton>
   );
-  useEffect(() => {
-    expanded && handleExpandClick();
-  });
   return (
     <div className={classes.root}>
       <Card>
