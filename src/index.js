@@ -1,11 +1,11 @@
-import React, {Suspense} from 'react';
+import React, {Suspense, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
 import {Provider} from 'react-redux';
 import {useSSR} from 'react-i18next';
 import {BrowserRouter} from 'react-router-dom';
 import {loadableReady} from '@loadable/component';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
+import {ThemeProvider} from '@material-ui/styles';
 import Loading from 'components/loading';
 import {getMetadata} from './utils';
 import theme from '../src/theme';
@@ -22,9 +22,15 @@ const initialI18nStore = window.__INITIAL_I18N_STORE__;
 const store = createStore(preloadedState);
 const ReactApp = () => {
   useSSR(initialI18nStore, preloadedState.settings.language);
+  useEffect(() => {
+    const jssStyles = document.getElementById('jss-server-side');
+    if (jssStyles && jssStyles.parentNode) {
+      jssStyles.parentNode.removeChild(jssStyles);
+    }
+  });
   return (
     <Suspense fallback={<Loading />}>
-      <App/>
+      <App />
     </Suspense>
   );
 };

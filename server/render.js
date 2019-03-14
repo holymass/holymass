@@ -5,12 +5,23 @@ import ReactDOMServer from 'react-dom/server';
 import {Provider} from 'react-redux';
 import {I18nextProvider} from 'react-i18next';
 import {StaticRouter} from 'react-router-dom';
-import {ChunkExtractor, ChunkExtractorManager} from '@loadable/server';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
+import {SheetsRegistry} from 'jss';
+import {
+  ChunkExtractor,
+  ChunkExtractorManager,
+} from '@loadable/server';
+import {
+  StylesProvider,
+  ThemeProvider,
+  createGenerateClassName,
+} from '@material-ui/styles';
 import createStore from '../src/store';
 import theme from '../src/theme';
 import App from '../src/app';
-import {redisClient, buildRedisKey} from './redis';
+import {
+  redisClient,
+  buildRedisKey,
+} from './redis';
 
 const logger = log4js.getLogger('render');
 const statsFile = path.join(__dirname, '../assets/loadable-stats.json');
@@ -57,16 +68,23 @@ export default async (ctx, next) => {
   let initialI18nStore = getInitialI18nStore(ctx);
   const store = createStore(state);
   const context = {};
+  const sheetsRegistry = new SheetsRegistry();
   const reactApp = (
     <Provider store={store}>
       <I18nextProvider i18n={ctx.i18next}>
-        <ThemeProvider theme={theme}>
-          <StaticRouter context={context} location={ctx.req.url}>
-            <ChunkExtractorManager extractor={extractor}>
-              <App/>
-            </ChunkExtractorManager>
-          </StaticRouter>
-        </ThemeProvider>
+        <StaticRouter context={context} location={ctx.req.url}>
+          <ThemeProvider theme={theme}>
+            <StylesProvider
+              sheetsRegistry={sheetsRegistry}
+              generateClassName={createGenerateClassName()}
+              sheetsManager={new Map()}
+            >
+              <ChunkExtractorManager extractor={extractor}>
+                <App/>
+              </ChunkExtractorManager>
+            </StylesProvider>
+          </ThemeProvider>
+        </StaticRouter>
       </I18nextProvider>
     </Provider>
   );
@@ -75,7 +93,7 @@ export default async (ctx, next) => {
   initialI18nStore = JSON.stringify(initialI18nStore);
   initialI18nStore = `window.__INITIAL_I18N_STORE__ = ${initialI18nStore};`;
   body = ReactDOMServer.renderToString(reactApp);
-  body = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>iannar</title><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="google-analytics" content="UA-120959122-1">${extractor.getStyleTags()}</head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=root>${body}</div><script src=https://unpkg.com/react@16.8/umd/react.production.min.js></script><script src=https://unpkg.com/react-dom@16.8/umd/react-dom.production.min.js></script><script>${state}${initialI18nStore}</script>${extractor.getScriptTags()}</body></html>`;
+  body = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>iannar</title><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="google-analytics" content="UA-120959122-1"><style id="jss-server-side">${sheetsRegistry.toString()}</style>${extractor.getStyleTags()}</head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=root>${body}</div><script src=https://unpkg.com/react@16.8/umd/react.production.min.js></script><script src=https://unpkg.com/react-dom@16.8/umd/react-dom.production.min.js></script><script>${state}${initialI18nStore}</script>${extractor.getScriptTags()}</body></html>`;
   redisClient.set(redisKey, body, 'EX', 3600 * 12);
   ctx.body = body;
 };
