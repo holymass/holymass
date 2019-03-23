@@ -51,11 +51,6 @@ const yearMap = {
   'C': '丙年',
 };
 
-const getLink = ({name, liturgicalYear}, id) => {
-  const year = yearMap[liturgicalYear];
-  return `/assets/masses/index.html?m=${year}/${name}#/${id || ''}`;
-};
-
 export default function MassCard(props) {
   const {data} = props;
   const classes = useStyles();
@@ -63,10 +58,6 @@ export default function MassCard(props) {
   const [expanded, setExpanded] = useState(props.expanded);
   const handleExpandClick = () => {
     setExpanded(!expanded);
-  };
-  const handleLaunchClick = (e) => {
-    e.stopPropagation();
-    open(getLink(), '_blank');
   };
   const {
     name,
@@ -76,6 +67,14 @@ export default function MassCard(props) {
     secondReading,
     gospel,
   } = data.solemnity;
+  const year = yearMap[liturgicalYear];
+  const getLink = (id) => {
+    return `/assets/masses/index.html?m=${year}/${name}#/${id || ''}`;
+  };
+  const handleLaunchClick = (e) => {
+    e.stopPropagation();
+    open(getLink(), '_blank');
+  };
   const date = moment(data.date).format('YYYY-MM-DD');
   const avatar = (
     <Avatar className={classes.avatar} onClick={handleLaunchClick}>
