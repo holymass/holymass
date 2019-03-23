@@ -3,8 +3,9 @@ FROM node:10.11
 COPY . /app
 WORKDIR /app
 
-RUN npm install -g pm2
+RUN npm config list
 RUN npm install
+RUN npm install -g pm2
 RUN npm run build
 
 EXPOSE 3000
