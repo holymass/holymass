@@ -49,6 +49,10 @@ module.exports = (env, argv) => {
               warnings: false,
             },
           },
+          chunkFilter: (chunk) => {
+            // Exclude uglification for the `vendors` chunk
+            return chunk.name !== 'vendors';
+          },
           parallel: true,
         }),
         new OptimizeCssAssetsPlugin(),
