@@ -1,10 +1,13 @@
 import React from 'react';
-import ChurchMap from 'components/church_map';
+import loadable from '@loadable/component';
+import Loading from 'components/loading';
 
-export default class ChurchModule extends React.Component {
-  render() {
-    return (
-      <ChurchMap />
-    );
-  }
+const ChurchMap = loadable(() => import('components/church_map'), {
+  fallback: (<Loading />),
+});
+
+export default function ChurchModule() {
+  return (
+    <ChurchMap />
+  );
 }

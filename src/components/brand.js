@@ -2,37 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
-import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {getMetadata} from '../utils';
+import makeStyles from '@material-ui/styles/makeStyles';
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     color: theme.palette.primary.contrastText,
     textDecoration: 'none',
   },
-});
+}));
 
-@withStyles(styles)
-export default class Brand extends React.Component {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-    className: PropTypes.string,
-    color: PropTypes.string,
-  };
-
-  render() {
-    const {className: classNameProp, classes, color, ...others} = this.props;
-    const className = classNames(
-        classes.root,
-        classNameProp,
-    );
-    return (
-      <Link className={className} to='/' {...others}>
-        <Typography color={color} variant='h6'>
-          {getMetadata('brand')}
-        </Typography>
-      </Link>
-    );
-  }
+export default function Brand(props) {
+  const {className: classNameProp, color, ...rest} = props;
+  const classes = useStyles();
+  const className = classNames(
+      classes.root,
+      classNameProp,
+  );
+  return (
+    <Link className={className} to='/' {...rest}>
+      <Typography color={color} variant='h6'>
+        {getMetadata('brand')}
+      </Typography>
+    </Link>
+  );
 }
+
+Brand.propTypes = {
+  className: PropTypes.string,
+  color: PropTypes.string,
+};

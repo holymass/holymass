@@ -1,6 +1,6 @@
-import _ from 'lodash';
+import _get from 'lodash/get';
 import metadata from '../metadata.json';
 
 export const getMetadata = (key) => {
-  return _.get(metadata, key);
+  return _get(metadata, key);
 };

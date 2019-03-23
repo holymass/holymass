@@ -99,10 +99,12 @@ module.exports = (env, argv) => {
     },
   };
   if (prodMode) {
-    config.plugins.unshift(new CleanPlugin([
-      'assets/css',
-      'assets/js',
-    ]));
+    config.plugins.unshift(new CleanPlugin({
+      cleanOnceBeforeBuildPatterns: [
+        'assets/css',
+        'assets/js',
+      ],
+    }));
   } else {
     config.devtool = 'eval';
   }

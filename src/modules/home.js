@@ -1,10 +1,13 @@
 import React from 'react';
-import MassList from 'components/mass_list';
+import loadable from '@loadable/component';
+import Loading from 'components/loading';
 
-export default class HomeModule extends React.Component {
-  render() {
-    return (
-      <MassList showNext />
-    );
-  }
+const MassList = loadable(() => import('components/mass_list'), {
+  fallback: (<Loading />),
+});
+
+export default function HomeModule() {
+  return (
+    <MassList showNext />
+  );
 }

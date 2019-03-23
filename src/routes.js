@@ -1,18 +1,7 @@
-import loadable from '@loadable/component';
-import Loading from 'components/loading';
-
-const HomeModule = loadable(() => import('./modules/home'), {
-  LoadingComponent: Loading,
-});
-const MassModule = loadable(() => import('./modules/mass'), {
-  LoadingComponent: Loading,
-});
-const ChurchModule = loadable(() => import('./modules/church'), {
-  LoadingComponent: Loading,
-});
-const SettingsModule = loadable(() => import('./modules/settings'), {
-  LoadingComponent: Loading,
-});
+import HomeModule from './modules/home';
+import MassModule from './modules/mass';
+import ChurchModule from './modules/church';
+import SettingsModule from './modules/settings';
 
 export default [{
   exact: true,

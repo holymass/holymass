@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {withNamespaces} from 'react-i18next';
-import {withStyles} from '@material-ui/core/styles';
+import {useTranslation} from 'react-i18next';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import makeStyles from '@material-ui/styles/makeStyles';
 import {setLanguage} from '../../actions/settings';
 
 const mapStateToProps = (state) => ({
@@ -15,45 +15,47 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onChange: (e) => {
-    dispatch(setLanguage(e.target.value));
+  onChangeLanguage: (language) => {
+    dispatch(setLanguage(language));
   },
 });
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing.unit,
+    padding: theme.spacing(1),
   },
-});
+}));
 
-@connect(mapStateToProps, mapDispatchToProps)
-@withNamespaces('settings')
-@withStyles(styles)
-export default class SetLanguage extends React.Component {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
-    language: PropTypes.string.isRequired,
-    t: PropTypes.func.isRequired,
+const SetLanguage = (props) => {
+  const {onChangeLanguage, language} = props;
+  const classes = useStyles;
+  const {t, i18n} = useTranslation('settings');
+  const handleChangeLanguage = (e) => {
+    const language = e.target.value;
+    i18n.changeLanguage(language);
+    onChangeLanguage(language);
   };
+  return (
+    <div className={classes.root}>
+      <FormControl component='fieldset'>
+        <FormLabel component='legend'>{t('Language')}</FormLabel>
+        <RadioGroup
+          aria-label='Language'
+          name='settings/setLanguage'
+          value={language}
+          onChange={handleChangeLanguage}
+        >
+          <FormControlLabel value='en' control={<Radio />} label='English' />
+          <FormControlLabel value='zh' control={<Radio />} label='中文' />
+        </RadioGroup>
+      </FormControl>
+    </div>
+  );
+};
 
-  render() {
-    const {classes, onChange, language, t} = this.props;
-    return (
-      <div className={classes.root}>
-        <FormControl component='fieldset'>
-          <FormLabel component='legend'>{t('Language')}</FormLabel>
-          <RadioGroup
-            aria-label='Language'
-            name='settings/setLanguage'
-            value={language}
-            onChange={onChange}
-          >
-            <FormControlLabel value='en' control={<Radio />} label='English' />
-            <FormControlLabel value='zh' control={<Radio />} label='中文' />
-          </RadioGroup>
-        </FormControl>
-      </div>
-    );
-  }
-}
+SetLanguage.propTypes = {
+  onChangeLanguage: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SetLanguage);
