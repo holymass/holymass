@@ -9,6 +9,7 @@
     "build": "webpack --mode production",
     "dev": "webpack && webpack-dev-server --hot --inline",
     "lint": "eslint --cache server src",
+    "server": "pm2-docker start process.yml",
     "start": "nodemon server/index.js"
   },
   "precommit": [
@@ -78,6 +79,7 @@
     "extract-css-chunks-webpack-plugin": "^4.3.0",
     "nodemon": "^1.18.10",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "pm2": "^3.4.1",
     "pre-commit": "^1.2.2",
     "source-map-loader": "^0.2.4",
     "uglifyjs-webpack-plugin": "^2.1.2",
