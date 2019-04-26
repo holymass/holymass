@@ -14,8 +14,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  fetchMasses,
-  fetchNextMasses,
+  onFetch: fetchMasses,
+  onFetchNext: fetchNextMasses,
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -111,11 +111,12 @@ MassList.propTypes = {
   ).isRequired,
   onFetch: PropTypes.func.isRequired,
   onFetchNext: PropTypes.func.isRequired,
-  page: PropTypes.number.isRequired,
+  page: PropTypes.number,
   showNext: PropTypes.bool,
 };
 
 MassList.defaultProps = {
+  page: 0,
   showNext: false,
 };
 

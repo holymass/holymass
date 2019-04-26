@@ -27,6 +27,11 @@ export default function Brand(props) {
 }
 
 Brand.propTypes = {
-  className: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  color: PropTypes.string,
+};
+
+Brand.defaultProps = {
+  className: undefined,
+  color: undefined,
 };

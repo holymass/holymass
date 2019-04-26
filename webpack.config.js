@@ -94,11 +94,8 @@ module.exports = (env, argv) => {
       open: true,
       proxy: {
         '/api': {
-          target: 'http://localhost:5000/',
+          target: 'https://www.iannar.com',
           changeOrigin: true,
-          pathRewrite: {
-            '^/api': '',
-          },
         },
         '/': {
           target: 'http://localhost:3000/',
