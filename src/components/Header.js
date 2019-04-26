@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import {useTranslation} from 'react-i18next';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,48 +15,48 @@ import makeStyles from '@material-ui/styles/makeStyles';
 import GitHubIcon from 'mdi-material-ui/GithubCircle';
 import MenuIcon from 'mdi-material-ui/Menu';
 import SettingsIcon from 'mdi-material-ui/Settings';
-import Brand from 'components/brand';
-import Footer from 'components/footer';
+import Brand from 'components/Brand';
+import Footer from 'components/Footer';
 import links from '../links';
-import {getMetadata} from '../utils';
+import getMetadata from '../getMetadata';
 
 const drawerWidth = getMetadata('drawer.width');
 const useStyles = makeStyles((theme) => ({
-  'root': {
+  root: {
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
   },
-  'appBar': {
+  appBar: {
     zIndex: theme.zIndex.drawer + 1,
   },
-  'nav': {
+  nav: {
     alignItems: 'center',
     display: 'flex',
     flex: 1,
   },
-  'toolbar': theme.mixins.toolbar,
-  'drawer': {
+  toolbar: theme.mixins.toolbar,
+  drawer: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     height: '100%',
   },
-  'drawerHeader': {
+  drawerHeader: {
     ...theme.mixins.toolbar,
     alignItems: 'center',
     display: 'flex',
     paddingLeft: theme.spacing(3),
     paddingRight: theme.spacing(3),
   },
-  'drawerPaper': {
+  drawerPaper: {
     width: drawerWidth,
   },
 }));
 
 export default function Header() {
   const classes = useStyles();
-  const {t} = useTranslation('base');
+  const { t } = useTranslation('base');
   const [mobileOpen, setMobileOpen] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -65,24 +65,22 @@ export default function Header() {
     <div className={classes.drawer}>
       <nav>
         <div className={classes.drawerHeader}>
-          {mobileOpen ? (<Brand />) : null}
+          {mobileOpen ? <Brand /> : null}
         </div>
         <Divider />
         <List>
-          {links.map((link, key) =>
+          {links.map((link) => (
             <ListItem
+              key={link.to}
               button
               component={Link}
-              key={key}
               onClick={handleDrawerToggle}
               to={link.to}
             >
-              <ListItemIcon>
-                {link.icon}
-              </ListItemIcon>
+              <ListItemIcon>{link.icon}</ListItemIcon>
               <ListItemText primary={t(link.text)} />
             </ListItem>
-          )}
+          ))}
         </List>
         <Divider />
         <List>
@@ -90,7 +88,7 @@ export default function Header() {
             button
             component={Link}
             onClick={handleDrawerToggle}
-            to='/settings'
+            to="/settings"
           >
             <ListItemIcon>
               <SettingsIcon />
@@ -108,24 +106,24 @@ export default function Header() {
       <AppBar className={classes.appBar}>
         <Toolbar>
           <div className={classes.nav}>
-            <Hidden mdUp implementation='css'>
+            <Hidden mdUp implementation="css">
               <IconButton
-                color='inherit'
-                aria-label='Menu'
+                color="inherit"
+                aria-label="Menu"
                 onClick={handleDrawerToggle}
               >
                 <MenuIcon />
               </IconButton>
             </Hidden>
-            <Hidden smDown implementation='css'>
-              <Brand color='inherit' />
+            <Hidden smDown implementation="css">
+              <Brand color="inherit" />
             </Hidden>
           </div>
           <IconButton
-            color='inherit'
-            href='https://github.com/iannar'
-            target='_blank'
-            aria-label='Github'
+            color="inherit"
+            href="https://github.com/iannar"
+            target="_blank"
+            aria-label="Github"
           >
             <GitHubIcon />
           </IconButton>
@@ -142,12 +140,12 @@ export default function Header() {
           {drawer}
         </Drawer>
       </Hidden>
-      <Hidden smDown implementation='css'>
+      <Hidden smDown implementation="css">
         <Drawer
           classes={{
             paper: classes.drawerPaper,
           }}
-          variant='permanent'
+          variant="permanent"
         >
           {drawer}
         </Drawer>

@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const CleanPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -20,25 +18,31 @@ module.exports = (env, argv) => {
     },
     resolve: {
       alias: {
-        'components': path.resolve(__dirname, 'src/components'),
+        components: path.resolve(__dirname, 'src/components'),
       },
       extensions: ['.js', '.jsx', '.json'],
     },
     module: {
-      rules: [{
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
+      rules: [
+        {
+          test: /\.jsx?$/,
+          exclude: /(node_modules|bower_components)/,
+          use: {
+            loader: 'babel-loader',
+          },
         },
-      }, {
-        test: /\.css$/,
-        use: [{
-          loader: ExtractCssChunksPlugin.loader,
-        }, {
-          loader: 'css-loader',
-        }],
-      }],
+        {
+          test: /\.css$/,
+          use: [
+            {
+              loader: ExtractCssChunksPlugin.loader,
+            },
+            {
+              loader: 'css-loader',
+            },
+          ],
+        },
+      ],
     },
     optimization: {
       minimizer: [
@@ -76,12 +80,13 @@ module.exports = (env, argv) => {
       }),
       new ExtractCssChunksPlugin({
         filename: prodMode ? 'css/[name].[contenthash].css' : 'css/[name].css',
-        chunkFilename: prodMode ?
-            'css/[name].[contenthash].css' : 'css/[name].css',
+        chunkFilename: prodMode
+          ? 'css/[name].[contenthash].css'
+          : 'css/[name].css',
       }),
     ],
     externals: {
-      'react': 'React',
+      react: 'React',
       'react-dom': 'ReactDOM',
     },
     devServer: {
@@ -103,12 +108,11 @@ module.exports = (env, argv) => {
     },
   };
   if (prodMode) {
-    config.plugins.unshift(new CleanPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        'assets/css',
-        'assets/js',
-      ],
-    }));
+    config.plugins.unshift(
+      new CleanPlugin({
+        cleanOnceBeforeBuildPatterns: ['assets/css', 'assets/js'],
+      }),
+    );
   } else {
     config.devtool = 'eval';
   }

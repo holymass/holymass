@@ -17,13 +17,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Main(props) {
-  const {children} = props;
+  const { children } = props;
   const classes = useStyles();
-  return (
-    <main className={classes.root}>
-      {children}
-    </main>
-  );
+  return <main className={classes.root}>{children}</main>;
 }
 
 Main.propTypes = {

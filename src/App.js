@@ -1,13 +1,13 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import makeStyles from '@material-ui/styles/makeStyles';
-import Header from 'components/header';
-import Main from 'components/main';
-import {getMetadata} from './utils';
+import Header from 'components/Header';
+import Main from 'components/Main';
+import getMetadata from './getMetadata';
 import routes from './routes';
-import ErrorModule from './modules/error';
+import ErrorModule from './modules/ErrorModule';
 
-const Error404 = () => (<ErrorModule code='404' message='NOT FOUND' />);
+const Error404 = () => <ErrorModule code="404" message="NOT FOUND" />;
 const drawerWidth = getMetadata('drawer.width');
 
 const useStyles = makeStyles((theme) => ({
@@ -26,15 +26,15 @@ export default function App() {
       <Header />
       <Main>
         <Switch>
-          {routes.map((route, key) => (
+          {routes.map((route) => (
             <Route
-              key={key}
+              key={route.path}
               exact={route.exact}
               path={route.path}
               component={route.component}
             />
           ))}
-          <Route path='*' component={Error404} />
+          <Route path="*" component={Error404} />
         </Switch>
       </Main>
     </div>

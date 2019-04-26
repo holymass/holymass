@@ -1,8 +1,13 @@
+const path = require('path');
+
 module.exports = {
   root: true,
   extends: [
-    'google',
+    'plugin:import/recommended',
     'plugin:react/recommended',
+    'airbnb',
+    'prettier',
+    'prettier/react',
   ],
   env: {
     browser: true,
@@ -20,16 +25,36 @@ module.exports = {
   },
   settings: {
     react: {
-      version: '16.0',
+      version: '16.8',
+    },
+    'import/resolver': {
+      webpack: {
+        config: path.join(__dirname, 'webpack.config.js'),
+      },
     },
   },
-  plugins: [
-    'babel',
-    'react',
-  ],
+  plugins: ['babel', 'prettier', 'react', 'react-hooks'],
   rules: {
-    'no-invalid-this': 0,
-    'require-jsdoc': 0,
-    'babel/no-invalid-this': 1,
+    'prettier/prettier': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: [
+          ['index', 'sibling', 'parent', 'internal', 'external', 'builtin'],
+        ],
+        'newlines-between': 'never',
+      },
+    ],
+    'prefer-destructuring': 'off',
+    'react/jsx-filename-extension': ['error', { extensions: ['.js'] }],
+    'react/jsx-handler-names': [
+      'error',
+      {
+        eventHandlerPrefix: 'handle',
+        eventHandlerPropPrefix: 'on',
+      },
+    ],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error',
   },
 };

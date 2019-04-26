@@ -10,14 +10,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ErrorModule(props) {
-  const {code, message} = props;
+  const { code, message } = props;
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography variant='h1' gutterBottom align='center'>
+      <Typography variant="h1" gutterBottom align="center">
         {code}
       </Typography>
-      <Typography variant='h2' gutterBottom align='center'>
+      <Typography variant="h2" gutterBottom align="center">
         {message}
       </Typography>
     </div>

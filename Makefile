@@ -1,7 +1,7 @@
 .PHONY: image
 
 REPOSITORY ?= iannar
-TAG = $(shell git rev-parse HEAD)
+TAG = $(shell git describe --tags | tr -d 'v')
 
 image:
 	docker build -t $(REPOSITORY):$(TAG) .

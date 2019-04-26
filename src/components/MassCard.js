@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
   },
   avatar: {
-    'backgroundColor': theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main,
     '&:hover': {
       backgroundColor: theme.palette.primary.main,
     },
@@ -46,16 +46,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const yearMap = {
-  'A': '甲年',
-  'B': '乙年',
-  'C': '丙年',
+  A: '甲年',
+  B: '乙年',
+  C: '丙年',
 };
 
 export default function MassCard(props) {
-  const {data} = props;
+  const { data, expanded: initialExpanded } = props;
   const classes = useStyles();
-  const {t} = useTranslation('mass');
-  const [expanded, setExpanded] = useState(props.expanded);
+  const { t } = useTranslation('mass');
+  const [expanded, setExpanded] = useState(initialExpanded);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -73,7 +73,7 @@ export default function MassCard(props) {
   };
   const handleLaunchClick = (e) => {
     e.stopPropagation();
-    open(getLink(), '_blank');
+    window.open(getLink(), '_blank');
   };
   const date = moment(data.date).format('YYYY-MM-DD');
   const avatar = (
@@ -100,42 +100,30 @@ export default function MassCard(props) {
           avatar={avatar}
           className={classes.cardHeader}
           title={name}
-          titleTypographyProps={{variant: 'subtitle1'}}
+          titleTypographyProps={{ variant: 'subtitle1' }}
           subheader={`${t(liturgicalYear)} \u2022 ${date}`}
-          subheaderTypographyProps={{variant: 'subtitle1'}}
+          subheaderTypographyProps={{ variant: 'subtitle1' }}
           onClick={handleExpandClick}
         />
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Link
-              href={getLink('first-reading')}
-              target='_blank'
-            >
-              <Typography variant='body1' color='inherit'>
+            <Link href={getLink('first-reading')} target="_blank">
+              <Typography variant="body1" color="inherit">
                 {`${t('First Reading')}:\t${firstReading}`}
               </Typography>
             </Link>
-            <Link
-              href={getLink('responsorial-psalm')}
-              target='_blank'
-            >
-              <Typography variant='body1' color='inherit'>
+            <Link href={getLink('responsorial-psalm')} target="_blank">
+              <Typography variant="body1" color="inherit">
                 {`${t('Responsorial Psalm')}:\t${responsorialPsalm}`}
               </Typography>
             </Link>
-            <Link
-              href={getLink('second-reading')}
-              target='_blank'
-            >
-              <Typography variant='body1' color='inherit'>
+            <Link href={getLink('second-reading')} target="_blank">
+              <Typography variant="body1" color="inherit">
                 {`${t('Second Reading')}:\t${secondReading}`}
               </Typography>
             </Link>
-            <Link
-              href={getLink('gospel')}
-              target='_blank'
-            >
-              <Typography variant='body1' color='inherit'>
+            <Link href={getLink('gospel')} target="_blank">
+              <Typography variant="body1" color="inherit">
                 {`${t('Gospel')}:\t${gospel}`}
               </Typography>
             </Link>
@@ -147,6 +135,22 @@ export default function MassCard(props) {
 }
 
 MassCard.propTypes = {
-  data: PropTypes.object.isRequired,
-  expanded: PropTypes.boolean,
+  data: PropTypes.objectOf(
+    PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      solemnity: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        liturgicalYear: PropTypes.string.isRequired,
+        firstReading: PropTypes.string.isRequired,
+        responsorialPsalm: PropTypes.string.isRequired,
+        secondReading: PropTypes.string.isRequired,
+        gospel: PropTypes.string.isRequired,
+      }),
+    }),
+  ).isRequired,
+  expanded: PropTypes.bool,
+};
+
+MassCard.defaultProps = {
+  expanded: false,
 };

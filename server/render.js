@@ -2,26 +2,20 @@ import path from 'path';
 import log4js from 'log4js';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import {Provider} from 'react-redux';
-import {I18nextProvider} from 'react-i18next';
-import {StaticRouter} from 'react-router-dom';
-import {SheetsRegistry} from 'jss';
-import {
-  ChunkExtractor,
-  ChunkExtractorManager,
-} from '@loadable/server';
+import { Provider } from 'react-redux';
+import { I18nextProvider } from 'react-i18next';
+import { StaticRouter } from 'react-router-dom';
+import { SheetsRegistry } from 'jss';
+import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import {
   StylesProvider,
   ThemeProvider,
   createGenerateClassName,
 } from '@material-ui/styles';
-import createStore from '../src/store';
+import createStore from '../src/createStore';
 import theme from '../src/theme';
-import App from '../src/app';
-import {
-  redisClient,
-  buildRedisKey,
-} from './redis';
+import App from '../src/App';
+import { redisClient, buildRedisKey } from './redis';
 
 const logger = log4js.getLogger('render');
 const statsFile = path.join(__dirname, '../assets/loadable-stats.json');
@@ -40,14 +34,15 @@ const getPreloadedState = (ctx) => {
     mapCenter: process.env.MAP_CENTER.split(','),
     language: getLanguage(ctx),
   };
-  return {settings};
+  return { settings };
 };
 
 const getInitialI18nStore = (ctx) => {
   const i18n = ctx.i18next;
   const initialI18nStore = {};
-  const languages =
-      i18n.services.languageUtils.toResolveHierarchy(getLanguage(ctx));
+  const languages = i18n.services.languageUtils.toResolveHierarchy(
+    getLanguage(ctx),
+  );
   languages.forEach((l) => {
     initialI18nStore[l] = i18n.services.resourceStore.data[l];
   });
@@ -55,7 +50,7 @@ const getInitialI18nStore = (ctx) => {
 };
 
 export default async (ctx, next) => {
-  const url = ctx.req.url;
+  const { url } = ctx.req;
   const language = getLanguage(ctx);
   const redisKey = buildRedisKey(language, url);
   let body = await redisClient.getAsync(redisKey);
@@ -80,7 +75,7 @@ export default async (ctx, next) => {
               sheetsManager={new Map()}
             >
               <ChunkExtractorManager extractor={extractor}>
-                <App/>
+                <App />
               </ChunkExtractorManager>
             </StylesProvider>
           </ThemeProvider>
@@ -89,11 +84,12 @@ export default async (ctx, next) => {
     </Provider>
   );
   state = JSON.stringify(state);
-  state = `window.__PRELOADED_STATE__ = ${state};`;
+  state = `window.PRELOADED_STATE = ${state};`;
   initialI18nStore = JSON.stringify(initialI18nStore);
-  initialI18nStore = `window.__INITIAL_I18N_STORE__ = ${initialI18nStore};`;
+  initialI18nStore = `window.INITIAL_I18N_STORE = ${initialI18nStore};`;
   body = ReactDOMServer.renderToString(reactApp);
   body = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>iannar</title><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="google-analytics" content="UA-120959122-1"><style id="jss-server-side">${sheetsRegistry.toString()}</style>${extractor.getStyleTags()}</head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=root>${body}</div><script src=https://unpkg.com/react@16.8/umd/react.production.min.js></script><script src=https://unpkg.com/react-dom@16.8/umd/react-dom.production.min.js></script><script>${state}${initialI18nStore}</script>${extractor.getScriptTags()}</body></html>`;
   redisClient.set(redisKey, body, 'EX', 3600 * 12);
   ctx.body = body;
+  next();
 };

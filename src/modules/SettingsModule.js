@@ -1,15 +1,15 @@
 import React from 'react';
 import loadable from '@loadable/component';
-import Loading from 'components/loading';
+import Loading from 'components/Loading';
 
-const SetLanguage = loadable(() => import('components/forms/set_language'), {
-  fallback: (<Loading />),
+const LanguageForm = loadable(() => import('components/forms/LanguageForm'), {
+  fallback: <Loading />,
 });
 
 export default function SettingsModule() {
   return (
     <React.Fragment>
-      <SetLanguage />
+      <LanguageForm />
     </React.Fragment>
   );
 }

@@ -21,11 +21,13 @@ const locales = new Koa();
 locales.use(koaStatic(path.join(__dirname, '../locales')));
 app.use(koaMount('/locales', locales));
 
-app.use(koaI18next(i18n, {
-  lookupCookie: 'i18next',
-  order: ['cookie'],
-  next: true,
-}));
+app.use(
+  koaI18next(i18n, {
+    lookupCookie: 'i18next',
+    order: ['cookie'],
+    next: true,
+  }),
+);
 
 const logger = log4js.getLogger('app');
 
@@ -41,3 +43,5 @@ app.use(router.allowedMethods());
 app.listen(port, () => {
   logger.info(`Running on http://localhost:${port}/`);
 });
+
+export default app;

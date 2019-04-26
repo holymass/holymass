@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "experimentalDecorators": true,
+    "module": "commonjs",
     "jsx": "react",
+    "experimentalDecorators": true,
     "lib": [
       "dom",
       "es6"
     ],
-    "module": "commonjs",
     "paths": {
       "components/*": ["src/components/*"]
     },

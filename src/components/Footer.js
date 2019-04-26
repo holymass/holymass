@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import {getMetadata} from '../utils';
 import Link from '@material-ui/core/Link';
 import makeStyles from '@material-ui/styles/makeStyles';
+import getMetadata from '../getMetadata';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,13 +17,13 @@ export default function Footer() {
   const icp = getMetadata('footer.icp');
   return (
     <footer className={classes.root}>
-      <Typography align='center'>
+      <Typography align="center">
         &copy; {new Date().getFullYear()} {getMetadata('domain')}
         <br />
         <Link
-          color='textSecondary'
-          href='http://www.miibeian.gov.cn/'
-          target='_blank'
+          color="textSecondary"
+          href="http://www.miibeian.gov.cn/"
+          target="_blank"
         >
           {icp}
         </Link>
