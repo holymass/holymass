@@ -22,7 +22,7 @@ export default function Footer() {
         <br />
         <Link
           color="textSecondary"
-          href="http://www.miibeian.gov.cn/"
+          href="http://www.beian.miit.gov.cn"
           target="_blank"
         >
           {icp}
