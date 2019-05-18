@@ -8,6 +8,6 @@ cache: npm
 install: npm install
 script:
   - npm run build
-  - make image
+  - docker build -t iannar .
 notifications:
   email: false
