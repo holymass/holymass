@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Map, Markers } from 'react-amap';
 import makeStyles from '@material-ui/styles/makeStyles';
+import window from 'global/window';
 import { fetchAllChurches } from '../actions/church';
 
 const mapStateToProps = (state) => ({
@@ -17,18 +18,21 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    height: `calc(${window.innerHeight}px - 56px)`,
-    [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {
-      height: `calc(${window.innerHeight}px - 48px)`,
+const useStyles = makeStyles((theme) => {
+  const innerHeight = window.innerHeight;
+  return {
+    root: {
+      width: '100%',
+      height: `calc(${innerHeight}px - 56px)`,
+      [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {
+        height: `calc(${innerHeight}px - 48px)`,
+      },
+      [theme.breakpoints.up('sm')]: {
+        height: `calc(${innerHeight}px - 64px)`,
+      },
     },
-    [theme.breakpoints.up('sm')]: {
-      height: `calc(${window.innerHeight}px - 64px)`,
-    },
-  },
-}));
+  };
+});
 
 const ChurchMap = (props) => {
   const { amapkey, data, mapCenter, onFetch } = props;
