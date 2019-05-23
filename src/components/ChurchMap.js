@@ -17,10 +17,16 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    height: '100%',
+    height: `calc(${window.innerHeight}px - 56px)`,
+    [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {
+      height: `calc(${window.innerHeight}px - 48px)`,
+    },
+    [theme.breakpoints.up('sm')]: {
+      height: `calc(${window.innerHeight}px - 64px)`,
+    },
   },
 }));
 
