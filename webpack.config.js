@@ -49,9 +49,7 @@ module.exports = (env, argv) => {
         new UglifyJsPlugin({
           extractComments: true,
           uglifyOptions: {
-            compress: {
-              warnings: false,
-            },
+            warnings: false,
           },
           chunkFilter: (chunk) => {
             // Exclude uglification for the `vendors` chunk
