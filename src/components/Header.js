@@ -110,33 +110,6 @@ export default function Header() {
   };
   return (
     <div className={classes.root}>
-      <div className={classes.toolbar} />
-      <AppBar className={classes.appBar} onDoubleClick={handleAppBarClick}>
-        <Toolbar>
-          <div className={classes.nav}>
-            <Hidden mdUp implementation="css">
-              <IconButton
-                color="inherit"
-                aria-label="Menu"
-                onClick={handleDrawerToggle}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Hidden>
-            <Hidden smDown implementation="css">
-              {brand}
-            </Hidden>
-          </div>
-          <IconButton
-            color="inherit"
-            href="https://github.com/iannar"
-            target="_blank"
-            aria-label="Github"
-          >
-            <GitHubIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
       <Hidden mdUp>
         <Drawer
           classes={{
@@ -149,6 +122,32 @@ export default function Header() {
         </Drawer>
       </Hidden>
       <Hidden smDown implementation="css">
+        <AppBar className={classes.appBar} onDoubleClick={handleAppBarClick}>
+          <Toolbar>
+            <div className={classes.nav}>
+              <Hidden mdUp implementation="css">
+                <IconButton
+                  color="inherit"
+                  aria-label="Menu"
+                  onClick={handleDrawerToggle}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Hidden>
+              <Hidden smDown implementation="css">
+                {brand}
+              </Hidden>
+            </div>
+            <IconButton
+              color="inherit"
+              href="https://github.com/iannar"
+              target="_blank"
+              aria-label="Github"
+            >
+              <GitHubIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
         <Drawer
           classes={{
             paper: classes.drawerPaper,
@@ -157,6 +156,7 @@ export default function Header() {
         >
           {drawer}
         </Drawer>
+        <div className={classes.toolbar} />
       </Hidden>
     </div>
   );

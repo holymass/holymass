@@ -1,8 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import makeStyles from '@material-ui/styles/makeStyles';
+import Hidden from '@material-ui/core/Hidden';
 import Header from 'components/Header';
 import Main from 'components/Main';
+import BottomNav from 'components/BottomNav';
 import getMetadata from './getMetadata';
 import routes from './routes';
 import ErrorModule from './modules/ErrorModule';
@@ -16,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: drawerWidth,
       width: `calc(100% - ${drawerWidth}px)`,
     },
+  },
+  bottomNav: {
+    height: 56,
   },
 }));
 
@@ -37,6 +42,10 @@ export default function App() {
           <Route path="*" component={Error404} />
         </Switch>
       </Main>
+      <Hidden mdUp>
+        <div className={classes.bottomNav} />
+        <BottomNav />
+      </Hidden>
     </div>
   );
 }
