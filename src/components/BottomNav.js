@@ -7,11 +7,12 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import SettingsIcon from 'mdi-material-ui/Settings';
 import links from '../links';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     bottom: 0,
     position: 'fixed',
+    backgroundColor: theme.palette.grey['100'],
   },
 }));
 
