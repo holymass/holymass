@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import window from 'global';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import makeStyles from '@material-ui/styles/makeStyles';
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 export default function BottomNav() {
   const classes = useStyles();
   const { t } = useTranslation('base');
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(window.location.pathname);
   return (
     <BottomNavigation
       showLabels
@@ -33,6 +34,7 @@ export default function BottomNav() {
           to={link.to}
           label={t(link.text)}
           icon={link.icon}
+          value={link.to}
         />
       ))}
       <BottomNavigationAction
@@ -40,6 +42,7 @@ export default function BottomNav() {
         to="/settings"
         label={t('Settings')}
         icon={<SettingsIcon />}
+        value="/settings"
       />
     </BottomNavigation>
   );
