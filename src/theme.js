@@ -1,11 +1,16 @@
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import teal from '@material-ui/core/colors/teal';
-import orange from '@material-ui/core/colors/orange';
+import green from '@material-ui/core/colors/green';
 
 export default createMuiTheme({
   palette: {
-    primary: teal,
-    secondary: orange,
+    primary: {
+      ...green,
+      main: green['400'],
+    },
+    secondary: {
+      ...green,
+      main: green['400'],
+    },
   },
   typography: {
     fontSize: 12.25,

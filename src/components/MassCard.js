@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: theme.palette.secondary.main,
     '&:hover': {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: theme.palette.secondary.A700,
     },
   },
   cardHeader: {
@@ -108,22 +108,22 @@ export default function MassCard(props) {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Link href={getLink('first-reading')} target="_blank">
-              <Typography variant="body1" color="inherit">
+              <Typography variant="body1" color="textPrimary">
                 {`${t('First Reading')}:\t${firstReading}`}
               </Typography>
             </Link>
             <Link href={getLink('responsorial-psalm')} target="_blank">
-              <Typography variant="body1" color="inherit">
+              <Typography variant="body1" color="textPrimary">
                 {`${t('Responsorial Psalm')}:\t${responsorialPsalm}`}
               </Typography>
             </Link>
             <Link href={getLink('second-reading')} target="_blank">
-              <Typography variant="body1" color="inherit">
+              <Typography variant="body1" color="textPrimary">
                 {`${t('Second Reading')}:\t${secondReading}`}
               </Typography>
             </Link>
             <Link href={getLink('gospel')} target="_blank">
-              <Typography variant="body1" color="inherit">
+              <Typography variant="body1" color="textPrimary">
                 {`${t('Gospel')}:\t${gospel}`}
               </Typography>
             </Link>

@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   appBar: {
+    backgroundColor: theme.palette.grey['100'],
     zIndex: theme.zIndex.drawer + 1,
   },
   nav: {
@@ -67,7 +68,7 @@ export default function Header() {
     <div className={classes.drawer}>
       <nav>
         <div className={classes.drawerHeader}>
-          {mobileOpen ? <Brand /> : null}
+          <Brand />
         </div>
         <Divider />
         <List>

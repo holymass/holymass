@@ -14,6 +14,7 @@ export const fetchMasses = (page) => {
         url: '/masses',
         params: {
           page,
+          size: 20,
           q: `date__lte:${nextYear}`,
           sort: '-date',
         },

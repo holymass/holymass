@@ -65,7 +65,7 @@ const MassList = (props) => {
         {showNext && (
           <Button
             variant="outlined"
-            color="primary"
+            color="secondary"
             component={Link}
             to="/masses"
           >
@@ -75,7 +75,7 @@ const MassList = (props) => {
         {!showNext && (
           <Button
             variant="outlined"
-            color="primary"
+            color="secondary"
             onClick={handlePreviousPageClick}
           >
             {t('Previous Page')}
@@ -84,7 +84,7 @@ const MassList = (props) => {
         {!showNext && (
           <Button
             variant="outlined"
-            color="primary"
+            color="secondary"
             onClick={handleNextPageClick}
           >
             {t('Next Page')}
