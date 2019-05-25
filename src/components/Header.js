@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
+import Slide from '@material-ui/core/Slide';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -15,6 +16,7 @@ import makeStyles from '@material-ui/styles/makeStyles';
 import GitHubIcon from 'mdi-material-ui/GithubCircle';
 import MenuIcon from 'mdi-material-ui/Menu';
 import SettingsIcon from 'mdi-material-ui/Settings';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Brand from 'components/Brand';
 import Footer from 'components/Footer';
 import links from '../links';
@@ -100,35 +102,38 @@ export default function Header() {
       <Footer />
     </div>
   );
+  const trigger = useScrollTrigger();
   return (
     <div className={classes.root}>
       <div className={classes.toolbar} />
-      <AppBar className={classes.appBar}>
-        <Toolbar>
-          <div className={classes.nav}>
-            <Hidden mdUp implementation="css">
-              <IconButton
-                color="inherit"
-                aria-label="Menu"
-                onClick={handleDrawerToggle}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Hidden>
-            <Hidden smDown implementation="css">
-              <Brand color="inherit" />
-            </Hidden>
-          </div>
-          <IconButton
-            color="inherit"
-            href="https://github.com/iannar"
-            target="_blank"
-            aria-label="Github"
-          >
-            <GitHubIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+      <Slide appear={false} direction="down" in={!trigger}>
+        <AppBar className={classes.appBar}>
+          <Toolbar>
+            <div className={classes.nav}>
+              <Hidden mdUp implementation="css">
+                <IconButton
+                  color="inherit"
+                  aria-label="Menu"
+                  onClick={handleDrawerToggle}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Hidden>
+              <Hidden smDown implementation="css">
+                <Brand color="inherit" />
+              </Hidden>
+            </div>
+            <IconButton
+              color="inherit"
+              href="https://github.com/iannar"
+              target="_blank"
+              aria-label="Github"
+            >
+              <GitHubIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+      </Slide>
       <Hidden mdUp>
         <Drawer
           classes={{
