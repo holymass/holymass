@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import window from 'global';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,7 +8,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
-import Slide from '@material-ui/core/Slide';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -16,7 +16,6 @@ import makeStyles from '@material-ui/styles/makeStyles';
 import GitHubIcon from 'mdi-material-ui/GithubCircle';
 import MenuIcon from 'mdi-material-ui/Menu';
 import SettingsIcon from 'mdi-material-ui/Settings';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Brand from 'components/Brand';
 import Footer from 'components/Footer';
 import links from '../links';
@@ -64,12 +63,11 @@ export default function Header() {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  const brand = <Brand />;
   const drawer = (
     <div className={classes.drawer}>
       <nav>
-        <div className={classes.drawerHeader}>
-          <Brand />
-        </div>
+        <div className={classes.drawerHeader}>{brand}</div>
         <Divider />
         <List>
           {links.map((link) => (
@@ -103,38 +101,42 @@ export default function Header() {
       <Footer />
     </div>
   );
-  const trigger = useScrollTrigger();
+  const handleAppBarClick = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
   return (
     <div className={classes.root}>
       <div className={classes.toolbar} />
-      <Slide appear={false} direction="down" in={!trigger}>
-        <AppBar className={classes.appBar}>
-          <Toolbar>
-            <div className={classes.nav}>
-              <Hidden mdUp implementation="css">
-                <IconButton
-                  color="inherit"
-                  aria-label="Menu"
-                  onClick={handleDrawerToggle}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </Hidden>
-              <Hidden smDown implementation="css">
-                <Brand color="inherit" />
-              </Hidden>
-            </div>
-            <IconButton
-              color="inherit"
-              href="https://github.com/iannar"
-              target="_blank"
-              aria-label="Github"
-            >
-              <GitHubIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      </Slide>
+      <AppBar className={classes.appBar} onDoubleClick={handleAppBarClick}>
+        <Toolbar>
+          <div className={classes.nav}>
+            <Hidden mdUp implementation="css">
+              <IconButton
+                color="inherit"
+                aria-label="Menu"
+                onClick={handleDrawerToggle}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Hidden>
+            <Hidden smDown implementation="css">
+              {brand}
+            </Hidden>
+          </div>
+          <IconButton
+            color="inherit"
+            href="https://github.com/iannar"
+            target="_blank"
+            aria-label="Github"
+          >
+            <GitHubIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
       <Hidden mdUp>
         <Drawer
           classes={{
