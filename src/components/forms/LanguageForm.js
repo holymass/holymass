@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LanguageForm = (props) => {
   const { onChange, language } = props;
-  const classes = useStyles;
+  const classes = useStyles();
   const { t, i18n } = useTranslation('settings');
   const handleChange = (e) => {
     const lang = e.target.value;
