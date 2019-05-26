@@ -1,96 +1,68 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import window from 'global';
 import makeStyles from '@material-ui/styles/makeStyles';
+import Divider from '@material-ui/core/Divider';
+import VirtualizedList from './VirtualizedList';
 import MassCard from './MassCard';
-import { fetchMasses, fetchNextMasses } from '../actions/mass';
+import { fetchMasses } from '../actions/mass';
+import { dataSelector } from '../selectors/mass';
 
 const mapStateToProps = (state) => ({
-  data: state.mass.data,
-  page: state.mass.page,
+  data: dataSelector(state),
+  next: state.mass.next,
+  total: state.mass.total,
 });
 
 const mapDispatchToProps = {
   onFetch: fetchMasses,
-  onFetchNext: fetchNextMasses,
 };
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  buttonContainer: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: theme.spacing(1),
-  },
-}));
+const useStyles = makeStyles((theme) => {
+  const innerHeight = window.innerHeight;
+  return {
+    root: {
+      height: `calc(${innerHeight}px - 56px)`,
+      [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {
+        height: `calc(${innerHeight}px - 48px)`,
+      },
+      [theme.breakpoints.up('sm')]: {
+        height: `calc(${innerHeight}px - 64px)`,
+      },
+    },
+  };
+});
 
 const MassList = (props) => {
-  const { data, onFetch, onFetchNext, page, showNext } = props;
+  const { data, next, onFetch } = props;
   const classes = useStyles();
-  const { t } = useTranslation('mass');
-  const handlePreviousPageClick = () => {
-    onFetch(page - 1 || 1);
-  };
-  const handleNextPageClick = () => {
-    onFetch(page + 1 || 1);
+  const [page, setPage] = useState(1);
+  const renderer = (item) => (
+    <React.Fragment>
+      <MassCard key={item.id} data={item} />
+      <Divider />
+    </React.Fragment>
+  );
+  const loadNextPage = () => {
+    if (next) {
+      onFetch(page);
+      setPage(page + 1);
+    }
   };
   useEffect(() => {
     if (!data) {
-      if (showNext) {
-        onFetchNext();
-      } else {
-        onFetch(page || 1);
-      }
+      loadNextPage();
     }
   });
   return (
     <div className={classes.root}>
-      <div className={classes.massList}>
-        {data &&
-          data.map((item, key) => (
-            <MassCard
-              key={item.id}
-              data={item}
-              expanded={showNext && key === 0}
-            />
-          ))}
-      </div>
-      <div className={classes.buttonContainer}>
-        {showNext && (
-          <Button
-            variant="outlined"
-            color="secondary"
-            component={Link}
-            to="/masses"
-          >
-            {t('View All')}
-          </Button>
-        )}
-        {!showNext && (
-          <Button
-            variant="outlined"
-            color="secondary"
-            onClick={handlePreviousPageClick}
-          >
-            {t('Previous Page')}
-          </Button>
-        )}
-        {!showNext && (
-          <Button
-            variant="outlined"
-            color="secondary"
-            onClick={handleNextPageClick}
-          >
-            {t('Next Page')}
-          </Button>
-        )}
-      </div>
+      <VirtualizedList
+        renderer={renderer}
+        data={data}
+        hasNext={next}
+        loadMoreRows={loadNextPage}
+      />
     </div>
   );
 };
@@ -109,15 +81,8 @@ MassList.propTypes = {
       }),
     }),
   ).isRequired,
+  next: PropTypes.bool.isRequired,
   onFetch: PropTypes.func.isRequired,
-  onFetchNext: PropTypes.func.isRequired,
-  page: PropTypes.number,
-  showNext: PropTypes.bool,
-};
-
-MassList.defaultProps = {
-  page: 0,
-  showNext: false,
 };
 
 export default connect(
