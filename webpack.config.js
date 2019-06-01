@@ -1,5 +1,5 @@
 const path = require('path');
-const CleanPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -104,7 +104,7 @@ module.exports = (env, argv) => {
   };
   if (prodMode) {
     config.plugins.unshift(
-      new CleanPlugin({
+      new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: ['assets/css', 'assets/js'],
       }),
     );
