@@ -4,8 +4,8 @@ export const FETCH_MASSES = 'FETCH_MASSES';
 export const FETCH_NEXT_MASSES = 'FETCH_NEXT_MASSES';
 
 export const fetchMasses = (page) => {
-  const nextMonth = moment()
-    .add(1, 'month')
+  const next14Days = moment()
+    .add(14, 'days')
     .format('YYYY-MM-DD');
   return {
     type: FETCH_MASSES,
@@ -15,7 +15,7 @@ export const fetchMasses = (page) => {
         params: {
           page,
           size: 10,
-          q: `date__lte:${nextMonth}`,
+          q: `date__lte:${next14Days}`,
           sort: '-date',
         },
       },
