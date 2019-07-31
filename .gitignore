@@ -4,17 +4,28 @@
 # Thumbnail cache files
 Thumbs.db
 
+# Sensitive files
+.env
+
 # Dependencies
 node_modules
 
-## Logs
+# Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# VS Code
+.vscode/
+
 # Others
-.env
 .eslintcache
 /assets
 package-lock.json
