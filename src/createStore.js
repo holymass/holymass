@@ -5,7 +5,7 @@ import axiosMiddleware from 'redux-axios-middleware';
 import rootReducer from './reducers';
 
 const axiosClient = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://iannar.airapis.com',
   responseType: 'json',
 });
 

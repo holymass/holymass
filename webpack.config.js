@@ -92,7 +92,7 @@ module.exports = (env, argv) => {
       open: true,
       proxy: {
         '/api': {
-          target: 'https://www.iannar.com',
+          target: 'https://iannar.airapis.com',
           changeOrigin: true,
         },
         '/': {
