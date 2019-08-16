@@ -91,10 +91,6 @@ module.exports = (env, argv) => {
       compress: true,
       open: true,
       proxy: {
-        '/api': {
-          target: 'https://iannar.airapis.com',
-          changeOrigin: true,
-        },
         '/': {
           target: 'http://localhost:3000/',
           changeOrigin: true,
