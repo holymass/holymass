@@ -1,6 +1,6 @@
 # www.iannar.com
 
-[![Build Status](https://travis-ci.com/iannar/frontends.svg?branch=master)](https://travis-ci.com/iannar/frontends)
+[![Build Status](https://travis-ci.org/iannar/frontends.svg?branch=master)](https://travis-ci.org/iannar/frontends)
 
 ## References
 
