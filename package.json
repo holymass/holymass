@@ -1,9 +1,9 @@
 {
-  "name": "iannar",
+  "name": "holymass",
   "version": "0.5.1",
-  "description": "iannar.com",
-  "repository": "git@github.com:iannar/iannar.git",
-  "author": "iannar.com",
+  "description": "holymass.app",
+  "repository": "git@github.com:holymass/frontends.git",
+  "author": "holymass.app",
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode production",

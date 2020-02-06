@@ -140,7 +140,7 @@ export default function Header() {
             </div>
             <IconButton
               color="inherit"
-              href="https://github.com/iannar"
+              href="https://github.com/holymass"
               target="_blank"
               aria-label="Github"
             >
