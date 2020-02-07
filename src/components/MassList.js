@@ -39,10 +39,10 @@ const MassList = (props) => {
   const classes = useStyles();
   const [page, setPage] = useState(1);
   const renderer = (item) => (
-    <React.Fragment>
+    <>
       <MassCard key={item.id} data={item} />
       <Divider />
-    </React.Fragment>
+    </>
   );
   const loadNextPage = () => {
     if (next) {

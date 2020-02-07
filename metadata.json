@@ -4,6 +4,7 @@
     "width": 240
   },
   "domain": "holymass.app",
+  "assetsRoot": "https://assets.holymass.app",
   "google": {
     "ga": "UA-120959122-1"
   }

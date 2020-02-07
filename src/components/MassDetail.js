@@ -9,6 +9,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Link from '@material-ui/core/Link';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
+import getMetadata from '../getMetadata';
 
 const yearMap = {
   A: '甲年',
@@ -28,8 +29,9 @@ function MassDetail(props) {
     gospel,
   } = data.solemnity;
   const year = yearMap[liturgicalYear];
+  const assetsRoot = getMetadata('assetsRoot');
   const getLink = (id) => {
-    return `/assets/masses/index.html?m=${year}/${name}#/${id || ''}`;
+    return `${assetsRoot}/masses/index.html?m=${year}/${name}#/${id || ''}`;
   };
   return (
     <Dialog

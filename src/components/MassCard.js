@@ -7,6 +7,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import LaunchIcon from 'mdi-material-ui/Launch';
 import makeStyles from '@material-ui/styles/makeStyles';
 import MassDetail from './MassDetail';
+import getMetadata from '../getMetadata';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -32,8 +33,9 @@ export default function MassCard(props) {
   const { t } = useTranslation('mass');
   const { name, liturgicalYear } = data.solemnity;
   const year = yearMap[liturgicalYear];
+  const assetsRoot = getMetadata('assetsRoot');
   const getLink = (id) => {
-    return `/assets/masses/index.html?m=${year}/${name}#/${id || ''}`;
+    return `${assetsRoot}/masses/index.html?m=${year}/${name}#/${id || ''}`;
   };
   const handleLaunchClick = (e) => {
     e.stopPropagation();
