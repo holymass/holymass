@@ -1,42 +1,23 @@
-import moment from 'moment';
-import camelcaseKeys from 'camelcase-keys';
-import { FETCH_MASSES } from '../actions/mass';
+import {
+  FETCH_MASSES_OF_YEAR_A,
+  FETCH_MASSES_OF_YEAR_B,
+  FETCH_MASSES_OF_YEAR_C,
+} from '../actions/mass';
 
 const initialState = {
-  data: {},
-  next: true,
-  total: 0,
-  A: {
-    data: {},
-    next: true,
-    total: 0,
-  },
-  B: {
-    data: {},
-    next: true,
-    total: 0,
-  },
-  C: {
-    data: {},
-    next: true,
-    total: 0,
-  },
+  A: [],
+  B: [],
+  C: [],
 };
 
 export default (state = initialState, action) => {
-  let data = [];
   switch (action.type) {
-    case `${FETCH_MASSES}_SUCCESS`:
-      data = camelcaseKeys(action.payload.data.data, { deep: true });
-      for (const item of data) {
-        const liturgicalYear = item.solemnity.liturgicalYear;
-        const current = state[liturgicalYear];
-        item.date = moment(item.date).format('YYYY-MM-DD');
-        current.data[item.id] = item;
-        current.next = action.payload.data.next;
-        current.total = action.payload.data.total;
-      }
-      return {...state};
+    case `${FETCH_MASSES_OF_YEAR_A}_SUCCESS`:
+      return { ...state, A: action.payload.data };
+    case `${FETCH_MASSES_OF_YEAR_B}_SUCCESS`:
+      return { ...state, B: action.payload.data };
+    case `${FETCH_MASSES_OF_YEAR_C}_SUCCESS`:
+      return { ...state, C: action.payload.data };
     default:
       return state;
   }

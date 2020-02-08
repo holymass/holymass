@@ -1,11 +1,11 @@
-export const FETCH_ALL_CHURCHES = 'FETCH_ALL_CHURCHES';
+export const FETCH_CHURCHES = 'FETCH_CHURCHES';
 
-export const fetchAllChurches = () => {
+export const fetchChurches = () => {
   return {
-    type: FETCH_ALL_CHURCHES,
+    type: FETCH_CHURCHES,
     payload: {
       request: {
-        url: '/churches/all',
+        url: '/churches.json',
       },
     },
   };

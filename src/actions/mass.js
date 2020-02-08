@@ -1,17 +1,13 @@
-export const FETCH_MASSES = 'FETCH_MASSES';
+export const FETCH_MASSES_OF_YEAR_A = 'FETCH_MASSES_OF_YEAR_A';
+export const FETCH_MASSES_OF_YEAR_B = 'FETCH_MASSES_OF_YEAR_B';
+export const FETCH_MASSES_OF_YEAR_C = 'FETCH_MASSES_OF_YEAR_C';
 
-export const fetchMasses = (liturgicalYear, page) => {
+export const fetchMasses = (liturgicalYear) => {
   return {
-    type: FETCH_MASSES,
+    type: `FETCH_MASSES_OF_YEAR_${liturgicalYear}`,
     payload: {
       request: {
-        url: '/masses',
-        params: {
-          page,
-          size: 10,
-          q: `solemnity__liturgical_year:${liturgicalYear}`,
-          sort: '-date',
-        },
+        url: `/masses/${liturgicalYear.toLowerCase()}.json`,
       },
     },
   };

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Map, Markers } from 'react-amap';
 import makeStyles from '@material-ui/styles/makeStyles';
 import window from 'global/window';
-import { fetchAllChurches } from '../actions/church';
+import { fetchChurches } from '../actions/church';
 
 const mapStateToProps = (state) => ({
   amapkey: state.settings.amapkey,
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onFetch: () => {
-    dispatch(fetchAllChurches());
+    dispatch(fetchChurches());
   },
 });
 
@@ -77,7 +77,4 @@ ChurchMap.propTypes = {
   onFetch: PropTypes.func.isRequired,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ChurchMap);
+export default connect(mapStateToProps, mapDispatchToProps)(ChurchMap);

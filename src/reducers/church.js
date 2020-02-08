@@ -1,12 +1,11 @@
-import camelcaseKeys from 'camelcase-keys';
-import { FETCH_ALL_CHURCHES } from '../actions/church';
+import { FETCH_CHURCHES } from '../actions/church';
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case `${FETCH_ALL_CHURCHES}_SUCCESS`:
+    case `${FETCH_CHURCHES}_SUCCESS`:
       return {
         ...state,
-        data: camelcaseKeys(action.payload.data.data, { deep: true }),
+        data: action.payload.data,
       };
     default:
       return state;

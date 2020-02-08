@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
 import loadable from '@loadable/component';
 import Loading from 'components/Loading';
 import makeStyles from '@material-ui/styles/makeStyles';
@@ -57,17 +56,15 @@ export default function MassPage() {
         <Tab id="tab-1" label={t('Year B')} aria-controls="tabpanel-1" />
         <Tab id="tab-2" label={t('Year C')} aria-controls="tabpanel-2" />
       </Tabs>
-      <SwipeableViews index={value} onChangeIndex={(index) => setValue(index)}>
-        <TabPanel value={value} index={0}>
-          <MassList liturgicalYear="A" />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <MassList liturgicalYear="B" />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <MassList liturgicalYear="C" />
-        </TabPanel>
-      </SwipeableViews>
+      <TabPanel value={value} index={0}>
+        <MassList liturgicalYear="A" />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <MassList liturgicalYear="B" />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <MassList liturgicalYear="C" />
+      </TabPanel>
     </Paper>
   );
 }

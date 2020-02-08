@@ -4,9 +4,10 @@ import window from 'global';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 import rootReducer from './reducers';
+import getMetadata from './getMetadata';
 
 const axiosClient = axios.create({
-  baseURL: 'https://api.iannar.com',
+  baseURL: getMetadata('dataBaseURL'),
   responseType: 'json',
 });
 
