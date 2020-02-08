@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import IconButton from '@material-ui/core/IconButton';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/styles/makeStyles';
-import { useTranslation } from 'react-i18next';
 import window from 'global';
+import _isEmpty from 'lodash/isEmpty';
+import ChevronDownIcon from 'mdi-material-ui/ChevronDown';
+import LaunchIcon from 'mdi-material-ui/Launch';
+import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { fetchMasses } from '../actions/mass';
 import getMetadata from '../getMetadata';
 import selectByLiturgicalYear from '../selectors/selectByLiturgicalYear';
-import _isEmpty from 'lodash/isEmpty';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import Typography from '@material-ui/core/Typography';
-import ChevronDownIcon from 'mdi-material-ui/ChevronDown';
-import LaunchIcon from 'mdi-material-ui/Launch';
-import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
 
 const mapStateToProps = (state) => ({
   data: state.mass,
@@ -139,18 +139,22 @@ const MassList = (props) => {
   );
 };
 
+const Mass = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  liturgicalYear: PropTypes.string.isRequired,
+  firstReading: PropTypes.string.isRequired,
+  responsorialPsalm: PropTypes.string.isRequired,
+  secondReading: PropTypes.string.isRequired,
+  gospel: PropTypes.string.isRequired,
+});
+
 MassList.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-      liturgicalYear: PropTypes.string.isRequired,
-      firstReading: PropTypes.string.isRequired,
-      responsorialPsalm: PropTypes.string.isRequired,
-      secondReading: PropTypes.string.isRequired,
-      gospel: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  data: PropTypes.shape({
+    A: PropTypes.arrayOf(Mass),
+    B: PropTypes.arrayOf(Mass),
+    C: PropTypes.arrayOf(Mass),
+  }).isRequired,
   onFetch: PropTypes.func.isRequired,
   liturgicalYear: PropTypes.string,
 };
