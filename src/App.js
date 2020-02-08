@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 import makeStyles from '@material-ui/styles/makeStyles';
 import Hidden from '@material-ui/core/Hidden';
 import Header from 'components/Header';
@@ -7,9 +7,7 @@ import Main from 'components/Main';
 import BottomNav from 'components/BottomNav';
 import getMetadata from './getMetadata';
 import routes from './routes';
-import ErrorModule from './modules/ErrorModule';
 
-const Error404 = () => <ErrorModule code="404" message="NOT FOUND" />;
 const drawerWidth = getMetadata('drawer.width');
 
 const useStyles = makeStyles((theme) => ({
@@ -29,19 +27,7 @@ export default function App() {
   return (
     <div className={classes.root}>
       <Header />
-      <Main>
-        <Switch>
-          {routes.map((route) => (
-            <Route
-              key={route.path}
-              exact={route.exact}
-              path={route.path}
-              component={route.component}
-            />
-          ))}
-          <Route path="*" component={Error404} />
-        </Switch>
-      </Main>
+      <Main>{renderRoutes(routes)}</Main>
       <Hidden mdUp>
         <div className={classes.bottomNav} />
         <BottomNav />

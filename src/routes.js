@@ -1,27 +1,30 @@
-import HomeModule from './modules/HomeModule';
-import MassModule from './modules/MassModule';
-import ChurchModule from './modules/ChurchModule';
-import SettingsModule from './modules/SettingsModule';
+import React from 'react';
+import ChurchPage from './pages/ChurchPage';
+import ErrorPage from './pages/ErrorPage';
+import HomePage from './pages/HomePage';
+import MassPage from './pages/MassPage';
+import SettingsPage from './pages/SettingsPage';
 
 export default [
   {
-    exact: true,
     path: '/',
-    component: HomeModule,
+    exact: true,
+    component: HomePage,
   },
   {
-    exact: false,
     path: '/masses',
-    component: MassModule,
+    component: MassPage,
   },
   {
-    exact: false,
     path: '/churches',
-    component: ChurchModule,
+    component: ChurchPage,
   },
   {
-    exact: false,
     path: '/settings',
-    component: SettingsModule,
+    component: SettingsPage,
+  },
+  {
+    path: '*',
+    render: () => <ErrorPage code="404" message="NOT FOUND" />,
   },
 ];

@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ErrorModule(props) {
+export default function ErrorPage(props) {
   const { code, message } = props;
   const classes = useStyles();
   return (
@@ -24,7 +24,7 @@ export default function ErrorModule(props) {
   );
 }
 
-ErrorModule.propTypes = {
+ErrorPage.propTypes = {
   code: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
 };

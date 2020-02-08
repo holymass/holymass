@@ -2,10 +2,10 @@ import React from 'react';
 import loadable from '@loadable/component';
 import Loading from 'components/Loading';
 
-const MassList = loadable(() => import('../components/MassList'), {
+const ChurchMap = loadable(() => import('../components/ChurchMap'), {
   fallback: <Loading />,
 });
 
-export default function MassModule() {
-  return <MassList />;
+export default function ChurchPage() {
+  return <ChurchMap />;
 }
