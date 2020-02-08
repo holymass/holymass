@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { useTranslation } from 'react-i18next';
+import getMetadata from '../getMetadata';
 
 const MassList = loadable(() => import('../components/MassList'), {
   fallback: <Loading />,
@@ -42,7 +43,7 @@ TabPanel.propTypes = {
 export default function MassPage() {
   const classes = useStyles();
   const { t } = useTranslation('mass');
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(getMetadata('liturgicalYear'));
   return (
     <Paper className={classes.root}>
       <Tabs
