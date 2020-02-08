@@ -53,11 +53,14 @@ export default async (ctx, next) => {
   const { url } = ctx.req;
   const language = getLanguage(ctx);
   const redisKey = buildRedisKey(language, url);
-  let body = await redisClient.getAsync(redisKey);
-  if (body) {
-    logger.debug(`Hit redis cache: ${url}`);
-    ctx.body = body;
-    return;
+  let body = null;
+  if (process.env.NODE_ENV !== 'development') {
+    body = await redisClient.getAsync(redisKey);
+    if (body) {
+      logger.info(`Hit redis cache: ${url}`);
+      ctx.body = body;
+      return;
+    }
   }
   let state = getPreloadedState(ctx);
   let initialI18nStore = getInitialI18nStore(ctx);

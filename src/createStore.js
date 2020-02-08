@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import window from 'global';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 import rootReducer from './reducers';

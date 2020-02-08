@@ -1,11 +1,12 @@
 {
   "brand": "HolyMass",
-  "drawer": {
-    "width": 240
+  "google": {
+    "ga": "UA-120959122-1"
   },
   "domain": "holymass.app",
   "assetsRoot": "https://assets.holymass.app",
-  "google": {
-    "ga": "UA-120959122-1"
-  }
+  "drawer": {
+    "width": 240
+  },
+  "liturgicalYear": "A"
 }

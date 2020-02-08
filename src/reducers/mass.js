@@ -1,11 +1,26 @@
 import moment from 'moment';
 import camelcaseKeys from 'camelcase-keys';
-import { FETCH_MASSES, FETCH_NEXT_MASSES } from '../actions/mass';
+import { FETCH_MASSES } from '../actions/mass';
 
 const initialState = {
   data: {},
   next: true,
   total: 0,
+  A: {
+    data: {},
+    next: true,
+    total: 0,
+  },
+  B: {
+    data: {},
+    next: true,
+    total: 0,
+  },
+  C: {
+    data: {},
+    next: true,
+    total: 0,
+  },
 };
 
 export default (state = initialState, action) => {
@@ -14,19 +29,14 @@ export default (state = initialState, action) => {
     case `${FETCH_MASSES}_SUCCESS`:
       data = camelcaseKeys(action.payload.data.data, { deep: true });
       for (const item of data) {
+        const liturgicalYear = item.solemnity.liturgicalYear;
+        const current = state[liturgicalYear];
         item.date = moment(item.date).format('YYYY-MM-DD');
-        state.data[item.id] = item;
+        current.data[item.id] = item;
+        current.next = action.payload.data.next;
+        current.total = action.payload.data.total;
       }
-      return {
-        ...state,
-        next: action.payload.data.next,
-        total: action.payload.data.total,
-      };
-    case `${FETCH_NEXT_MASSES}_SUCCESS`:
-      return {
-        ...state,
-        data: camelcaseKeys(action.payload.data.data, { deep: true }),
-      };
+      return {...state};
     default:
       return state;
   }

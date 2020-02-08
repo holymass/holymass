@@ -57,7 +57,7 @@ export default function MassCard(props) {
           className={classes.cardHeader}
           title={name}
           titleTypographyProps={{ variant: 'subtitle1' }}
-          subheader={`${t(liturgicalYear)} \u2022 ${data.date}`}
+          subheader={`${t(`Year ${liturgicalYear}`)} \u2022 ${data.date}`}
           subheaderTypographyProps={{ variant: 'subtitle1' }}
           onClick={handleOpen}
         />

@@ -1,6 +1,6 @@
 import _orderBy from 'lodash/orderBy';
 import _values from 'lodash/values';
 
-export const dataSelector = (state) => {
-  return _orderBy(_values(state.mass.data), ['date'], ['desc']);
+export const selectByLiturgicalYear = (data, liturgicalYear) => {
+  return _orderBy(_values(data[liturgicalYear].data), ['date'], ['desc']);
 };

@@ -7,12 +7,11 @@ import Divider from '@material-ui/core/Divider';
 import VirtualizedList from './VirtualizedList';
 import MassCard from './MassCard';
 import { fetchMasses } from '../actions/mass';
-import { dataSelector } from '../selectors/mass';
+import { selectByLiturgicalYear } from '../selectors/mass';
+import getMetadata from '../getMetadata';
 
 const mapStateToProps = (state) => ({
-  data: dataSelector(state),
-  next: state.mass.next,
-  total: state.mass.total,
+  data: state.mass,
 });
 
 const mapDispatchToProps = {
@@ -23,19 +22,19 @@ const useStyles = makeStyles((theme) => {
   const innerHeight = window.innerHeight;
   return {
     root: {
-      height: `calc(${innerHeight}px - 56px)`,
+      height: `calc(${innerHeight}px - 56px - 56px)`,
       [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {
-        height: `calc(${innerHeight}px - 48px)`,
+        height: `calc(${innerHeight}px - 48px - 48px)`,
       },
       [theme.breakpoints.up('sm')]: {
-        height: `calc(${innerHeight}px - 64px)`,
+        height: `calc(${innerHeight}px - 64px - 64px)`,
       },
     },
   };
 });
 
 const MassList = (props) => {
-  const { data, next, onFetch } = props;
+  const { data, liturgicalYear, onFetch } = props;
   const classes = useStyles();
   const [page, setPage] = useState(1);
   const renderer = (item) => (
@@ -45,13 +44,13 @@ const MassList = (props) => {
     </>
   );
   const loadNextPage = () => {
-    if (next) {
-      onFetch(page);
+    if (data[liturgicalYear].next) {
+      onFetch(liturgicalYear, page);
       setPage(page + 1);
     }
   };
   useEffect(() => {
-    if (!data) {
+    if (!data[liturgicalYear].data) {
       loadNextPage();
     }
   });
@@ -59,8 +58,8 @@ const MassList = (props) => {
     <div className={classes.root}>
       <VirtualizedList
         renderer={renderer}
-        data={data}
-        hasNext={next}
+        data={selectByLiturgicalYear(data, liturgicalYear)}
+        hasNext={data[liturgicalYear].next}
         loadMoreRows={loadNextPage}
       />
     </div>
@@ -68,21 +67,13 @@ const MassList = (props) => {
 };
 
 MassList.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      date: PropTypes.string.isRequired,
-      solemnity: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        liturgicalYear: PropTypes.string.isRequired,
-        firstReading: PropTypes.string.isRequired,
-        responsorialPsalm: PropTypes.string.isRequired,
-        secondReading: PropTypes.string.isRequired,
-        gospel: PropTypes.string.isRequired,
-      }),
-    }),
-  ).isRequired,
-  next: PropTypes.bool.isRequired,
+  data: PropTypes.object.isRequired,
   onFetch: PropTypes.func.isRequired,
+  liturgicalYear: PropTypes.string,
+};
+
+MassList.defaultProps = {
+  liturgicalYear: getMetadata('liturgicalYear'),
 };
 
 export default connect(

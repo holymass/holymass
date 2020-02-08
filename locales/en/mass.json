@@ -1,7 +1,7 @@
 {
-  "A": "Year A",
-  "B": "Year B",
-  "C": "Year C",
+  "Year A": "Year A",
+  "Year B": "Year B",
+  "Year C": "Year C",
   "Close": "Close",
   "First Reading": "First Reading",
   "Gospel": "Gospel",

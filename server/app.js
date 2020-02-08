@@ -8,6 +8,9 @@ import log4js from 'log4js';
 import i18n from './i18n';
 import router from './router';
 
+const logger = log4js.getLogger('app');
+logger.info(`NODE_ENV: ${process.env.NODE_ENV}`);
+
 const app = new Koa();
 const port = 3000;
 
@@ -28,8 +31,6 @@ app.use(
     next: true,
   }),
 );
-
-const logger = log4js.getLogger('app');
 
 app.use(async (ctx, next) => {
   logger.info(`${ctx.req.method} ${ctx.req.url}`);
