@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import makeStyles from '@material-ui/styles/makeStyles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import SettingsIcon from 'mdi-material-ui/Settings';
 import links from '../links';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,13 +36,6 @@ export default function BottomNav() {
           value={link.to}
         />
       ))}
-      <BottomNavigationAction
-        component={Link}
-        to="/settings"
-        label={t('Settings')}
-        icon={<SettingsIcon />}
-        value="/settings"
-      />
     </BottomNavigation>
   );
 }

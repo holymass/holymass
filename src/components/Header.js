@@ -15,7 +15,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import makeStyles from '@material-ui/styles/makeStyles';
 import GitHubIcon from 'mdi-material-ui/GithubCircle';
 import MenuIcon from 'mdi-material-ui/Menu';
-import SettingsIcon from 'mdi-material-ui/Settings';
 import Brand from 'components/Brand';
 import Footer from 'components/Footer';
 import links from '../links';
@@ -82,20 +81,6 @@ export default function Header() {
               <ListItemText primary={t(link.text)} />
             </ListItem>
           ))}
-        </List>
-        <Divider />
-        <List>
-          <ListItem
-            button
-            component={Link}
-            onClick={handleDrawerToggle}
-            to="/settings"
-          >
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText primary={t('Settings')} />
-          </ListItem>
         </List>
       </nav>
       <Footer />
