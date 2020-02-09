@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 import Loading from 'components/Loading';
 import makeStyles from '@material-ui/styles/makeStyles';
-import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { useTranslation } from 'react-i18next';
@@ -14,8 +13,8 @@ const MassList = loadable(() => import('../components/MassList'), {
 });
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(1),
+  tabs: {
+    paddingBottom: theme.spacing(1),
   },
 }));
 
@@ -44,9 +43,10 @@ export default function MassPage() {
   const { t } = useTranslation('mass');
   const [value, setValue] = useState(getMetadata('liturgicalYear'));
   return (
-    <Paper className={classes.root}>
+    <div>
       <Tabs
         centered
+        className={classes.tabs}
         value={value}
         onChange={(event, newValue) => setValue(newValue)}
         indicatorColor="primary"
@@ -65,6 +65,6 @@ export default function MassPage() {
       <TabPanel value={value} index={2}>
         <MassList liturgicalYear="C" />
       </TabPanel>
-    </Paper>
+    </div>
   );
 }
