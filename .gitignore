@@ -25,7 +25,7 @@ yarn-error.log*
 # VS Code
 .vscode/
 
-# Others
+# Other
 .eslintcache
 /assets
 package-lock.json
