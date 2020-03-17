@@ -9,7 +9,7 @@ const LanguageForm = loadable(
   },
 );
 
-export default function SettingsModule() {
+export default function SettingsPage() {
   return (
     <>
       <LanguageForm />
