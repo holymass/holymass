@@ -7,8 +7,8 @@ import window from 'global/window';
 import { fetchChurches } from '../actions/church';
 
 const mapStateToProps = (state) => ({
-  amapkey: state.settings.amapkey,
-  mapCenter: state.settings.mapCenter,
+  amapkey: state.settings.map.amapkey,
+  center: state.settings.map.center,
   data: state.church.data,
 });
 
@@ -35,12 +35,8 @@ const useStyles = makeStyles((theme) => {
 });
 
 const ChurchMap = (props) => {
-  const { amapkey, data, mapCenter, onFetch } = props;
+  const { amapkey, data, center, onFetch } = props;
   const classes = useStyles();
-  const center = {
-    longitude: mapCenter[0],
-    latitude: mapCenter[1],
-  };
   const plugins = ['ToolBar'];
   const markers =
     data && data.length
@@ -52,7 +48,7 @@ const ChurchMap = (props) => {
         }))
       : [];
   useEffect(() => {
-    if (!data) {
+    if (!data || data.length === 0) {
       onFetch();
     }
   });
@@ -72,9 +68,13 @@ const marker = PropTypes.shape({
 
 ChurchMap.propTypes = {
   amapkey: PropTypes.string.isRequired,
-  data: PropTypes.arrayOf(marker).isRequired,
-  mapCenter: PropTypes.arrayOf(marker).isRequired,
+  data: PropTypes.arrayOf(marker),
+  center: marker.isRequired,
   onFetch: PropTypes.func.isRequired,
+};
+
+ChurchMap.defaultProps = {
+  data: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChurchMap);

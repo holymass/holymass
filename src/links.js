@@ -1,22 +1,21 @@
 import React from 'react';
-import AirplayIcon from 'mdi-material-ui/Airplay';
-import ChristianityIcon from 'mdi-material-ui/Christianity';
-import SettingsIcon from 'mdi-material-ui/Settings';
+import Icon from '@mdi/react';
+import { mdiAppleAirplay, mdiChristianity, mdiCog } from '@mdi/js';
 
 export default [
   {
     to: '/masses',
-    icon: <AirplayIcon />,
+    icon: <Icon path={mdiAppleAirplay} size={1} />,
     text: 'Masses',
   },
   {
     to: '/churches',
-    icon: <ChristianityIcon />,
+    icon: <Icon path={mdiChristianity} size={1} />,
     text: 'Churches',
   },
   {
     to: '/settings',
-    icon: <SettingsIcon />,
+    icon: <Icon path={mdiCog} size={1} />,
     text: 'Settings',
   },
 ];

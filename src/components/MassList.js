@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/styles/makeStyles';
 import window from 'global';
 import _isEmpty from 'lodash/isEmpty';
-import ChevronDownIcon from 'mdi-material-ui/ChevronDown';
-import LaunchIcon from 'mdi-material-ui/Launch';
+import Icon from '@mdi/react';
+import { mdiChevronDown, mdiLaunch } from '@mdi/js';
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -81,7 +81,7 @@ const MassList = (props) => {
           }}
         >
           <ExpansionPanelSummary
-            expandIcon={<ChevronDownIcon />}
+            expandIcon={<Icon path={mdiChevronDown} size={1} />}
             classes={{
               content: classes.summaryContent,
             }}
@@ -97,7 +97,7 @@ const MassList = (props) => {
                   window.open(getLink(item.name), '_blank');
                 }}
               >
-                <LaunchIcon />
+                <Icon path={mdiLaunch} />
               </IconButton>
             </Typography>
             <Typography className={classes.secondaryHeading}>

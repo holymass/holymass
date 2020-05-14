@@ -29,10 +29,16 @@ const getLanguage = (ctx) => {
 };
 
 const getPreloadedState = (ctx) => {
+  const mapCenter = process.env.MAP_CENTER.split(',').map((x) => +x);
   const settings = {
-    amapkey: process.env.AMAP_KEY,
-    mapCenter: process.env.MAP_CENTER.split(','),
     language: getLanguage(ctx),
+    map: {
+      amapkey: process.env.AMAP_KEY,
+      center: {
+        longitude: mapCenter[0],
+        latitude: mapCenter[1],
+      },
+    },
   };
   return { settings };
 };
@@ -46,6 +52,7 @@ const getInitialI18nStore = (ctx) => {
   languages.forEach((l) => {
     initialI18nStore[l] = i18n.services.resourceStore.data[l];
   });
+  i18n.languages = languages;
   return initialI18nStore;
 };
 

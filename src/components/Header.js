@@ -13,8 +13,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import makeStyles from '@material-ui/styles/makeStyles';
-import GitHubIcon from 'mdi-material-ui/GithubCircle';
-import MenuIcon from 'mdi-material-ui/Menu';
+import Icon from '@mdi/react';
+import { mdiGithub, mdiMenu } from '@mdi/js';
 import Brand from 'components/Brand';
 import Footer from 'components/Footer';
 import links from '../links';
@@ -116,7 +116,7 @@ export default function Header() {
                   aria-label="Menu"
                   onClick={handleDrawerToggle}
                 >
-                  <MenuIcon />
+                  <Icon path={mdiMenu} />
                 </IconButton>
               </Hidden>
               <Hidden smDown implementation="css">
@@ -129,7 +129,7 @@ export default function Header() {
               target="_blank"
               aria-label="Github"
             >
-              <GitHubIcon />
+              <Icon path={mdiGithub} size={1} />
             </IconButton>
           </Toolbar>
         </AppBar>
