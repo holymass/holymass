@@ -6,21 +6,14 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Hidden from '@material-ui/core/Hidden';
-import Drawer from '@material-ui/core/Drawer';
-import Divider from '@material-ui/core/Divider';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
 import makeStyles from '@material-ui/styles/makeStyles';
 import Icon from '@mdi/react';
-import { mdiGithub, mdiMenu } from '@mdi/js';
+import { mdiGithub } from '@mdi/js';
 import Brand from 'components/Brand';
-import Footer from 'components/Footer';
 import links from '../links';
-import getMetadata from '../getMetadata';
 
-const drawerWidth = getMetadata('drawer.width');
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -32,60 +25,31 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
   },
   nav: {
-    alignItems: 'center',
     display: 'flex',
     flex: 1,
+    justifyContent: 'space-between',
   },
   toolbar: theme.mixins.toolbar,
-  drawer: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    height: '100%',
+  leftNavBar: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
-  drawerHeader: {
-    ...theme.mixins.toolbar,
-    alignItems: 'center',
-    display: 'flex',
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
+  rightNavBar: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
-  drawerPaper: {
-    width: drawerWidth,
+  tab: {
+    minWidth: theme.spacing(8),
   },
 }));
 
 export default function Header() {
   const classes = useStyles();
   const { t } = useTranslation('base');
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const [value, setValue] = useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
-  const brand = <Brand />;
-  const drawer = (
-    <div className={classes.drawer}>
-      <nav>
-        <div className={classes.drawerHeader}>{brand}</div>
-        <Divider />
-        <List>
-          {links.map((link) => (
-            <ListItem
-              key={link.to}
-              button
-              component={Link}
-              onClick={handleDrawerToggle}
-              to={link.to}
-            >
-              <ListItemIcon>{link.icon}</ListItemIcon>
-              <ListItemText primary={t(link.text)} />
-            </ListItem>
-          ))}
-        </List>
-      </nav>
-      <Footer />
-    </div>
-  );
   const handleAppBarClick = () => {
     window.scrollTo({
       top: 0,
@@ -93,54 +57,44 @@ export default function Header() {
       behavior: 'smooth',
     });
   };
+  const leftNavBar = (
+    <nav className={classes.leftNavBar}>
+      <Tabs value={value} onChange={handleChange}>
+        {links.map((link) => (
+          <Tab
+            className={classes.tab}
+            component={Link}
+            to={link.to}
+            label={t(link.text)}
+          />
+        ))}
+      </Tabs>
+    </nav>
+  );
+  const rightNavBar = (
+    <nav className={classes.rightNavBar}>
+      <IconButton
+        color="inherit"
+        href="https://github.com/holymass"
+        target="_blank"
+        aria-label="Github"
+      >
+        <Icon path={mdiGithub} size={1} />
+      </IconButton>
+    </nav>
+  );
   return (
     <div className={classes.root}>
-      <Hidden mdUp>
-        <Drawer
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          onClose={handleDrawerToggle}
-          open={mobileOpen}
-        >
-          {drawer}
-        </Drawer>
-      </Hidden>
       <Hidden smDown implementation="css">
         <AppBar className={classes.appBar} onDoubleClick={handleAppBarClick}>
           <Toolbar>
+            <Brand />
             <div className={classes.nav}>
-              <Hidden mdUp implementation="css">
-                <IconButton
-                  color="inherit"
-                  aria-label="Menu"
-                  onClick={handleDrawerToggle}
-                >
-                  <Icon path={mdiMenu} />
-                </IconButton>
-              </Hidden>
-              <Hidden smDown implementation="css">
-                {brand}
-              </Hidden>
+              {leftNavBar}
+              {rightNavBar}
             </div>
-            <IconButton
-              color="inherit"
-              href="https://github.com/holymass"
-              target="_blank"
-              aria-label="Github"
-            >
-              <Icon path={mdiGithub} size={1} />
-            </IconButton>
           </Toolbar>
         </AppBar>
-        <Drawer
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          variant="permanent"
-        >
-          {drawer}
-        </Drawer>
         <div className={classes.toolbar} />
       </Hidden>
     </div>

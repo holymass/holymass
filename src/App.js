@@ -5,17 +5,12 @@ import Hidden from '@material-ui/core/Hidden';
 import Header from 'components/Header';
 import Main from 'components/Main';
 import BottomNav from 'components/BottomNav';
-import getMetadata from './getMetadata';
 import routes from './routes';
 
-const drawerWidth = getMetadata('drawer.width');
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
-    [theme.breakpoints.up('md')]: {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
+    backgroundColor: '#f5f5f5',
+    minHeight: '100vh',
   },
   bottomNav: {
     height: 56,

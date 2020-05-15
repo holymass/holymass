@@ -17,4 +17,9 @@ export default createMuiTheme({
     fontFamily: '"PingFang SC", "Microsoft YaHei", "Open Sans", sans-serif',
     useNextVariants: true,
   },
+  mixins: {
+    toolbar: {
+      minHeight: 48,
+    },
+  },
 });

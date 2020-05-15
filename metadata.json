@@ -6,8 +6,5 @@
   "domain": "holymass.app",
   "assetsBaseURL": "https://assets.holymass.app",
   "dataBaseURL": "https://assets.holymass.app/data",
-  "drawer": {
-    "width": 240
-  },
   "liturgicalYear": 0
 }
