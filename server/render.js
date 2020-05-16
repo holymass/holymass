@@ -98,7 +98,7 @@ export default async (ctx, next) => {
   initialI18nStore = JSON.stringify(initialI18nStore);
   initialI18nStore = `window.INITIAL_I18N_STORE = ${initialI18nStore};`;
   body = ReactDOMServer.renderToString(reactApp);
-  body = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>HolyMass</title><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="google-analytics" content="UA-120959122-1"><style id="jss-server-side">${sheetsRegistry.toString()}</style>${extractor.getStyleTags()}</head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=root>${body}</div><script src=https://unpkg.com/react@16/umd/react.production.min.js></script><script src=https://unpkg.com/react-dom@16/umd/react-dom.production.min.js></script><script>${state}${initialI18nStore}</script>${extractor.getScriptTags()}</body></html>`;
+  body = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>HolyMass</title><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="google-analytics" content="UA-120959122-1"><style id="jss-server-side">${sheetsRegistry.toString()}</style>${extractor.getStyleTags()}</head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=root>${body}</div><script src="https://cdn.bootcdn.net/ajax/libs/react/16.13.1/umd/react.production.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script><script>${state}${initialI18nStore}</script>${extractor.getScriptTags()}</body></html>`;
   redisClient.set(redisKey, body, 'EX', 3600 * 12);
   ctx.body = body;
   next();
