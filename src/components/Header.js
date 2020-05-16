@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import window from 'global';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -36,17 +36,22 @@ const useStyles = makeStyles((theme) => ({
   },
   rightNavBar: {
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
   },
   tab: {
     minWidth: theme.spacing(8),
   },
 }));
 
+const getCurrentTabIndex = (navLinks, pathname) => {
+  return navLinks.findIndex((link) => pathname === link.to);
+};
+
 export default function Header() {
   const classes = useStyles();
   const { t } = useTranslation('base');
-  const [value, setValue] = useState(0);
+  const location = useLocation();
+  const index = getCurrentTabIndex(links, location.pathname);
+  const [value, setValue] = useState(index);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -62,6 +67,7 @@ export default function Header() {
       <Tabs value={value} onChange={handleChange}>
         {links.map((link) => (
           <Tab
+            key={link.to}
             className={classes.tab}
             component={Link}
             to={link.to}
