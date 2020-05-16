@@ -6,7 +6,7 @@
   "author": "holymass.app",
   "license": "MIT",
   "scripts": {
-    "analyze": "webpack",
+    "analyze": "webpack --mode production --analyze",
     "build": "webpack --mode production",
     "dev": "webpack && webpack-dev-server --hot --inline",
     "lint": "lint-staged",
@@ -21,6 +21,9 @@
   },
   "precommit": [
     "lint"
+  ],
+  "sideEffects": [
+    "**/*.css"
   ],
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
@@ -49,7 +52,6 @@
     "koa-static": "^5.0.0",
     "lodash": "^4.17.15",
     "log4js": "^6.2.1",
-    "moment": "^2.25.3",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -63,8 +65,7 @@
     "redis": "^3.0.2",
     "redux": "^4.0.5",
     "redux-axios-middleware": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -100,6 +101,7 @@
     "pre-commit": "^1.2.2",
     "prettier": "^2.0.5",
     "source-map-loader": "^0.2.4",
+    "terser-webpack-plugin": "^3.0.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.7.0",

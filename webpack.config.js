@@ -2,7 +2,7 @@ const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
@@ -48,18 +48,11 @@ module.exports = (env, argv) => {
     },
     optimization: {
       minimizer: [
-        new UglifyJsPlugin({
+        new OptimizeCssAssetsPlugin(),
+        new TerserJSPlugin({
           extractComments: true,
-          uglifyOptions: {
-            warnings: false,
-          },
-          chunkFilter: (chunk) => {
-            // Exclude uglification for the `vendors` chunk
-            return chunk.name !== 'vendors';
-          },
           parallel: true,
         }),
-        new OptimizeCssAssetsPlugin(),
       ],
       runtimeChunk: {
         name: 'runtime',
@@ -103,11 +96,13 @@ module.exports = (env, argv) => {
   if (prodMode) {
     config.plugins.unshift(
       new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: ['assets/css', 'assets/js'],
+        cleanOnceBeforeBuildPatterns: ['css', 'js'],
       }),
     );
   } else {
     config.devtool = 'eval';
+  }
+  if (argv.analyze) {
     config.plugins.unshift(
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
