@@ -6,6 +6,7 @@
   "author": "holymass.app",
   "license": "MIT",
   "scripts": {
+    "analyze": "webpack",
     "build": "webpack --mode production",
     "dev": "webpack && webpack-dev-server --hot --inline",
     "lint": "lint-staged",
@@ -101,6 +102,7 @@
     "source-map-loader": "^0.2.4",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.43.0",
+    "webpack-bundle-analyzer": "^3.7.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0",
     "webpack-log": "^3.0.1"

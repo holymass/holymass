@@ -1,4 +1,6 @@
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
@@ -106,6 +108,11 @@ module.exports = (env, argv) => {
     );
   } else {
     config.devtool = 'eval';
+    config.plugins.unshift(
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+      }),
+    );
   }
   return config;
 };
