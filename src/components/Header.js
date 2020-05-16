@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   appBar: {
-    backgroundColor: theme.palette.grey['100'],
+    backgroundColor: theme.palette.background.paper,
     zIndex: theme.zIndex.drawer + 1,
   },
   nav: {

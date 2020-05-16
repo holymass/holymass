@@ -7,9 +7,9 @@ import Main from 'components/Main';
 import BottomNav from 'components/BottomNav';
 import routes from './routes';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: theme.palette.grey['100'],
     minHeight: '100vh',
   },
   bottomNav: {
