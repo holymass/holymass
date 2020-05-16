@@ -84,7 +84,6 @@ module.exports = (env, argv) => {
     },
     devServer: {
       compress: true,
-      open: true,
       proxy: {
         '/': {
           target: 'http://localhost:3000/',

@@ -1,6 +1,6 @@
 {
   "name": "holymass",
-  "version": "0.9.6",
+  "version": "0.9.8",
   "description": "holymass.app",
   "repository": "git@github.com:holymass/frontends.git",
   "author": "holymass.app",
@@ -23,6 +23,7 @@
     "lint"
   ],
   "sideEffects": [
+    "./src/i18n.js",
     "**/*.css"
   ],
   "dependencies": {
