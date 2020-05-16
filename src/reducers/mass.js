@@ -5,19 +5,19 @@ import {
 } from '../actions/mass';
 
 const initialState = {
-  A: [],
-  B: [],
-  C: [],
+  yearA: [],
+  yearB: [],
+  yearC: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${FETCH_MASSES_OF_YEAR_A}_SUCCESS`:
-      return { ...state, A: action.payload.data };
+      return { ...state, yearA: action.payload.data };
     case `${FETCH_MASSES_OF_YEAR_B}_SUCCESS`:
-      return { ...state, B: action.payload.data };
+      return { ...state, yearB: action.payload.data };
     case `${FETCH_MASSES_OF_YEAR_C}_SUCCESS`:
-      return { ...state, C: action.payload.data };
+      return { ...state, yearC: action.payload.data };
     default:
       return state;
   }

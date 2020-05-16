@@ -21,7 +21,7 @@ const preloadedState = window.PRELOADED_STATE;
 const initialI18nStore = window.INITIAL_I18N_STORE;
 const store = createStore(preloadedState);
 const ReactApp = () => {
-  useSSR(initialI18nStore, preloadedState.settings.language);
+  useSSR(initialI18nStore);
   useEffect(() => {
     const jssStyles = document.getElementById('jss-server-side');
     if (jssStyles && jssStyles.parentNode) {

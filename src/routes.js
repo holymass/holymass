@@ -1,9 +1,12 @@
 import React from 'react';
-import ChurchPage from './pages/ChurchPage';
+import loadable from '@loadable/component';
+import Loading from 'components/Loading';
 import ErrorPage from './pages/ErrorPage';
 import HomePage from './pages/HomePage';
-import MassPage from './pages/MassPage';
-import SettingsPage from './pages/SettingsPage';
+
+const MassList = loadable(() => import('./components/MassList'), {
+  fallback: <Loading />,
+});
 
 export default [
   {
@@ -12,16 +15,16 @@ export default [
     component: HomePage,
   },
   {
-    path: '/masses',
-    component: MassPage,
+    path: '/masses/year-a',
+    component: () => <MassList liturgicalYear="A" />,
   },
   {
-    path: '/churches',
-    component: ChurchPage,
+    path: '/masses/year-b',
+    component: () => <MassList liturgicalYear="B" />,
   },
   {
-    path: '/settings',
-    component: SettingsPage,
+    path: '/masses/year-c',
+    component: () => <MassList liturgicalYear="C" />,
   },
   {
     path: '*',

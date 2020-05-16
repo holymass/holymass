@@ -9,8 +9,8 @@ const options = {
   },
   fallbackLng: 'zh',
   load: 'languageOnly',
-  preload: ['en', 'zh'],
-  ns: ['base', 'mass', 'church', 'settings'],
+  preload: ['zh'],
+  ns: ['base'],
   defaultNS: 'base',
   detection: {
     lookupCookie: 'i18next',

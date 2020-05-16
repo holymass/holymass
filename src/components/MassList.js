@@ -58,14 +58,17 @@ const yearMap = {
 const MassList = (props) => {
   const { data, liturgicalYear, onFetch } = props;
   const classes = useStyles();
-  const { t } = useTranslation('mass');
+  const { t } = useTranslation('base');
   const [expanded, setExpanded] = React.useState(false);
   useEffect(() => {
-    if (_isEmpty(data[liturgicalYear])) {
+    if (_isEmpty(data[`year${liturgicalYear}`])) {
       onFetch(liturgicalYear);
     }
   });
-  const dataOfCurrentYear = selectByLiturgicalYear(data, liturgicalYear);
+  const dataOfCurrentYear = selectByLiturgicalYear(
+    data,
+    `year${liturgicalYear}`,
+  );
   const year = yearMap[liturgicalYear];
   const assetsBaseURL = getMetadata('assetsBaseURL');
   const getLink = (name, id = '') => {
@@ -97,7 +100,7 @@ const MassList = (props) => {
                   window.open(getLink(item.name), '_blank');
                 }}
               >
-                <Icon path={mdiLaunch} />
+                <Icon path={mdiLaunch} size={1} />
               </IconButton>
             </Typography>
             <Typography className={classes.secondaryHeading}>
@@ -151,9 +154,9 @@ const Mass = PropTypes.shape({
 
 MassList.propTypes = {
   data: PropTypes.shape({
-    A: PropTypes.arrayOf(Mass),
-    B: PropTypes.arrayOf(Mass),
-    C: PropTypes.arrayOf(Mass),
+    yearA: PropTypes.arrayOf(Mass),
+    yearB: PropTypes.arrayOf(Mass),
+    yearC: PropTypes.arrayOf(Mass),
   }).isRequired,
   onFetch: PropTypes.func.isRequired,
   liturgicalYear: PropTypes.string,

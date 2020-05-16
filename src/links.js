@@ -1,21 +1,21 @@
 import React from 'react';
 import Icon from '@mdi/react';
-import { mdiAppleAirplay, mdiChristianity, mdiCog } from '@mdi/js';
+import { mdiAlphaA, mdiAlphaB, mdiAlphaC } from '@mdi/js';
 
 export default [
   {
-    to: '/masses',
-    icon: <Icon path={mdiAppleAirplay} size={1} />,
-    text: 'Masses',
+    to: '/masses/year-a',
+    icon: <Icon path={mdiAlphaA} size={1} />,
+    text: 'Year A',
   },
   {
-    to: '/churches',
-    icon: <Icon path={mdiChristianity} size={1} />,
-    text: 'Churches',
+    to: '/masses/year-b',
+    icon: <Icon path={mdiAlphaB} size={1} />,
+    text: 'Year B',
   },
   {
-    to: '/settings',
-    icon: <Icon path={mdiCog} size={1} />,
-    text: 'Settings',
+    to: '/masses/year-c',
+    icon: <Icon path={mdiAlphaC} size={1} />,
+    text: 'Year C',
   },
 ];

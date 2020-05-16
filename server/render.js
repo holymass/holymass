@@ -15,7 +15,7 @@ import {
 import createStore from '../src/createStore';
 import theme from '../src/theme';
 import App from '../src/App';
-import { redisClient, buildRedisKey } from './redis';
+import redis from './redis';
 
 const logger = log4js.getLogger('render');
 const statsFile = path.join(__dirname, '../assets/loadable-stats.json');
@@ -23,24 +23,12 @@ const extractor = new ChunkExtractor({
   statsFile,
 });
 
-const getLanguage = (ctx) => {
-  const language = ctx.language || process.env.DEFAULT_LANGUAGE;
-  return language.split('-')[0];
+const getLanguage = () => {
+  return process.env.DEFAULT_LANGUAGE.split('-')[0];
 };
 
-const getPreloadedState = (ctx) => {
-  const mapCenter = process.env.MAP_CENTER.split(',').map((x) => +x);
-  const settings = {
-    language: getLanguage(ctx),
-    map: {
-      amapkey: process.env.AMAP_KEY,
-      center: {
-        longitude: mapCenter[0],
-        latitude: mapCenter[1],
-      },
-    },
-  };
-  return { settings };
+const getPreloadedState = () => {
+  return {};
 };
 
 const getInitialI18nStore = (ctx) => {
@@ -58,11 +46,10 @@ const getInitialI18nStore = (ctx) => {
 
 export default async (ctx, next) => {
   const { url } = ctx.req;
-  const language = getLanguage(ctx);
-  const redisKey = buildRedisKey(language, url);
   let body = null;
+  const redisKey = `${ctx.language}:${url}`;
   if (process.env.NODE_ENV !== 'development') {
-    body = await redisClient.getAsync(redisKey);
+    body = await redis.client.getAsync(url);
     if (body) {
       logger.info(`Hit redis cache: ${url}`);
       ctx.body = body;
@@ -98,8 +85,8 @@ export default async (ctx, next) => {
   initialI18nStore = JSON.stringify(initialI18nStore);
   initialI18nStore = `window.INITIAL_I18N_STORE = ${initialI18nStore};`;
   body = ReactDOMServer.renderToString(reactApp);
-  body = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>HolyMass</title><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="google-analytics" content="UA-120959122-1"><style id="jss-server-side">${sheetsRegistry.toString()}</style>${extractor.getStyleTags()}</head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=root>${body}</div><script src="https://cdn.bootcdn.net/ajax/libs/react/16.13.1/umd/react.production.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script><script>${state}${initialI18nStore}</script>${extractor.getScriptTags()}</body></html>`;
-  redisClient.set(redisKey, body, 'EX', 3600 * 12);
+  body = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>HolyMass</title><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="google-analytics" content="UA-120959122-1"><style id="jss-server-side">${sheetsRegistry.toString()}</style>${extractor.getStyleTags()}</head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=root>${body}</div><script crossorigin src="https://unpkg.com/react@16.13.1/umd/react.production.min.js"></script><script crossorigin src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script>${state}${initialI18nStore}</script>${extractor.getScriptTags()}</body></html>`;
+  redis.client.set(redisKey, body, 'EX', 3600 * 12);
   ctx.body = body;
   next();
 };

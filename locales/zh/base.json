@@ -1,7 +1,13 @@
 {
-  "Churches": "教堂",
   "Masses": "弥撒",
-  "Search": "搜索",
-  "Send Feedback": "反馈",
-  "Settings": "设置"
+  "Year A": "甲年",
+  "Year B": "乙年",
+  "Year C": "丙年",
+  "Close": "关闭",
+  "First Reading": "读经一",
+  "Gospel": "福音",
+  "Next Page": "下一页",
+  "Previous Page": "上一页",
+  "Responsorial Psalm": "答唱咏",
+  "Second Reading": "读经二"
 }

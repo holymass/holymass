@@ -4,7 +4,7 @@ export const FETCH_MASSES_OF_YEAR_C = 'FETCH_MASSES_OF_YEAR_C';
 
 export const fetchMasses = (liturgicalYear) => {
   return {
-    type: `FETCH_MASSES_OF_YEAR_${liturgicalYear}`,
+    type: `FETCH_MASSES_OF_YEAR_${liturgicalYear.toUpperCase()}`,
     payload: {
       request: {
         url: `/masses/${liturgicalYear.toLowerCase()}.json`,
