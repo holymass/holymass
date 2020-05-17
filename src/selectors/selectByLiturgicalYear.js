@@ -4,7 +4,7 @@ import _values from 'lodash/values';
 export default (data, liturgicalYear, filter) => {
   const filteredData = filter
     ? data[liturgicalYear].filter((item) => {
-        const f = filter.toLowerCase();
+        const f = filter.toLowerCase().trim();
         return (
           item.pinyin1.indexOf(f) > -1 ||
           item.pinyin2.indexOf(f) > -1 ||
