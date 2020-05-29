@@ -12,7 +12,6 @@ import theme from './theme';
 import createStore from './createStore';
 import App from './App';
 import './i18n';
-import './app.css';
 
 ReactGA.initialize(getMetadata('google.ga'));
 ReactGA.pageview(window.location.pathname + window.location.search);
