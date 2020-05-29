@@ -2,6 +2,7 @@ import path from 'path';
 import Koa from 'koa';
 import koaFavicon from 'koa-favicon';
 import koaI18next from 'koa-i18next';
+import koaLogger from 'koa-logger';
 import koaMount from 'koa-mount';
 import koaStatic from 'koa-static';
 import log4js from 'log4js';
@@ -14,6 +15,7 @@ logger.info(`NODE_ENV: ${process.env.NODE_ENV}`);
 const app = new Koa();
 const port = 3000;
 
+app.use(koaLogger());
 app.use(koaFavicon(path.join(__dirname, '../favicon.ico')));
 
 const assets = new Koa();
@@ -31,12 +33,6 @@ app.use(
     next: true,
   }),
 );
-
-app.use(async (ctx, next) => {
-  logger.info(`${ctx.req.method} ${ctx.req.url}`);
-  await next();
-  logger.debug(ctx.body);
-});
 
 app.use(router.routes());
 app.use(router.allowedMethods());

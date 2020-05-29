@@ -10,7 +10,7 @@
     "build": "webpack --mode production",
     "dev": "webpack && webpack-dev-server --hot --inline",
     "lint": "lint-staged",
-    "server": "pm2-docker start process.yml",
+    "server": "node server/index.js",
     "start": "nodemon server/index.js"
   },
   "lint-staged": {
@@ -48,6 +48,7 @@
     "koa": "^2.11.0",
     "koa-favicon": "^2.1.0",
     "koa-i18next": "^1.1.1",
+    "koa-logger": "^3.2.1",
     "koa-mount": "^4.0.0",
     "koa-router": "^8.0.8",
     "koa-static": "^5.0.0",
@@ -98,7 +99,6 @@
     "lint-staged": "^10.2.2",
     "nodemon": "^2.0.3",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "pm2": "^4.4.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.0.5",
     "source-map-loader": "^0.2.4",
