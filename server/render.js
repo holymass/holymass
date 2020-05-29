@@ -49,9 +49,9 @@ export default async (ctx, next) => {
   let body = null;
   const redisKey = `${ctx.language}:${url}`;
   if (process.env.NODE_ENV !== 'development') {
-    body = await redis.client.getAsync(url);
+    body = await redis.client.getAsync(redisKey);
     if (body) {
-      logger.info(`Hit redis cache: ${url}`);
+      logger.info(`Hit redis cache: ${redisKey}`);
       ctx.body = body;
       return;
     }
