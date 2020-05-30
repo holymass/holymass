@@ -125,6 +125,7 @@ const MassList = (props) => {
       </div>
       {dataOfCurrentYear.map((item) => (
         <ExpansionPanel
+          key={item.name}
           expanded={expanded === item.name}
           onChange={(event, isExpanded) => {
             setExpanded(isExpanded ? item.name : false);

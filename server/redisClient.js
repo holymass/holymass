@@ -11,6 +11,4 @@ client.on('error', (err) => {
   logger.error(err);
 });
 
-export default {
-  client,
-};
+export default client;

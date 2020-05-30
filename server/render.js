@@ -1,21 +1,22 @@
-import path from 'path';
-import log4js from 'log4js';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { Provider } from 'react-redux';
-import { I18nextProvider } from 'react-i18next';
-import { StaticRouter } from 'react-router-dom';
-import { SheetsRegistry } from 'jss';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import {
+  createGenerateClassName,
   StylesProvider,
   ThemeProvider,
-  createGenerateClassName,
 } from '@material-ui/styles';
+import { SheetsRegistry } from 'jss';
+import log4js from 'log4js';
+import path from 'path';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { I18nextProvider } from 'react-i18next';
+import { Provider } from 'react-redux';
+import { StaticRouter } from 'react-router-dom';
+import App from '../src/App';
 import createStore from '../src/createStore';
 import theme from '../src/theme';
-import App from '../src/App';
-import redis from './redis';
+import fetchData from './fetchData';
+import redisClient from './redisClient';
 
 const logger = log4js.getLogger('render');
 const statsFile = path.join(__dirname, '../assets/loadable-stats.json');
@@ -27,8 +28,22 @@ const getLanguage = () => {
   return process.env.DEFAULT_LANGUAGE.split('-')[0];
 };
 
-const getPreloadedState = () => {
-  return {};
+const getPreloadedState = async (ctx) => {
+  logger.info(`Preparing preloaded state for ${ctx.url}`);
+  const state = await Promise.all([
+    fetchData('/data/masses/a.json'),
+    fetchData('/data/masses/b.json'),
+    fetchData('/data/masses/c.json'),
+  ]).then(([yearA, yearB, yearC]) => {
+    return {
+      mass: {
+        yearA: JSON.parse(yearA),
+        yearB: JSON.parse(yearB),
+        yearC: JSON.parse(yearC),
+      },
+    };
+  });
+  return state;
 };
 
 const getInitialI18nStore = (ctx) => {
@@ -46,17 +61,17 @@ const getInitialI18nStore = (ctx) => {
 
 export default async (ctx, next) => {
   const { url } = ctx.req;
-  let body = null;
   const redisKey = `${ctx.language}:${url}`;
   if (process.env.NODE_ENV !== 'development') {
-    body = await redis.client.getAsync(redisKey);
-    if (body) {
+    const cache = await redisClient.getAsync(redisKey);
+    if (cache) {
       logger.info(`Hit redis cache: ${redisKey}`);
-      ctx.body = body;
+      ctx.body = cache;
+      next();
       return;
     }
   }
-  let state = getPreloadedState(ctx);
+  let state = await getPreloadedState(ctx);
   let initialI18nStore = getInitialI18nStore(ctx);
   const store = createStore(state);
   const context = {};
@@ -81,11 +96,9 @@ export default async (ctx, next) => {
     </Provider>
   );
   state = JSON.stringify(state);
-  state = `window.PRELOADED_STATE = ${state};`;
   initialI18nStore = JSON.stringify(initialI18nStore);
-  initialI18nStore = `window.INITIAL_I18N_STORE = ${initialI18nStore};`;
-  body = ReactDOMServer.renderToString(reactApp);
-  body = `<!DOCTYPE html>
+  const reactAppHtml = ReactDOMServer.renderToString(reactApp);
+  ctx.body = `<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -93,8 +106,6 @@ export default async (ctx, next) => {
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="google-analytics" content="UA-120959122-1">
     <meta http-equiv="x-dns-prefetch-control" content="on" />
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="dns-prefetch" href="https//assets.holymass.app">
     <link rel="preconnect" href="https://assets.holymass.app/masses/index.html" crossorigin>
     <link rel="dns-prefetch" href="https//assets.holymass.app">
     <style>
@@ -112,15 +123,16 @@ export default async (ctx, next) => {
     ${extractor.getStyleTags()}
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root">${body}</div>
+    <div id="root">${reactAppHtml}</div>
     <script crossorigin src="https://unpkg.com/react@16.13.1/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script>
-    <script>${state}${initialI18nStore}</script>
+    <script>
+      window.PRELOADED_STATE = ${state};
+      window.INITIAL_I18N_STORE = ${initialI18nStore};
+    </script>
     ${extractor.getScriptTags()}
   </body>
 </html>`;
-  redis.client.set(redisKey, body, 'EX', 3600 * 12);
-  ctx.body = body;
+  redisClient.set(redisKey, ctx.body, 'EX', 3600 * 24);
   next();
 };

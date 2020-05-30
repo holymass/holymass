@@ -5,6 +5,6 @@
   },
   "domain": "holymass.app",
   "assetsBaseURL": "https://assets.holymass.app",
-  "dataBaseURL": "https://assets.holymass.app/data",
+  "dataBaseURL": "https://assets.holymass.app",
   "liturgicalYear": 0
 }

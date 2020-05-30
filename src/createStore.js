@@ -1,15 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import window from 'global';
-import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 import rootReducer from './reducers';
-import getMetadata from './getMetadata';
-
-const axiosClient = axios.create({
-  baseURL: getMetadata('dataBaseURL'),
-  responseType: 'json',
-});
+import axiosClient from './axiosClient';
 
 export default (preloadedState) => {
   const middleware = [thunk, axiosMiddleware(axiosClient)];
