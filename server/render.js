@@ -17,6 +17,7 @@ import createStore from '../src/createStore';
 import theme from '../src/theme';
 import fetchData from './fetchData';
 import redisClient from './redisClient';
+import patchPinyin from '../src/utils/patchPinyin';
 
 const logger = log4js.getLogger('render');
 const statsFile = path.join(__dirname, '../assets/loadable-stats.json');
@@ -37,9 +38,9 @@ const getPreloadedState = async (ctx) => {
   ]).then(([yearA, yearB, yearC]) => {
     return {
       mass: {
-        yearA: JSON.parse(yearA),
-        yearB: JSON.parse(yearB),
-        yearC: JSON.parse(yearC),
+        yearA: patchPinyin(JSON.parse(yearA)),
+        yearB: patchPinyin(JSON.parse(yearB)),
+        yearC: patchPinyin(JSON.parse(yearC)),
       },
     };
   });

@@ -15,7 +15,7 @@ export default async (url) => {
     logger.info(`Fetching data: ${axiosClient.defaults.baseURL}${url}`);
     const response = await axiosClient.get(url);
     const data = JSON.stringify(response.data);
-    redisClient.set(redisKey, data, 'EX', 3600 * 24);
+    redisClient.set(redisKey, data, 'EX', 3600 * 24 * 30);
     return data;
   } catch (error) {
     logger.error(error);
