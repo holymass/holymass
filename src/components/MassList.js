@@ -11,7 +11,7 @@ import window from 'global';
 import _isEmpty from 'lodash/isEmpty';
 import _debounce from 'lodash/debounce';
 import Icon from '@mdi/react';
-import { mdiChevronDown, mdiLaunch, mdiSearchWeb } from '@mdi/js';
+import { mdiChevronDown, mdiLaunch, mdiMagnify } from '@mdi/js';
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -108,7 +108,7 @@ const MassList = (props) => {
       <div className={classes.search}>
         <Paper className={classes.searchPaper}>
           <IconButton size="small">
-            <Icon path={mdiSearchWeb} size={1} aria-label="search" />
+            <Icon path={mdiMagnify} size={1} aria-label="search" />
           </IconButton>
           <InputBase
             classes={{
