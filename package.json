@@ -1,8 +1,8 @@
 {
   "name": "holymass",
-  "version": "0.9.16",
+  "version": "0.9.17",
   "description": "holymass.app",
-  "repository": "git@github.com:holymass/frontends.git",
+  "repository": "git@github.com:holymass/holymass.git",
   "author": "holymass.app",
   "license": "MIT",
   "scripts": {

@@ -1,6 +1,6 @@
 # holymass.app
 
-[![Build Status](https://travis-ci.org/holymass/frontends.svg?branch=master)](https://travis-ci.org/holymass/frontends)
+[![Build Status](https://travis-ci.org/holymass/holymass.svg?branch=master)](https://travis-ci.org/holymass/holymass)
 
 ## References
 
