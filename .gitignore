@@ -27,5 +27,6 @@ yarn-error.log*
 
 # Other
 .eslintcache
+.npmrc
 /assets
 package-lock.json
