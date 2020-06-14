@@ -117,7 +117,7 @@ const MassList = (props) => {
             }}
             fullWidth
             type="search"
-            placeholder="Search"
+            placeholder={`${t('Search')}...`}
             inputProps={{ 'aria-label': 'search masses' }}
             onChange={(e) => handleSearch(e.target.value)}
           />
@@ -151,9 +151,7 @@ const MassList = (props) => {
                 <Icon path={mdiLaunch} size={1} />
               </IconButton>
             </Typography>
-            <Typography className={classes.secondaryHeading}>
-              {item.date}
-            </Typography>
+            <code className={classes.secondaryHeading}>{item.date}</code>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className={classes.details}>
             <Typography className={classes.detailsItem}>
