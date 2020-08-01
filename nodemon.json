@@ -1,10 +1,9 @@
 {
+  "restartable": "rs",
+  "env": {
+    "NODE_ENV": "development"
+  },
   "verbose": true,
   "ext": "js json",
-  "ignore": [
-    "*.test.js",
-    ".git",
-    "assets",
-    "node_modules"
-  ]
+  "ignore": ["*.test.js", ".git", "assets", "node_modules"]
 }
