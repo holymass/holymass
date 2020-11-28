@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <Redirect
       to={{
-        pathname: '/masses/year-a',
+        pathname: '/masses/year-b',
       }}
     />
   );
