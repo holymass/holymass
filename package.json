@@ -19,7 +19,7 @@
       "prettier --write"
     ]
   },
-  "precommit": [
+  "pre-commit": [
     "lint"
   ],
   "sideEffects": [
