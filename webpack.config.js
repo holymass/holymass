@@ -1,10 +1,9 @@
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const LoadablePlugin = require('@loadable/webpack-plugin');
 
 module.exports = (env, argv) => {
@@ -48,7 +47,7 @@ module.exports = (env, argv) => {
     },
     optimization: {
       minimizer: [
-        new OptimizeCssAssetsPlugin(),
+        new CssMinimizerPlugin(),
         new TerserJSPlugin({
           extractComments: true,
           parallel: true,
