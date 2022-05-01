@@ -14,9 +14,12 @@ const masses = _orderBy(
   ['desc'],
 );
 
-export interface MassGridProps {}
+export interface MassGridProps {
+  data?: MassInfo[];
+}
 
 export default function MassGrid(props: MassGridProps) {
+  const { data = masses } = props;
   return (
     <Grid
       container
@@ -24,8 +27,8 @@ export default function MassGrid(props: MassGridProps) {
       columns={{ xs: 4, sm: 8, md: 12 }}
       sx={{ paddingTop: 3, paddingBottom: 3 }}
     >
-      {masses.map((item, index) => (
-        <Grid item xs={4} sm={4} md={4} key={index}>
+      {data.map((item, index) => (
+        <Grid item xs={4} key={index}>
           <MassCard info={item} />
         </Grid>
       ))}

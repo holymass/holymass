@@ -8,6 +8,9 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Launch from '@mui/icons-material/Launch';
+import Link from './Link';
+
+type LiturgicalYear = 'A' | 'B' | 'C';
 
 const liturgicalYearColor = {
   A: blue[500],
@@ -15,11 +18,22 @@ const liturgicalYearColor = {
   C: red[500],
 };
 
+const liturgicalYearName = {
+  A: '甲年',
+  B: '乙年',
+  C: '丙年',
+};
+
+const buildLink = (liturgicalYear: LiturgicalYear, name: string, id = '') => {
+  const year = liturgicalYearName[liturgicalYear];
+  return `https://assets.holymass.app/masses/index.html?m=${year}/${name}#/${id}`;
+};
+
 export interface MassInfo {
   date: string;
   firstReading: string;
   gospel: string;
-  liturgicalYear: 'A' | 'B' | 'C';
+  liturgicalYear: LiturgicalYear;
   name: string;
   pinyin: string;
   responsorialPsalm: string;
@@ -37,11 +51,34 @@ export default function MassCard(props: MassCardProps) {
     gospel,
     liturgicalYear,
     name,
-    pinyin,
     responsorialPsalm,
     secondReading,
   } = props.info;
   const { t } = useTranslation('mass');
+  const generateLink = (text: string, id: string) => {
+    return (
+      <Link
+        href={buildLink(liturgicalYear, name, id)}
+        target="_blank"
+        underline="hover"
+      >
+        {text}
+      </Link>
+    );
+  };
+  const generateTypography = (label: string, value: string, id: string) => {
+    return (
+      <Typography
+        component="div"
+        variant="body2"
+        color="text.secondary"
+        sx={{ display: 'flex', justifyContent: 'space-between' }}
+      >
+        <span>{t(label)}</span>
+        {generateLink(value, id)}
+      </Typography>
+    );
+  };
   return (
     <Card variant="outlined" sx={{ minWidth: 275 }}>
       <CardHeader
@@ -53,24 +90,25 @@ export default function MassCard(props: MassCardProps) {
           </Avatar>
         }
         action={
-          <IconButton>
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              open(buildLink(liturgicalYear, name));
+            }}
+          >
             <Launch />
           </IconButton>
         }
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          读经一： {firstReading}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          答唱咏： {responsorialPsalm}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          读经二： {secondReading}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          福音： {gospel}
-        </Typography>
+        {generateTypography('First Reading', firstReading, 'first-reading')}
+        {generateTypography(
+          'Responsorial Psalm',
+          responsorialPsalm,
+          'responsorial-psalm',
+        )}
+        {generateTypography('Second Reading', secondReading, 'second-reading')}
+        {generateTypography('Gospel', gospel, 'gospel')}
       </CardContent>
     </Card>
   );
