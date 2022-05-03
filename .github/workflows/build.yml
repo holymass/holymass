@@ -25,4 +25,4 @@ jobs:
         with:
           node-version: '16.x'
       - run: npm install
-      - run: docker build -t holymass .
+      - run: docker build --compress -t holymass .
