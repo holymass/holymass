@@ -2,59 +2,36 @@ const path = require('path');
 
 module.exports = {
   root: true,
-  extends: [
-    'plugin:import/recommended',
-    'plugin:react/recommended',
-    'airbnb',
-    'prettier',
-    'prettier/react',
-  ],
   env: {
-    browser: true,
     es6: true,
+    browser: true,
     node: true,
   },
-  parser: 'babel-eslint',
+  extends: [
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'airbnb-typescript',
+    'prettier',
+  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 7,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-      legacyDecorators: true,
-    },
   },
-  settings: {
-    react: {
-      version: '16.8',
-    },
-    'import/resolver': {
-      webpack: {
-        config: path.join(__dirname, 'webpack.config.js'),
-      },
-    },
-  },
-  plugins: ['babel', 'prettier', 'react', 'react-hooks'],
+  plugins: [
+    'eslint-plugin-react',
+    'eslint-plugin-react-hooks',
+    '@typescript-eslint/eslint-plugin',
+  ],
   rules: {
-    'prettier/prettier': 'error',
-    'import/order': [
-      'error',
-      {
-        groups: [
-          ['index', 'sibling', 'parent', 'internal', 'external', 'builtin'],
-        ],
-        'newlines-between': 'never',
-      },
-    ],
     'prefer-destructuring': 'off',
-    'react/jsx-filename-extension': ['error', { extensions: ['.js'] }],
-    'react/jsx-handler-names': [
-      'error',
-      {
-        eventHandlerPrefix: 'handle',
-        eventHandlerPropPrefix: 'on',
-      },
-    ],
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'error',
+
+    '@typescript-eslint/dot-notation': 'off',
+    'dot-notation': 'error',
+    '@typescript-eslint/no-implied-eval': 'off',
+    'no-implied-eval': 'error',
+    '@typescript-eslint/no-throw-literal': 'off',
+    'no-throw-literal': 'error',
+    '@typescript-eslint/return-await': 'off',
+    'no-return-await': 'error',
   },
 };
