@@ -9,8 +9,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Launch from '@mui/icons-material/Launch';
 import Link from './Link';
-
-type LiturgicalYear = 'A' | 'B' | 'C';
+import { LiturgicalYear, Mass } from '../domain/mass/Mass';
 
 const liturgicalYearColor = {
   A: blue[500],
@@ -29,19 +28,8 @@ const buildLink = (liturgicalYear: LiturgicalYear, name: string, id = '') => {
   return `https://assets.holymass.app/masses/index.html?m=${year}/${name}#/${id}`;
 };
 
-export interface MassInfo {
-  date: string;
-  firstReading: string;
-  gospel: string;
-  liturgicalYear: LiturgicalYear;
-  name: string;
-  pinyin: string;
-  responsorialPsalm: string;
-  secondReading: string;
-}
-
 export interface MassCardProps {
-  info: MassInfo;
+  model: Mass;
 }
 
 export default function MassCard(props: MassCardProps) {
@@ -53,7 +41,7 @@ export default function MassCard(props: MassCardProps) {
     name,
     responsorialPsalm,
     secondReading,
-  } = props.info;
+  } = props.model;
   const { t } = useTranslation('mass');
   const generateLink = (text: string, id: string) => {
     return (

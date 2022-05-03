@@ -1,25 +1,14 @@
 import * as React from 'react';
-import _orderBy from 'lodash/orderBy';
 import Grid from '@mui/material/Grid';
-import MassCard, { MassInfo } from './MassCard';
-import liturgicalYearA from '../../public/data/mass/a.json';
-import liturgicalYearB from '../../public/data/mass/b.json';
-import liturgicalYearC from '../../public/data/mass/c.json';
-
-const masses = _orderBy(
-  (liturgicalYearA as MassInfo[])
-    .concat(liturgicalYearB as MassInfo[])
-    .concat(liturgicalYearC as MassInfo[]),
-  ['date'],
-  ['desc'],
-);
+import MassCard from './MassCard';
+import { Mass } from '../domain/mass/Mass';
 
 export interface MassGridProps {
-  data?: MassInfo[];
+  data: Mass[];
 }
 
 export default function MassGrid(props: MassGridProps) {
-  const { data = masses } = props;
+  const { data } = props;
   return (
     <Grid
       container
@@ -29,7 +18,7 @@ export default function MassGrid(props: MassGridProps) {
     >
       {data.map((item, index) => (
         <Grid item xs={4} key={index}>
-          <MassCard info={item} />
+          <MassCard model={item} />
         </Grid>
       ))}
     </Grid>
