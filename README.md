@@ -1,6 +1,7 @@
 # holymass.app
 
-[![Build Status](https://travis-ci.org/holymass/holymass.svg?branch=master)](https://travis-ci.org/holymass/holymass)
+Open source of [holymass.app](https://holymass.app).
+
 
 ## License
 
