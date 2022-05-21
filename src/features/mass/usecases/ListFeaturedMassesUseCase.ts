@@ -1,6 +1,6 @@
-import { Mass } from '../domain/mass/Mass';
-import MassRepository from '../domain/mass/MassRepository';
-import UseCase from '../shared/UseCase';
+import Mass from '../domain/Mass';
+import MassRepository from '../domain/MassRepository';
+import UseCase from '../../../shared/UseCase';
 
 export default class ListFeaturedMassesUseCase
   implements UseCase<void, Mass[]>

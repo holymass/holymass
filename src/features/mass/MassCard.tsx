@@ -8,24 +8,25 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Launch from '@mui/icons-material/Launch';
-import Link from './Link';
-import { LiturgicalYear, Mass } from '../domain/mass/Mass';
 
-const liturgicalYearColor = {
-  A: blue[500],
-  B: green[500],
-  C: red[500],
+import Link from '../../components/Link';
+import Mass from './domain/Mass';
+
+const getLiturgicalYearColor = (liturgicalYear: string): string => {
+  switch (liturgicalYear) {
+    case '甲年':
+      return blue[500];
+    case '乙年':
+      return green[500];
+    case '丙年':
+      return red[500];
+    default:
+      return 'inherit';
+  }
 };
 
-const liturgicalYearName = {
-  A: '甲年',
-  B: '乙年',
-  C: '丙年',
-};
-
-const buildLink = (liturgicalYear: LiturgicalYear, name: string, id = '') => {
-  const year = liturgicalYearName[liturgicalYear];
-  return `https://assets.holymass.app/masses/index.html?m=${year}/${name}#/${id}`;
+const buildLink = (liturgicalYear: string, name: string, id = '') => {
+  return `https://assets.holymass.app/masses/index.html?m=${liturgicalYear}/${name}#/${id}`;
 };
 
 export interface MassCardProps {
@@ -73,8 +74,8 @@ export default function MassCard(props: MassCardProps) {
         title={name}
         subheader={date}
         avatar={
-          <Avatar sx={{ bgcolor: liturgicalYearColor[liturgicalYear] }}>
-            {t(liturgicalYear)}
+          <Avatar sx={{ bgcolor: getLiturgicalYearColor(liturgicalYear) }}>
+            {liturgicalYear[0]}
           </Avatar>
         }
         action={
