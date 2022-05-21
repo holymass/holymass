@@ -13,7 +13,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { green, grey } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 import { alpha, styled, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import FindInPageIcon from '@mui/icons-material/FindInPage';

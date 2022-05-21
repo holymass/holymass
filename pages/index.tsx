@@ -3,7 +3,6 @@ import type { NextPage, NextPageContext } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Divider from '@mui/material/Divider';
-import NoSsr from '@mui/material/NoSsr';
 import Typography from '@mui/material/Typography';
 
 import Main from '../src/components/Main';
