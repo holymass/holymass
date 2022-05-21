@@ -69,7 +69,7 @@ export default function Search() {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const repo = new MassRepository();
-  const allMasses = new ListMassesUseCase(repo).execute();
+  const allMasses = new ListMassesUseCase(repo).execute({ filter: '' });
   const handleOpen = () => {
     setOpen(true);
   };

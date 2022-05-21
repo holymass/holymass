@@ -27,18 +27,24 @@ const store = _orderBy(
 );
 
 export default class MassRepository {
-  public findAll(filter?: string): Mass[] {
+  public findAll(filter: string): Mass[] {
+    if (filter) {
+      return _sortBy(
+        _filter(store, (item) => {
+          return item.name == filter;
+        }),
+        ['date'],
+      );
+    }
     return store.slice();
   }
 
   public findFeatured(size: number): Mass[] {
-    const now = Date.now();
     const oneDay = 864e5;
     return _take(
       _sortBy(
         _filter(store, (item) => {
-          const date = new Date(item.date).getTime();
-          return date - now >= oneDay;
+          return new Date(item.date).getTime() - new Date().getTime() >= oneDay;
         }),
         ['date'],
       ),

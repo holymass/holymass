@@ -11,7 +11,7 @@ export default class ListMassesUseCase
 {
   constructor(private massRepository: MassRepository) {}
 
-  execute(params?: ListMassesQuery): Mass[] {
-    return this.massRepository.findAll(params?.filter);
+  execute(params: ListMassesQuery): Mass[] {
+    return this.massRepository.findAll(params.filter);
   }
 }
