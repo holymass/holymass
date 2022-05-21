@@ -1,21 +1,23 @@
 import * as React from 'react';
 import { useTranslation } from 'next-i18next';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
-import { alpha, styled, useTheme } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import Divider from '@mui/material/Divider';
 import InputAdornment from '@mui/material/InputAdornment';
+import InputBase from '@mui/material/InputBase';
+import ListItem from '@mui/material/ListItem';
+import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import { alpha, styled, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import MassCard from '../features/mass/MassCard';
 import ListMassesUseCase from '../features/mass/usecases/ListMassesUseCase';
 import MassRepository from '../features/mass/domain/MassRepository';
 import Mass from '../features/mass/domain/Mass';
-import Divider from '@mui/material/Divider';
 
 const SearchBox = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -113,7 +115,13 @@ export default function Search(props: SearchProps) {
                 }}
               />
             )}
-            renderOption={(attrs, option) => <li {...attrs}>{option.title}</li>}
+            renderOption={(params, option) => (
+              <li {...params}>
+                <Typography component="span" variant="body2">
+                  {option.title}
+                </Typography>
+              </li>
+            )}
             options={allMasses}
             getOptionLabel={(option) => {
               if (typeof option === 'string') {
@@ -121,13 +129,21 @@ export default function Search(props: SearchProps) {
               }
               return option.title;
             }}
-            filterOptions={createFilterOptions<Mass>()}
+            filterOptions={createFilterOptions<Mass>({
+              stringify: (option) => {
+                return (
+                  option.title +
+                  option.pinyin.replaceAll(/\d|\s/g, '') +
+                  option.pinyin.replaceAll(/\d/g, '')
+                );
+              },
+            })}
           />
         </DialogTitle>
         <Divider />
         <DialogContent
           sx={{
-            minHeight: 400,
+            minHeight: 240,
           }}
         >
           {value && <MassCard model={value} />}
