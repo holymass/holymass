@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+
 import Main from '../src/components/Main';
 import MassGrid from '../src/features/mass/MassGrid';
 import ListMassesUseCase from '../src/features/mass/usecases/ListMassesUseCase';

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
-import { Provider as ReduxProvider } from 'react-redux';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { appWithTranslation } from 'next-i18next';
+
 import theme from '../src/theme';
-import store from '../src/store';
 import createEmotionCache from '../src/createEmotionCache';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
@@ -39,11 +38,9 @@ function MyApp(props: MyAppProps) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         {globalStyles}
-        <ReduxProvider store={store}>
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
-        </ReduxProvider>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
       </ThemeProvider>
     </CacheProvider>
   );
