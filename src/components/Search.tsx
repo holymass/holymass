@@ -149,8 +149,9 @@ export default function Search() {
             minHeight: 240,
           }}
         >
-          {value && <MassCard model={value} />}
-          {!value && (
+          {value ? (
+            <MassCard model={value} />
+          ) : (
             <Stack mt={4} mb={4} alignItems="center">
               <FindInPageIcon sx={{ fontSize: 100, color: grey[300] }} />
               <Typography variant="body2">{t('No results')}</Typography>
