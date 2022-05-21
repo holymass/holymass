@@ -6,8 +6,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { appWithTranslation } from 'next-i18next';
+
 import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
+import Header from '../src/components/Header';
+import Footer from '../src/components/Footer';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -35,7 +38,9 @@ function MyApp(props: MyAppProps) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         {globalStyles}
+        <Header />
         <Component {...pageProps} />
+        <Footer />
       </ThemeProvider>
     </CacheProvider>
   );
