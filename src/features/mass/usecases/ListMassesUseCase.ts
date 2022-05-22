@@ -3,7 +3,8 @@ import MassRepository from '../domain/MassRepository';
 import UseCase from '../../../shared/UseCase';
 
 export interface ListMassesQuery {
-  filter: string;
+  filter?: string;
+  liturgicalYear?: string;
 }
 
 export default class ListMassesUseCase
@@ -12,6 +13,8 @@ export default class ListMassesUseCase
   constructor(private massRepository: MassRepository) {}
 
   execute(params: ListMassesQuery): Mass[] {
-    return this.massRepository.findAll(params.filter);
+    const { filter = '', liturgicalYear = '' } = params;
+    console.log('list masses');
+    return this.massRepository.findAll(filter, liturgicalYear);
   }
 }

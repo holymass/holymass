@@ -29,6 +29,7 @@
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.0",
+    "@mui/lab": "^5.0.0-alpha.82",
     "@mui/material": "^5.8.0",
     "clsx": "^1.1.1",
     "lodash": "^4.17.21",

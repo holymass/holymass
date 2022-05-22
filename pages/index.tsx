@@ -6,7 +6,7 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 import Main from '../src/components/Main';
-import MassGrid from '../src/features/mass/MassGrid';
+import MassTabs from '../src/features/mass/MassTabs';
 import UpcomingMassGrid from '../src/features/mass/UpcomingMassGrid';
 import ListMassesUseCase from '../src/features/mass/usecases/ListMassesUseCase';
 import MassRepository from '../src/features/mass/domain/MassRepository';
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
       <Typography variant="h5" mt={3}>
         {t('All Masses')}
       </Typography>
-      <MassGrid data={data} />
+      <MassTabs />
     </Main>
   );
 };
