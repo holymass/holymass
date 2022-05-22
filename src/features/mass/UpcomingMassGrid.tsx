@@ -3,12 +3,12 @@ import Grid from '@mui/material/Grid';
 
 import MassCard from './MassCard';
 import MassRepository from './domain/MassRepository';
-import ListFeaturedMassesUseCase from './usecases/ListFeaturedMassesUseCase';
+import ListUpcomingMassesUseCase from './usecases/ListUpcomingMassesUseCase';
 
-export default function FeaturedMassGrid() {
+export default function UpcomingMassGrid() {
   const [loading, setLoading] = React.useState(true);
   const repo = new MassRepository();
-  const data = new ListFeaturedMassesUseCase(repo).execute({ size: 3 });
+  const data = new ListUpcomingMassesUseCase(repo).execute({ size: 3 });
   React.useEffect(() => {
     if (loading) {
       setLoading(false);

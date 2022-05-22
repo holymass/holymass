@@ -39,7 +39,7 @@ export default class MassRepository {
     return store.slice();
   }
 
-  public findFeatured(size: number): Mass[] {
+  public findUpcoming(size: number): Mass[] {
     const oneDay = 864e5;
     return _take(
       _sortBy(

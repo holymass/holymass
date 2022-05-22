@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 
 import Main from '../src/components/Main';
 import MassGrid from '../src/features/mass/MassGrid';
-import FeaturedMassGrid from '../src/features/mass/FeaturedMassGrid';
+import UpcomingMassGrid from '../src/features/mass/UpcomingMassGrid';
 import ListMassesUseCase from '../src/features/mass/usecases/ListMassesUseCase';
 import MassRepository from '../src/features/mass/domain/MassRepository';
 
@@ -18,9 +18,9 @@ const Home: NextPage = () => {
   return (
     <Main>
       <Typography variant="h5" mt={3}>
-        {t('Featured Masses')}
+        {t('Upcoming Masses')}
       </Typography>
-      <FeaturedMassGrid />
+      <UpcomingMassGrid />
       <Divider />
       <Typography variant="h5" mt={3}>
         {t('All Masses')}
