@@ -8,10 +8,9 @@ import liturgicalYearA from '../../../../public/data/mass/a.json';
 import liturgicalYearB from '../../../../public/data/mass/b.json';
 import liturgicalYearC from '../../../../public/data/mass/c.json';
 
-const store = _orderBy(
+const store = _sortBy(
   _union(liturgicalYearA, liturgicalYearB, liturgicalYearC),
   ['date'],
-  ['desc'],
 ).map(
   (item) =>
     new Mass(
@@ -27,28 +26,24 @@ const store = _orderBy(
 );
 
 export default class MassRepository {
-  public findAll(filter: string): Mass[] {
-    if (filter) {
-      return _sortBy(
-        _filter(store, (item) => {
-          return item.name == filter;
-        }),
-        ['date'],
-      );
+  public findAll(filter: string, liturgicalYear: string): Mass[] {
+    let data = store;
+    if (liturgicalYear) {
+      data = _filter(store, (item) => item.liturgicalYear == liturgicalYear);
     }
-    return store.slice();
+    if (filter) {
+      data = _filter(data, (item) => item.name == filter);
+    }
+    return data;
   }
 
-  public findFeatured(size: number): Mass[] {
+  public findUpcoming(size: number): Mass[] {
+    const now = new Date().getTime();
     const oneDay = 864e5;
-    return _take(
-      _sortBy(
-        _filter(store, (item) => {
-          return new Date(item.date).getTime() - new Date().getTime() >= oneDay;
-        }),
-        ['date'],
-      ),
-      size,
+    let data = _filter(
+      store,
+      (item) => new Date(item.date).getTime() + oneDay >= now,
     );
+    return _take(data, size);
   }
 }

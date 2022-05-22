@@ -6,26 +6,22 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 import Main from '../src/components/Main';
-import MassGrid from '../src/features/mass/MassGrid';
-import FeaturedMassGrid from '../src/features/mass/FeaturedMassGrid';
-import ListMassesUseCase from '../src/features/mass/usecases/ListMassesUseCase';
-import MassRepository from '../src/features/mass/domain/MassRepository';
+import MassTabs from '../src/features/mass/MassTabs';
+import UpcomingMassGrid from '../src/features/mass/UpcomingMassGrid';
 
 const Home: NextPage = () => {
   const { t } = useTranslation('mass');
-  const repo = new MassRepository();
-  const data = new ListMassesUseCase(repo).execute({ filter: '' });
   return (
     <Main>
       <Typography variant="h5" mt={3}>
-        {t('Featured Masses')}
+        {t('Upcoming Masses')}
       </Typography>
-      <FeaturedMassGrid />
+      <UpcomingMassGrid />
       <Divider />
       <Typography variant="h5" mt={3}>
         {t('All Masses')}
       </Typography>
-      <MassGrid data={data} />
+      <MassTabs />
     </Main>
   );
 };
