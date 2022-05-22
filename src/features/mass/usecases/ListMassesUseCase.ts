@@ -14,7 +14,6 @@ export default class ListMassesUseCase
 
   execute(params: ListMassesQuery): Mass[] {
     const { filter = '', liturgicalYear = '' } = params;
-    console.log('list masses');
     return this.massRepository.findAll(filter, liturgicalYear);
   }
 }

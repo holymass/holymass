@@ -62,14 +62,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const repo = new MassRepository();
+const options = new ListMassesUseCase(repo).execute({});
+
 export default function Search() {
   const { t } = useTranslation('common');
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<Mass | null>(null);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const repo = new MassRepository();
-  const allMasses = new ListMassesUseCase(repo).execute({ filter: '' });
   const handleOpen = () => {
     setOpen(true);
   };
@@ -92,6 +93,7 @@ export default function Search() {
       >
         <DialogTitle id="quick-search-dialog-title">
           <Autocomplete
+            disableClearable
             freeSolo
             selectOnFocus
             clearOnBlur
@@ -125,7 +127,7 @@ export default function Search() {
                 </Typography>
               </li>
             )}
-            options={allMasses}
+            options={options}
             getOptionLabel={(option) => {
               if (typeof option === 'string') {
                 return option;
