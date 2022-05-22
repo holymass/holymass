@@ -44,7 +44,7 @@ export default class MassRepository {
     return _take(
       _sortBy(
         _filter(store, (item) => {
-          return new Date(item.date).getTime() - new Date().getTime() >= oneDay;
+          return new Date(item.date).getTime() + oneDay >= new Date().getTime();
         }),
         ['date'],
       ),
