@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 interface FooterProps {
@@ -13,13 +12,14 @@ export default function Footer(props: FooterProps) {
   const copyright = `© ${new Date().getFullYear()} HolyMass.app`;
   return (
     <Container component="footer" maxWidth="lg">
-      <Divider />
       <Box
         sx={{
           display: 'flex',
           paddingTop: 2,
           paddingBottom: 4,
           justifyContent: 'center',
+          borderTop: 1,
+          borderColor: 'divider',
         }}
       >
         <Typography component="div" variant="body2" color="text.secondary">
