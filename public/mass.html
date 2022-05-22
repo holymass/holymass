@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <title>HolyMass</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/reveal.js@3.9.2/css/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/reveal.js@3.9.2/css/reveal.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/reveal.js@3.9.2/css/theme/white.css"
+      id="theme"
+    />
+    <style>
+      html,
+      body,
+      .reveal div,
+      .reveal span,
+      .reveal applet,
+      .reveal object,
+      .reveal iframe,
+      .reveal h1,
+      .reveal h2,
+      .reveal h3,
+      .reveal h4,
+      .reveal h5,
+      .reveal h6,
+      .reveal p,
+      .reveal blockquote,
+      .reveal pre,
+      .reveal a,
+      .reveal abbr,
+      .reveal acronym,
+      .reveal address,
+      .reveal big,
+      .reveal cite,
+      .reveal code,
+      .reveal del,
+      .reveal dfn,
+      .reveal em,
+      .reveal img,
+      .reveal ins,
+      .reveal kbd,
+      .reveal q,
+      .reveal s,
+      .reveal samp,
+      .reveal small,
+      .reveal strike,
+      .reveal strong,
+      .reveal sub,
+      .reveal sup,
+      .reveal tt,
+      .reveal var,
+      .reveal b,
+      .reveal u,
+      .reveal center,
+      .reveal dl,
+      .reveal dt,
+      .reveal dd,
+      .reveal ol,
+      .reveal ul,
+      .reveal li,
+      .reveal fieldset,
+      .reveal form,
+      .reveal label,
+      .reveal legend,
+      .reveal table,
+      .reveal caption,
+      .reveal tbody,
+      .reveal tfoot,
+      .reveal thead,
+      .reveal tr,
+      .reveal th,
+      .reveal td,
+      .reveal article,
+      .reveal aside,
+      .reveal canvas,
+      .reveal details,
+      .reveal embed,
+      .reveal figure,
+      .reveal figcaption,
+      .reveal footer,
+      .reveal header,
+      .reveal hgroup,
+      .reveal menu,
+      .reveal nav,
+      .reveal output,
+      .reveal ruby,
+      .reveal section,
+      .reveal summary,
+      .reveal time,
+      .reveal mark,
+      .reveal audio,
+      .reveal video {
+        font-family: 'PingFang SC', 'Microsoft YaHei', STHeiti, 'Open Sans',
+          sans-serif;
+      }
+
+      .reveal h1,
+      .reveal h2,
+      .reveal h3,
+      .reveal h4,
+      .reveal h5,
+      .reveal h6 {
+        color: red;
+      }
+
+      .reveal strong {
+        color: red;
+      }
+
+      .reveal p {
+        font-size: 1.4em;
+        text-align: left;
+      }
+
+      .reveal p.center {
+        text-align: center;
+      }
+
+      .reveal p.right {
+        text-align: right;
+      }
+
+      .reveal section img {
+        border: 0;
+      }
+    </style>
+    <script>
+      var link = document.createElement('link');
+      var baseURL = 'https://unpkg.com/reveal.js@3.9.2/';
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href =
+        baseURL +
+        (window.location.search.match(/print-pdf/gi)
+          ? 'css/print/pdf.css'
+          : 'css/print/paper.css');
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <!--[if lt IE 9]>
+      <script
+        crossorigin
+        src="https://unpkg.com/reveal.js@3.9.2/lib/js/html5shiv.js"
+      ></script>
+    <![endif]-->
+
+    <script
+      crossorigin=""
+      src="https://unpkg.com/qrcode@1.4.4/build/qrcode.min.js"
+    ></script>
+  </head>
+  <body style="overflow: auto">
+    <div class="reveal">
+      <div id="root" class="slides">
+        <section data-markdown="index.md"></section>
+
+        <section data-markdown="">
+          <script type="text/template">
+            ## （完）
+
+            <canvas id="qrcode"></canvas>
+
+            <!-- .element: class="center" -->
+          </script>
+        </section>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var metadata = {};
+        if (location.search) {
+          var params = new URLSearchParams(location.search);
+          var mass = params.get('m');
+          if (mass) {
+            var markdown = 'https://assets.holymass.app/masses/' + mass + '.md';
+            var root = document.getElementById('root');
+            root.firstElementChild.setAttribute('data-markdown', markdown);
+          }
+        }
+      })();
+    </script>
+    <script
+      crossorigin=""
+      src="https://unpkg.com/reveal.js@3.9.2/js/reveal.js"
+    ></script>
+    <script>
+      Reveal.initialize({
+        transition: 'convex',
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        dependencies: [
+          {
+            src: baseURL + 'plugin/markdown/marked.js',
+            condition: function () {
+              return !!document.querySelector('[data-markdown]');
+            },
+          },
+          {
+            src: baseURL + 'plugin/markdown/markdown.js',
+            condition: function () {
+              return !!document.querySelector('[data-markdown]');
+            },
+          },
+          { src: baseURL + 'plugin/zoom-js/zoom.js', async: true },
+        ],
+      });
+      Reveal.addEventListener('ready', function (event) {
+        QRCode.toCanvas(
+          document.getElementById('qrcode'),
+          location.origin + location.pathname + location.search,
+          {
+            width: 300,
+          },
+          function (error) {
+            if (error) {
+              console.error(error);
+            }
+          },
+        );
+      });
+    </script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-120959122-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+      gtag('config', 'UA-120959122-1');
+    </script>
+  </body>
+</html>
