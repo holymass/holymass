@@ -68,7 +68,7 @@ const options = new ListMassesUseCase(repo).execute({});
 export default function Search() {
   const { t } = useTranslation('common');
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState<Mass | null>(null);
+  const [value, setValue] = React.useState<string | Mass>('');
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const handleOpen = () => {
@@ -99,9 +99,7 @@ export default function Search() {
             clearOnBlur
             value={value}
             onChange={(event, newValue) => {
-              if (typeof newValue !== 'string') {
-                setValue(newValue);
-              }
+              setValue(newValue);
             }}
             renderInput={(params) => (
               <TextField
@@ -151,7 +149,7 @@ export default function Search() {
             minHeight: 240,
           }}
         >
-          {value ? (
+          {value && value instanceof Mass ? (
             <MassCard model={value} />
           ) : (
             <Stack mt={4} mb={4} alignItems="center">
