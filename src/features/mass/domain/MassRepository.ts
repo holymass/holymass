@@ -1,5 +1,4 @@
 import Mass from './Mass';
-import _orderBy from 'lodash/orderBy';
 import _filter from 'lodash/filter';
 import _sortBy from 'lodash/sortBy';
 import _take from 'lodash/take';
