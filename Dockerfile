@@ -3,7 +3,7 @@ FROM node:16.15
 WORKDIR /app
 
 COPY package*.json /app
-RUN npm install
+RUN npm ci --only=production
 
 COPY . /app
 RUN npm run build
