@@ -35,4 +35,3 @@ yarn-error.log*
 # Other
 .eslintcache
 .npmrc
-package-lock.json
