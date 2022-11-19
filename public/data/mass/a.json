@@ -7,17 +7,7 @@
     "pinyin": "jia3 nian2 jiang1 lin2 qi1 di4 yi1 zhu3 ri4",
     "responsorialPsalm": "咏122:1-4,6-9",
     "secondReading": "罗13:11-14",
-    "date": "2019-12-01"
-  },
-  {
-    "firstReading": "创4:9-15,20",
-    "gospel": "路1:26-38",
-    "liturgicalYear": "甲年",
-    "name": "圣母无染原罪",
-    "pinyin": "jia3 nian2 sheng4 mu3 wu2 ran3 yuan2 zui4",
-    "responsorialPsalm": "咏98:1-4",
-    "secondReading": "弗1:3-7,11-12",
-    "date": "2019-12-07"
+    "date": "2022-11-27"
   },
   {
     "firstReading": "依11:1-10",
@@ -27,7 +17,17 @@
     "pinyin": "jia3 nian2 jiang1 lin2 qi1 di4 er4 zhu3 ri4",
     "responsorialPsalm": "咏72:2,7-8,12-13,17",
     "secondReading": "罗15:4-9",
-    "date": "2019-12-08"
+    "date": "2022-12-04"
+  },
+  {
+    "firstReading": "创4:9-15,20",
+    "gospel": "路1:26-38",
+    "liturgicalYear": "甲年",
+    "name": "圣母无染原罪",
+    "pinyin": "jia3 nian2 sheng4 mu3 wu2 ran3 yuan2 zui4",
+    "responsorialPsalm": "咏98:1-4",
+    "secondReading": "弗1:3-7,11-12",
+    "date": "2022-12-08"
   },
   {
     "firstReading": "依35:1-6,10",
@@ -37,7 +37,7 @@
     "pinyin": "jia3 nian2 jiang1 lin2 qi1 di4 san1 zhu3 ri4",
     "responsorialPsalm": "咏146:7-10",
     "secondReading": "雅5:7-10",
-    "date": "2019-12-15"
+    "date": "2022-12-11"
   },
   {
     "firstReading": "依7:10-14",
@@ -47,7 +47,7 @@
     "pinyin": "jia3 nian2 jiang1 lin2 qi1 di4 si4 zhu3 ri4",
     "responsorialPsalm": "咏24:7,10:1-6",
     "secondReading": "罗1:1-7",
-    "date": "2019-12-22"
+    "date": "2022-12-18"
   },
   {
     "firstReading": "依9:1-3,5-6",
@@ -57,7 +57,7 @@
     "pinyin": "jia3 nian2 ye1 su1 sheng4 dan4 zi3 shi2 mi2 sa4",
     "responsorialPsalm": "咏96:1-3,1-13",
     "secondReading": "铎2:11-14",
-    "date": "2019-12-24"
+    "date": "2022-12-24"
   },
   {
     "firstReading": "依52:7-10",
@@ -67,17 +67,17 @@
     "pinyin": "jia3 nian2 sheng4 dan4 jie2 tian1 ming2 mi2 sa4",
     "responsorialPsalm": "咏98:1-6",
     "secondReading": "希1:1-6",
-    "date": "2019-12-25"
+    "date": "2022-12-25"
   },
   {
-    "firstReading": "德3:3-7，14-17a",
+    "firstReading": "德3:3-7,14-17",
     "gospel": "玛2:13-15,19-23",
     "liturgicalYear": "甲年",
     "name": "圣家节",
     "pinyin": "jia3 nian2 sheng4 jia1 jie2",
     "responsorialPsalm": "咏128:1-5",
     "secondReading": "哥3:12-21",
-    "date": "2019-12-29"
+    "date": "2022-12-30"
   },
   {
     "firstReading": "户6:22-27",
@@ -87,7 +87,7 @@
     "pinyin": "jia3 nian2 tian1 zhu3 zhi1 mu3 jie2",
     "responsorialPsalm": "咏67:2-3,5-6,8",
     "secondReading": "迦4:4-7",
-    "date": "2020-01-01"
+    "date": "2023-01-01"
   },
   {
     "firstReading": "依60:1-6",
@@ -97,7 +97,7 @@
     "pinyin": "jia3 nian2 zhu3 xian3 jie2",
     "responsorialPsalm": "咏72:1-2,7-8,10-11,12-13",
     "secondReading": "弗3:2-3,5-6",
-    "date": "2020-01-06"
+    "date": "2023-01-06"
   },
   {
     "firstReading": "依42:1-4,6-7",
@@ -107,7 +107,7 @@
     "pinyin": "jia3 nian2 zhu3 shou4 xi3 jie2",
     "responsorialPsalm": "咏29:1-2,3-4,9-10",
     "secondReading": "宗10:34-38",
-    "date": "2020-01-12"
+    "date": "2023-01-08"
   },
   {
     "firstReading": "依49:3,5-6",
@@ -117,7 +117,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 er4 zhu3 ri4",
     "responsorialPsalm": "咏40:2,4,7-8,8-9,10",
     "secondReading": "格前1:1-3",
-    "date": "2020-01-19"
+    "date": "2023-01-15"
   },
   {
     "firstReading": "哥3:12-21",
@@ -127,7 +127,7 @@
     "pinyin": "jia3 nian2 nong2 li4 chu2 xi1",
     "responsorialPsalm": "咏66",
     "secondReading": "-",
-    "date": "2020-01-24"
+    "date": "2023-01-21"
   },
   {
     "firstReading": "创1:27-31",
@@ -137,7 +137,7 @@
     "pinyin": "jia3 nian2 nong2 li4 xin1 chun1",
     "responsorialPsalm": "咏8",
     "secondReading": "-",
-    "date": "2020-01-25"
+    "date": "2023-01-22"
   },
   {
     "firstReading": "户6:22-27",
@@ -147,7 +147,7 @@
     "pinyin": "jia3 nian2 xin1 chun1 hou4 shou3 zhu3 ri4",
     "responsorialPsalm": "咏85:9-14",
     "secondReading": "斐4:6-9",
-    "date": "2020-01-26"
+    "date": "2023-01-29"
   },
   {
     "firstReading": "依8:23b-9:3",
@@ -157,7 +157,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 san1 zhu3 ri4",
     "responsorialPsalm": "咏27:1,4,13-14",
     "secondReading": "格前1:10-13,17",
-    "date": "2020-01-26"
+    "date": "2023-01-22"
   },
   {
     "firstReading": "拉3:1-4",
@@ -167,7 +167,7 @@
     "pinyin": "jia3 nian2 xian4 zhu3 jie2",
     "responsorialPsalm": "咏24:7,8,9,10",
     "secondReading": "希2:14-18",
-    "date": "2020-02-02"
+    "date": "2023-01-29"
   },
   {
     "firstReading": "依58:7-10",
@@ -177,7 +177,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 wu3 zhu3 ri4",
     "responsorialPsalm": "咏112:4-5,6-7,8-9",
     "secondReading": "格前2:1-5",
-    "date": "2020-02-09"
+    "date": "2023-02-05"
   },
   {
     "firstReading": "德15:16-21",
@@ -187,7 +187,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 liu4 zhu3 ri4",
     "responsorialPsalm": "咏119:1-2,4-5,17-18,33-34",
     "secondReading": "格前2:6-10",
-    "date": "2020-02-16"
+    "date": "2023-02-12"
   },
   {
     "firstReading": "肋19:1-2,17-18",
@@ -197,7 +197,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 qi1 zhu3 ri4",
     "responsorialPsalm": "咏103:1-2,3-4,8,10,12-13",
     "secondReading": "格前3:16-23",
-    "date": "2020-02-23"
+    "date": "2023-02-19"
   },
   {
     "firstReading": "岳2:12-18",
@@ -207,7 +207,7 @@
     "pinyin": "jia3 nian2 sheng4 hui1 li3 yi2",
     "responsorialPsalm": "咏51:3-4;5-6a;12-13;14,17",
     "secondReading": "格后5:20-6:2",
-    "date": "2020-02-26"
+    "date": "2023-02-22"
   },
   {
     "firstReading": "创2:7-9;3:1-7",
@@ -217,7 +217,7 @@
     "pinyin": "jia3 nian2 si4 xun2 qi1 di4 yi1 zhu3 ri4",
     "responsorialPsalm": "咏51:3-4,5-6,12-13,14,17",
     "secondReading": "罗5:12-19",
-    "date": "2020-03-01"
+    "date": "2023-02-26"
   },
   {
     "firstReading": "创12:1-4a",
@@ -227,7 +227,7 @@
     "pinyin": "jia3 nian2 si4 xun2 qi1 di4 er4 zhu3 ri4",
     "responsorialPsalm": "咏33:4-5,18-19,20,22",
     "secondReading": "弟后1:8b-10",
-    "date": "2020-03-08"
+    "date": "2023-03-05"
   },
   {
     "firstReading": "出17:3-7",
@@ -237,7 +237,7 @@
     "pinyin": "jia3 nian2 si4 xun2 qi1 di4 san1 zhu3 ri4",
     "responsorialPsalm": "咏95:1-2,6-7,8-9",
     "secondReading": "罗5:1-2,5-8",
-    "date": "2020-03-15"
+    "date": "2023-03-12"
   },
   {
     "firstReading": "撒上16:1,6-7,10-13",
@@ -247,7 +247,7 @@
     "pinyin": "jia3 nian2 si4 xun2 qi1 di4 si4 zhu3 ri4",
     "responsorialPsalm": "咏23:1-3,3-4,5,6",
     "secondReading": "弗5:8-14",
-    "date": "2020-03-22"
+    "date": "2023-03-19"
   },
   {
     "firstReading": "则37:12-14",
@@ -257,7 +257,7 @@
     "pinyin": "jia3 nian2 si4 xun2 qi1 di4 wu3 zhu3 ri4",
     "responsorialPsalm": "咏130:1-2,3-4,5-6,7-8",
     "secondReading": "罗8:8-11",
-    "date": "2020-03-29"
+    "date": "2023-03-26"
   },
   {
     "firstReading": "依50:4-7",
@@ -267,7 +267,7 @@
     "pinyin": "jia3 nian2 sheng4 zhi1 zhu3 ri4",
     "responsorialPsalm": "咏22:8-9,17-18a,19-20,23-24",
     "secondReading": "斐2:6-11",
-    "date": "2020-04-05"
+    "date": "2023-04-02"
   },
   {
     "firstReading": "出12:1-8,11-14",
@@ -277,7 +277,7 @@
     "pinyin": "jia3 nian2 sheng4 zhou1 si4",
     "responsorialPsalm": "咏116:12-13,15-16,17-18",
     "secondReading": "格前11:23-26",
-    "date": "2020-04-09"
+    "date": "2023-04-06"
   },
   {
     "firstReading": "依52:13-53:12",
@@ -287,7 +287,7 @@
     "pinyin": "jia3 nian2 sheng4 zhou1 wu3",
     "responsorialPsalm": "咏31:2,6,12-13,15-17,25",
     "secondReading": "希4:14-16;5:7-9",
-    "date": "2020-04-10"
+    "date": "2023-04-07"
   },
   {
     "firstReading": "",
@@ -297,7 +297,7 @@
     "pinyin": "jia3 nian2 fu4 huo2 qian2 xi1",
     "responsorialPsalm": "",
     "secondReading": "",
-    "date": "2020-04-11"
+    "date": "2023-04-08"
   },
   {
     "firstReading": "宗10:34a,37-43",
@@ -307,7 +307,7 @@
     "pinyin": "jia3 nian2 fu4 huo2 jie2",
     "responsorialPsalm": "咏118:1-2;16ab,17,22-23",
     "secondReading": "哥3:1-4或格前5:6b-8",
-    "date": "2020-04-12"
+    "date": "2023-04-09"
   },
   {
     "firstReading": "宗2:42-47",
@@ -317,7 +317,7 @@
     "pinyin": "jia3 nian2 fu4 huo2 qi1 di4 er4 zhu3 ri4",
     "responsorialPsalm": "咏118:2-4,13-15,22-24",
     "secondReading": "伯前1:3-9",
-    "date": "2020-04-19"
+    "date": "2023-04-16"
   },
   {
     "firstReading": "宗2:14,22-23",
@@ -327,7 +327,7 @@
     "pinyin": "jia3 nian2 fu4 huo2 qi1 di4 san1 zhu3 ri4",
     "responsorialPsalm": "咏16:1-2b,5,7-8,9-10,11",
     "secondReading": "伯前1:17-21",
-    "date": "2020-04-26"
+    "date": "2023-04-23"
   },
   {
     "firstReading": "宗2:14a,36-41",
@@ -337,7 +337,7 @@
     "pinyin": "jia3 nian2 fu4 huo2 qi1 di4 si4 zhu3 ri4",
     "responsorialPsalm": "咏23:1-3a,3d-4,5-6",
     "secondReading": "伯前2:20b-25",
-    "date": "2020-05-03"
+    "date": "2023-04-30"
   },
   {
     "firstReading": "宗6:1-7",
@@ -347,7 +347,7 @@
     "pinyin": "jia3 nian2 fu4 huo2 qi1 di4 wu3 zhu3 ri4",
     "responsorialPsalm": "咏33:1-2,4-5,18-19",
     "secondReading": "伯前2:4-9",
-    "date": "2020-05-10"
+    "date": "2023-05-07"
   },
   {
     "firstReading": "宗8:5-8,14-17",
@@ -357,7 +357,7 @@
     "pinyin": "jia3 nian2 fu4 huo2 qi1 di4 liu4 zhu3 ri4",
     "responsorialPsalm": "咏66:1-3,4-5,6-7,16,20",
     "secondReading": "伯前3:15-18",
-    "date": "2020-05-17"
+    "date": "2023-05-14"
   },
   {
     "firstReading": "宗1:1-11",
@@ -367,7 +367,7 @@
     "pinyin": "jia3 nian2 ye1 su1 sheng1 tian1 jie2",
     "responsorialPsalm": "咏47:2-3,6-7,8-9",
     "secondReading": "弗1:17-23",
-    "date": "2020-05-21"
+    "date": "2023-05-18"
   },
   {
     "firstReading": "宗1:12-14",
@@ -377,7 +377,7 @@
     "pinyin": "jia3 nian2 fu4 huo2 qi1 di4 qi1 zhu3 ri4",
     "responsorialPsalm": "咏27:1,4,7-8a",
     "secondReading": "伯前4:13-16",
-    "date": "2020-05-24"
+    "date": "2023-05-21"
   },
   {
     "firstReading": "宗2:1-11",
@@ -387,7 +387,7 @@
     "pinyin": "jia3 nian2 sheng4 shen2 jiang4 lin2 jie2",
     "responsorialPsalm": "咏104:1,24,29-30,31,34",
     "secondReading": "格前12:3b-7,12-13",
-    "date": "2020-05-31"
+    "date": "2023-05-28"
   },
   {
     "firstReading": "出34:4b-6,8-9",
@@ -397,7 +397,7 @@
     "pinyin": "jia3 nian2 tian1 zhu3 sheng4 san1 jie2",
     "responsorialPsalm": "(咏)达3:52,53,54,55,56",
     "secondReading": "格后13:11-13",
-    "date": "2020-06-07"
+    "date": "2023-06-04"
   },
   {
     "firstReading": "申8:2-3,14b-16a",
@@ -407,17 +407,17 @@
     "pinyin": "jia3 nian2 ji1 du1 sheng4 ti3 sheng4 xue4 jie2",
     "responsorialPsalm": "咏147:12-13,14-15,19-20",
     "secondReading": "格前10:16-17",
-    "date": "2020-06-11"
+    "date": "2023-06-08"
   },
   {
-    "firstReading": "出19:2-6a",
-    "gospel": "玛9:36-10:8",
+    "firstReading": "欧6:3-6",
+    "gospel": "玛9:9-13",
     "liturgicalYear": "甲年",
-    "name": "常年期第十一主日",
-    "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 yi1 zhu3 ri4",
-    "responsorialPsalm": "咏100:1-2,3,5",
-    "secondReading": "罗5:6-11",
-    "date": "2020-06-14"
+    "name": "常年期第十主日",
+    "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 zhu3 ri4",
+    "responsorialPsalm": "咏50:1,8,12-15",
+    "secondReading": "罗4:18-25",
+    "date": "2023-06-14"
   },
   {
     "firstReading": "申7:6-11",
@@ -427,17 +427,17 @@
     "pinyin": "jia3 nian2 ye1 su1 sheng4 xin1",
     "responsorialPsalm": "咏103:1-2,3-4,6-7,8,10",
     "secondReading": "若一4:7-16",
-    "date": "2020-06-19"
+    "date": "2023-06-16"
   },
   {
-    "firstReading": "耶20:10-13",
-    "gospel": "玛10:26-33",
+    "firstReading": "出19:2-6a",
+    "gospel": "玛9:36-10:8",
     "liturgicalYear": "甲年",
-    "name": "常年期第十二主日",
-    "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 er4 zhu3 ri4",
-    "responsorialPsalm": "咏69:8-10,14,17,33-35",
-    "secondReading": "罗5:12-15",
-    "date": "2020-06-21"
+    "name": "常年期第十一主日",
+    "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 yi1 zhu3 ri4",
+    "responsorialPsalm": "咏100:1-2,3,5",
+    "secondReading": "罗5:6-11",
+    "date": "2023-06-18"
   },
   {
     "firstReading": "依49:1-6",
@@ -447,17 +447,17 @@
     "pinyin": "jia3 nian2 sheng4 ruo4 han4 dan4 chen2",
     "responsorialPsalm": "咏138:1-3,13-14,14-15",
     "secondReading": "宗13:22-26",
-    "date": "2020-06-24"
+    "date": "2023-06-24"
   },
   {
-    "firstReading": "列下4:8-11,14-16a",
-    "gospel": "玛10:37-42",
+    "firstReading": "耶20:10-13",
+    "gospel": "玛10:26-33",
     "liturgicalYear": "甲年",
-    "name": "常年期第十三主日",
-    "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 san1 zhu3 ri4",
-    "responsorialPsalm": "咏89:2-3,16-17,18-19",
-    "secondReading": "罗6:3-4,8-11",
-    "date": "2020-06-28"
+    "name": "常年期第十二主日",
+    "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 er4 zhu3 ri4",
+    "responsorialPsalm": "咏69:8-10,14,17,33-35",
+    "secondReading": "罗5:12-15",
+    "date": "2023-06-25"
   },
   {
     "firstReading": "宗12:1-11",
@@ -467,7 +467,17 @@
     "pinyin": "jia3 nian2 sheng4 bo2 duo1 lu4 ji2 sheng4 bao3 lu4",
     "responsorialPsalm": "咏34:2-3,4-5,6-7,8-9",
     "secondReading": "弟后4:6-8,16-18",
-    "date": "2020-06-29"
+    "date": "2023-06-29"
+  },
+  {
+    "firstReading": "列下4:8-11,14-16a",
+    "gospel": "玛10:37-42",
+    "liturgicalYear": "甲年",
+    "name": "常年期第十三主日",
+    "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 san1 zhu3 ri4",
+    "responsorialPsalm": "咏89:2-3,16-17,18-19",
+    "secondReading": "罗6:3-4,8-11",
+    "date": "2023-07-02"
   },
   {
     "firstReading": "匝9:9-10",
@@ -477,7 +487,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 si4 zhu3 ri4",
     "responsorialPsalm": "咏145:1-2,8-9,10-11,13-14",
     "secondReading": "罗8:9,11-13",
-    "date": "2020-07-05"
+    "date": "2023-07-09"
   },
   {
     "firstReading": "依55:10-11",
@@ -487,7 +497,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 wu3 zhu3 ri4",
     "responsorialPsalm": "咏65:10,11,12-13,14",
     "secondReading": "罗8:18-23",
-    "date": "2020-07-12"
+    "date": "2023-07-16"
   },
   {
     "firstReading": "智12:13,16-19",
@@ -497,7 +507,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 liu4 zhu3 ri4",
     "responsorialPsalm": "咏86:5-6,9-10,15-16",
     "secondReading": "罗8:26-27",
-    "date": "2020-07-19"
+    "date": "2023-07-23"
   },
   {
     "firstReading": "列上3:5,7-12",
@@ -507,17 +517,17 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 qi1 zhu3 ri4",
     "responsorialPsalm": "咏119:57,72,76-77,127-128,129-130",
     "secondReading": "罗8:28-30",
-    "date": "2020-07-26"
+    "date": "2023-07-30"
   },
   {
     "firstReading": "达7:9-10,13-14",
     "gospel": "玛17:1-9",
     "liturgicalYear": "甲年",
-    "name": "常年期第十八主日",
-    "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 ba1 zhu3 ri4",
+    "name": "耶稣显圣容",
+    "pinyin": "jia3 nian2 ye1 su1 xian3 sheng4 rong2",
     "responsorialPsalm": "咏97:1-2,5-6,9",
     "secondReading": "伯后1:16-19",
-    "date": "2020-08-02"
+    "date": "2023-08-06"
   },
   {
     "firstReading": "列上19:9a,11-13a",
@@ -527,7 +537,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 shi2 jiu3 zhu3 ri4",
     "responsorialPsalm": "咏85:9a,10,11-12,13-14",
     "secondReading": "罗9:1-5",
-    "date": "2020-08-09"
+    "date": "2023-08-13"
   },
   {
     "firstReading": "默11:19;12:1-6,10",
@@ -537,7 +547,7 @@
     "pinyin": "jia3 nian2 sheng4 mu3 sheng1 tian1 jie2",
     "responsorialPsalm": "咏45:11-12,15-16",
     "secondReading": "格前15:20-27",
-    "date": "2020-08-15"
+    "date": "2023-08-15"
   },
   {
     "firstReading": "依56:1,6-7",
@@ -547,7 +557,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 er4 shi2 zhu3 ri4",
     "responsorialPsalm": "咏67:2-3,5,6,8",
     "secondReading": "罗11:13-15,29-32",
-    "date": "2020-08-16"
+    "date": "2023-08-20"
   },
   {
     "firstReading": "依22:19-23",
@@ -557,7 +567,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 er4 shi2 yi1 zhu3 ri4",
     "responsorialPsalm": "咏138:1-2,2-3,6,8",
     "secondReading": "罗11:33-36",
-    "date": "2020-08-23"
+    "date": "2023-08-27"
   },
   {
     "firstReading": "耶20:7-9",
@@ -567,7 +577,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 er4 shi2 er4 zhu3 ri4",
     "responsorialPsalm": "咏63:2,3-4,5-6,8-9",
     "secondReading": "罗12:1-2",
-    "date": "2020-08-30"
+    "date": "2023-09-03"
   },
   {
     "firstReading": "则33:7-9",
@@ -577,7 +587,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 er4 shi2 san1 zhu3 ri4",
     "responsorialPsalm": "咏95:1-2,6-7,8-9",
     "secondReading": "罗13:8-10",
-    "date": "2020-09-06"
+    "date": "2023-09-10"
   },
   {
     "firstReading": "德27:33-28:9",
@@ -587,7 +597,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 er4 shi2 si4 zhu3 ri4",
     "responsorialPsalm": "咏103:1-2,3-4,9-10,11-12",
     "secondReading": "罗14:7-9",
-    "date": "2020-09-13"
+    "date": "2023-09-17"
   },
   {
     "firstReading": "依55:6-9",
@@ -597,7 +607,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 er4 shi2 wu3 zhu3 ri4",
     "responsorialPsalm": "咏145:2-3,8-9,17-18",
     "secondReading": "斐1:20c-24,27a",
-    "date": "2020-09-20"
+    "date": "2023-09-24"
   },
   {
     "firstReading": "则18:25-28",
@@ -607,7 +617,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 er4 shi2 liu4 zhu3 ri4",
     "responsorialPsalm": "咏25:4-5,6-7,8-9",
     "secondReading": "斐2:1-11",
-    "date": "2020-09-27"
+    "date": "2023-10-10"
   },
   {
     "firstReading": "依5:1-7",
@@ -617,7 +627,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 er4 shi2 qi1 zhu3 ri4",
     "responsorialPsalm": "咏80:9,12,13-14,15-16,19-20",
     "secondReading": "斐4:6-9",
-    "date": "2020-10-04"
+    "date": "2023-10-08"
   },
   {
     "firstReading": "依25:6-10a",
@@ -627,7 +637,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 er4 shi2 ba1 zhu3 ri4",
     "responsorialPsalm": "咏23:1-3,3-4,5,6",
     "secondReading": "斐4:12-14,19-20",
-    "date": "2020-10-11"
+    "date": "2023-10-15"
   },
   {
     "firstReading": "依45:1,4-6",
@@ -637,7 +647,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 er4 shi2 jiu3 zhu3 ri4",
     "responsorialPsalm": "咏96:1,3,4-5,7-8,9-10",
     "secondReading": "得前1:1-5a",
-    "date": "2020-10-18"
+    "date": "2023-10-22"
   },
   {
     "firstReading": "出22:20-26",
@@ -647,7 +657,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 san1 shi2 zhu3 ri4",
     "responsorialPsalm": "咏18:2-3,3-4,47,51",
     "secondReading": "得前1:5c-10",
-    "date": "2020-10-25"
+    "date": "2023-10-29"
   },
   {
     "firstReading": "默7:2-4,9-14",
@@ -657,7 +667,7 @@
     "pinyin": "jia3 nian2 zhu1 sheng4 jie2",
     "responsorialPsalm": "咏24:1-2,3-4,5-6",
     "secondReading": "若一3:1-3",
-    "date": "2020-11-01"
+    "date": "2023-11-01"
   },
   {
     "firstReading": "",
@@ -667,7 +677,17 @@
     "pinyin": "jia3 nian2 zhui1 si1 yi3 wang2",
     "responsorialPsalm": "",
     "secondReading": "",
-    "date": "2020-11-02"
+    "date": "2023-11-02"
+  },
+  {
+    "firstReading": "拉1:14b-2:2b,8-10",
+    "gospel": "玛23:1-12",
+    "liturgicalYear": "甲年",
+    "name": "常年期第三十一主日",
+    "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 san1 shi2 yi1 zhu3 ri4",
+    "responsorialPsalm": "咏131:1,2,3",
+    "secondReading": "得前2:7b-9,13",
+    "date": "2023-11-05"
   },
   {
     "firstReading": "智6:12-17",
@@ -675,9 +695,9 @@
     "liturgicalYear": "甲年",
     "name": "常年期第三十二主日",
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 san1 shi2 er4 zhu3 ri4",
-    "responsorialPsalm": "咏63:2,3-4,5-6,8-9",
+    "responsorialPsalm": "咏63:2-8",
     "secondReading": "得前4:13-18",
-    "date": "2020-11-08"
+    "date": "2023-11-12"
   },
   {
     "firstReading": "箴31:10-13,19-20,30-31",
@@ -687,7 +707,7 @@
     "pinyin": "jia3 nian2 chang2 nian2 qi1 di4 san1 shi2 san1 zhu3 ri4",
     "responsorialPsalm": "咏128:1-2,3,4-5",
     "secondReading": "得前5:1-6",
-    "date": "2020-11-15"
+    "date": "2023-11-19"
   },
   {
     "firstReading": "则34:11-12,15-17",
@@ -695,8 +715,8 @@
     "liturgicalYear": "甲年",
     "name": "普世君王节",
     "pinyin": "jia3 nian2 pu3 shi4 jun1 wang2 jie2",
-    "responsorialPsalm": "咏23:1-2,2-3,5,6",
+    "responsorialPsalm": "咏23:1-6",
     "secondReading": "格前15:20-26a,28",
-    "date": "2020-11-22"
+    "date": "2023-11-26"
   }
 ]
