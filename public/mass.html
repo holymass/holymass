@@ -149,26 +149,14 @@
         src="https://unpkg.com/reveal.js@3.9.2/lib/js/html5shiv.js"
       ></script>
     <![endif]-->
-
-    <script
-      crossorigin=""
-      src="https://unpkg.com/qrcode@1.4.4/build/qrcode.min.js"
-    ></script>
   </head>
   <body style="overflow: auto">
     <div class="reveal">
       <div id="root" class="slides">
-        <section data-markdown="index.md"></section>
-
-        <section data-markdown="">
-          <script type="text/template">
-            ## （完）
-
-            <canvas id="qrcode"></canvas>
-
-            <!-- .element: class="center" -->
-          </script>
-        </section>
+        <section
+          data-markdown="index.md"
+          data-background-image="/images/mass-background-7e73d3a8a10c4d0a8f185a5a8b87febf.jpg"
+        ></section>
       </div>
     </div>
     <script>
@@ -213,20 +201,6 @@
           },
           { src: baseURL + 'plugin/zoom-js/zoom.js', async: true },
         ],
-      });
-      Reveal.addEventListener('ready', function (event) {
-        QRCode.toCanvas(
-          document.getElementById('qrcode'),
-          location.origin + location.pathname + location.search,
-          {
-            width: 300,
-          },
-          function (error) {
-            if (error) {
-              console.error(error);
-            }
-          },
-        );
       });
     </script>
     <script
