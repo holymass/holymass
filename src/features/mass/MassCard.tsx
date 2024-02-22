@@ -1,16 +1,16 @@
+'use client';
 import * as React from 'react';
-import { useTranslation } from 'next-i18next';
 import { blue, green, red } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import IconButton from '@mui/material/IconButton';
+import Link from '@mui/material/Link';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import Launch from '@mui/icons-material/Launch';
 
-import Link from '../../components/Link';
 import Mass from './domain/Mass';
 
 const getLiturgicalYearColor = (liturgicalYear: string): string => {
@@ -46,7 +46,6 @@ export default function MassCard(props: MassCardProps) {
     responsorialPsalm,
     secondReading,
   } = model;
-  const { t } = useTranslation('mass');
   const generateLink = (text: string, id: string) => {
     return (
       <Link
@@ -66,7 +65,7 @@ export default function MassCard(props: MassCardProps) {
         color="text.secondary"
         sx={{ display: 'flex', justifyContent: 'space-between' }}
       >
-        <span>{t(label)}</span>
+        <span>{label}</span>
         {generateLink(value, id)}
       </Typography>
     );

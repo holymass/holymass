@@ -1,5 +1,5 @@
+'use client';
 import * as React from 'react';
-import { useTranslation } from 'next-i18next';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -12,7 +12,6 @@ const repo = new MassRepository();
 const upcoming = new ListUpcomingMassesUseCase(repo).execute({ size: 3 });
 
 export default function UpcomingMassGrid() {
-  const { t } = useTranslation('mass');
   const [loading, setLoading] = React.useState(true);
   React.useEffect(() => {
     if (loading) {
@@ -22,7 +21,7 @@ export default function UpcomingMassGrid() {
   return (
     <Box>
       <Typography variant="h5" mt={3}>
-        {t('Upcoming Masses')}
+        {'Upcoming Masses'}
       </Typography>
       <Grid
         container
