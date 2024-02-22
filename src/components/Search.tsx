@@ -1,5 +1,5 @@
+'use client';
 import * as React from 'react';
-import { useTranslation } from 'next-i18next';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -66,7 +66,6 @@ const repo = new MassRepository();
 const options = new ListMassesUseCase(repo).execute({});
 
 export default function Search() {
-  const { t } = useTranslation('common');
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string | Mass>('');
   const theme = useTheme();
@@ -106,7 +105,7 @@ export default function Search() {
                 {...params}
                 autoFocus
                 variant="standard"
-                placeholder={t('Search')}
+                placeholder={'Search'}
                 InputProps={{
                   ...params.InputProps,
                   disableUnderline: true,
@@ -154,12 +153,12 @@ export default function Search() {
           ) : (
             <Stack mt={4} mb={4} alignItems="center">
               <FindInPageIcon sx={{ fontSize: 100, color: grey[300] }} />
-              <Typography variant="body2">{t('No results')}</Typography>
+              <Typography variant="body2">{'No results'}</Typography>
             </Stack>
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>{t('Close')}</Button>
+          <Button onClick={handleClose}>{'Close'}</Button>
         </DialogActions>
       </Dialog>
     </SearchBox>

@@ -1,5 +1,5 @@
+'use client';
 import * as React from 'react';
-import { useTranslation } from 'next-i18next';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -18,7 +18,6 @@ const liturgicalYearB = useCase.execute({ liturgicalYear: '乙年' });
 const liturgicalYearC = useCase.execute({ liturgicalYear: '丙年' });
 
 export default function MassTabs() {
-  const { t } = useTranslation('mass');
   const [value, setValue] = React.useState('B');
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -26,7 +25,7 @@ export default function MassTabs() {
   return (
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <Typography variant="h5" mt={3}>
-        {t('All Masses')}
+        {'All Masses'}
       </Typography>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
