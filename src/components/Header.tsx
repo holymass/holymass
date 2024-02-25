@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-import Search from './Search';
+import Search from '@/components/Search';
 
 export default function Header() {
   return (

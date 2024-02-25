@@ -1,4 +1,3 @@
-'use client';
 import * as React from 'react';
 import { blue, green, red } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
@@ -11,7 +10,7 @@ import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import Launch from '@mui/icons-material/Launch';
 
-import Mass from './domain/Mass';
+import Mass from '@/features/mass/domain/Mass';
 
 const getLiturgicalYearColor = (liturgicalYear: string): string => {
   switch (liturgicalYear) {

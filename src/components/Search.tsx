@@ -18,10 +18,10 @@ import { alpha, styled, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import FindInPageIcon from '@mui/icons-material/FindInPage';
 
-import MassCard from '../features/mass/MassCard';
-import ListMassesUseCase from '../features/mass/usecases/ListMassesUseCase';
-import MassRepository from '../features/mass/domain/MassRepository';
-import Mass from '../features/mass/domain/Mass';
+import MassCard from '@/features/mass/MassCard';
+import ListMassesUseCase from '@/features/mass/usecases/ListMassesUseCase';
+import MassRepository from '@/features/mass/domain/MassRepository';
+import Mass from '@/features/mass/domain/Mass';
 
 const SearchBox = styled('div')(({ theme }) => ({
   position: 'relative',

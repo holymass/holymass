@@ -1,9 +1,8 @@
-'use client';
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 
-import MassCard from './MassCard';
-import Mass from './domain/Mass';
+import MassCard from '@/features/mass/MassCard';
+import Mass from '@/features/mass/domain/Mass';
 
 export interface MassGridProps {
   data: Mass[];
