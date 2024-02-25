@@ -4,10 +4,9 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import GlobalStyles from '@mui/material/GlobalStyles';
-import { appWithTranslation } from 'next-i18next';
-import theme from '../theme';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import theme from '../../theme';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 export const metadata: Metadata = {
   title: 'HolyMass',
@@ -26,11 +25,13 @@ const globalStyles = (
 
 export default function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Record<string, string>;
 }>) {
   return (
-    <html lang="zh">
+    <html>
       <body>
         <AppRouterCacheProvider options={{ key: 'css' }}>
           <ThemeProvider theme={theme}>
