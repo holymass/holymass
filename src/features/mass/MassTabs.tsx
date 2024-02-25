@@ -1,4 +1,5 @@
 'use client';
+
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -7,9 +8,9 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Typography from '@mui/material/Typography';
 
-import MassGrid from './MassGrid';
-import MassRepository from './domain/MassRepository';
-import ListMassesUseCase from './usecases/ListMassesUseCase';
+import MassGrid from '@/features/mass/MassGrid';
+import MassRepository from '@/features/mass/domain/MassRepository';
+import ListMassesUseCase from '@/features/mass/usecases/ListMassesUseCase';
 
 const repo = new MassRepository();
 const useCase = new ListMassesUseCase(repo);
