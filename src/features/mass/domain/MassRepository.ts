@@ -3,9 +3,9 @@ import _filter from 'lodash/filter';
 import _sortBy from 'lodash/sortBy';
 import _take from 'lodash/take';
 import _union from 'lodash/union';
-import liturgicalYearA from '../../../../public/data/mass/a.json';
-import liturgicalYearB from '../../../../public/data/mass/b.json';
-import liturgicalYearC from '../../../../public/data/mass/c.json';
+import liturgicalYearA from '../data/a.json';
+import liturgicalYearB from '../data/b.json';
+import liturgicalYearC from '../data/c.json';
 
 const store = _sortBy(
   _union(liturgicalYearA, liturgicalYearB, liturgicalYearC),
