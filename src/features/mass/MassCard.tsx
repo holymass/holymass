@@ -9,6 +9,7 @@ import Link from '@mui/material/Link';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import Launch from '@mui/icons-material/Launch';
+import { useIntl } from 'react-intl';
 
 import Mass from '@/features/mass/domain/Mass';
 
@@ -36,6 +37,7 @@ export interface MassCardProps {
 
 export default function MassCard(props: MassCardProps) {
   const { loading = false, model } = props;
+  const intl = useIntl();
   const {
     date,
     firstReading,
@@ -115,18 +117,26 @@ export default function MassCard(props: MassCardProps) {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            {generateTypography('First Reading', firstReading, 'first-reading')}
             {generateTypography(
-              'Responsorial Psalm',
+              intl.formatMessage({ id: 'mass.first.reading' }),
+              firstReading,
+              'first-reading',
+            )}
+            {generateTypography(
+              intl.formatMessage({ id: 'mass.responsorial.psalm' }),
               responsorialPsalm,
               'responsorial-psalm',
             )}
             {generateTypography(
-              'Second Reading',
+              intl.formatMessage({ id: 'mass.second.reading' }),
               secondReading,
               'second-reading',
             )}
-            {generateTypography('Gospel', gospel, 'gospel')}
+            {generateTypography(
+              intl.formatMessage({ id: 'mass.gospel' }),
+              gospel,
+              'gospel',
+            )}
           </React.Fragment>
         )}
       </CardContent>

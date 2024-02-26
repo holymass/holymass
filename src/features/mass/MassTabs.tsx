@@ -7,6 +7,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Typography from '@mui/material/Typography';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import MassGrid from '@/features/mass/MassGrid';
 import MassRepository from '@/features/mass/domain/MassRepository';
@@ -19,6 +20,7 @@ const liturgicalYearB = useCase.execute({ liturgicalYear: '乙年' });
 const liturgicalYearC = useCase.execute({ liturgicalYear: '丙年' });
 
 export default function MassTabs() {
+  const intl = useIntl();
   const [value, setValue] = React.useState('B');
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -26,14 +28,14 @@ export default function MassTabs() {
   return (
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <Typography variant="h5" mt={3}>
-        {'All Masses'}
+        <FormattedMessage id="mass.all.masses" />
       </Typography>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList centered onChange={handleChange} aria-label={'Mass tabs'}>
-            <Tab label="甲年" value="A" />
-            <Tab label="乙年" value="B" />
-            <Tab label="丙年" value="C" />
+            <Tab label={intl.formatMessage({ id: 'mass.year.a' })} value="A" />
+            <Tab label={intl.formatMessage({ id: 'mass.year.b' })} value="B" />
+            <Tab label={intl.formatMessage({ id: 'mass.year.c' })} value="C" />
           </TabList>
         </Box>
         <TabPanel value="A" sx={{ padding: 0 }}>
