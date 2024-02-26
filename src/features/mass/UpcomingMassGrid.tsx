@@ -24,7 +24,7 @@ export default function UpcomingMassGrid() {
   return (
     <Box>
       <Typography variant="h5" mt={3}>
-        {intl.formatMessage({ id: 'Upcoming Masses' })}
+        {intl.formatMessage({ id: 'mass.upcoming.masses' })}
       </Typography>
       <Grid
         container
