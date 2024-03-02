@@ -1,13 +1,13 @@
 'use client';
 
 import * as React from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Typography from '@mui/material/Typography';
-import { FormattedMessage, useIntl } from 'react-intl';
 
 import MassGrid from '@/features/mass/MassGrid';
 import MassRepository from '@/features/mass/domain/MassRepository';
