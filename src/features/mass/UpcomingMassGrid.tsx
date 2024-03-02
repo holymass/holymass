@@ -1,10 +1,10 @@
 'use client';
 
 import * as React from 'react';
+import { useIntl } from 'react-intl';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { useIntl } from 'react-intl';
 
 import MassCard from './MassCard';
 import MassRepository from './domain/MassRepository';

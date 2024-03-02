@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useIntl } from 'react-intl';
 import { blue, green, red } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
@@ -9,7 +10,6 @@ import Link from '@mui/material/Link';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import Launch from '@mui/icons-material/Launch';
-import { useIntl } from 'react-intl';
 
 import Mass from '@/features/mass/domain/Mass';
 
