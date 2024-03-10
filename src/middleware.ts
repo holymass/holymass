@@ -81,5 +81,5 @@ export function middleware(request: NextRequest): NextResponse {
 }
 
 export const config = {
-  matcher: '/((?!api|assets|assets|_next|favicon.ico).*)',
+  matcher: '/((?!_next|api|assets|static|favicon.ico).*)',
 };
