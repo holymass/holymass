@@ -3,17 +3,19 @@
 import * as React from 'react';
 import { useIntl } from 'react-intl';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { enUS, zhCN } from '@mui/material/locale';
 import Box from '@mui/material/Box';
 import LanguageIcon from '@mui/icons-material/Language';
-import Typography from '@mui/material/Typography';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import CheckIcon from '@mui/icons-material/Check';
+import IconButton from '@mui/material/IconButton';
 
 const languages = [
   { code: 'en', label: 'English', locale: enUS },
-  { code: 'zh', label: '中文', locale: zhCN },
+  { code: 'zh', label: '简体中文', locale: zhCN },
 ];
 
 export default function LanguageSwitcher() {
@@ -42,21 +44,15 @@ export default function LanguageSwitcher() {
   };
   return (
     <Box>
-      <Button
-        id="language-switcher"
-        color="inherit"
-        variant="text"
-        startIcon={<LanguageIcon />}
-        onClick={handleClick}
-        sx={{ textTransform: 'none' }}
-      >
-        {languages.find(({ code }) => code == intl.locale)?.label}
-      </Button>
+      <IconButton id="language-switcher" color="inherit" onClick={handleClick}>
+        <LanguageIcon />
+      </IconButton>
       <Menu
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
+          dense: true,
           'aria-labelledby': 'language-switcher',
         }}
       >
@@ -65,9 +61,16 @@ export default function LanguageSwitcher() {
             key={lang.code}
             value={lang.code}
             onClick={handleMenuItemClick}
-            sx={{ width: 120 }}
+            sx={{ width: 160 }}
           >
-            <Typography variant="body2">{lang.label}</Typography>
+            {lang.code === intl.locale && (
+              <ListItemIcon>
+                <CheckIcon />
+              </ListItemIcon>
+            )}
+            <ListItemText inset={lang.code !== intl.locale}>
+              {lang.label}
+            </ListItemText>
           </MenuItem>
         ))}
       </Menu>
