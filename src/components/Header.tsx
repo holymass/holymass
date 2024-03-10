@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Search from '@/components/Search';
 
 export default function Header() {
@@ -15,11 +16,12 @@ export default function Header() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ flexGrow: 1, display: { sm: 'block' } }}
           >
             HolyMass
           </Typography>
           <Search />
+          <LanguageSwitcher />
         </Toolbar>
       </Container>
     </AppBar>

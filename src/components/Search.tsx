@@ -7,17 +7,14 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
-import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { grey } from '@mui/material/colors';
-import { alpha, styled, useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import FindInPageIcon from '@mui/icons-material/FindInPage';
 
@@ -26,6 +23,7 @@ import ListMassesUseCase from '@/features/mass/usecases/ListMassesUseCase';
 import MassRepository from '@/features/mass/domain/MassRepository';
 import Mass from '@/features/mass/domain/Mass';
 import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
 
 const repo = new MassRepository();
 const options = new ListMassesUseCase(repo).execute({});
