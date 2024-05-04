@@ -130,6 +130,10 @@
       .reveal section img {
         border: 0;
       }
+
+      .reveal section#notice p {
+        font-size: 2em;
+      }
     </style>
     <script>
       var link = document.createElement('link');
@@ -161,7 +165,6 @@
     </div>
     <script>
       (function () {
-        var metadata = {};
         if (location.search) {
           var params = new URLSearchParams(location.search);
           var mass = params.get('m');
