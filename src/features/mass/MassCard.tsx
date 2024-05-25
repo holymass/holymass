@@ -27,7 +27,7 @@ const getLiturgicalYearColor = (liturgicalYear: string): string => {
 };
 
 const buildLink = (liturgicalYear: string, name: string, id = '') => {
-  return `/assets/mass.html?m=${liturgicalYear}/${name}#/${id}`;
+  return `/masses/${liturgicalYear}/${name}#/${id}`;
 };
 
 export interface MassCardProps {
