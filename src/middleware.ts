@@ -1,7 +1,7 @@
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
-import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import intlConfig from './intlConfig';
 
 const LOCALE_COOKIE_NAME = 'NEXT_LOCALE';
@@ -52,21 +52,9 @@ export function middleware(request: NextRequest): NextResponse {
     if (search) {
       url += search;
     }
-    if (locale === defaultLocale) {
-      response = NextResponse.rewrite(new URL(url, request.url), initOptions);
-    } else {
-      response = NextResponse.redirect(new URL(url, request.url));
-    }
+    response = NextResponse.redirect(new URL(url, request.url));
   } else {
-    if (pathLocale === defaultLocale) {
-      let url = pathname.slice(`/${pathLocale}`.length) || '/';
-      if (search) {
-        url += search;
-      }
-      response = NextResponse.redirect(new URL(url, request.url));
-    } else {
-      response = NextResponse.next(initOptions);
-    }
+    response = NextResponse.next(initOptions);
     if (!cookieLocale || cookieLocale !== pathLocale) {
       response.cookies.set(LOCALE_COOKIE_NAME, pathLocale, {
         path: basePath || undefined,

@@ -34,12 +34,8 @@ export default function LanguageSwitcher() {
   const handleMenuItemClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(null);
     const newLocale = event.currentTarget.getAttribute('value') as string;
-    if (intl.locale === intl.defaultLocale) {
-      router.push(`/${newLocale}${pathname}?${searchParams}`);
-    } else {
-      const newPathname = pathname.replace(`/${intl.locale}`, `/${newLocale}`);
-      router.push(`${newPathname}?${searchParams}`);
-    }
+    const newPathname = pathname.replace(`/${intl.locale}`, `/${newLocale}`);
+    router.push(`${newPathname}?${searchParams}`);
     router.refresh();
   };
   return (
