@@ -3,6 +3,8 @@
 import * as React from 'react';
 import { IntlProvider, MessageFormatElement } from 'react-intl';
 
+import intlConfig from '@/intlConfig';
+
 interface ServerIntlProviderProps {
   children: React.ReactNode;
   locale: string;
@@ -15,7 +17,11 @@ export default function ServerIntlProvider({
   messages,
 }: ServerIntlProviderProps) {
   return (
-    <IntlProvider locale={locale} messages={messages}>
+    <IntlProvider
+      defaultLocale={intlConfig.defaultLocale}
+      locale={locale}
+      messages={messages}
+    >
       {children}
     </IntlProvider>
   );
