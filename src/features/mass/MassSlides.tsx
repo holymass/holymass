@@ -30,7 +30,7 @@ export default function MassSlides(props: MassSlidesProps) {
       history: true,
       center: true,
       width: 1200,
-      height: 700,
+      height: 675,
       plugins: [RevealMarkdown, RevealZoom],
     });
     deckRef.current.initialize().then(() => {
