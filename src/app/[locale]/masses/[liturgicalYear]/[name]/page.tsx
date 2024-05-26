@@ -18,8 +18,8 @@ export async function generateMetadata(
   const liturgicalYear = decodeURI(params.liturgicalYear);
   const name = decodeURI(params.name);
   return {
-    title: `HolyMass - ${liturgicalYear}${name}`,
-    description: `HolyMass - ${liturgicalYear}${name}`,
+    title: `${liturgicalYear}${name} - HolyMass`,
+    description: `${liturgicalYear}${name} - HolyMass`,
     keywords: ['HolyMass', '弥撒', liturgicalYear, name],
   };
 }
