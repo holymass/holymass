@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="robots" content="noindex">
+  <title>HolyMass</title>
+</head>
+<body>
+<script>
+  (function () {
+    if (window.location.search) {
+      const params = new URLSearchParams(location.search);
+      const mass = params.get('m');
+      if (mass) {
+        window.location = `https://holymass.app/masses/${mass}`;
+      } else {
+        window.location = `https://holymass.app/`;
+      }
+    }
+  })();
+</script>
+</body>
+</html>

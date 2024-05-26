@@ -69,5 +69,5 @@ export function middleware(request: NextRequest): NextResponse {
 }
 
 export const config = {
-  matcher: '/((?!_next|api|static|favicon.ico|robots.txt|sitemap.xml).*)',
+  matcher: '/((?!_next|api|assets|static|favicon.ico|robots.txt|sitemap.xml).*)',
 };
