@@ -15,7 +15,7 @@ import IconButton from '@mui/material/IconButton';
 
 const languages = [
   { code: 'en', label: 'English', locale: enUS },
-  { code: 'zh', label: '简体中文', locale: zhCN },
+  { code: 'zh', label: '中文', locale: zhCN },
 ];
 
 export default function LanguageSwitcher() {
