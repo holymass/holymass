@@ -21,7 +21,7 @@ const liturgicalYearC = useCase.execute({ liturgicalYear: '丙年' });
 
 export default function MassTabs() {
   const intl = useIntl();
-  const [value, setValue] = React.useState('B');
+  const [value, setValue] = React.useState('C');
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
