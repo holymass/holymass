@@ -5,6 +5,9 @@
   "repository": "git@github.com:holymass/holymass.git",
   "author": "holymass.app",
   "license": "MIT",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "build": "next build",
     "dev": "next dev",
