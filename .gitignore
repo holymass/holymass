@@ -4,21 +4,8 @@
 # Thumbnail cache files
 Thumbs.db
 
-# Sensitive files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Dependencies
-node_modules
-
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Local files
+.local/
 
 # IntelliJ IDEA
 .idea/
@@ -28,6 +15,23 @@ yarn-error.log*
 
 # VS Code
 .vscode/
+
+# Cursor
+.cursor/
+
+# dotenv environment variable files
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Next.js
 /.next/
@@ -43,3 +47,4 @@ next-env.d.ts
 # Other
 .eslintcache
 .npmrc
+.specify/
