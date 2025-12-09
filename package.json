@@ -50,7 +50,7 @@
     "@types/reveal.js": "^5.2.2",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.8",
-    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
