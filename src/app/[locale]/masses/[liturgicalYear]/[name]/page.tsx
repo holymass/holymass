@@ -1,13 +1,13 @@
-import * as React from 'react';
-import type { Metadata, ResolvingMetadata } from 'next';
-import dynamic from 'next/dynamic';
+import * as React from "react";
+import type { Metadata, ResolvingMetadata } from "next";
+import dynamic from "next/dynamic";
 
-const MassSlides = dynamic(() => import('@/features/mass/MassSlides'));
+const MassSlides = dynamic(() => import("./_components/MassSlides"));
 
 type Params = { liturgicalYear: string; name: string };
 
 type GenerateMetadataProps = {
-  params: Params;
+  params: Promise<Params>;
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
@@ -15,12 +15,13 @@ export async function generateMetadata(
   { params, searchParams }: GenerateMetadataProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const liturgicalYear = decodeURI(params.liturgicalYear);
-  const name = decodeURI(params.name);
+  let { liturgicalYear, name } = await params;
+  liturgicalYear = decodeURI(liturgicalYear);
+  name = decodeURI(name);
   return {
     title: `${liturgicalYear}${name} - HolyMass`,
     description: `${liturgicalYear}${name} - HolyMass`,
-    keywords: ['HolyMass', '弥撒', liturgicalYear, name],
+    keywords: ["HolyMass", "弥撒", liturgicalYear, name],
   };
 }
 

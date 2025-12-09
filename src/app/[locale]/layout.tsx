@@ -1,11 +1,11 @@
-import * as React from 'react';
-import type { Metadata } from 'next';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import * as React from "react";
+import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
-  title: 'HolyMass',
-  description: 'HolyMass',
-  keywords: ['HolyMass', '弥撒'],
+  title: "HolyMass",
+  description: "HolyMass",
+  keywords: ["HolyMass", "弥撒"],
 };
 
 export default async function RootLayout({

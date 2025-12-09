@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { useIntl } from 'react-intl';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { enUS, zhCN } from '@mui/material/locale';
-import Box from '@mui/material/Box';
-import LanguageIcon from '@mui/icons-material/Language';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import CheckIcon from '@mui/icons-material/Check';
-import IconButton from '@mui/material/IconButton';
+import * as React from "react";
+import { useIntl } from "react-intl";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { enUS, zhCN } from "@mui/material/locale";
+import Box from "@mui/material/Box";
+import LanguageIcon from "@mui/icons-material/Language";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import CheckIcon from "@mui/icons-material/Check";
+import IconButton from "@mui/material/IconButton";
 
 const languages = [
-  { code: 'en', label: 'English', locale: enUS },
-  { code: 'zh', label: '中文', locale: zhCN },
+  { code: "en", label: "English", locale: enUS },
+  { code: "zh", label: "中文", locale: zhCN },
 ];
 
 export default function LanguageSwitcher() {
@@ -33,7 +33,7 @@ export default function LanguageSwitcher() {
   };
   const handleMenuItemClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(null);
-    const newLocale = event.currentTarget.getAttribute('value') as string;
+    const newLocale = event.currentTarget.getAttribute("value") as string;
     const newPathname = pathname.replace(`/${intl.locale}`, `/${newLocale}`);
     router.push(`${newPathname}?${searchParams}`);
     router.refresh();
@@ -49,7 +49,7 @@ export default function LanguageSwitcher() {
         onClose={handleClose}
         MenuListProps={{
           dense: true,
-          'aria-labelledby': 'language-switcher',
+          "aria-labelledby": "language-switcher",
         }}
       >
         {languages.map((lang) => (

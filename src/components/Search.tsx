@@ -1,29 +1,29 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
-import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import Divider from '@mui/material/Divider';
-import InputAdornment from '@mui/material/InputAdornment';
-import SearchIcon from '@mui/icons-material/Search';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import { grey } from '@mui/material/colors';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import FindInPageIcon from '@mui/icons-material/FindInPage';
+import * as React from "react";
+import { FormattedMessage, useIntl } from "react-intl";
+import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import Divider from "@mui/material/Divider";
+import InputAdornment from "@mui/material/InputAdornment";
+import SearchIcon from "@mui/icons-material/Search";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { grey } from "@mui/material/colors";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import FindInPageIcon from "@mui/icons-material/FindInPage";
 
-import MassCard from '@/features/mass/MassCard';
-import ListMassesUseCase from '@/features/mass/usecases/ListMassesUseCase';
-import MassRepository from '@/features/mass/domain/MassRepository';
-import Mass from '@/features/mass/domain/Mass';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
+import MassCard from "@/components/MassCard";
+import ListMassesUseCase from "@/features/mass/usecases/ListMassesUseCase";
+import MassRepository from "@/features/mass/domain/MassRepository";
+import Mass from "@/features/mass/domain/Mass";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
 
 const repo = new MassRepository();
 const options = new ListMassesUseCase(repo).execute({});
@@ -31,9 +31,9 @@ const options = new ListMassesUseCase(repo).execute({});
 export default function Search() {
   const intl = useIntl();
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState<string | Mass>('');
+  const [value, setValue] = React.useState<string | Mass>("");
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const handleOpen = () => {
     setOpen(true);
   };
@@ -47,7 +47,7 @@ export default function Search() {
       </IconButton>
       <Dialog
         fullWidth
-        maxWidth={'sm'}
+        maxWidth={"sm"}
         fullScreen={fullScreen}
         open={open}
         onClose={handleClose}
@@ -72,28 +72,33 @@ export default function Search() {
                 {...params}
                 autoFocus
                 variant="standard"
-                placeholder={intl.formatMessage({ id: 'common.search' })}
-                InputProps={{
-                  ...params.InputProps,
-                  disableUnderline: true,
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
+                placeholder={intl.formatMessage({ id: "common.search" })}
+                slotProps={{
+                  input: {
+                    ...params.InputProps,
+                    disableUnderline: true,
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  },
                 }}
               />
             )}
-            renderOption={(params, option) => (
-              <li {...params}>
-                <Typography component="span" variant="body2">
-                  {option.title}
-                </Typography>
-              </li>
-            )}
+            renderOption={(params, option) => {
+              const { key, ...rest } = params;
+              return (
+                <li key={key} {...rest}>
+                  <Typography component="span" variant="body2">
+                    {option.title}
+                  </Typography>
+                </li>
+              );
+            }}
             options={options}
             getOptionLabel={(option) => {
-              if (typeof option === 'string') {
+              if (typeof option === "string") {
                 return option;
               }
               return option.title;
@@ -102,12 +107,16 @@ export default function Search() {
               stringify: (option) => {
                 return (
                   option.title +
-                  option.pinyin.replaceAll(/\d|\s/g, '') +
-                  option.pinyin.replaceAll(/\d/g, '')
+                  option.pinyin.replaceAll(/\d|\s/g, "") +
+                  option.pinyin.replaceAll(/\d/g, "")
                 );
               },
             })}
-            ListboxProps={{ sx: { maxHeight: 200 } }}
+            slotProps={{
+              listbox: {
+                sx: { maxHeight: 200 },
+              },
+            }}
           />
           <Divider />
           <Box mt={2}>

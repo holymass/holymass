@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { IntlProvider, MessageFormatElement } from 'react-intl';
+import * as React from "react";
+import { IntlProvider, MessageFormatElement } from "react-intl";
 
-import intlConfig from '@/intlConfig';
+import intlConfig from "@/intlConfig";
 
 interface ServerIntlProviderProps {
   children: React.ReactNode;
