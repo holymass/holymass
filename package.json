@@ -16,12 +16,6 @@
     "start": "next start",
     "prepare": "husky"
   },
-  "lint-staged": {
-    "**/*.js": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
   "sideEffects": [
     "**/*.css"
   ],
@@ -46,6 +40,8 @@
     "reveal.js": "^5.2.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.1",
     "@types/lodash": "^4.17.4",
     "@types/negotiator": "^0.6.4",
     "@types/node": "^20.12.12",
