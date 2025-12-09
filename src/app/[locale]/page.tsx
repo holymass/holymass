@@ -32,9 +32,9 @@ const globalStyles = (
 export default async function Home({
   params,
 }: Readonly<{
-  params: Record<string, string>;
+  params: Promise<{ locale: string }>;
 }>) {
-  const { locale } = params;
+  const { locale } = await params;
   const intl = await getIntl(locale);
   return (
     <AppRouterCacheProvider options={{ key: 'css' }}>

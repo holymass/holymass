@@ -33,7 +33,7 @@ export default function UpcomingMassGrid() {
         sx={{ paddingTop: 3, paddingBottom: 3 }}
       >
         {upcoming.map((item, index) => (
-          <Grid item xs={4} key={index}>
+          <Grid key={index} size={{ xs: 4 }}>
             <MassCard loading={loading} model={item} />
           </Grid>
         ))}

@@ -34,7 +34,7 @@ const getLocaleFromNegotiator = (request: NextRequest): string => {
   }
 };
 
-export function middleware(request: NextRequest): NextResponse {
+export function proxy(request: NextRequest): NextResponse {
   const { basePath, pathname, search } = request.nextUrl;
   const requestHeaders = new Headers(request.headers);
   const initOptions = {

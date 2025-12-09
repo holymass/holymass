@@ -18,7 +18,7 @@ export default function MassGrid(props: MassGridProps) {
       sx={{ paddingTop: 3, paddingBottom: 3 }}
     >
       {data.map((item, index) => (
-        <Grid item xs={4} key={index}>
+        <Grid key={index} size={{ xs: 4 }} >
           <MassCard model={item} />
         </Grid>
       ))}

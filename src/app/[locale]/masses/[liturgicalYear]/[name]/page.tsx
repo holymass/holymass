@@ -2,12 +2,12 @@ import * as React from 'react';
 import type { Metadata, ResolvingMetadata } from 'next';
 import dynamic from 'next/dynamic';
 
-const MassSlides = dynamic(() => import('@/features/mass/MassSlides'), {
-  ssr: false,
-});
+const MassSlides = dynamic(() => import('@/features/mass/MassSlides'));
+
+type Params = { liturgicalYear: string; name: string };
 
 type GenerateMetadataProps = {
-  params: { liturgicalYear: string; name: string };
+  params: Params;
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
@@ -24,11 +24,11 @@ export async function generateMetadata(
   };
 }
 
-export default function MassPage({
+export default async function MassPage({
   params,
 }: Readonly<{
-  params: Record<string, string>;
+  params: Promise<Params>;
 }>) {
-  const { liturgicalYear, name } = params;
+  const { liturgicalYear, name } = await params;
   return <MassSlides liturgicalYear={liturgicalYear} name={name} />;
 }
