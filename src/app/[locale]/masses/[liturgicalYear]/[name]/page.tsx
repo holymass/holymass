@@ -1,8 +1,8 @@
-import * as React from "react";
-import type { Metadata, ResolvingMetadata } from "next";
-import dynamic from "next/dynamic";
+import * as React from 'react';
+import type { Metadata, ResolvingMetadata } from 'next';
+import dynamic from 'next/dynamic';
 
-const MassSlides = dynamic(() => import("./_components/MassSlides"));
+const MassSlides = dynamic(() => import('./_components/MassSlides'));
 
 type Params = { liturgicalYear: string; name: string };
 
@@ -21,7 +21,7 @@ export async function generateMetadata(
   return {
     title: `${liturgicalYear}${name} - HolyMass`,
     description: `${liturgicalYear}${name} - HolyMass`,
-    keywords: ["HolyMass", "弥撒", liturgicalYear, name],
+    keywords: ['HolyMass', '弥撒', liturgicalYear, name],
   };
 }
 

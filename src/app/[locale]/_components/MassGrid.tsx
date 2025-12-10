@@ -1,8 +1,8 @@
-import * as React from "react";
-import Grid from "@mui/material/Grid";
+import * as React from 'react';
+import Grid from '@mui/material/Grid';
 
-import Mass from "@/features/mass/domain/Mass";
-import MassCard from "@/components/MassCard";
+import Mass from '@/features/mass/domain/Mass';
+import MassCard from '@/components/MassCard';
 
 export interface MassGridProps {
   data: Mass[];

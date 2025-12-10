@@ -7,9 +7,10 @@ export interface ListMassesQuery {
   liturgicalYear?: string;
 }
 
-export default class ListMassesUseCase
-  implements UseCase<ListMassesQuery, Mass[]>
-{
+export default class ListMassesUseCase implements UseCase<
+  ListMassesQuery,
+  Mass[]
+> {
   constructor(private massRepository: MassRepository) {}
 
   execute(params: ListMassesQuery): Mass[] {

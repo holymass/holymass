@@ -6,9 +6,10 @@ export interface ListUpcomingMassesQuery {
   size: number;
 }
 
-export default class ListUpcomingMassesUseCase
-  implements UseCase<ListUpcomingMassesQuery, Mass[]>
-{
+export default class ListUpcomingMassesUseCase implements UseCase<
+  ListUpcomingMassesQuery,
+  Mass[]
+> {
   constructor(private massRepository: MassRepository) {}
 
   execute(params: ListUpcomingMassesQuery): Mass[] {

@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { useIntl } from "react-intl";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
+import * as React from 'react';
+import { useIntl } from 'react-intl';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
-import MassRepository from "@/features/mass/domain/MassRepository";
-import ListUpcomingMassesUseCase from "@/features/mass/usecases/ListUpcomingMassesUseCase";
-import MassCard from "@/components/MassCard";
+import MassRepository from '@/features/mass/domain/MassRepository';
+import ListUpcomingMassesUseCase from '@/features/mass/use-cases/ListUpcomingMassesUseCase';
+import MassCard from '@/components/MassCard';
 
 const repo = new MassRepository();
 const upcoming = new ListUpcomingMassesUseCase(repo).execute({ size: 3 });
@@ -24,7 +24,7 @@ export default function UpcomingMassGrid() {
   return (
     <Box>
       <Typography variant="h5" mt={3}>
-        {intl.formatMessage({ id: "mass.upcoming.masses" })}
+        {intl.formatMessage({ id: 'mass.upcoming.masses' })}
       </Typography>
       <Grid
         container

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Reveal from "reveal.js";
-import RevealMarkdown from "reveal.js/plugin/markdown/markdown";
+import * as React from 'react';
+import Reveal from 'reveal.js';
+import RevealMarkdown from 'reveal.js/plugin/markdown/markdown';
 
-import "reveal.js/dist/reset.css";
-import "reveal.js/dist/reveal.css";
-import "reveal.js/dist/theme/white.css";
-import "./style.css";
+import 'reveal.js/dist/reset.css';
+import 'reveal.js/dist/reveal.css';
+import 'reveal.js/dist/theme/white.css';
+import './style.css';
 
 export interface MassSlidesProps {
   liturgicalYear: string;
@@ -23,7 +23,7 @@ export default function MassSlides(props: MassSlidesProps) {
       return;
     }
     deckRef.current = new Reveal(deckDivRef.current!, {
-      transition: "convex",
+      transition: 'convex',
       controls: true,
       progress: true,
       history: true,
