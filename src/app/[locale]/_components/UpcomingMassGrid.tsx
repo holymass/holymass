@@ -6,21 +6,20 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import MassRepository from '@/features/mass/domain/MassRepository';
+import Mass from '@/features/mass/domain/Mass';
 import ListUpcomingMassesUseCase from '@/features/mass/use-cases/ListUpcomingMassesUseCase';
 import MassCard from '@/components/MassCard';
-
-const repo = new MassRepository();
-const upcoming = new ListUpcomingMassesUseCase(repo).execute({ size: 3 });
+import MassCardSkeleton from '@/components/MassCardSkeleton';
 
 export default function UpcomingMassGrid() {
   const intl = useIntl();
-  const [loading, setLoading] = React.useState(true);
+  const [upcoming, setUpcoming] = React.useState<Mass[]>([]);
   React.useEffect(() => {
-    if (loading) {
-      setLoading(false);
+    if (upcoming.length === 0) {
+      console.log(1);
+      setUpcoming(new ListUpcomingMassesUseCase().execute({ size: 3 }));
     }
-  }, [loading]);
+  }, [upcoming]);
   return (
     <Box>
       <Typography variant="h5" mt={3}>
@@ -32,11 +31,25 @@ export default function UpcomingMassGrid() {
         columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{ paddingTop: 3, paddingBottom: 3 }}
       >
-        {upcoming.map((item, index) => (
-          <Grid key={index} size={{ xs: 4 }}>
-            <MassCard loading={loading} model={item} />
-          </Grid>
-        ))}
+        {upcoming.length > 0 ? (
+          upcoming.map((item, index) => (
+            <Grid key={index} size={{ xs: 4 }}>
+              <MassCard model={item} />
+            </Grid>
+          ))
+        ) : (
+          <React.Fragment>
+            <Grid key="skeleton-1" size={{ xs: 4 }}>
+              <MassCardSkeleton />
+            </Grid>
+            <Grid key="skeleton-2" size={{ xs: 4 }}>
+              <MassCardSkeleton />
+            </Grid>
+            <Grid key="skeleton-3" size={{ xs: 4 }}>
+              <MassCardSkeleton />
+            </Grid>
+          </React.Fragment>
+        )}
       </Grid>
     </Box>
   );

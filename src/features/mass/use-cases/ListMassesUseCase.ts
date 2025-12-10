@@ -11,10 +11,14 @@ export default class ListMassesUseCase implements UseCase<
   ListMassesQuery,
   Mass[]
 > {
-  constructor(private massRepository: MassRepository) {}
+  #massRepository: MassRepository;
+
+  constructor() {
+    this.#massRepository = new MassRepository();
+  }
 
   execute(params: ListMassesQuery): Mass[] {
     const { filter = '', liturgicalYear = '' } = params;
-    return this.massRepository.findAll(filter, liturgicalYear);
+    return this.#massRepository.findAll(filter, liturgicalYear);
   }
 }

@@ -9,22 +9,25 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Typography from '@mui/material/Typography';
 
-import MassRepository from '@/features/mass/domain/MassRepository';
 import ListMassesUseCase from '@/features/mass/use-cases/ListMassesUseCase';
 import MassGrid from './MassGrid';
 
-const repo = new MassRepository();
-const useCase = new ListMassesUseCase(repo);
-const liturgicalYearA = useCase.execute({ liturgicalYear: '甲年' });
-const liturgicalYearB = useCase.execute({ liturgicalYear: '乙年' });
-const liturgicalYearC = useCase.execute({ liturgicalYear: '丙年' });
-
 export default function MassTabs() {
   const intl = useIntl();
-  const [value, setValue] = React.useState('C');
+
+  const [value, setValue] = React.useState('A');
+
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
+
+  const useCase = new ListMassesUseCase();
+  const masses = {
+    liturgicalYearA: useCase.execute({ liturgicalYear: '甲年' }),
+    liturgicalYearB: useCase.execute({ liturgicalYear: '乙年' }),
+    liturgicalYearC: useCase.execute({ liturgicalYear: '丙年' }),
+  };
+
   return (
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <Typography variant="h5" mt={3}>
@@ -39,13 +42,13 @@ export default function MassTabs() {
           </TabList>
         </Box>
         <TabPanel value="A" sx={{ padding: 0 }}>
-          <MassGrid data={liturgicalYearA} />
+          <MassGrid data={masses.liturgicalYearA} />
         </TabPanel>
         <TabPanel value="B" sx={{ padding: 0 }}>
-          <MassGrid data={liturgicalYearB} />
+          <MassGrid data={masses.liturgicalYearB} />
         </TabPanel>
         <TabPanel value="C" sx={{ padding: 0 }}>
-          <MassGrid data={liturgicalYearC} />
+          <MassGrid data={masses.liturgicalYearC} />
         </TabPanel>
       </TabContext>
     </Box>

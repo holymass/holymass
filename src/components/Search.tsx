@@ -20,26 +20,32 @@ import FindInPageIcon from '@mui/icons-material/FindInPage';
 
 import MassCard from '@/components/MassCard';
 import ListMassesUseCase from '@/features/mass/use-cases/ListMassesUseCase';
-import MassRepository from '@/features/mass/domain/MassRepository';
 import Mass from '@/features/mass/domain/Mass';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 
-const repo = new MassRepository();
-const options = new ListMassesUseCase(repo).execute({});
-
 export default function Search() {
   const intl = useIntl();
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState<string | Mass>('');
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const [open, setOpen] = React.useState(false);
+  const [options, setOptions] = React.useState<Mass[]>([]);
+  const [value, setValue] = React.useState<string | Mass>('');
+
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
+
+  React.useEffect(() => {
+    if (options.length === 0) {
+      setOptions(new ListMassesUseCase().execute({}));
+    }
+  }, [options]);
+
   return (
     <Box>
       <IconButton color="inherit" onClick={handleOpen}>
@@ -114,7 +120,7 @@ export default function Search() {
             })}
             slotProps={{
               listbox: {
-                sx: { maxHeight: 200 },
+                sx: { maxHeight: 224 },
               },
             }}
           />

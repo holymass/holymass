@@ -10,9 +10,13 @@ export default class ListUpcomingMassesUseCase implements UseCase<
   ListUpcomingMassesQuery,
   Mass[]
 > {
-  constructor(private massRepository: MassRepository) {}
+  #massRepository: MassRepository;
+
+  constructor() {
+    this.#massRepository = new MassRepository();
+  }
 
   execute(params: ListUpcomingMassesQuery): Mass[] {
-    return this.massRepository.findUpcoming(params.size);
+    return this.#massRepository.findUpcoming(params.size);
   }
 }
