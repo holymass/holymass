@@ -70,7 +70,18 @@ export default function MassCard(props: MassCardProps) {
     );
   };
   return (
-    <Card variant="outlined" sx={{ minWidth: 275 }}>
+    <Card
+      variant="outlined"
+      sx={{
+        minWidth: 275,
+        transition: '0.3s',
+        '&:hover': {
+          transform: 'translateY(-4px)',
+          boxShadow: 6,
+          cursor: 'pointer',
+        },
+      }}
+    >
       <CardHeader
         title={name}
         subheader={date}

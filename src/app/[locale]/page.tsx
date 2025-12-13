@@ -4,6 +4,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import GlobalStyles from '@mui/material/GlobalStyles';
+import { grey } from '@mui/material/colors';
 
 import getIntl from '@/intl';
 import theme from '@/theme';
@@ -23,7 +24,7 @@ const globalStyles = (
   <GlobalStyles
     styles={{
       body: {
-        backgroundColor: '#f5f5f5',
+        backgroundColor: grey[100],
       },
     }}
   />

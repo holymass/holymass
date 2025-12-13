@@ -8,6 +8,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Typography from '@mui/material/Typography';
+import { grey } from '@mui/material/colors';
 
 import ListMassesUseCase from '@/features/mass/use-cases/ListMassesUseCase';
 import MassGrid from './MassGrid';
@@ -34,7 +35,16 @@ export default function MassTabs() {
         <FormattedMessage id="mass.all.masses" />
       </Typography>
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Box
+          sx={{
+            position: 'sticky',
+            top: 0,
+            zIndex: (theme) => theme.zIndex.appBar,
+            bgcolor: grey[100],
+            borderBottom: 1,
+            borderColor: 'divider',
+          }}
+        >
           <TabList centered onChange={handleChange} aria-label={'Mass tabs'}>
             <Tab label={intl.formatMessage({ id: 'mass.year.a' })} value="A" />
             <Tab label={intl.formatMessage({ id: 'mass.year.b' })} value="B" />
