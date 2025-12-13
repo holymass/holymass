@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useIntl } from 'react-intl';
-import { blue, green, red } from '@mui/material/colors';
+import { blue, green, grey, red } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -86,9 +86,7 @@ export default function MassCard(props: MassCardProps) {
         title={name}
         subheader={date}
         avatar={
-          <Avatar sx={{ bgcolor: getLiturgicalYearColor(liturgicalYear) }}>
-            {liturgicalYear[0]}
-          </Avatar>
+          <Avatar sx={{ bgcolor: grey[500] }}>{liturgicalYear[0]}</Avatar>
         }
         action={
           <IconButton
